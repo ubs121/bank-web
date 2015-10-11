@@ -1,0 +1,41 @@
+@@INPUT@@Job Category
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR>
+<TD class=top><B>Description</B>
+<TD class=top><INPUT type="Text" size=40% name="1,,,Description" value="|1|">
+<TR>
+<TD class=top><B>Plant</B>
+<TD class=top><INPUT type="Text" size=40% name="3,,,Plant,,YN" value="|3|">
+<TR>
+<TD class=top><B>Overheads G/L</B>
+<TD class=top><INPUT type="Text" size=40% name="4,,,Overheads G/L" value="|4|">
+<TR>
+<TD class=top><B>Overheads %</B>
+<TD class=top><INPUT type="Text" size=40% name="5,,,Overheads %,,MD2" value="|5,0,0,,,MD2|">
+<TR>
+<TD class=top><B>Overheads Rate</B>
+<TD class=top><INPUT type="Text" size=40% name="6,,,Overheads Rate" value="|6,0,0,,,MD2|">
+<TR>
+<TD class=top><B>Standard Rate</B>
+<TD class=top><INPUT type="Text" size=40% name="7,,,Standard Rate" value="|7,0,0,,,MD2|">
+</TABLE>
+</FORM>
+
+<FORM>
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Category
+<TH>Description
+<TH>Plant
+<TH>Overheads GL Account
+<TH>Overheads GL Account Name
+<TH>Overheads %
+<TH>Overheads Rate
+<TH>Standard Rate
+||TABLESEL <TR><TD>|0|<TD>|1|<TD>|3|<TD>|4|<TD>|4,0,0,,,T@@PATH@@\ckashare\gen_l\gen_l.mdb\gen_l;2|<TD align=right>|5,0,0,,,MD2|<TD align=right>|6,0,0,,,MD2|<TD align=right>|7,0,0,,,MD2|
+@@PATH@@\ckashare\job_l\job_l.mdb,@@PATH@@\ckashare\job_l\job_l.mdb\category,select * from category order by category
+</TABLE>
+</FORM>
+
+
+

@@ -1,0 +1,11 @@
+filetouse=infringe
+templatetouse=infringe
+srchlist=a0,owner,on
+labellist=Infringement No.,Surname,Initial(s)
+radiobtns=Off Road Vehicles,Swimming Pools,Dividing Fences,Bush Fire,Finance,Animal,Litter,All
+radiocode=with prefix = þOþ,with prefix = þSþ,with prefix = þDþ,with prefix = þBþ,with prefix = þFþ,with prefix = þAþ,with prefix = þLþ,
+sorts=key
+title=GENERAL INFRINGEMENTS
+hds=Infringement|Name|Initials|Date|Time|Penalty
+tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD ALIGN=RIGHT>
+dms=@,/prospect/asp/bi.asp?fn=infringe&tn=infringe&item=,0|1,1,1,,,TCLIENT;1|1,1,1,,,TCLIENT;6|3,1,1,,,D2|2,1,1,,,MT|5,1,1,,,MD2

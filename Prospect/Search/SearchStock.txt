@@ -1,0 +1,9 @@
+filetouse=@@PATH@@\ckashare\Stock\stock.mdb\stock
+templatetouse=SearchJAccount
+srchlist=stock,description
+title=Search - Stock
+labellist=Stock,Description
+hds=Account|Description
+tds=<TD>|<TD>
+dms=@,#,0|1,1,1
+

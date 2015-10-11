@@ -1,0 +1,13 @@
+filetouse=@@PATH@@\ckashare\Gen_L\gen_l.mdb\gen_l
+templatetouse=SearchJAccount
+
+srchlist=key,a44,order.date,order.date
+labellist=Худалдан авах захиалга,Authorising Officer,Захиалсан Огноо (хойш), Захиалсан Огноо(хvртэл)
+title=ХУДАЛДАН АВАХ ЗАХИАЛГА
+hds=Захиалгын №|Захиалагч|Огноо|Салбар|Нийт дvн|Албан хаагч
+tds=<TD>|<TD>|<TD>|<TD>|<TD ALIGN=RIGHT>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=purchase&tn=purchase&item=,0|3,0,0,,,Tclient;1|21,0,0,,,D2|1,0,0,,,Tbranch;1|8,0,0,,,MD2|44
+adhoc=@2030
+radiobtns=Багц файл дахь худалдан авах захиалгууд,Худалдан авах захиалгууд
+radiocode=|pur.batch|pur_batch|PURCHASE ORDERS IN BATCH FILE,|purchase|purchase|PURCHASE ORDERS
+adhoc=@2030

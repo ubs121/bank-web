@@ -1,0 +1,3 @@
+To see only groups, search with CLASS = 0
+
+To see only classes, search with SUBCLASS < 0

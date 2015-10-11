@@ -1,0 +1,95 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>Asset Depreciation Report </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="journal"><INPUT TYPE=hidden NAME="tn" VALUE="journal"><INPUT TYPE=hidden NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+||IF,P2,=,sselect asset by locn by group by a0
+||SRsr1455a,0,sselect asset by locn by group, OR could be by locn by class OR by class by group by pur.date OR by locn
+The file is called |21,0,0,|
+<TABLE WIDTH=50% align="centre">
+<TR CLASS="top">
+<TH COLSPAN=4>
+<TH COLSPAN=2>Purchase
+<TH COLSPAN=3>Depreciation
+<TH COLSPAN=4>
+<TR CLASS="top">
+<TH>Asset
+<TH>Description
+<TH>Group
+<TH>Location
+<TH>Price
+<TH>Date
+<TH>Type
+<TH>Rate
+<TH>Freq
+<TH>Current Dep'd Value
+<TH>Depreciation Amount
+<TH>Depreciated Value
+<TH>Total Depreciation
+||TABLE000 <TR><TD align="left">|1,N,0|<TD>|2,N,1|<TD>|3,NB,0|<TD>|4,NB,0,,,TLOCATION;1|<TD ALIGN="RIGHT">|5,NT,0,,,MD2|<TD>|6,N,0,,,D2|<TD>|7,N,0|<TD ALIGN="RIGHT">|8,N,0,,,MD2|<TD ALIGN="RIGHT">|9,N,0,,,MD2|<TD ALIGN="RIGHT">|10,NT,0,,,MD2|<TD ALIGN="RIGHT">|11,NT,0,,,MD2|<TD ALIGN="RIGHT">|12,NT,0,,,MD2|<TD ALIGN="RIGHT">|13,NT,0,,,MD2|
+</TABLE>
+
+<TABLE WIDTH=50% align="centre">
+<TR CLASS="top">
+<TH>G/L Depreciation Expense
+<TH>Description
+<TH>Value
+<TH>Number
+||TABLE000 <TR><TD align="left">|14,N,0|<TD>|14,N,1,,,TGEN.L;2|<TD ALIGN="RIGHT">|15,NT,0,,,MD2|<TD ALIGN="RIGHT">|16,NT,0|
+</TABLE>
+<TABLE WIDTH=50% align="centre">
+<TR CLASS="top">
+<TH>G/L Accumulated Depreciation
+<TH>Description
+<TH>Value
+<TH>Number
+||TABLE000 <TR><TD align="left">|17,N,0|<TD>|17,N,1,,,TGEN.L;2|<TD ALIGN="RIGHT">|18,NT,0,,,MD2|<TD ALIGN="RIGHT">|19,NT,0|
+</TABLE>
+
+||SREND
+||IFEND
+
+||IF,P2,=,sselect asset by class by group by pur.date
+||SRsr1455a,0,sselect asset by class by group by pur.date
+<TABLE WIDTH=50% align="centre">
+<TR CLASS="top">
+<TH COLSPAN=5>
+<TH COLSPAN=2>Purchase
+<TH COLSPAN=3>Depreciation
+<TH COLSPAN=4>
+<TR CLASS="top">
+<TH>Asset
+<TH>Description
+<TH>Class
+<TH>Group
+<TH>Location
+<TH>Price
+<TH>Date
+<TH>Type
+<TH>Rate
+<TH>Freq
+<TH>Current Dep'd Value
+<TH>Depreciation Amount
+<TH>Depreciated Value
+<TH>Total Depreciation
+||TABLE000 <TR><TD align="left">|1,N,0|<TD>|2,N,1|<TD>|20,NB,0|<TD>|3,NB,0|<TD>|4,N,0,,,TLOCATION;1|<TD ALIGN="RIGHT">|5,NT,0,,,MD2|<TD>|6,N,0,,,D2|<TD>|7,N,0|<TD ALIGN="RIGHT">|8,N,0,,,MD2|<TD ALIGN="RIGHT">|9,N,0,,,MD2|<TD ALIGN="RIGHT">|10,NT,0,,,MD2|<TD ALIGN="RIGHT">|11,NT,0,,,MD2|<TD ALIGN="RIGHT">|12,NT,0,,,MD2|<TD ALIGN="RIGHT">|13,NT,0,,,MD2|
+</TABLE>
+
+<TABLE WIDTH=50% align="centre">
+<TR CLASS="top">
+<TH>G/L Depreciation Expense
+<TH>Description
+<TH>Value
+<TH>Number
+||TABLE000 <TR><TD align="left">|14,N,0|<TD>|14,N,1,,,TGEN.L;2|<TD ALIGN="RIGHT">|15,NT,0,,,MD2|<TD ALIGN="RIGHT">|16,NT,0|
+</TABLE>
+<TABLE WIDTH=50% align="centre">
+<TR CLASS="top">
+<TH>G/L Accumulated Depreciation
+<TH>Description
+<TH>Value
+<TH>Number
+||TABLE000 <TR><TD align="left">|17,N,0|<TD>|17,N,1,,,TGEN.L;2|<TD ALIGN="RIGHT">|18,NT,0,,,MD2|<TD ALIGN="RIGHT">|19,NT,0|
+</TABLE>
+
+||SREND
+||IFEND

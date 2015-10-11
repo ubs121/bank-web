@@ -1,0 +1,188 @@
+@@INPUT@@Issue Number
+
+<SCRIPT LANGUAGE="JavaScript" SRC="/prospect/jscript/gen_l.js"></SCRIPT>
+<INPUT id=select5 name=select5 value="|5,V|" type="hidden">
+<INPUT id="assessment_address_hide" NAME="assessment_address_hide" type="hidden">
+<INPUT id="prev_value" NAME="prev_value" type="hidden" value="0">
+<table width=95% align=center border=1 cellspacing=1 cellpadding=1>
+    <tr class=item> 
+    <td colspan=2 nowrap class="top">
+    <b>Batch<b> 
+    <td class=top width="130"> 
+    <input name="C9,0,0,Batch" type="Text" value="|9,0,0|">
+    <td class=top width="40"><b>Issue From</b> 
+    <td class=top width="130">
+    <select name="sel6">
+||OPTIONS|SSELECT|Branch|2|@@PATH@@\ckashare\stock\stock.mdb\Branch|1|
+    </select>    <td class="top" width="350">&nbsp;
+    </b></b></b></b>
+    <tr class="top"><td colspan=2 nowrap class="top">
+    <b>Branch TO<b> 
+<!-- <td class=top width="130"> <input name="C1,0,0,Branch" type="Text" value="|1,0,0|">-->
+ <TD class="bold" align="left"><input name="1,0,0,Branch" type="Text"  value="|1,0,0|">&nbsp;
+<td class="bold" align="center"><input class="bold" type="button" value="BRANCH" onClick='BuildSentence(document.assetform("1,0,0,Branch"),document.all.SearchResults,"RSBranch.txt","")'>
+<td class="bold" align="center"><input class="bold" type="button" value="GENRAL LED" onClick='BuildSentence(document.assetform("1,0,0,Branch"),document.all.SearchResults,"RSGL_msa.txt","")'>
+<td class="bold" align="center"><input class="bold" type="button" value="JOB LEDGER" onClick='BuildSentence(document.assetform("1,0,0,Branch"),document.all.SearchResults,"RSJob.txt","")'>
+<!--
+<input class="bold" type="button" id="search_gl" name="search_gl" value="GENERAL L" onClick='SearchAccount("RSGL_msa.txt");' onBlur='GetValidationString(this.name);'>
+    <td class=top align="center"><input class="bold" type="button" id="search_branch" name="search_branch" value="BRANCH" onClick='SearchAccount("RSBranch.txt"); ' onBlur='GetValidationString(this.name);'>
+    <td class=top align="center"><input class="bold" type="button" id="search_job" name="search_job" value="JOB LED" onClick='SearchAccount("RSJob.txt");' onBlur='GetValidationString(this.name);'>
+    --><tr class=top><td class=top width="40">&nbsp;<td class=top width="40">&nbsp; 
+||SR@@PATH@@\ckashare\gen_l\gen_l.mdb\currentyear,YEAR 
+    <td colspan=2 nowrap class="top">
+    <b>Date (between |2| and |3|)<b> 
+    <td class=top width="130"> 
+      <input name="C2,0,0,Date,,D2X,|2|,|3|" type="Text"
+||SREND
+	value="|2,0,0,,,D2X|">
+    <td class=top width="1">&nbsp; 
+
+    </b></b>
+</table>
+<I id=expanding></I> 
+<script LANGUAGE="JavaScript">
+  var n,TotalDb=0;  var numofrows,numofcols,numinrow=3;var Translist=new Array();
+  var gFieldValues = new Array(numinrow * 10); // this array holds our form values when we need to regenerate the form
+
+    for (var i=0;i<gFieldValues.length;i++) {gFieldValues[i]=""};
+	getTransValues();
+	IncludeForm(numinrow);
+
+function IncludeForm(numinrow)
+{
+   var htmlStr = '<TABLE width=95% align=center border=1 cellspacing=1 cellpadding=1>';
+   htmlStr += '<TR class=top><TH><input type="button" value="New Account" onClick="AddField(' + numinrow + ')"><TH WIDTH="250">Total Quantity<TD align=right><B>&nbsp;<I id="totaldr"></I></B><input type="hidden" name="Btotaldr" value="0.00"><TR class=top><TH>Product<TD align=center><B>Description</B><TH>Quantity</B>'; 
+
+for (var i=0;i<gFieldValues.length;i+=numinrow)
+{ 
+
+   htmlStr += '<TR class=top>';
+   htmlStr += '<TD><input type="Text" onBlur="gl_validation(document.all(' + "'I" + (1000 + i) + ",,,Stock'),document.all.B" + (1000 + i + 1) + ',this,this.value,' + "'T@@PATH@@!ckashare!stock!stock.mdb!stock;1'" + ',' +  "'SearchStock.txt'" + ')" name="' + (1000 + i + 0) + ',,,Stock" value="' + gFieldValues[i+0] + '">';
+   htmlStr += '<TD class=top id="I' + (1000 + i) + ',,,Stock">' + gFieldValues[i+1] + '&nbsp;</td>  <input type="hidden" name="B' + (1000 + i + 1) + '" value="' + gFieldValues[i+2] + '">';
+//htmlStr += '<TD><input type="Text" onChange="changeVal();" onBlur="document.all.CurrentSearchField.value=this.name;" name="' + (1000 + i + 0)+',,," value="' + gFieldValues[i+0] + '">';
+//htmlStr += '<TD class=top id="I' + (1000 + i) + ',,,">' + gFieldValues[i+1] + '&nbsp;</td>  <input type="hidden" name="B' + (1000 + i + 1) + '" value="' + gFieldValues[i+1] + '">';
+   htmlStr += '<TD align=center><input type="text" onFocus="getPrevVal(this.value);" onBlur="addamts(document.all.totaldr,document.all.Btotaldr,document.all.prev_value.value,this,this.value)" name="' + (1000 + i + 2) + ',,,MD2X,>0" value="' + FormatNum(gFieldValues[i+2],5) + '">';
+//   htmlStr += '<TD align=center><input type="text" onFocus="getPrevVal(this.value);" onBlur="addamts(document.all.totaldr,document.all.Btotaldr,document.all.prev_value.value,this,this.value)" name="' + (20 + i + 2) + ',,,MD2X,>0" value="' + FormatNum(gFieldValues[i+2],1) + '">';
+
+}
+
+   htmlStr += '</TABLE>';
+   document.all.expanding.innerHTML = htmlStr;
+  document.all.totaldr.innerHTML=document.all.Btotaldr.value=FormatNum(TotalDb,2);
+
+}
+
+function AddField(numinrow)
+{
+// Save previously entered data here
+    var formObj = document.assetform;
+    n=formObj.elements.length - gFieldValues.length; 
+    for (var i=0;i<gFieldValues.length;i++) //element 0 is the ADD BUTTON so saving element 1 onwards only
+     {gFieldValues[i]= formObj.elements(i+n).value; }
+
+    for (var i=0;i<gFieldValues.length;i+=numinrow) //save description
+    {accfield = formObj.elements(i+n).name; 
+     gFieldValues[i+1] = document.all("I" + accfield).innerHTML; }
+    TotalDb=document.all("BtotalDr").value;
+
+// Create the new fields
+     for (var j=0;j<numinrow;j++)
+        {gFieldValues[gFieldValues.length]=""; }
+     IncludeForm(numinrow);
+}
+
+
+function getPrevVal(pval)
+{
+if (Ltrim(pval) == "") pval = 0;
+else
+	pval=FormatNum(Ltrim(pval),5);
+	if (parseFloat(pval) < 0) pval = 0;
+document.all.prev_value.value=pval;
+}
+
+
+function getTransValues()
+{
+   var i,j;
+    j = 0;
+
+   Temp = document.assetdata.before_trans.value;
+    if (Temp == "" || Temp.charAt(0) == '@') return;
+    initArray(Temp);
+
+    if (numofrows > 10)   					//if num. of records > 10 then resize gFieldValues for the additional rows
+       for (var k=0; k<(numinrow * (numofrows - 10)); k++)
+      { gFieldValues[gFieldValues.length]=""; }
+    else 								//else resize Translist for max. of 10 rows
+        for (var k=0; k<(numofcols * (10 - numofrows)); k++)
+        { Translist[Translist.length]=""; }
+
+   for (i = 0; i<Translist.length; i+=numofcols)
+   {
+     gFieldValues[j] = Translist[i+4];             // Account number
+//    alert ("i+4:"+Translist[i+4])           
+//    if(Translist[i+4] != "")
+  // {
+    //ASPpage = RSGetASPObject("DllCalls.asp");
+    //co = ASPpage.BuildString(Translist[i+4],AccountDescription);
+    // gFieldValues[j+1]=co.return_value;
+     //}
+
+	if (Translist[i+5] < 0) Translist[i+5] = Translist[i+5] * -1
+
+	if (Translist[i+3] == "58")
+	{
+	TotalDb=TotalDb + parseFloat(Translist[i+5]);
+	gFieldValues[j+2] = Translist[i+5];	              //quantity
+	}
+
+	j = j+numinrow;
+
+}}
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+var validation=0;
+function GetAssessAddress(Address,AssessNum)
+{
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,validation);
+  Address.innerHTML=co.return_value;
+}
+
+
+function GetOwnerName(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;2;3;4;5");
+  alert("Ownernabe:"+co.return_value);
+   Address.innerHTML=co.return_value;
+}
+
+
+function GetValidationString(element)
+{ 
+switch(element)
+{
+case "search_gl" :
+	validation =  "T@@PATH@@!ckashare!Gen_L!gen_l.mdb!gen_l;2";
+	break;
+case "search_branch" :
+	validation = "T@@PATH@@!ckashare!stock!stock.mdb!branch;1" ;
+	break;
+case "search_job" :validation = "T@@PATH@@!ckashare!job!job.mdb!job;1" ;
+	break;
+}	
+return validation;
+}
+
+function getSelectedVal(dropdown)
+{
+selItem = dropdown.options[dropdown.selectedIndex].text;
+document.all.branch.value=selItem ;
+}
+
+</SCRIPT>

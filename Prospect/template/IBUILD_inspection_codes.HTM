@@ -1,0 +1,19 @@
+@@INPUT@@Building - Inspection Codes
+<TABLE align=center border="1" cellspacing="3" cellpadding="1">
+<TR>
+<TD CLASS=top><B>Description</B>
+<TD><INPUT type="Text" name="C1,0,0" value="|1|" size="35">
+</TABLE>
+</FORM>
+
+<FORM  NAME="building_codes">
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Code
+<TH>Description
+||TABLESEL <TR><TD>|0,0,0,,,|<TD>|1|
+@@PATH@@\ckashare\build\build.mdb,@@PATH@@\ckashare\build\build.mdb\inspection,select * from inspection order by inspection
+</TABLE>
+</FORM>
+
+

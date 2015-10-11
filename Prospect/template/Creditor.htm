@@ -1,0 +1,70 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>CREDITOR </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="creditor"><INPUT TYPE=hidden NAME="tn" VALUE="creditor"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE align=center>
+<TR>
+<TD CLASS="mm">
+<B>Creditor :</B><TD COLSPAN=5> |0,1,1,,,TCLIENT;7;1|     
+<TR>
+<TD COLSPAN=4>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Postal Address</B><TD> |0,1,1,,,TCLIENT;2,1;3,1;4,1;5,1|
+<TD CLASS="mm">
+<B>Residential Address</B><TD> |0,1,1,,,TCLIENT;2,2;3,2;4,2;5,2|
+<TR>
+<TD COLSPAN=4>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Bus</B><TD> |0,1,1,,,TCLIENT;9,1,1| 
+<TD CLASS="mm">
+<B>Priv</B><TD> |0,1,1,,,TCLIENT;9,2,1| 
+<TR>
+<TD CLASS="mm">
+<B>Fax</B><TD> |0,1,1,,,TCLIENT;9,3,1| 
+<TD CLASS="mm">
+<B>Mobile</B><TD> |0,1,1,,,TCLIENT;9,5,1| 
+<TR>
+<TD CLASS="mm">
+<B>Email</B><TD COLSPAN="3"> |0,1,1,,,TCLIENT;9,4,1| 
+<TR>
+<TD COLSPAN=4>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Current Balance</B><TD> |1,,,,,MD2|
+<TD CLASS="mm">
+<B>Transactions last cleared</B><TD> |18,1,1,,,D2|
+<TR>
+<TD CLASS="mm">
+<B>Terms of Credit</B><TD> |2| 
+<TD CLASS="mm">
+<B>Auto-Issue Code</B><TD> |16|
+<TR>
+<TD CLASS="mm">
+<B>Default Posting Ledger Account</B><TD COLSPAN=3> <A HREF="/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=|15|"><FONT CLASS=itemlnk>|15|</FONT></A> &nbsp;&nbsp; |15,1,1,,,Tgen.l;2|
+</TABLE>
+
+||IF,34,#,
+<P align=center><B>EFT authority - bank account </B>|34|
+||IFEND
+
+||SREFT
+||IF,1,#,
+<TABLE align=center border=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS=top>
+<TH colspan=3>EFT authority details
+<TR>
+<TH>From Date
+<TH>To Date
+<TH>EFT reference
+||TABLE000 <TR> <TD> |1,N,0,,,D2|<TD>|2,N,0,,,D2|<TD>|3,N,0|
+</TABLE>
+||IFEND
+||SREND
+
+
+<P align=center>
+<A HREF="buildsel.asp?fn=cr_trans&tn=cr_trans&item=a1&ref=|0|&by=by-dsnd">Click Here To Display Transactions most recent first</A>
+<P align=center>
+<A HREF="buildsel.asp?fn=cr_trans&tn=cr_trans&item=a1&ref=|0|&by=by">Click Here To Display Transactions oldest first</A>

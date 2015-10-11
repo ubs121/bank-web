@@ -1,0 +1,137 @@
+<FORM NAME="assetform">
+<DIV id="Test" STYLE="position: visibility: visible;">
+<TABLE align=center border=1 cellspacing=1>
+<TR class=top>
+<TD><a href="/prospect/asp/menu.asp"><IMG src="/prospect/images/default/explorer/start_up.gif" BORDER="0" WIDTH="29" HEIGHT="19"></a>
+<TD><B>@@FILEHEAD@@</B>
+<TD><input type="Text"  name="id" value="|0|" maxlength="20" onBlur='Query_Click()'>
+<TD align=center>
+<input class=bold type="button" name="Query" value="Query" onclick='Query_Click()'>
+<input class=bold type="button" name="Add" value="Add" onclick='Add_Click()'>
+<input class=bold type="button" name="Update" value="Update" onclick='Update_Click()'> 	
+<input class=bold type="button" name="Delete" value="Delete" onclick='Delete_Click()'>
+<input class=bold type="button" name="Clear" value="Clear" onclick='Clear_Click()'>
+</TABLE>
+
+<SCRIPT LANGUAGE="VBScript">
+Sub Print_Click(mergetext)
+   dim printdoc,docname,word_name
+   lines=split(mergetext,chr(8))
+   names=split(lines(0),",")
+   posns=split(lines(1),",")
+
+   id=document.all.id.value
+   before=document.all.before.value
+   before_trans=document.all.before_trans.value
+   if id = "" or before ="" then
+      msgbox "Nothing to print"
+      exit sub
+   end if
+   values=split(id & chr(8) & before,chr(8))
+   trans=split(before_trans,chr(8))
+
+   printdoc=document.all.printdoc.value
+   docname=document.all.printdocnames.value
+   word_name = printdoc & docname
+
+   If IsObject(Word) Then Set Word = Nothing
+   Set Word = CreateObject("Word.Application")
+   Word.Documents.Open(Word_name)
+   'Word.Visible = true
+   Word.Documents.Open(Word_name)
+
+   ncol=0
+   For Each oWordField In Word.ActiveDocument.MailMerge.Fields
+         oWordField.Select
+         Set oWordFieldRange = Word.Selection.Range
+
+         nTable = -1
+         ReDim bTablesProcessed(Word.ActiveDocument.Tables.Count)
+         For Each oWordTable In Word.ActiveDocument.Tables
+            nTable = nTable + 1
+            If oWordFieldRange.InRange(oWordTable.Range) Then
+               Exit For
+            End If
+         Next
+
+         mparts= split(oWordField.Code," ")
+         mname= mparts(2)
+         found=0
+         for j = 0 to ubound(names)
+             if mname=names(j) then
+                found=1
+                exit for
+             end if
+         next
+         done=0
+
+         if found=1 then
+            pos_format=split(posns(j),"!")
+            posn=pos_format(0)
+            if isnumeric(posn) then
+               posn=cint(posn)
+               if posn <= ubound(values) then val=values(posn) else val=""
+               if ubound(pos_format) > 0 then
+                   select case pos_format(1)
+                       case "md2":  if isnumeric(val) then val=formatcurrency(val)
+                       case else: 
+                   end select
+                   if left(pos_format(1),1)="T" then
+                      val2=Translating(document.all.translate_temp,val,pos_format(1))
+                      val=document.all.translate_temp.value
+                   end if
+               end if
+            else
+
+               if left(posn,1)="T" then
+
+                  do
+                     if oWordTable.Rows.Count > ubound(trans) then exit do
+                     oWordTable.Rows.Add()
+                  loop
+
+                  posn=cint(mid(posn,2))
+
+                  for tt=0 to ubound(trans)
+                     transvals=split(trans(tt),chr(9))
+                     if posn<= ubound(transvals) then
+                        if ubound(pos_format) > 0 then
+                           select case pos_format(1)
+                              case "md2":  transvals(posn)=formatcurrency(transvals(posn))
+                              case else: 
+                           end select
+                         end if
+                         val = transvals(posn)
+                      else
+                         val=""
+                      end if
+                      oWordTable.Cell(tt+1,ncol+1).Range.Text = val 
+                      done=1
+                   next
+                   ncol=ncol+1
+                else
+                   val=""
+                end if
+             end if
+         else
+             val=mname & " not found"
+         end if
+         if done=0 then         
+             oWordFieldRange.Text = val
+         end if
+    Next
+    Word.ActiveDocument.SaveAs (printdoc & "word\" & id & ".doc")
+    Word.ActiveDocument.PrintOut
+    Word.Quit
+End Sub
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+function Translating(fld,AssessNum,conversion)
+{
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,conversion);
+   fld.value=co.return_value;
+}
+</SCRIPT>

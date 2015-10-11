@@ -1,0 +1,152 @@
+@@INPUT@@Investment
+
+<TABLE WIDTH=95% align=center border=1 cellspacing=1 cellpadding=1>
+
+    <TR class=item>
+        <TD class=top WIDTH="102" ><b>Certificate Number</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C1,0,0,Certificate Number,," value="|1,0,0,,,MD2|" align="LEFT" size="20" maxlength="10">
+        <TD class=top WIDTH="102" ><b>Date Lodged</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C3,0,0,Date Lodged,,D2X" value="|3,0,0|" align="LEFT" size="20" maxlength="10" id="IntRate">
+        <TD CLASS=top WIDTH="102" ><b>Interest Type</b>          
+<TD class=top>
+<select name="sel8" > 
+||OPTIONS|SSELECT|type|8|@@PATH@@\ckashare\investments\investments.mdb\type|1|
+</select>
+
+
+ <TR class=item>
+ <TD class=top CLASS=top ><b>Broker</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C9,0,0,Broker,," value="|9,0,0|" align="LEFT" size="20" maxlength="10">
+	<TD class=top CLASS=top ><b>Borrower</b>
+        <TD class=top>
+<select name="sel10" > 
+||OPTIONS|SSELECT|borrower|10|@@PATH@@\ckashare\investments\investments.mdb\borrower|1|
+</select>
+	<TD class=top CLASS=top WIDTH="102" ><b>Source of Investment</b>        
+<TD class=top>
+<select name="sel14" > 
+||OPTIONS|SSELECT|source|14|@@PATH@@\ckashare\investments\investments.mdb\source|1|
+</select>
+    <TR class=item>    
+ <TD class=top CLASS=top WIDTH="102" ><b>Status of Investment</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C15,0,0,Status of Investment" value="|15,1,0|" align="LEFT" size="20" maxlength="10">
+        <TD class=top CLASS=top WIDTH="102" ><b>Security Held</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="16,0,0,Security Held" value="|16,0,0|" align="LEFT" size="20" maxlength="20">
+        <TD class=top CLASS=top><b>Memoranda</b>
+	<TD class=top><input type="Text" CLASS="smallTxt" name="17,0,0,Memoranda" value="|17,0,0|" align="LEFT" size="20" maxlength="20">
+</TABLE>
+
+<SCRIPT LANGUAGE="JavaScript" SRC="/prospect/jscript/gen_l.js"></SCRIPT>
+<INPUT id=select5 name=select5 value="|5,V|" type="hidden">
+<INPUT id="assessment_address_hide" NAME="assessment_address_hide" type="hidden">
+<INPUT id="prev_value" NAME="prev_value" type="hidden" value="0">
+
+<%'this is where the expandable table goes - written to in includeform%>
+<I id=expanding></I>
+</div>
+</FORM>
+
+<%'//!!!!!see 12 below assumes 11 elements above!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!%>
+
+<script LANGUAGE="JavaScript">
+    var numinrow=6
+    var gFieldValues = new Array(numinrow * 10); // this array holds our form values when we need to regenerate the form
+    for (var i=0;i<gFieldValues.length;i++) {gFieldValues[i]=""};
+	getTransValues();
+    IncludeForm(numinrow);
+
+function IncludeForm(numinrow)
+{
+   var htmlStr = '<TABLE align=center border=1 cellspacing=1 cellpadding=1>';
+   htmlStr += '<TR class=top><TH colspan=6>Investments<TR class=top><TH>Maturity Date&nbsp;&nbsp;<input type="button" value="Extra" onClick="AddField(' + numinrow + ')"><TH>Amount<TH>Interest Rate<TH>Interest Type<TH>Compound Frequency<TH>Reinvestment Date';    
+
+for (var i=0;i<gFieldValues.length;i+=numinrow)
+{
+   htmlStr += '<TR class=top>';
+   htmlStr += '<TD><input type="Text" onFocus="getPrevVal(this.value);" name="' + (20 + i + 0) + ',,,Maturity Date,,D2X,0" value="' + gFieldValues[i+0] + '">';
+   htmlStr += '<TD align=center><input type="text" onFocus="getPrevVal(this.value);" name="' + (20 + i + 1) + ',,,Amount,,MD2,>0" value="' + gFieldValues[i+1] + '">';
+   htmlStr += '<TD align=center><input type="text" onFocus="getPrevVal(this.value);" name="' + (20 + i + 2) + ',,,Interest Rate,>0" value="' + gFieldValues[i+2] + '">';
+   htmlStr += '<TD align=center><input type="text" onFocus="getPrevVal(this.value);" name="' + (20 + i + 3) + ',,,Interest Type" value="' + gFieldValues[i+3] + '">';
+   htmlStr += '<TD align=center><input type="text" onFocus="getPrevVal(this.value);" name="' + (20 + i + 4) + ',,,Compound Frequency" value="' + gFieldValues[i+4] + '">';
+   htmlStr += '<TD align=center><input type="text" onFocus="getPrevVal(this.value);" name="' + (20 + i + 5) + ',,,Reinvest Date,,D2X,0" value="' + gFieldValues[i+5] + '">';
+   
+
+
+}
+   htmlStr += '</TABLE>';
+   document.all.expanding.innerHTML = htmlStr;
+}
+
+function AddField(numinrow)
+{
+// Save previously entered data here
+	var formObj = document.assetform;
+      var lngth = gFieldValues.length
+	for (var i=0;i<gFieldValues.length;i++) //element 0 is the ADD BUTTON so saving element 1 onwards only
+	   { gFieldValues[i]= formObj.elements(i+17).value; }
+// Create the new fields
+     for (var j=0;j<numinrow;j++)
+        { gFieldValues[gFieldValues.length]=""; }
+     IncludeForm(numinrow);
+}
+
+
+function getPrevVal(pval)
+{
+if (pval == "") pval = 0;
+document.all.prev_value.value=pval;
+}
+
+function getTransValues()
+{
+var numofrows,numofcols,i,j;
+
+Temp = document.assetdata.trans_rec.value;
+if (Temp == "" || Temp.charAt(0) == '@') return;
+
+TransRowArray = Temp.split(String.fromCharCode(254));
+numofrows = TransRowArray.length;
+
+TransColumnArray = TransRowArray[0].split(String.fromCharCode(8));
+numofcols = TransColumnArray.length;
+Temp="";
+
+for (i=0; i<numofrows-1; i++)
+	Temp=Temp + TransRowArray[i] + String.fromCharCode(8);
+Temp=Temp + TransRowArray[i];	
+Translist = Temp.split(String.fromCharCode(8));
+
+j = 0;
+if (numofrows > 10)   								//if num. of records > 10 then resize gFieldValues for the additional rows
+     for (var k=0; k<(numinrow * (numofrows - 10)); k++)
+        { gFieldValues[gFieldValues.length]=""; }
+else 								                  //else resize Translist for max. of 10 rows
+	 for (var k=0; k<(numofcols * (10 - numofrows)); k++)
+        { Translist[Translist.length]=""; }
+
+// for (i = 0; i<Translist.length; i+=numofcols)
+//{
+//	gFieldValues[j] = Translist[i+3];             // Account number
+//	gFieldValues[j+1] = BuildString(gFieldValues[j],AccountDescription);    //Description
+//	if (Translist[i+4] < 0) Translist[i+4] = Translist[i+4] * -1
+//	if (Translist[i+2] == "58")
+//		gFieldValues[j+2] = Translist[i+4];	              //Debit
+//	else	
+//		gFieldValues[j+3] = Translist[i+4];	              //Credit   
+//	gFieldValues[j+4] = Translist[i+5];                   //Narrative
+//	j = j+5;
+//}
+}
+
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;1;2;3;4;5");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+

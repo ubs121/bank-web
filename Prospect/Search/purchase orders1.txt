@@ -1,0 +1,12 @@
+filetouse=purchase
+templatetouse=purchase
+srchlist=key,a44,order.date,order.date
+labellist=Purchase Order,Authorising Officer,Order Date (from), Order Date (to)
+title=PURCHASE ORDERS
+hds=Order No|Client|Date|Branch|Total Amount|Officer
+tds=<TD>|<TD>|<TD>|<TD>|<TD ALIGN=RIGHT>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=purchase&tn=purchase&item=,0|3,1,1,,,Tclient;1|21,1,1,,,D2|1,1,1,,,Tbranch;1|8,1,1,,,MD2|44
+adhoc=@2030
+radiobtns=Purchases Orders in Batch file,Purchases Orders
+radiocode=|pur.batch|pur_batch|PURCHASE ORDERS IN BATCH FILE,|purchase|purchase|PURCHASE ORDERS
+adhoc=@2030

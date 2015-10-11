@@ -1,0 +1,8 @@
+filetouse=rc.application
+templatetouse=rc_application
+srchlist=a0
+labellist=Id
+title=RC APPLICATIONS
+hds=Consent Id|Type|Publicly Notifiable|Applicant|Date|Detail
+tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=rc.application&tn=rc_application&item=,0|1,0,0,,,TRC.TYPES;1|2|3,0,0|4,0,0,,,D2|5

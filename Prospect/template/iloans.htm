@@ -1,0 +1,77 @@
+@@INPUT@@Waste Water Loan
+<INPUT id=select5 name=select5 value="|5,V|" type="hidden">
+<INPUT id="assessment_address_hide" NAME="assessment_address_hide" type="hidden">
+
+<TABLE align=center WIDTH="95%" border="1" cellspacing="1" cellpadding="1">
+
+    <TR class=top>
+
+        <TD CLASS="itemname" WIDTH="102">Owner
+	  <TD><input type="Text" class="smalltxt" name="1,0,0,Owner" value="|1|" align="LEFT" size="10" maxlength="10"  onBlur='GetAssessAddress(document.all("I1,0,0,Owner"),this.value)'>
+        <TD colspan=6>
+          <INPUT TYPE="Button" class="smallButt" VALUE="Search" onClick='BuildSentence(document.assetform("1,0,0,owner"),document.all.SearchResults,"RSClients.txt","loans")'>Search by debtor name
+    <TR class=top>
+ 	  <TD CLASS="itemname">Owner Name & Address
+        <TD id="I1,0,0,Owner" colspan=7>&nbsp;|1,0,0,,,TCLIENT;1;7;2;3;4;5|
+
+    <TR class=top>
+        <TD CLASS="itemname" WIDTH="102">Assessment
+	  <TD><input type="Text" name="3,0,0,assessment" value="|3|" align="LEFT" size="10" maxlength="10" onBlur='GetAssessAddress(document.all("I3,0,0,assessment"),this.value)'>
+        <TD colspan=6>
+          <INPUT TYPE="Button" VALUE="Search" onClick='BuildSentence(document.assetform("3,0,0,assessment"),document.all.SearchResults,"RSproperty_wdc.txt","")'>Search by owner name or road name (use ,roadname)
+    <TR class=top>
+ 	  <TD CLASS="itemname">Address
+        <TD id="I3,0,0,assessment" colspan=7>
+&nbsp;|3,0,0,,,TCLIENT;1;2;3;4;5|
+    <TR class=top>
+        <TD CLASS="itemname" WIDTH="102" >Loan amount
+        <TD><input type="Text" CLASS="smallTxt" name="C10,0,0,Loan Amount,,MD2" value="|10,0,0,,,MD2|" align="LEFT" size="10" maxlength="10">
+        <TD CLASS="itemname" WIDTH="102" >Payments per year
+        <TD><input type="Text" CLASS="smallTxt" name="C2,0,0,Payments per year,,MD0" value="|2,0,0|" align="LEFT" size="10" maxlength="10" id="IntRate">
+        <TD CLASS="itemname" WIDTH="102" >Loan Term (Years)
+        <TD><input type="Text" CLASS="smallTxt" name="C6,0,0,Loan Term (Years),,MD0" value="|6,0,0|" align="LEFT" size="10" maxlength="10">
+        <TD CLASS="itemname" >Interest Free (Years)
+        <TD><input type="Text" CLASS="smallTxt" name="C8,0,0,Interest Free (Years),,MD0" value="|8,0,0|" align="LEFT" size="10" maxlength="10">
+    <TR class=top>
+        <TD CLASS="itemname" WIDTH="102" >Interest Rate
+        <TD><input type="Text" CLASS="smallTxt" name="C9,0,0,Interest Rate,,MD2" value="|9,0,0,,,MD2|" align="LEFT" size="10" maxlength="10" id="IntRate">
+        <TD CLASS="itemname" WIDTH="102" >First paydate
+        <TD><input type="Text" CLASS="smallTxt" name="C12,1,0,First paydate,,D2" value="|12,1,0,,,D2|" align="LEFT" size="10" maxlength="10">
+    <TR class=top>
+        <TD colspan=8 CLASS="itemname">Once a loan has had an invoice generated, only the following three fields may be updated
+    <TR class=top>
+        <TD CLASS="itemname" WIDTH="102" >Narrative
+        <TD colspan=8><input type="Text" CLASS="smallTxt" name="5,0,0,Narrative" value="|5,0,0|" align="LEFT" size="100" maxlength="100">
+    <TR class=top>
+        <TD colspan=8 CLASS="itemname">Only enter "Final payment date" and "Final payment amount" when a loan is paid out early
+    <TR class=top>
+        <TD CLASS="itemname">Amount to settle
+        <TD align=right><I CLASS="input">|18,0,0,,,MD2|</I>       
+        <TD CLASS="itemname" WIDTH="102" >Final payment date
+        <TD><input type="Text" CLASS="smallTxt" name="4,0,0,Final payment date,,D2" value="|4,0,0,,,D2|" align="LEFT" size="10" maxlength="10">
+        <TD CLASS="itemname" WIDTH="102" >Final payment amount
+        <TD><input type="Text" CLASS="smallTxt" name="7,0,0,Final payment amount,,MD2" value="|7,0,0,,,MD2|" align="LEFT" size="10" maxlength="10">
+</TABLE>
+<TABLE align=center WIDTH="95%" border="1" cellspacing="1" cellpadding="1">
+<TR CLASS="top">
+<TH>Pay due
+<TH>Principal
+<TH>Interest
+<TH>Total Amount
+<TH>Invoice
+<TH>Inv date
+||TABLEA99 <TR><TD><I class="input">|12,N,1,,,D2|</I><TD align=right><I class="input">|13,NT,1,,,MD2|</I><TD align=right><I class="input">|14,NT,1,,,MD2|</I><TD align=right><I class="input">|15,NT,1,,,MD2|</I><TD><I class="input">|@,/prospect/asp/bi.asp?fn=invoice&tn=invoice&item=,16,N,1|</I><TD><I class="input">|16,N,1,,,TINVOICE;20~D2|</I>
+</TABLE>
+
+</form>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;1;2;3;4;5");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+

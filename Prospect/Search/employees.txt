@@ -1,0 +1,10 @@
+filetouse=employee
+templatetouse=employee
+srchlist=a0,a1,a7
+labellist=Number,Surname,Given
+title=EMPLOYEES
+hds=Number|Surname|Given
+tds=<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=employee&tn=employee&item=,0|1,0,0|7,0,0
+adhoc=@recall.2839
+reports=payroll

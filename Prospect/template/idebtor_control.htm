@@ -1,0 +1,38 @@
+@@INPUT2@@Debtor Control Number
+
+<TR>
+<TD class=top><B>G/L Control Account</B>
+<TD class=top><INPUT type="Text" size=40% name="C1,,,G/L Account,MD0" value="|1|" onChange='GetAssessAddress(document.all("I1,0,0,G/L Account Name"),this.value);' onBlur='GetAssessAddress(document.all("I1,0,0,G/L Account Name"),this.value);'>
+<TR><TD CLASS=top><B>G/L Account Name</B><TD id="I1,0,0,G/L Account Name">|1,0,0,,,TGEN.L;2|
+
+<TR>
+<TD class=top><B>Description</B>
+<TD class=top><INPUT type="Text" size=40% name="C2,,,Description" value="|2|">
+
+</TABLE>
+</FORM>
+
+<FORM>
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Number
+<TH>G/L Account
+<TH>G/L Account Name
+<TH>Description
+||TABLESEL <TR><TD>|0|<TD>|1|<TD>|1,0,0,,,TGEN.L;2|<TD>|2|
+@@PATH@@\ckashare\debtors\debtors.mdb,@@PATH@@\ckashare\debtors\debtors.mdb\glcontrols,select * from glcontrols order by id
+</TABLE>
+</FORM>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TGEN.L;2");
+   Address.innerHTML=co.return_value;
+}
+
+</SCRIPT>
+
+

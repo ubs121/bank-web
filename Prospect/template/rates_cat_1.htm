@@ -1,0 +1,49 @@
+||SRDICT RR.LOG,4
+<h1 align=center>|2| Rating Setup</h1>
+<blockquote>
+<B>Chief Executive Officer :</B> |8,0,0|
+<BR><B>Signatory Officer :</B> |27,0,0|
+</blockquote>
+||SREND
+<FORM NAME="itemid"><INPUT NAME="item" TYPE="hidden"></FORM>
+
+
+
+<blockquote>
+<A  HREF="/prospect/asp/bi.asp?tn=rates_setup"> <B>Hide Details for Rates Categories</B></A>
+<p>&nbsp;
+||SRDICT RR.LOG,4
+<h1 align=center>|2| Rating Categories</h1>
+||SREND
+
+||LOOPsr16_catnum
+||SRsr1600,&&LOOP&&
+<TABLE WIDTH=95% align=center BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<A NAME="&&LOOP&&"></A>
+<TR CLASS="top">
+<TH  class="top" colspan=6><A NAME="LOOP">&&sr16_catdesc</A>
+<TH  class="top" COLSPAN=10>General Ledger Accounts
+<TR CLASS="top">
+<TH class="top">Code
+<TH class="top">Description
+<TH class="top">Rate in $
+<TH class="top">Min
+<TH class="top">Max
+<TH class="top">Value code
+<TH class="top">Rate Levy
+<TH class="top">Curr Yr Interim CR
+<TH class="top">Prev Yr Interim CR
+<TH class="top">Curr Yr Interim DR
+<TH class="top">Prev Yr Interim DR
+<TH class="top">Min Levy
+<TH class="top">Max Levy
+<TH class="top">Disc DR
+<TH class="top">Penalty CR
+<TH class="top">Rebate DR
+||TABLE000 <TR><TD> |1,N,1|&nbsp;<TD>|2,N,1,,,|&nbsp;<TD> |3,N,1|&nbsp;<TD ALIGN=RIGHT>&nbsp;|4,N,1|<TD ALIGN=RIGHT>&nbsp;|5,N,1|<TD> |6,N,1|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,7,N,1|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,8,N,0|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,9,N,0|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,10,N,0|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,11,N,0|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,12,N,0|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,13,N,0|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,14,N,0|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,15,N,0|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,16,N,0|&nbsp;
+</TABLE>
+<P>
+||SREND
+||LOOPEND
+
+

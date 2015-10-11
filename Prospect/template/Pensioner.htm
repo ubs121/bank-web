@@ -1,0 +1,59 @@
+
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT color="#330000" SIZE=+1>PENSIONER DETAILS </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="client"><INPUT TYPE=hidden NAME="tn" VALUE="pensioner"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE WIDTH=95%>
+<TR>
+<TD CLASS="mm">
+<B>Assess</b><TD><A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|0|"> |0| </A>
+<TR>
+<TD CLASS="mm">
+<B>Property Name</B><TD>|0,0,0,,,TCLIENT;1|
+<TR>
+<TD CLASS="mm">
+<B>Property Address</B><TD>|0,0,0,,,TCLIENT;2;3;4;5|
+</TABLE>
+
+
+<p>
+<TABLE width="95%">
+<TR CLASS="top">
+<TH>Owner Name
+<TH>Pensioner
+<TH>Pens Date
+<TH>Senior
+<TH>Sen Date
+<TH>Health Card
+<TH>Health Date
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=client&tn=clientOOE&item=,35,N,1,,,TCLIENT;1;7|<TD>|35,N,0,,,TCLIENT;43,1|<TD>|35,N,0,,,TCLIENT;85,1~D2|<TD>|35,N,0,,,TCLIENT;43,2|<TD>|35,N,0,,,TCLIENT;85,2~D2|<TD>|35,N,0,,,TCLIENT;43,3|<TD>|35,N,0,,,TCLIENT;85,3~D2|
+</TABLE>
+
+
+
+
+<p>
+||IF,17,#,
+<TABLE width ="95%">
+<TR CLASS="top">
+<TH COLSPAN=5>Pensioner details
+<TR CLASS="top">
+<TH>Start Date
+<TH>End Date
+<TH>Deferment Period
+<TH>Pensioner % Code
+<TH>Senior % Code
+||TABLE000 <TR> <TD> |17,N,1,,,D2|<TD>|18,N,1,,,D2|<TD ALIGN=CENTER>|19,N|<TD ALIGN=RIGHT>|80,N|<TD ALIGN=RIGHT>|81,N|
+</TABLE>
+
+||IFEND
+
+
+
+
+
+
+
+
+
+

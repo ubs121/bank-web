@@ -1,0 +1,8 @@
+filetouse=@@PATH@@\ckashare\Stock\stock.mdb\branch
+templatetouse=SearchJAccount
+srchlist=branch,name
+labellist=Number,Name
+title=BRANCHES
+hds=Branch Number|Name
+tds=<TD>|<TD>
+dms=@,#,0|1

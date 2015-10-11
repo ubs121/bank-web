@@ -1,0 +1,29 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>ASSESSMENT </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="property"><INPUT TYPE=hidden NAME="tn" VALUE="property_install_one"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+
+||SRsr1625_ins
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR class=top>
+<TH COLSPAN=8>Instalment schedule |9| instalments
+<TR class=top>
+<TH COLSPAN=8>Penalty calculated to |10|
+
+<TR CLASS=top>
+<TH>Date due
+<TH>Option
+<TH>Amount
+<TH>Charges
+<TH>Penalty/Adjust
+<TH>Total
+<TH>Paid Amount
+<TH>Owing
+||TABLE000 <TR><TD> |1,N,1,,,D2|<TD align=center>|2,N,1,,,|&nbsp;<TD ALIGN="RIGHT">&nbsp;|3,NT,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|4,NT,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|5,NT,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|6,NT,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|7,NT,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|8,NT,1,,,MD2|
+</TABLE>
+||IF,11,#,
+<p align=center><B>Instalment charges details</B>
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+||TABLE000 <TR><TD ALIGN="RIGHT">&nbsp;|11,N,1|<TD ALIGN="RIGHT">&nbsp;|12,N,1|<TD ALIGN="RIGHT">&nbsp;|13,N,1|<TD ALIGN="RIGHT">&nbsp;|14,N,1|<TD ALIGN="RIGHT">&nbsp;|20,N,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|21,N,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|22,N,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|23,N,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|24,N,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|25,N,1,,,MD2|
+</TABLE>
+||IFEND
+||SREND

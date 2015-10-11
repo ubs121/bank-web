@@ -1,0 +1,34 @@
+database=msa
+where=@@PATH@@ckashare\gen_L\gen_L.mdb\
+title=GENERAL LEDGER
+reports=gen_l
+
+filetouse=gen.l
+templatetouse=gen_l
+defaultsort=by group by class by subclass
+srchlist=a0,@@glindex|gen.l|a2|3|1|0|1@@,a31,a22,Group,Class,Subclass
+srchkey=1
+labellist=Account number,Account name,Report type,Responsibility Code,Group,Class,Subclass
+itemlist=,,sselect rtype a0 a1 by a1,sselect rcode a0 a1 by a1
+radiobtns=YEARS
+xradiocode=with class = þ0þ,with class # þ0þ and with sub.class = þ0þ,with sub.class # þ0þ,
+hds=Account|Description|Actual|Budget|Variance|Report Type|Responsibility
+tds=<TD>|<TD>|<TD ALIGN=right>|<TD ALIGN=right>|<TD ALIGN=right>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=@@PICKFILE@@&tn=gen_l&glitem=,0|2|0,1,1,,,B|0,1,1,,,BU|0,1,1,,,A-V|31,1,1,,,TRTYPE;1|22,1,1,,,TRCODE;1
+adhoc=@591
+
+msa_filetouse=@WHERE@gen_l
+msa_templatetouse=gen_l_msa
+msa_defaultsort=by @LEVNAMES@
+msa_srchlist=account,description,account_level,@LEVNAMES@,alie,closed,@SETNAMES@
+msa_numerics=,,1,@LEVNUMS@,,2,@SETNUMS@
+msa_labellist=Account number,Account name,Level,@LEVDESCS@,Nature,Closed,@SETDESCS@
+msa_itemlist=,,select Id!description from Levels,@LEVOPTS@,<OPTION VALUE=""><OPTION VALUE="A">Asset<OPTION VALUE="L">Liability<OPTION VALUE="I">Income<OPTION VALUE="E">Expense<OPTION VALUE="O">Owners Equity,,@SETOPTS@
+msa_radiobtns=YEARS
+msa_hds=Account|Type|ALIE|@LEVHDS@|Actual|Commitment|Total|Budget|Variance|Closed|@SETHDS@|Actual Current Months|Commit Current Months|Budget Current Months|Actual Current Month YTDs|Commit Current Month YTDs|Budget Current Month YTDs|Actual LastYear Months|Commit LastYear Months|Budget LastYear Months|Actual LastYear Month YTDs|Commit LastYear Month YTDs|Budget LastYear Month YTDs
+msa_tds=<TD>|<TD align=center>|<TD align=center>|@LEVTDS@|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD>|@SETTDS@|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>
+msa_dms=@,/prospect/asp/bi.asp?fn=@WHERE@gen_l&tn=gen_l_msa&glitem=,0|1|12|@LEVDMS@|16,NT,0,,,dec2|17,NT,0,,,dec2|0,0,0,,,A+V|51,NT,0|0,0,0,,,A-V|9|@SETDMS@|26-37|39-50|52-63|64-75|76-87|88-99|26-37-1|39-50-1|52-63-1|64-75-1|76-87-1|88-99-1
+msa_helpname=gen_l
+msa_reports=gen_l_msa
+
+

@@ -1,0 +1,148 @@
+Follow instructions below to resolve "Printer.Print" problem........
+
+
+
+
+
+http://support.microsoft.com/support/kb/articles/Q184/2/91.asp
+
+text below:
+
+PRB: COM Objects Fail to Print When Called From ASP
+
+--------------------------------------------------------------------------------
+The information in this article applies to:
+
+Active Server Pages
+Microsoft Internet Information Server versions 4.0, 5.0
+
+--------------------------------------------------------------------------------
+
+
+SYMPTOMS
+A COM object that sends output to a printer fails when called from Active 
+Server Pages (ASP), but functions correctly when called from an interactive 
+application. This COM object could be either a commercial product such as a 
+Microsoft Office application, or a custom third-party object. A common error 
+message is "ClassName error '800a01e2' Printer error."
+
+
+
+CAUSE
+The standard APIs that most objects use to print depend on registry entries 
+located in HKEY_CURRENT_USER. This registry hive is dynamic. Depending on 
+which user context the process is running under, different information will 
+be loaded into this hive. ASP pages run under IIS, which is running as the 
+SYSTEM account. When you create an instance of a COM object in your ASP 
+code, by default, it will also run as the SYSTEM account. By default, the 
+SYSTEM account does not have any printers set up in the registry.
+
+
+
+RESOLUTION
+You can set up printers for the SYSTEM account to resolve this problem. To 
+set up printers for the SYSTEM account, perform the following:
+
+This method requires you to modify the registry using the Registry Editor.
+
+WARNING: Using Registry Editor incorrectly can cause serious, system-wide 
+problems that may require you to reinstall Windows to correct them. 
+Microsoft cannot guarantee that any problems resulting from the use of 
+Registry Editor can be solved. Use this tool at your own risk.
+
+
+Ensure that the user you are currently logged into on the server has the 
+desired printers installed.
+
+
+Launch the Registry Editor (Regedit.exe).
+
+
+Select the following key:
+
+
+
+      HKEY_CURRENT_USER
+         \Software\Microsoft\Windows NT\Current Version\Devices
+
+>From the Registry menu, click Export Registry File.
+
+
+In the File Name text box, type c:\Devices.reg.
+
+
+Select the following key:
+
+
+
+      HKEY_CURRENT_USER
+         \Software\Microsoft\Windows NT\Current Version\PrinterPorts
+
+>From the Registry menu, click Export Registry File.
+
+
+In the File Name text box, type c:\PrinterPorts.reg.
+
+
+Select the following key:
+
+
+
+      HKEY_CURRENT_USER
+         \Software\Microsoft\Windows NT\Current Version\Windows
+
+>From the Registry menu, click Export Registry File.
+
+
+In the File Name text box, type c:\Windows.reg.
+
+
+>From the Start button, select Run. Open Devices.reg in Notepad by typing 
+Notepad Devices.reg in Run dialog box.
+
+
+Replace the text HKEY_CURRENT_USER with HKEY_USERS\.DEFAULT
+
+
+Save the file. Then import it into the registry by double-clicking the file 
+in Windows Explorer.
+
+
+Repeat steps 13 through 15 for PrinterPorts.reg and Windows.reg.
+
+
+
+
+
+REFERENCES
+For the latest Knowledge Base articles and other support information on 
+Visual InterDev and Active Server Pages, see the following page on the 
+Microsoft Technical Support site:
+
+
+http://support.microsoft.com/support/vinterdev/
+
+For additional information, please see the following article in the 
+Microsoft Knowledge Base:
+
+Q152451 Applications Run from the Schedule Service Fail to Print
+
+
+
+(c) Microsoft Corporation 1998, All Rights Reserved.
+Contributions by John Lewis, Microsoft Corporation.
+
+
+
+Additional query words:
+
+Keywords : kberrmsg kbASP kbASPObj kbCOMt kbRegistry kbSecurity kbGrpASP 
+kbDSupport kbiis400 kbiis500
+Version : winnt:4.0,5.0
+Platform :
+Issue type : kbprb
+Technology : kbAudDeveloper kbASPsearch
+
+
+
+Last Reviewed: October 18, 2000

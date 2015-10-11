@@ -1,0 +1,12 @@
+filetouse=property
+templatetouse=property
+srchlist=a0,@@drindex|client|oname|4|29|0|1@@,roadno,stname,stno,post,lot,loc,a25,DELPROP
+labellist=Assessment,Эзэмшигчийн овог нэр,Зам,Гудамжны нэр,Гудамжны №,Шуудангийн код,Lot,Б,VGN,Deleted
+itemlist=,,sselect roads a0 a1 by a1,,,,,,,
+prefix=,,,,,,,,,
+suffix=,],,],,,,,,
+title=ЄМЧ
+hds=Хєрєнгийг тодорхойлох|Хаяг|Хэсэг|Эзэмшигчийн нэр|Байршил|VGN|Цэвэрлэх
+tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD nowrap>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=property&tn=property&item=,0|0,1,1,,,TCLIENT;2;3;4;5|1,1,0|0,0,0,,,OWNERS35|2,1,0|25,1,0|32,0,0,,,D2
+adhoc=@1691

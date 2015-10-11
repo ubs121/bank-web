@@ -1,0 +1,37 @@
+database=msa
+where=@@PATH@@ckashare\job_l\job_l.mdb\
+title=JOB LEDGER TRANSACTIONS
+reports=job_l
+
+filetouse=jl_trans
+templatetouse=jl_trans
+reports=job_l
+codeattr=1
+defaultsort=by group by class by subclass
+srchlist=account,amount,date,date,a1,postdate,postdate,amount,Group,Class,Subclass
+srchkey=none
+itemlist=,,,,TRCODES
+labellist=Account,Amount,Date (from),Date (to),Transaction Code,Posting Date (from),Posting Date (to),Balance,Group,Class,Subclass
+sorts=account,amount,date,type,postdate
+sortdescs=Account,Amount,Date,Transaction Code,Posting Date
+hds=Account|Date|Type|Commit|Actual|Total|Narrative|Client|PostDate
+tds=<TD NOWRAP>|<TD NOWRAP>|<TD NOWRAP>|<TD NOWRAP>|<TD ALIGN=RIGHT NOWRAP>|<TD ALIGN=RIGHT NOWRAP>|<TD NOWRAP>|<TD NOWRAP>|<TD NOWRAP>
+dms=3,NB,0|7,1,0,,,D2|1,1,1,,,tdict trans.j;2|8,1,0,,,D2|4,NT,0,,,MD2|4,NV,1,,,MD2|@!,/prospect/asp/bi.asp?fn=jl_trans&tn=@@&item=,6|@,/prospect/asp/bi.asp?fn=##&tn=##&item=,-5|0,0,0,,,g.1~D2
+
+msa_filetouse=@WHERE@jl_trans
+msa_templatetouse=jl_trans_msa
+msa_reports=job_l
+msa_codeattr=1
+msa_defaultsort=by level1,level2,level3
+msa_srchlist=account,amount,date,date,code,date_written_to_file,date_written_to_file,level1,level2,level3
+msa_numerics=,,2,2,1,2,2,1,1,1
+msa_srchkey=none
+msa_itemlist=,,,,select code!code_desc from codes,,,select account!description from gen_l where account_level=1 order by description
+msa_radiobtns=YEARS
+msa_labellist=Account,Amount,Date (from),Date (to),Transaction Type,Posting Date (from),Posting Date (to),Group,Class,Subclass
+msa_sorts=account,amount,date,type,postdate
+msa_sortdescs=Account,Amount,Date,Transaction Code,Posting Date
+msa_title=JOB LEDGER TRANSACTIONS
+msa_hds=Account|Date|Type|Commited Date|Actual|Total|Narrative|Client|PostDate
+msa_tds=<TD NOWRAP>|<TD NOWRAP>|<TD NOWRAP>|<TD NOWRAP>|<TD ALIGN=RIGHT NOWRAP>|<TD ALIGN=RIGHT NOWRAP>|<TD NOWRAP>|<TD NOWRAP>|<TD NOWRAP>
+msa_dms=3,NB,0|7|10|8|4,NT,0,,,dec2|4,NV,1,,,dec2|@!,/prospect/asp/bi.asp?fn=jl_trans&tn=@@&item=,6|@,/prospect/asp/bi.asp?fn=##&tn=##&item=,-5|14

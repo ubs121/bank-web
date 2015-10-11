@@ -1,0 +1,13 @@
+where=@@PATH@@ckashare\debtors\debtors.mdb\
+title=DEBTOR INVOICES
+reports=debtors
+
+filetouse=@WHERE@invoice
+templatetouse=invoice_msa
+srchlist=invoice,batch
+labellist=Invoice Number,Batch Number
+hds=Id|Value|GST|Debtor|Name|Batch|Line Details
+tds=<TD>|<TD ALIGN=RIGHT>|<TD ALIGN=RIGHT>|<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/binput.asp?search=yes&printdoc=@@PATH@@ckashare\debtors\&merge=merge_invoice.txt&fn=@WHERE@inv_batch&fn1=inv_batch_lines&tn=iinvoice&mainfile=invoice&err=noerrors&no_update_delete=2&item=,0|8,NT,0,,,dec2|6,NT,0,,,dec2|@,/prospect/asp/bi.asp?fn=tdebtor&tn=tdebtor&item=,3|@,/prospect/asp/bi.asp?fn=tdebtor&tn=tdebtor&item=,3,0,0,,,TCLIENT;1|30|30,Wselect account}amount}[gst amount]}description from inv_batch_lines where id = '' order by cnt ,@WHERE@
+radiobtns=Credit Notes,Credit Notes in Batch file,Invoices in Batch file,Invoices
+radiocode=|@WHERE@credit|credit_msa|DEBTOR CREDIT NOTES,|@WHERE@cr.batch|cr_batch_msa|DEBTOR CREDIT NOTES IN BATCH FILE,|@WHERE@inv_batch|invoice_msa|DEBTOR INVOICES IN BATCH FILE,|@WHERE@invoice|invoice_msa|DEBTOR INVOICES

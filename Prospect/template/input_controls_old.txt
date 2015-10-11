@@ -1,0 +1,37 @@
+<FORM ACTION="/prospect/asp/update_item.asp" METHOD="POST" NAME="assetdata">
+<input type="hidden" name="before" value="@@BEFORE@@">
+<input type="hidden" name="after" value="">
+<input type="hidden" name="action" value="">
+<input type="hidden"  name="item" value="|0|">
+<input type="hidden" name="file" value="@@FILE@@">
+<input type="hidden" name="trfile" value="@@TRANSFILE@@">
+<input type="hidden" name="trans_rec" value="@@TRANSREC@@">
+<input type="hidden" name="template" value="@@TEMPLATE@@">
+<input type="hidden" name="prefix" value="@@PREFIX@@">
+<input type="hidden" name="search" value="@@SEARCH@@">
+</FORM>
+
+<FORM ACTION="/prospect/asp/update_item.asp" METHOD="POST" NAME="assetform">
+<DIV id="Test" STYLE="position: visibility: visible;">
+<TABLE align=center border=1 cellspacing=1>
+<TR class=top>
+<TD><a href="/prospect/asp/menu.asp"><IMG src="/prospect/images/default/explorer/start_up.gif" BORDER="0" WIDTH="29" HEIGHT="19"></a>
+<TD><B>@@FILEHEAD@@</B>
+<TD><input type="Text"  name="id" value="|0|" maxlength="10">
+<TD align=center>
+<input class=bold type="button" name="Query" value="Query" onclick='Query_Click()'>
+
+
+<input class=bold type="button" name="Add" value="Add" onclick='Add_Click()'>
+    
+
+<input class=bold type="button" name="Update" value="Update" onclick='Update_Click()'> 	
+
+	
+<input class=bold type="button" name="Delete" value="Delete" onclick='Delete_Click()'>
+ 
+
+<input class=bold type="button" name="Clear" value="Clear" onclick='Clear_Click()'>
+  
+</TABLE>
+<INPUT id="no_update_delete" NAME="no_update_delete" type="hidden" value="1">

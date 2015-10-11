@@ -1,0 +1,10 @@
+filetouse=cis.club
+templatetouse=cis_club
+srchlist=a0,name,a6,subject,age
+labellist=Дугаар,Нэр,Байрлал,Зориулалт,Нас
+prefix=,,[,[,[
+suffix=,,],],]
+title=КЛУБ
+hds=Id|Нэр|Байрлал|Утас|Зориулалт|Нас
+tds=<TD ALIGN=left>|<TD>|<TD>| |<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=cis.club&tn=cis_club&item=,0|2,1,1|6,1,1|6,2,1|11,1,1|1,0,0|23,0,0

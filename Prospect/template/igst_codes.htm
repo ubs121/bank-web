@@ -1,0 +1,37 @@
+@@INPUT2@@GST Code
+
+<TR>
+<TD class=top><B>GST Rate</B>
+<TD class=top><INPUT type="Text" size=40% name="C1,,,GST Rate,MD2" value="|1|">
+<TR>
+<TD class=top><B>G/L Control Account</B>
+<TD class=top><INPUT type="Text" size=40% name="C2,,,G/L Account,MD0" value="|2|" onChange='GetAssessAddress(document.all("I2,0,0,Description"),this.value);' onBlur='GetAssessAddress(document.all("I2,0,0,Description"),this.value);'>
+<TR><TD CLASS=top><B>Description</B><TD id="I2,0,0,Description">|2,0,0,,,TGEN.L;2|
+
+</TABLE>
+</FORM>
+
+<FORM>
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>GST Code
+<TH>GST Rate
+<TH>G/L Account
+<TH>Description
+||TABLESEL <TR><TD>|0|<TD align=right>|1|<TD>|2|<TD>|2,0,0,,,TGEN.L;2|
+@@PATH@@\ckashare\debtors\debtors.mdb,@@PATH@@\ckashare\debtors\debtors.mdb\gst,select * from gst order by code
+</TABLE>
+</FORM>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TGEN.L;2");
+   Address.innerHTML=co.return_value;
+}
+
+</SCRIPT>
+
+

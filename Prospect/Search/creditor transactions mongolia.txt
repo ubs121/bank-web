@@ -1,0 +1,12 @@
+filetouse=cr_trans
+templatetouse=cr_trans
+codeattr=3
+srchlist=@@crindex|client|name|3|0|0|1|a1@@,a1,tramt,trdate,trdate,gldate,gldate
+srchkey=none
+labellist=Нэр,Зээлдvvлэгчийн №,Дvн,Огноо (хойш),Огноо(хvртэл),Е/Д Огноо (хойш),Е/Д Огноо(хvртэл)
+sorts=name,a1,tramt,trdate,gldate
+sortdescs=Зээлдvvлэгчийн нэр,Зээлдvvлэгчийн №,Дvн,Гvйлгээ хийсэн Огноо,Е/Д Огноо
+title=ЗЭЭЛДYYЛЭГЧИЙН ГYЙЛГЭЭ
+hds=Нэр|Лавлах|Тєрєл|Огноо|Дvн|Баланс|Хєдєлгєєнт баланс|Narrative|GL Date
+tds=<TD>|<TD>|<TD NOWRAP>|<TD NOWRAP>|<TD NOWRAP ALIGN=right>|<TD ALIGN=RIGHT>|<TD ALIGN=RIGHT>|<TD NOWRAP>|<TD NOWRAP>
+dms=1,0,0,,,tclient;1|@!,/prospect/asp/bi.asp?fn=cr_trans&tn=@@&item=,4|3,1,1,,,tdict trans.j;2|2,1,1,,,D2|-1,1,1,,,BCR5~MD2|-1,1,1,,,BCR6~MD2|-1,NV,1,,,BCR6~MD2|7,1,1|12,1,1,,,D2|

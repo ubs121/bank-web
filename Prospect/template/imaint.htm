@@ -1,0 +1,192 @@
+@@INPUT@@Agreement Number
+<SCRIPT LANGUAGE="JavaScript" SRC="/prospect/jscript/gen_l.js"></SCRIPT>
+<INPUT id="found" NAME="found" type="hidden" value="0">
+
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+    <TR class=top>
+      <TD CLASS="mm"WIDTH="102">Debtor
+	  <TD><input type="Text" name="19,0,0,Debtor" value="|19|" align="LEFT" size="10" maxlength="10" onChange='document.all("found").value="0";' onBlur='GetAssessAddress(document.all("I19,0,0,Debtor"),this.value);'>
+      <TD colspan=6>
+      <INPUT TYPE="Button" VALUE="Search" onClick='BuildSentence(document.all("19,0,0,Debtor"),document.all.SearchResults,"RSClients.txt","");'>Search by debtor name
+    <TR class=top>
+ 	  <TD CLASS="itemname">Name & Address
+        <TD id="I19,0,0,Debtor" colspan=7> &nbsp;|19,1,1,,,Tclient;1;2;3;5|
+    <TR class=top>
+        <TD CLASS="mm">Description
+        <TD colspan=7><input type="Text" name="C1,0,0,Description" value="|1|" size = "100" maxlen = "250" onFocus='getAgreements(document.all("found").value,document.all.SearchResults,document.all("19,0,0,Debtor").value,"RSAgreements.txt");'>
+    <TR class=top>
+        <TD CLASS="mm">Invoice Code
+        <TD CLASS="mm">
+        <select name="sel2" > 
+||OPTIONS|SSELECT|inv_codes|2|@@PATH@@\ckashare\debtors\debtors.mdb\inv_codes|1|
+        </select>
+        <TD CLASS=top>Frequency of payment
+        <TD class=top>
+        <select name="sel8">
+        <option value="|8|" selected>|8,0,0,,,OPTION|</option>
+        <option value="F">Fortnightly</option>
+        <option value="W">Weekly</option>
+        <option value="M">Monthly</option>
+        <option value="Q">Quarterly</option>
+        <option value="Y">Annually</option>
+        <option value="D">Daily</option>
+        <option value="2D">Every 2 days</option>
+        <option value="3D">Every 3 days</option>
+        <option value="4D">Every 4 days</option>
+        <option value="5D">Every 5 days</option>
+        <option value="6D">Every 6 days</option>
+        <option value="7D">Every 7 days</option>
+        <option value="8D">Every 8 days</option>
+        <option value="9D">Every 9 days</option>
+        <option value="10D">Every 10 days</option>
+        <option value="11D">Every 11 days</option>
+        <option value="12D">Every 12 days</option>
+        <option value="13D">Every 13 days</option>
+        <option value="14D">Every 14 days</option>
+        <option value="15D">Every 15 days</option>
+        <option value="16D">Every 16 days</option>
+        <option value="17D">Every 17 days</option>
+        <option value="18D">Every 18 days</option>
+        <option value="19D">Every 19 days</option>
+        <option value="20D">Every 20 days</option>
+        <option value="21D">Every 21 days</option>
+        <option value="22D">Every 22 days</option>
+        <option value="23D">Every 23 days</option>
+        <option value="24D">Every 24 days</option>
+        <option value="25D">Every 25 days</option>
+        <option value="26D">Every 26 days</option>
+        <option value="27D">Every 27 days</option>
+        <option value="28D">Every 28 days</option>
+        <option value="28D">Every 29 days</option>
+        <option value="30D">Every 30 days</option>
+        <option value="31D">Every 31 days</option>
+        </select>
+    <TR class=top>
+        <TD CLASS="mm">Installation Date
+        <TD><input type="Text" name="C3,1,0,Installation Date,,D2X" value="|3,1,0,,,D2X|" align="LEFT" size="10" maxlength="10">
+        <TD CLASS="mm">Start Date
+        <TD><input type="Text" name="C5,1,0,Start Date,,D2X" value="|5,1,0,,,D2X|" align="LEFT" size="10" maxlength="10">
+        <TD CLASS="mm">End Date
+        <TD><input type="Text" name="C6,1,0,End Date,,D2X" value="|6,1,0,,,D2X|" align="LEFT" size="10" maxlength="10">
+        <TD CLASS="mm">Billed to Date
+        <TD><input type="Text" name="C7,1,0,Billed to Date,,D2X" value="|7,1,0,,,D2X|" align="LEFT" size="10" maxlength="10">
+</TABLE>
+<%'this is where the expandable table goes - written to in includeform%>
+<I id=expanding></I>
+</div>
+</FORM>
+
+<%'//!!!!!see 12 below assumes 11 elements above!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!%>
+
+<script LANGUAGE="JavaScript">
+	var n,TotalDb=0,TotalCr=0;
+    var numofrows,numofcols,numinrow=2;
+	var Translist=new Array();
+    var gFieldValues = new Array(numinrow * 10); // this array holds our form values when we need to regenerate the form
+    for (var i=0;i<gFieldValues.length;i++) {gFieldValues[i]=""};
+	getTransValues();
+	IncludeForm(numinrow);
+
+function IncludeForm(numinrow)
+{
+   var htmlStr = '<TABLE align=center border=1 cellspacing=1 cellpadding=1>';
+   htmlStr += '<TR class=top><TH><input type="button" value="New Date" onClick="AddField(' + numinrow + ')"><TH>Amount';
+
+for (var i=0;i<gFieldValues.length;i+=numinrow)
+{
+   htmlStr += '<TR class=top>';
+   htmlStr += '<TD align=center><input type="text" name="' + (1000 + i + 0) + '" value="' + gFieldValues[i+0] + '">';
+   htmlStr += '<TD align=center><input type="text" name="' + (1000 + i + 1) + '" value="' + gFieldValues[i+1] + '">';
+}
+
+   htmlStr += '</TABLE>';
+   document.all.expanding.innerHTML = htmlStr;
+}
+
+function AddField(numinrow)
+{
+// Save previously entered data here
+	var formObj = document.assetform;
+    n=formObj.elements.length - gFieldValues.length; 
+ 	for (var i=0;i<gFieldValues.length;i++) //element 0 is the ADD BUTTON so saving element 1 onwards only
+	   {gFieldValues[i]= formObj.elements(i+n).value; }
+
+// Create the new fields
+     for (var j=0;j<numinrow;j++)
+        {gFieldValues[gFieldValues.length]=""; }
+     IncludeForm(numinrow);
+}
+
+
+function getTransValues()
+{
+var i,j;
+
+j = 0;
+Temp = document.assetdata.before_trans.value;
+if (Temp == "" || Temp.charAt(0) == '@') return;
+
+initArray(Temp);
+
+if (numofrows > 10)   					//if num. of records > 10 then resize gFieldValues for the additional rows
+     for (var k=0; k<(numinrow * (numofrows - 10)); k++)
+        { gFieldValues[gFieldValues.length]=""; }
+else 								//else resize Translist for max. of 10 rows
+	 for (var k=0; k<(numofcols * (10 - numofrows)); k++)
+        { Translist[Translist.length]=""; }
+
+for (i = 0; i<Translist.length; i+=numofcols)
+{
+	gFieldValues[j] = Translist[i+3];             // date
+      gFieldValues[j+1] = RightJustify(FormatNum(Translist[i+4]),35);           // amount
+	j = j+numinrow;
+}
+}
+
+
+function getAgreements(found,searchDiv,clientid,template)
+{
+if (found == "0")
+{
+while (RSAspProxyApplet.readyState != 4) {}
+ASPpage = RSGetASPObject("DllCalls.asp");
+co=ASPpage.BuildSearch(clientid,"","15",template);
+if(co.return_value == "")
+	alert("No Agreements found for this Client!");
+else
+{
+	searchDiv.innerHTML = co.return_value;
+	table_navigation(document.page_details);
+    Test.style.visibility='hidden';
+    searchDiv.style.visibility='visible';
+}
+}
+//BuildSentence(document.all("19,0,0,Debtor"),document.all.SearchResults,"RSAgreements.txt","");
+}
+</script>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;1;2;3;5");
+//   co = ASPpage.BuildString(AssessNum,"T@@PATH@@!ckashare!tdebtor!tdebtor.mdb!client;2");
+   Address.innerHTML=co.return_value;
+}
+
+</SCRIPT>
+
+<SCRIPT LANGUAGE="VBScript">
+Sub Window_OnLoad
+AgrId = document.assetform.id.value
+pos = Instr(AgrId,"*")
+if pos <> 0 then
+	AgrId = mid(AgrId,pos + 1)
+	document.assetform.id.value = AgrId
+	document.assetdata.item.value = AgrId
+	document.assetform.found.value = "1"
+end if	
+End Sub
+</SCRIPT>

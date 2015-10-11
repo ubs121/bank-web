@@ -1,0 +1,13 @@
+filetouse=dict job.l
+templatetouse=job_cat
+srchlist=a0
+labellist=Category/Ангилал
+itemlist=
+sortlist=
+sorts=a1
+defaultsort=with a0 = '@class.]'
+title=АЖЛЫН АНГИЛАЛ
+hds=Ангилал|Тодорхойлолт
+tds=<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=dict job.l&tn=job_cat&item=,0|1
+adhoc=

@@ -1,0 +1,8 @@
+filetouse=cis.event
+templatetouse=cis_event
+srchlist=name,organisation
+labellist=Name,Organisation
+title=EVENTS
+hds=Id|Name|Dates|Location|Contact Name|Contact Phone
+tds=<TD>|<TD>|<TD NOWRAP>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=cis.event&tn=cis_event&item=,0|2,1,1|5,0,0,,,d2|4,1,1|9,1,1|10,1,1

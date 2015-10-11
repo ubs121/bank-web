@@ -1,0 +1,42 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>BATCHED CREDIT NOTE </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="cr.batch"><INPUT TYPE=hidden NAME="tn" VALUE="cr_batch"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE WIDTH=95%>
+<TR>
+<TD CLASS="mm">
+<B>Client :</B><TD> <A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|3|"><FONT CLASS="itemlnk">|3|</FONT></A> &nbsp;&nbsp; |3,1,1,,,TCLIENT;7;1|
+<TD CLASS="mm">
+<B>Address</B><TD> |3,1,1,,,TCLIENT;2,1;3,1;4,1;5,1|
+<TR>
+<TD class="tdempty">&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Batch</B><TD> |30,1,1|
+<TD CLASS="mm">
+<B>Trans</B><TD> |20,1,1,,,D2|
+<TR>
+<TD CLASS="mm">
+<B>G/L</B><TD> |21,1,1,,,D2|
+<TD CLASS="mm">
+<B>Posted</B><TD> |7,1,1,,,D2|
+<TR>
+<TD CLASS="mm">
+<B>Our Ref</B><TD> |5,1,1|
+<TD CLASS="mm">
+<B>Rep</B><TD> |35,1,1| &nbsp; &nbsp; |35,1,1,,,Trep;1|
+</TABLE>
+<P>
+<TABLE WIDTH=95%>
+<TR CLASS="top">
+<TH>Account
+<TH>Description
+<TH>Tx
+<TH>Qty
+<TH>Price
+<TH>Amount
+<TH>Sales Tax
+||TABLE000 <TR><TD NOWRAP>|10,N,1|<TD NOWRAP>|12,N,1|<TD NOWRAP>|16,N,1|<TD ALIGN=RIGHT>|13,N,1,,,DUMMY|<TD ALIGN=RIGHT>|15,N,1,,,MD2|<TD ALIGN=RIGHT>|0,N,1,,,A*V|<TD ALIGN=RIGHT>|17,N,1,,,MD2|
+<TR>
+<TD COLSPAN=5 CLASS="tdempty" ALIGN="right"><B>Total CR/Note Amount</B> <TD ALIGN="right"> |8,1,1,,,MD2|
+</TABLE>

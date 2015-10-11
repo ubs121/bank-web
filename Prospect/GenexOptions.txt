@@ -1,0 +1,96 @@
+accounts
+multiply by
+Actual mth
+Actual mth - 1
+Actual mth - 2
+Actual mth - 3
+Actual mth - 4
+Actual mth - 5
+Actual mth - 6
+Actual mth - 7
+Actual mth - 8
+Actual mth - 9
+Actual mth - 10
+Actual mth - 11
+Actual mth - 12 (last year)
+Actual mth + 1
+Actual mth + 2
+Actual mth + 3
+Actual mth + 4
+Actual mth + 5
+Actual mth + 6
+Actual mth + 7
+Actual mth + 8
+Actual mth + 9
+Actual mth + 10
+Actual mth + 11
+Actual mth + 12 (next year)
+Actual mth + 13
+Actual mth + 14
+Actual mth + 15
+Actual mth + 16
+Actual mth + 17
+Actual mth + 18
+Actual mth + 19
+Actual mth + 20
+Actual mth + 21
+Actual mth + 22
+Actual mth + 23
+Budget mth
+Budget mth - 1
+Budget mth - 2
+Budget mth - 3
+Budget mth - 4
+Budget mth - 5
+Budget mth - 6
+Budget mth - 7
+Budget mth - 8
+Budget mth - 9
+Budget mth - 10
+Budget mth - 11
+Budget mth - 12 (last year)
+Budget mth + 1
+Budget mth + 2
+Budget mth + 3
+Budget mth + 4
+Budget mth + 5
+Budget mth + 6
+Budget mth + 7
+Budget mth + 8
+Budget mth + 9
+Budget mth + 10
+Budget mth + 11
+Budget mth + 12 (next year)
+Budget mth + 13
+Budget mth + 14
+Budget mth + 15
+Budget mth + 16
+Budget mth + 17
+Budget mth + 18
+Budget mth + 19
+Budget mth + 20
+Budget mth + 21
+Budget mth + 22
+Budget mth + 23
+Actual this year to date
+Actual last year to date
+Actual this full year
+Actual last full year
+Budget this year to date
+Budget last year to date
+Budget this-1 (last) full year
+Budget this full year
+Budget (next) full year
+Account
+Description
+Budget (next)+1 full year
+Budget (next)+2 full year
+Budget (next)+3 full year
+Budget (next)+4 full year
+Projection
+Commitment mth
+Commitment year to date
+Actual + commitment mth
+Actual + commitment year to date
+Opening balance for this year
+Opening balance for last year

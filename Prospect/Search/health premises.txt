@@ -1,0 +1,10 @@
+filetouse=eats
+filetousee=e:\ckashare\health\health.mdb\eats
+templatetouse=eats
+srchlist=a0,tname,oname,prop.addr1,a3
+labellist=Premises ID,Trading Name,Owner,Street Address,Category
+itemlist=,,,,sselect eat.codes a0 a1 by a1 with a0 = "@T.]"
+title=HEALTH PREMISES
+hds=Id|Premise Name|Type|Owner name|Address
+tds=<TD>|<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=eats&tn=eats&item=,0|5,1,1|3,1,1,,@T.,TEAT.CODES;1|@,/prospect/asp/bi.asp?fn=client&tn=client&item=,2,1,1,,,TCLIENT;7;1|@,/prospect/asp/bi.asp?fn=client&tn=client&item=,1,1,1,,,TCLIENT;2;3;4;5

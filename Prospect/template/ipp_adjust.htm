@@ -1,0 +1,85 @@
+@@INPUT@@Payroll Position Codes File
+
+<INPUT id=select4 name=select4 value="|4,V|" type="hidden">
+
+<TABLE WIDTH="95%" border="1" cellspacing="3" cellpadding="1">
+
+  <TR> 
+    <TD CLASS="mm"><B>Description</B> 
+    <TD> 
+      <INPUT type="Text" name="C1,0,0" value="|1|" size="35"> 
+
+  <TR> 
+    <TD CLASS="mm" WIDTH="102">Award 
+    <TD> 
+      <td>
+      <select name="sel2" value="|2|">
+  		<option value="G">Part of YTD Ordinary Gross</option>
+ 		<option value="O">Recorded Separately</option>
+      </select>
+
+  <TR> 
+    <TD CLASS="mm"><B>Pay Rate</B> 
+    <TD> 
+      <input type="Text" name="3,0,0,,,MD2" value="|3,0,0,,,MD2|">
+       
+  <TR> 
+    <TD CLASS="mm"><B>Select Allowances to exclude</B> 
+    <TD colspan="3"> <I CLASS="input" ID=MSEL4>|4,0,0,,,TPP.ALLOW;1|</I> <B>Select 
+      From List</B> 
+      <select  name="hide4" multiple size=@@SIZE@@>
+||OPTIONS|SSELECT|pp.allow by a1|4|pp.allow|1|
+      </select>
+  <TR> 
+    <TD CLASS="mm"><B>Award Classification</B> 
+    <TD> 
+      <input type="Text" name="5,0,0" value="|5,0,0|">
+      
+</TABLE>
+
+
+
+
+<FORM  NAME="pp_adjust">
+<TABLE WIDTH="95%">
+<TR CLASS="top">
+<TH>Code
+<TH>Description
+<TH>Award
+<TH>Pay Rate
+<TH>Excluded Allowances
+<TH>Award Classification
+
+||TABLESEL <TR><TD>|0,0,0|<TD>|1|<TD>|2,0,0,,,TPP.AWARD;1|<TD ALIGN="right">|3,0,0,,,MD2|<TD>|4,0,0,,,TPP.ALLOW;1|<TD>|5|
+,pp.pos,sselect pp.pos by a1
+</TABLE>
+</FORM>
+
+<SCRIPT LANGUAGE="VBScript">
+Function hide4_onchange()
+   lth = assetForm.hide4.length - 1
+   for j=0 to lth
+      if assetForm.hide4.options(j).selected then
+         fld = trim(iassetForm.hide4.options(j).value)
+         if fld="" then MSEL4.innerText ="": document.assetform.select4.value ="": exit function
+         call hide_setup(fld)
+      end if
+   next
+End Function
+
+Sub hide_setup(fld)
+   code=mid(fld,instr(fld,vbtab)+2) 'get description vbtab (code)
+   code=left(code,len(code)-1) ' removing the ( ) around the code also
+   fld=left(fld,instr(fld,vbtab)-1)
+   if msel4.innertext = "" then
+      MSEL4.innerText = fld
+      document.assetform.select4.value = code
+   else
+      if instr(msel4.innertext,fld) = 0 then ' only add if not already there
+         MSEL4.innerText = MSEL4.innerText & vbcrlf & fld
+         document.assetform.select4.value = document.assetform.select4.value & chr(253) & code
+      end if
+   end if
+   exit sub
+End Sub
+</SCRIPT>

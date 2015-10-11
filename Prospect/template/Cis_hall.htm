@@ -1,0 +1,103 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>HALL/RECREATIONAL FACILITY </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="cis.hall"><INPUT TYPE=hidden NAME="tn" VALUE="cis_hall"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE WIDTH=95%>
+<TR>
+<TD CLASS="mm">
+<B>Name</B><TD COLSPAN=5> |2|
+<TR>
+<TD CLASS="mm">
+<B>Subject</B><TD COLSPAN=5> |15,1,1|
+<TR>
+<TD class="screen" colspan=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Controlling Body</B><TD COLSPAN=3> |5,1,1|
+<TD CLASS="mm">
+<B>Bookings Contact</B><TD COLSPAN=1> |6|
+<TR>
+<TD CLASS="mm">
+<B>Street Address</B><TD COLSPAN=3> |3|
+<TD CLASS="mm">
+<B>Booking Address</B><TD COLSPAN=1> |7|
+<TR>
+<TD CLASS="mm">
+<B>Hall Phone</B><TD COLSPAN=3> |4,1,1|
+<TD CLASS="mm">
+<B>Bookings Phone</B><TD COLSPAN=1> |8,1,1|
+<TR>
+<TD class="screen" colspan=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Meeting Capacity</B><TD> |9,1,1|
+<TD CLASS="mm">
+<B>Social Function Capacity</B><TD> |10,1,1|
+<TD CLASS="mm">
+<B>AGM</B><TD> |28,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Fees</B><TD> |11,1,1|
+<TD CLASS="mm">
+<B>Bond</B><TD> |12,1,1|
+<TD CLASS="mm">
+<B>Cleaning Fee</B><TD> |13,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Fees - Other</B><TD COLSPAN=5> |14,1,1|
+<TR>
+<TD class="screen" colspan=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Condition</B><TD COLSPAN=5> |21|
+<TR>
+<TD CLASS="mm">
+<B>Kitchen Facilities</B><TD COLSPAN=3> |16,1,1|
+<TD CLASS="mm">
+<B>Coffee/Tea Facilities</B><TD COLSPAN=1> |17,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Disabled Access</B><TD COLSPAN=3> |19,1,1|
+<TD CLASS="mm">
+<B>Disabled Toilets</B><TD COLSPAN=1> |20,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Parking</B><TD COLSPAN=3> |18,1,1|
+<TD CLASS="mm">
+<B>PA System</B><TD COLSPAN=1> |22,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Lecturns</B><TD COLSPAN=3> |23,1,1|
+<TD CLASS="mm">
+<B>Tables</B><TD COLSPAN=1> |24,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Chairs</B><TD COLSPAN=3> |25,1,1|
+<TD CLASS="mm">
+<B>Boards</B><TD COLSPAN=1> |26,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Other Furniture</B><TD COLSPAN=5> |27|
+<TR>
+<TD class="screen" colspan=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Activities</B><TD COLSPAN=5> |1|
+<TR>
+<TD class="screen" colspan=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Other Information</B><TD COLSPAN=5> |29|
+</TABLE>
+
+||IF,33,#,
+<P>
+<TABLE WIDTH=95%>
+<TR CLASS="top">
+<TH>EntDesc
+<TH>Fee
+<TH>Related Entities
+<TH>Memos to Flag
+||TABLE000 <TR><TD>|33,N,1|<TD ALIGN=RIGHT>|34,N,1,,,MD2|<TD>|35,N,1|<TD>|36,N,1|
+</TABLE>
+||IFEND

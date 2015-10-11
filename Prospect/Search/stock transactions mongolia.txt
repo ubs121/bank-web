@@ -1,0 +1,27 @@
+database=msa
+where=@@PATH@@ckashare\stock\stock.mdb
+filetouse=st_trans
+templatetouse=st_trans
+codeattr=2
+srchlist=a10,a9,tramt,trdate,trdate,gldate,gldate
+srchkey=none
+labellist=Салбар,Хєрєнгийн №,Дvн,Огноо (хойш),Огноо(хvртэл),Е/Д Огноо (from),Е/Д Огноо (to)
+sorts=a10,a9,tramt,trdate,gldate
+sortdescs=Branch,Stock Number,Amount,Transaction Date,G/L Date
+title=ХЄРЄНГИЙН ГYЙЛГЭЭ
+hds=Хєрєнгийн код|Тайлбар|Салбар|Лавлах|Тєрєл|Огноо|Тоо хэмжээ|Yнэ|Е/Д Огноо
+tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD NOWRAP>|<TD ALIGN=RIGHT>|<TD ALIGN=RIGHT>|<TD NOWRAP>
+dms=9,0,0|9,0,0,,,TSTOCK;1|10,0,0,,,TBRANCH;1|@!,/prospect/asp/bi.asp?fn=st_trans&tn=@@&item=,3|2,1,1,,,tdict trans.j;2|4,1,1,,,D2|5,nt,0|6,nT,0,,,MD2|7,1,1,,,D2
+
+msa_filetouse=@WHERE@st_trans
+msa_templatetouse=st_trans_msa
+codeattr=2
+msa_srchlist=a10,a9,tramt,trdate,trdate,gldate,gldate
+srchkey=none
+msa_labellist=Салбар,Хєрєнгийн №,Дvн,Огноо (хойш),Огноо(хvртэл),Е/Д Огноо (from),Е/Д Огноо(to)
+msa_sorts=a10,a9,tramt,trdate,gldate
+msa_sortdescs=Салбар,Хєрєнгийн №,Дvн,Гvйлгээ хийсэн єдєр ,Е/Д Огноо
+title=ХЄРЄНГИЙН ГYЙЛГЭЭ
+msa_hds=Хєрєнгийн код|Тайлбар|Салбар|Лавлах|Тєрєл|Огноо|Тоо хэмжээ|Yнэ|Е/Д Огноо
+msa_tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD NOWRAP>|<TD ALIGN=RIGHT>|<TD ALIGN=RIGHT>|<TD NOWRAP>
+msa_dms=9,0,0|9,0,0,,,T@WHERE@STOCK;1|10,0,0,,,T@WHERE@BRANCH;1|@!,/prospect/asp/bi.asp?fn=@WHERE@st_trans&tn=@@&item=,3|2,0,0,,,t@WHERE@dict trans.j;2|4,0,0,,,D2|5,nt,0|6,nT,0,,,MD2|7,0,0,,,D2

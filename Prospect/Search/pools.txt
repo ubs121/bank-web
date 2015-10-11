@@ -1,0 +1,15 @@
+filetouse=sw.pool
+templatetouse=sw_pool
+srchlist=a0,assess,oname
+labellist=Pool ID,Assessment,Owner
+title=SWIMMING POOLS
+hds=Pool Id|Owner Name|Assess|Property Address
+tds=<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=sw.pool&tn=sw_pool&item=,0|1,1,1,,,TCLIENT;35~TCLIENT;7;1|@,/prospect/asp/bi.asp?fn=property&tn=property&item=,1,1,1|@,/prospect/asp/bi.asp?fn=property&tn=property&item=,1,1,1,,,TCLIENT;2,1;3,1;4,1;5,1
+hdsextra=Picture
+tdsextra=<TD>
+dmsextra=<IMG HEIGHT=50 WIDTH=50  SRC=C:\CKASHARE\POOLS\@@IMAGE@@\@@IMAGE@@.BMP>
+adhoc=@RECALL.3176
+
+xfiletouse=e:\ckashare\pools\pools.mdb\sw_pool
+xsrchlist=a0,assess,client.name

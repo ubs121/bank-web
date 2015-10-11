@@ -1,0 +1,9 @@
+filetouse=gen.l
+templatetouse=gen.l
+srchlist=a0,desc
+title=General Ledger
+labellist=Account number,Account Name
+hds=Account|Description
+tds=<TD>|<TD>
+dms=@,#,0|2,1,1
+

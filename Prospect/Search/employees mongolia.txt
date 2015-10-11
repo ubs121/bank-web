@@ -1,0 +1,10 @@
+filetouse=employee
+templatetouse=employee
+srchlist=a0,a1,a7
+labellist=Дугаар,Овог нэр,Нэр
+title=АЖИЛТАН
+hds=Дугаар|Овог нэр|Нэр
+tds=<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=employee&tn=employee&item=,0|1,0,0|7,0,0
+adhoc=@recall.2839
+reports=payroll

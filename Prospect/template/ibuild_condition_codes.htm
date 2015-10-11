@@ -1,0 +1,19 @@
+@@INPUT@@Building - Condition Codes
+<TABLE align=center border="1" cellspacing="3" cellpadding="1">
+<TR>
+<TD CLASS=top COLSPAN = "2"><B>Description (use ??? where data to be prompted later)</B>
+<TD><textarea name="1,1,1" value="" COLS="80" ROWS="4" >|1,1,1|</textarea>
+</TABLE>
+</FORM>
+
+<FORM  NAME="building_codes">
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Code
+<TH>Description
+||TABLESEL <TR><TD>|0,0,0,,,|<TD>|1|
+@@PATH@@\ckashare\build\build.mdb,@@PATH@@\ckashare\build\build.mdb\condition,select * from condition order by condition
+</TABLE>
+</FORM>
+
+

@@ -1,0 +1,25 @@
+database=msa
+where=@@PATH@@ckashare\investments\investments.mdb\
+title=INVESTMENTS
+reports=invest
+
+filetouse=invest
+templatetouse=invest
+srchlist=cer.no,a10,a8,m.date,a14
+labellist=Certificate,Borrower,Type,Maturity Date,Fund Source
+prefix=,,,,
+suffix=,,,,
+itemlist=,sselect borrower a0 a1 by a1,sselect invest.codes a0 a1 by a1 with a0 = "@T.]",,sselect invest.codes a0 a1 by a1 with a0 = "@S.]"
+hds=Number|Certificate|Date|Borrower|Type|Amount|Interest Due
+tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD ALIGN=RIGHT>|<TD ALIGN=RIGHT>
+dms=@,/prospect/asp/bi.asp?fn=invest&tn=invest&item=,0|1,1,1|3,1,1,,,D2|10,1,1,,,Tborrower;1|8,1,1|2,1,1,,,MD2|-1,0,0,,,sr_5420
+
+msa_filetouse=@WHERE@invest
+msa_templatetouse=invest_msa
+xmsa_srchlist=Investment,Certificate,inner!join!borrower!on!invest.borrower!=!borrower.borrower!where!borrower.name,inner!join!type!on!invest.type!=!type.type!where!type.description
+msa_srchlist=Investment,Certificate,borrower,type
+msa_labellist=Investment,Certificate,Borrower,Type
+msa_itemlist=,,select borrower!name from borrower,select type!description from type
+msa_hds=Investment|Certificate|Borrower|Type|Amount|Interest Due
+msa_tds=<TD>|<TD>|<TD>|<TD>|<TD ALIGN=RIGHT>|<TD ALIGN=RIGHT>
+msa_dms=@,/prospect/asp/bi.asp?fn=@WHERE@invest&tn=invest_msa&item=,0|1|10,0,0,,,T@WHERE@borrower;1|8,0,0,,,T@WHERE@type;1|2,1,1,,,MD2|-1,0,0,,,sr_5420

@@ -1,0 +1,29 @@
+@@INPUT@@Building - Type of Building Codes
+<TABLE align=center border=1 cellspacing=3 >
+<TR>
+<TD CLASS=top><B>Description</B>
+<TD><INPUT type=Text name=C1,0,0 value="|1|" size=30>
+<TD CLASS=top><B>ABS Code</B>
+<TD><input type=Text name=2,0,0 value="|2|" size=10>
+
+<TD CLASS=top><b>Structure Type</b>
+<TD>
+<select class="smallSel" name="sel3">
+||OPTIONS|SSELECT|bl_structure by a0|3|bl_structure|1|
+</select>
+
+</TABLE>
+</FORM>
+
+<FORM  NAME="building_codes">
+<TABLE align=center border=1 cellspacing=1 >
+<TR CLASS=top>
+<TH>Code
+<TH>Description
+<TH>ABS Code
+<TH>Structure Type
+||TABLESEL <TR><TD>|0,0,0,,,|<TD>|1|<TD>|2|<TD>|3,0,0,,|
+@@PATH@@\ckashare\build\build.mdb,@@PATH@@\ckashare\build\build.mdb\building,select * from building order by building
+</TABLE>
+</FORM>
+

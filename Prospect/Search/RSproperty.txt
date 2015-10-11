@@ -1,0 +1,13 @@
+filetouse=property
+templatetouse=property
+srchlist=a0,@@drindex|client|oname|4|29|0|1@@,roadno,addr2,post,lot,loc,a25
+labellist=Assessment,Owner Surname,Road,Suburb,Postcode,Lot,Location,VGN
+itemlist=,,sselect roads a0 a1 by a1,,,,,
+prefix=,,,,,,,
+suffix=,],,],,,,
+sorts=assess,stname,stno,suburb,a25
+title=PROPERTIES
+hds=Assess|Address|Lot|Owner names|Location
+tds=<TD>|<TD>|<TD>|<TD>|<TD ALIGN=RIGHT>
+dms=@,#,0|0,1,1,,,TCLIENT;2;3;4;5|1,1,0|0,0,0,,,OWNERS35|2,1,0
+adhoc=@1691

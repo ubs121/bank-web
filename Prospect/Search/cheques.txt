@@ -1,0 +1,10 @@
+filetouse=chq.rec
+templatetouse=chq_rec
+srchlist=key,payee,accounts,date.issued,amount
+labellist=Chq Number,Payee,Account,Date,Amount
+sorts=chq.no,name
+title=CHEQUES
+hds=Reference|Issued|Amount|Payee|Narrative
+tds=<TD>|<TD NOWRAP>|<TD ALIGN=RIGHT>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=chq.rec&tn=chq_rec&item=,0|3,0,0,,,D2|2,0,0,,,MD2|@,/prospect/asp/bi.asp?fn=client&tn=client&item=,5,1,1|13,1,1
+radiobtns=BANKS

@@ -1,0 +1,97 @@
+@@INPUT@@General Ledger Groups
+<INPUT id=select120 name=select120 value="|120,Vsselect @@PATH@@\ckashare\gen_l\gen_l.mdb\gl_rtype rtype ! where account = '' order by rtype |" type="hidden">
+<INPUT id=select121 name=select121 value="|121,Vsselect @@PATH@@\ckashare\gen_l\gen_l.mdb\gl_rcode rcode ! where account = '' order by rcode |" type="hidden">
+
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR>
+<TD class=top><B>Type<BR>(B)alance sheet or <BR>(C)ost Centre)</B>
+<TD class=top><INPUT type="Text" size=40% name="C1,,,Type (B or C),,@B@C@" value="|1|">
+<TD class=top><B>Description</B>
+<TD class=top><INPUT type="Text" size=40% name="2,,,Description" value="|2|">
+<TR class=item>
+<TD CLASS=top WIDTH=102><B>Report Type
+<TD> <I CLASS="input" ID=MSEL120>|120,0,0,,,T@@PATH@@\ckashare\gen_l\gen_l.mdb\rtype;1|</I>&nbsp
+<TD CLASS=top><B>Select From List</B>
+<TD>
+<select class="smallSel" name="hide120" multiple size=4>
+||OPTIONS|SSELECT|rtype|120|@@PATH@@\ckashare\gen_l\gen_l.mdb\rtype|1|
+</select>
+<TR class=item>
+<TD CLASS=top WIDTH=102><B>Responsibility Code
+<TD> <I CLASS="input" ID=MSEL121>|121,0,0,,,T@@PATH@@\ckashare\gen_l\gen_l.mdb\rcode;1|</I>&nbsp
+<TD CLASS=top><B>Select From List</B>
+<TD>
+<select class="smallSel" name="hide121" multiple size=4>
+||OPTIONS|SSELECT|rcode|121|@@PATH@@\ckashare\gen_l\gen_l.mdb\rcode|1|
+</select>
+</TABLE>
+</FORM>
+
+<FORM>
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Group
+<TH>Type
+<TH>Description
+||TABLESEL <TR><TD>|0|<TD>|1|<TD>|2|
+@@PATH@@\ckashare\gen_l\gen_l.mdb,@@PATH@@\ckashare\gen_l\gen_l.mdb\gen_l,select * from gen_l where account_level = 1 order by level1
+</TABLE>
+</FORM>
+
+
+<SCRIPT LANGUAGE="VBScript">
+
+Function hide120_onchange()
+   lth = assetForm.hide120.length - 1
+   for j=0 to lth
+      if assetForm.hide120.options(j).selected then
+         fld = trim(iassetForm.hide120.options(j).value)
+         if fld="" then MSEL120.innerText ="": document.assetform.select120.value ="": exit function
+         call hide_setup(fld)
+      end if
+   next
+End Function
+
+Sub hide_setup(fld)
+   code=mid(fld,instr(fld,vbtab)+2) 'get description vbtab (code)
+   code=left(code,len(code)-1) ' removing the ( ) around the code also
+   fld=left(fld,instr(fld,vbtab)-1)
+   if msel120.innertext = "" then
+      MSEL120.innerText = fld
+      document.assetform.select120.value = code
+   else
+      if instr(msel120.innertext,fld) = 0 then ' only add if not already there
+         MSEL120.innerText = MSEL120.innerText & vbcrlf & fld
+         document.assetform.select120.value = document.assetform.select120.value & chr(253) & code
+      end if
+   end if
+   exit sub
+End Sub
+Function hide121_onchange()
+   lth = assetForm.hide121.length - 1
+   for j=0 to lth
+      if assetForm.hide121.options(j).selected then
+         fld = trim(iassetForm.hide121.options(j).value)
+         if fld="" then MSEL121.innerText ="": document.assetform.select121.value ="": exit function
+         call hide_setup121(fld)
+      end if
+   next
+End Function
+
+Sub hide_setup121(fld)
+   code=mid(fld,instr(fld,vbtab)+2) 'get description vbtab (code)
+   code=left(code,len(code)-1) ' removing the ( ) around the code also
+   fld=left(fld,instr(fld,vbtab)-1)
+   if msel121.innertext = "" then
+      MSEL121.innerText = fld
+      document.assetform.select121.value = code
+   else
+      if instr(msel121.innertext,fld) = 0 then ' only add if not already there
+         MSEL121.innerText = MSEL121.innerText & vbcrlf & fld
+         document.assetform.select121.value = document.assetform.select121.value & chr(253) & code
+      end if
+   end if
+   exit sub
+End Sub
+</SCRIPT>
+

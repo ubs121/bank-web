@@ -1,0 +1,39 @@
+database=msa
+where=@@PATH@@ckashare\gen_L\gen_L.mdb\
+title=ЕРєНХИЙ БYРТГЭЛ
+reports=gen_l
+
+filetouse=gen.l
+templatetouse=gen_l
+defaultsort=by group by class by subclass
+srchlist=a0,@@glindex|gen.l|a2|3|1|0|1@@,a31,a22,Group,Class,Subclass
+srchkey=1
+labellist=Дансны дугаар,Дансны нэр,Тайлангийн хэлбэр,Хариуцлагатны код,Бvлэг,Анги,Дэд анги
+itemlist=,,sselect rtype a0 a1 by a1,sselect rcode a0 a1 by a1
+radiobtns=YEARS
+xradiocode=with class = ю0ю,with class # ю0ю and with sub.class = ю0ю,with sub.class # ю0ю,
+hds=Account|Description|Actual|Budget|Variance|Report Type|Responsibility
+tds=<TD>|<TD>|<TD ALIGN=right>|<TD ALIGN=right>|<TD ALIGN=right>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=@@PICKFILE@@&tn=gen_l&glitem=,0|2|0,1,1,,,B|0,1,1,,,BU|0,1,1,,,A-V|31,1,1,,,TRTYPE;1|22,1,1,,,TRCODE;1
+adhoc=@591
+
+msa_filetouse=@WHERE@gen_l
+msa_templatetouse=gen_l_msa
+msa_defaultsort=by level1,level2,level3
+msa_srchlist=account,description_Mongolian,account_level,level1,level2,level3,type,alie,closed,inner!join!gl_rtype!on!gen_l.account!=!gl_rtype.account!where!gl_rtype.rtype,inner!join!gl_rcode!on!gen_l.account!=!gl_rcode.account!where!gl_rcode.rcode
+msa_numerics=,,1,1,1,1,,,2
+msa_labellist=Дансны дугаар,Монгол дансны нэр,Тvвшин,Бvлэг,Анги,Дэд анги,Тєрєл,Шинж чанар,Хаагдсан,Тайлангийн хэлбэр,Хариуцлагатны код
+msa_itemlist=,,<OPTION VALUE=""><OPTION VALUE=1>Бvлэг<OPTION VALUE="2">Анги<OPTION VALUE="3">Subclass,select account!description from gen_l where account_level=1 order by description,,,<OPTION VALUE=""><OPTION VALUE="B">Balance Sheet<OPTION VALUE="C">Cost Centre,<OPTION VALUE=""><OPTION VALUE="A">Asset<OPTION VALUE="L">Liability<OPTION VALUE="I">Income<OPTION VALUE="E">Expense,,select rtype!left(Description_Mongolian!30) from rtype order by Description_Mongolian,select rcode!left(Description_Mongolian!30) from rcode order by Description_Mongolian
+msa_radiobtns=YEARS
+'msa_hds=Account|Type|ALIE|Group Name|Class Name|Description|Actual|Commitment|Total|Budget|Variance|Closed|Report Type|Responsibility Code|Actual Current Months|Commit Current Months|Budget Current Months|Actual Current Month YTDs|Commit Current Month YTDs|Budget Current Month YTDs|Actual LastYear Months|Commit LastYear Months|Budget LastYear Months|Actual LastYear Month YTDs|Commit LastYear Month YTDs|Budget LastYear Month YTDs
+msa_hds=Данс|Тєрєл|ALIE|Бvлгийн нэр|Ангийн нэр|Тодорхойлолт|Actual|Commitment|Бvгд|Тєсєв|Variance|Хаасан|Тайлангийн тєрєл|Хариуцлагатны код|Actual Current Months|Commit Current Months|Тухаын сарын тєсєв|Actual Current Month YTDs|Commit Current Month YTDs|Budget Current Month YTDs|Actual LastYear Months|Commit LastYear Months|єнгєрсєн жилийн саруудын тєсєв|Actual LastYear Month YTDs|Commit LastYear Month YTDs|Budget LastYear Month YTDs
+msa_tds=<TD>|<TD align=center>|<TD align=center>|<TD>|<TD>|<TD>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD>|<TD>|<TD>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>|<TD nowrap ALIGN=right>
+msa_dms=@,/prospect/asp/bi.asp?fn=@WHERE@gen_l&tn=gen_l_msa&glitem=,0|1|12|4,0,0,,,G.1~T@WHERE@gen_l;2|-1,0,0,,,C;12;5~T@WHERE@gen_l;3|18,0,0,,,mongol|16,NT,0,,,dec2|17,NT,0,,,dec2|0,0,0,,,A+V|51,NT,0|0,0,0,,,A-V|9|113,Wselect rtype.description from gl_rtype gl_rtype inner join rtype rtype on gl_rtype.rtype=rtype.rtype where gl_rtype.account = '' order by rtype.rtype,@WHERE@|114,Wselect rcode.description from gl_rcode gl_rcode inner join rcode rcode on gl_rcode.rcode=rcode.rcode where gl_rcode.account = '' order by rcode.rcode,@WHERE@|26-37|39-50|52-63|64-75|76-87|88-99|26-37-1|39-50-1|52-63-1|64-75-1|76-87-1|88-99-1
+msa_helpname=gen_l
+msa_reports=gen_l_msa
+
+msa_hdsextra=Level|Grp|Class|Subclass
+msa_tdsextra=<TD align=right>|<TD align=right>|<TD align=right>|<TD align=right>
+msa_dmsextra=3|4|5|6
+
+

@@ -1,0 +1,10 @@
+filetouse=filing.index
+templatetouse=filing_index
+srchlist=a0,a1
+labellist=File Index,File Index Name
+prefix=,,
+suffix=,,
+title=FILING.INDEX
+hds=File Index|Title|Contents|Retention|Statutory|Review Date
+tds=<TD>|<TD>|<TD NOWRAP>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=filing.index&tn=filing_index&item=,0|1,0,0|3,0,0|4,0,0|5,1,1|6,1,1,,,D2

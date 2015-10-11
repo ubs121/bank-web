@@ -1,0 +1,8 @@
+filetouse=parking
+templatetouse=parking
+srchlist=a0,owner.name,rego,vehicle.make,street
+labellist=Ò‎לה‎דכ‎כ ¹,Ýח‎לרטדק,Ávנעד‎כ,Ãvיצ‎עד‎ץ,Ãףהאלז
+title=PARKING INFRINGEMENTS
+hds=Infringement|Rego|Ãvיצ‎עד‎ץ|Ãףהאלז|Ýח‎לרטדק|Îדםממ|Status
+tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD NOWRAP>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=parking&tn=parking&item=,0|2,1,1|4|11,1,1|2,0,0,,,TPARKING.XREF;2;8|7,1,1,,,D2|25

@@ -1,0 +1,193 @@
+m
+create-index Filing refno
+create-index Filing wabout
+create-index Filing wfrom
+create-index Filing wgiven
+create-index Filing kwords
+create-index Filing drcv
+create-index Filing amt
+create-index Filing filedesc
+
+display create-index Clubs
+create-index cis.Club name
+create-index cis.Club a5
+create-index cis.Club subject
+create-index cis.Club age
+
+display Government Depts
+create-index cis.govt org.name
+create-index cis.govt subject
+
+display Council Information
+create-index cis.coun name
+create-index cis.coun desc
+
+display Council Listings
+	create-index cis.list name
+	create-index cis.listsubject
+
+display Events
+	create-index cis.event name
+	create-index cis.event organisation
+
+display  Halls and Recreation
+	create-index cis.hall hall
+	create-index cis.hall activities
+
+display General Infringements
+	create-index infringe inf.no
+	create-index infringe owner
+
+display Animal Pickups
+	create-index pickup a0
+
+display Parking Infringements
+	create-index parking notice.no
+	create-index parking owner.name
+	create-index parking rego
+	create-index parking vehicle.make
+	create-index parking street
+
+display Customer Service Log
+	create-index cs.log a0
+	create-index cs.log caller
+	create-index cs.log subjcode
+	create-index cs.log descr
+
+display Estimating
+	create-index job.est a0
+
+display Plant Maintenance
+
+display Assets
+	create-index asset asset.no
+	create-index asset desc,locn
+
+display Creditors
+	create-index creditor name
+	create-index creditor key
+
+display Creditor Invoices
+	create-index cr.inv name
+	create-index cr.inv creditor
+	create-index cr.inv inv
+
+display Cheques
+	create-index chq.rec key
+	create-index chq.rec payee
+	create-index chq.rec accounts
+	create-index chq.rec date.issued
+	create-index chq.rec amount
+
+display Cheque Remittances
+	create-index chq.rec key
+	create-index chq.rec payee
+	create-index chq.rec accounts
+
+Display Debtors
+	create-index tdebtor name
+	create-index tdebtor key
+
+display Debtor Invoices
+	create-index invoice key
+	create-index invoice name
+
+display Cash Receipts
+	create-index cash rcpt
+	create-index cash dep
+	create-index cash date
+	create-index cash amount
+
+display Investments
+	create-index invest cer.no
+	create-index invest borrower.name
+	create-index invest type
+
+display Journals
+	create-index journal key
+	create-index journal amount
+	create-index journal acct
+
+display Loans
+	create-index loan key
+
+display Payroll
+
+display Purchase Orders
+	cerate-index purchase key
+
+display Stock Catalogue
+	create-index stock a0
+	create-index stock desc
+	create-index stock name
+
+display Property
+	create-index property a0
+	create-index property oname
+	create-index property addr1
+	create-index property addr2
+	create-index property post
+	create-index property lot
+	create-index property loc
+	create-index property a25
+
+
+display Clients 
+	create-index client a0
+	create-index client name
+
+display Animals
+	create-index animal a0
+	create-index animal licno
+	create-index animal name
+	create-index animal breeds
+	create-index animal col
+	create-index animal narr
+	create-index animal assess
+	create-index animal owner
+	create-index animal paddr1
+	create-index animal paddr2
+
+display Building Applications
+	create-index plans key
+	create-index plans bldnameaddr
+	create-index plans oname
+	create-index plans lot.street.suburb
+	create-index plans lot
+
+display Crossovers
+	create-index plans assess
+	create-index plans own.name
+
+display Demolitions
+	create-index plans assess
+	create-index plans aname
+	create-index plans oname
+	create-index plans lot.street.suburb
+	create-index plans lot
+
+display Health Premises
+	create-index eats a0
+	create-index eats tname
+	create-index eats oname
+	create-index eats prop.addr1
+	create-index eats category
+
+display Signs
+	
+	create-index eats assess
+	create-index eats oname
+	create-index eats applicant
+	create-index eats lot.street.suburb
+
+display Pools
+	create-index sw.pools a0
+	create-index sw.pools assess
+	create-index sw.pools oname
+
+display Rubbish Bins
+	create-index rbins a0
+	create-index rbins assess
+	create-index rbins oname
+
+

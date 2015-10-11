@@ -1,0 +1,54 @@
+<BR>
+||SRDICT RR.LOG,4
+||IF,2,=,City of Swan
+||SREND
+<TABLE WIDTH=95%>
+<TR>
+<TD VALIGN=top WIDTH=15%>
+<img src="COS_logo.jpg" width=500 height=175>
+<TD ALIGN=right VALIGN=bottom>
+<B>PO Box 196  MIDLAND	6936</B><BR>
+Phone:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +61 (08) 9267 9000<BR>
+Fax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +61 (08) 9267 9444<BR>
+Email:&nbsp;&nbsp;&nbsp; swan@swan.wa.gov.au
+<P align=right>
+<B>
+<script language="vbscript">
+<!--
+Dim MyDate
+MyDate = Date
+document.write(MyDate)
+-->
+</script>
+</B>
+</TABLE>
+||IFEND
+<HR WIDTH=95% ALIGN=LEFT>
+<BR>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>Transfer Advice Form for EFT Payment |0| </FONT></B>
+<BR><B>Faxed To: |5,1,1,,,TCLIENT;9,3|</B>
+<P>
+<BR>
+|5,1,1,,,Tclient;7;1|</FONT></FONT><BR>
+|9,1,1| <BR> 
+|9,2,1| <BR> 
+|9,3,1|
+<P>
+$|2,1,1,,,MD2| was deposited into account: |5,1,1,,,TCREDITOR;34| on |3,1,1,,,D4|
+<P>
+<HR WIDTH=95% ALIGN=LEFT>
+||IF,16,#,
+<TABLE WIDTH=95%>
+<TR CLASS="top">
+<TH>Reference
+<TH>Type
+<TH>Date
+<TH>Amount
+<TH>Discount
+<TH>PPS
+||TABLE000 <TR><TD>|16,1,N,|<TD>|17,1,N,,,tdict trans.j;2|<TD>|18,1,N,,,D4|<TD ALIGN=RIGHT>|19,1,N,,,MD2|<TD ALIGN=RIGHT>|26,1,N,,,MD2|<TD ALIGN=RIGHT>|30,1,N,,,MD2|
+</TABLE>
+||IFEND
+</html>
+
+

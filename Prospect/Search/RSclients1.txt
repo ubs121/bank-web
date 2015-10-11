@@ -1,0 +1,8 @@
+filetouse=@@PATH@@\ckashare\Gen_L\gen_l.mdb\client
+templatetouse=SearchJAccount
+srchlist=a0,name
+labellist=Number,Surname
+title=CLIENTS
+hds=Id|Surname|Given name|Residential Address
+tds=<TD>|<TD>|<TD>|<TD>
+dms=@,#,0|1,1,1|7,1,1|-1,,,,,RES_ADDRESS

@@ -1,0 +1,10 @@
+filetouse=cis.hall
+templatetouse=cis_hall
+srchlist=танхим,зориулалт
+labellist=Нэр,Зориулалт
+prefix=,[
+suffix=,]
+title=ТАНХИМ
+hds=Id|Нэр|Хаяг|Утас|Зориулалт
+tds=<TD>|<TD>|<TD>| | |<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=cis.hall&tn=cis_hall&item=,0|2,1,1|3,1,0|3,2,0|3,3,0|4,1,1|1,0,0

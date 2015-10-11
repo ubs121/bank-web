@@ -1,0 +1,64 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>GENERAL LEDGER ACCOUNT </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="@@PICKFILE@@"><INPUT TYPE=hidden NAME="tn" VALUE="gen_l"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+||IF,23,=,1
+<FONT color="red" size="+1">CLOSED</FONT>
+||IFEND
+<TABLE align=center CELLSPACING=1 CELLPADDING=1>
+<TR>
+<TD CLASS="mm">
+<B>Description</B><TD>|2|
+<TD CLASS="mm">
+<B>Balance of Account</B><TD> |0,1,1,,,B|
+<TD CLASS="mm">
+<B>Budget Type</B><TD> |7,1,1|
+</TABLE>
+<P>
+
+<TABLE align=center>
+<TH CLASS=thempty ALIGN=CENTER>THIS YEAR
+<TH CLASS=thempty>&nbsp;
+<TH CLASS=thempty ALIGN=CENTER>LAST YEAR
+<TH CLASS=thempty>&nbsp;
+<TH CLASS=thempty ALIGN=CENTER>NEXT YEAR
+<TR>
+<TD CLASS=tdempty>
+	<TABLE BORDER=1 CELLSPACING=1 CELLPADDING=1>
+	<TR CLASS="top">
+	<TH>Month end
+	<TH>Budget
+	<TH>Actual
+||TABLE012 <TR><TD NOWRAP>|TYEAR,N,|<TD NOWRAP ALIGN=RIGHT>&nbsp;|8,NT,1,,,A*-1~MD0|<TD NOWRAP ALIGN=RIGHT>&nbsp;|9,NT,1,,,A*-1~MD2|
+	</TABLE>
+<TD CLASS=tdempty>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<TD CLASS=tdempty>
+	<TABLE BORDER=1 CELLSPACING=1 CELLPADDING=1>
+	<TR CLASS="top">
+	<TH>Month end
+	<TH>Budget
+	<TH>Actual
+||TABLE012 <TR><TD NOWRAP>|TYEAR-1,N,|<TD NOWRAP ALIGN=RIGHT>&nbsp;|8,NT12,1,,,A*-1~MD0|<TD NOWRAP ALIGN=RIGHT>&nbsp;|9,NT12,1,,,A*-1~MD2|
+	</TABLE>
+<TD CLASS=tdempty>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<TD CLASS=tdempty>
+	<TABLE BORDER=1 CELLSPACING=1 CELLPADDING=1>
+	<TR CLASS="top">
+	<TH>Month end
+	<TH>Budget
+	<TH>Actual
+||TABLE012 <TR><TD NOWRAP>|TYEAR1,N,|<TD NOWRAP ALIGN=RIGHT>&nbsp;|8,NT24,1,,,A*-1~MD0|<TD NOWRAP ALIGN=RIGHT>&nbsp;|9,NT24,1,,,A*-1~MD2|
+	</TABLE>
+</TABLE>
+
+||IF,S
+<P align=center>
+<A HREF="buildsel.asp?fn=gl_trans&tn=gl_trans&item=a3&ref=|0|&by=by-dsnd gldate">Click here to Display Transactions most recent first</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+<P align=center>
+<A HREF="buildsel.asp?fn=gl_trans&tn=gl_trans&item=a3&ref=|0|&by=by gldate">Click here to Display Transactions oldest first</A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+||IFEND
+<%
+'<P align=center>
+'<A HREF="graphgl.asp?ref=|0|&fn=@@PICKFILE@@">Click here to graph these totals</A>
+%>

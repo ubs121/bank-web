@@ -1,0 +1,18 @@
+database=msa
+where=@@PATH@@\ckashare\Gen_L\gen_l.mdb\
+filetouse=gen_l
+templatetouse=SearchJAccount
+srchlist=account,description
+title=Product List
+labellist=Account,Description
+hds=Account|Description
+tds=<TD>|<TD>
+dms=@,#,0|2
+
+msa_filetouse=@WHERE@gen_l
+msa_templatetouse=SearchJAccount
+msa_srchlist=account,description
+msa_labellist=Account,Description
+msa_hds=Account|Description
+msa_tds=<TD>|<TD>
+msa_dms=@,#,0|2

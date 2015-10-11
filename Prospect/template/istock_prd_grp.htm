@@ -1,0 +1,48 @@
+@@INPUT@@Product Group
+<TABLE WIDTH=95% align=center border=1 cellspacing=1 cellpadding=1>
+<TR>
+<TD class=top><B>Description</B>
+<TD class=top><INPUT type="Text" size=19 name="C1,,,Description" value="|1|">
+<TD class=top><B>Sales Account</B>
+<TD class=top><INPUT type="Text" size=19 name="2,,,Name" value="|2|">
+<TD class=top><B>Cost of Sales Account</B>
+<TD class=top><INPUT type="Text" size=19 name="3,,,Name" value="|3|">
+<TR>
+<TD class=top><B>Class</B>
+<select name="sel4" > 
+||OPTIONS|SSELECT|class|4|@@PATH@@\ckashare\stock\stock.mdb\class|1|
+</select>
+<TD class=top><B>Stock On Hand</B>
+<TD class=top><INPUT type="Text" size=19 name="7,,,Name" value="|7|">
+<TD class=top><B>Goods In Clearing</B>
+<TD class=top><INPUT type="Text" size=19 name="8,,,Name" value="|8|">
+</TABLE>
+</FORM>
+
+<FORM>
+<TABLE WIDTH=95% align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Product Group
+<TH>Description
+<TH>Sales Account
+<TH>Cost of Sales Account
+<TH>Class
+<TH>Stock on Hand
+<TH>Goods in Clearing
+||TABLESEL <TR><TD>|0|<TD>|1|<TD>|2|<TD>|3|<TD>|4|<TD>|7|<TD>|8|
+@@PATH@@\ckashare\stock\stock.mdb,@@PATH@@\ckashare\stock\stock.mdb\prd_grp,select * from prd_grp order by prd_grp
+</TABLE>
+</FORM>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"T@@PATH@@!ckashare!investments!investments.mdb!class;1");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+
+
+

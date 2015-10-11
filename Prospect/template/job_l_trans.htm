@@ -1,0 +1,54 @@
+<CENTER><H2>JOB LEDGER</H2></CENTER>
+<TABLE width=100%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>Transactions<BR>
+JOB </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="job.l"><INPUT TYPE=hidden NAME="tn" VALUE="job_l_trans"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+
+<center><B>|-1,,,,,G.1~Tjob.l;2|</B> |2|</center>
+
+<TABLE align=center BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR>
+<TD CLASS="mm"><B>Budget </B><TD> |24,1,0|
+<TD CLASS="mm"><B>Balance</B> <TD> |4,0,0,,,MD2|
+<TD CLASS="mm"><B>Committed </B><TD> |27,0,0|
+<TD CLASS="mm"><B>Budget Hours </B><TD> |25,0,0|
+<TD CLASS="mm"><B>Hours </B><TD> |26,0,0|
+</TABLE>
+
+||SRsrjob_trans
+<TABLE BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>&nbsp;
+<TH>&nbsp;
+<TH>&nbsp;
+<TH>&nbsp;
+<TH>Client
+<TH>Name or
+<TH>&nbsp;
+<TH colspan=3>Qty or Hrs
+<TH>&nbsp;
+<TH>Order
+<TH>&nbsp;
+<TH>&nbsp;
+
+<TR CLASS="top">
+<TH>Date
+<TH>Type
+<TH>Amount
+<TH>Ordered
+<TH>Stock
+<TH>Description
+<TH>Reference
+<TH>&nbsp;
+<TH>1.5x
+<TH>2x
+<TH>Description
+<TH>or GI
+<TH>Job
+<TH>Description
+
+||TABLE000 <TR><TD nowrap> |1,N,0,,,D2|&nbsp;<TD> |2,N,0|&nbsp;<TD ALIGN=RIGHT nowrap>&nbsp;|3,NT,0,,,MD2|<TD ALIGN=RIGHT nowrap>&nbsp; |4,NT,0,,,MD2|<TD> |@,/prospect/asp/bi.asp?fn=%%%&tn=%%%&item=,5,N,0|&nbsp;<TD> |6,N,0|&nbsp;<TD> |@,/prospect/asp/bi.asp?fn=???&tn=!!!&item=,7,N,0|&nbsp;<TD align=right> |8,NT,0|&nbsp;<TD align=right> &nbsp;|11,N,0|<TD align=right> &nbsp;|12,N,0|<TD nowrap> |9,N,0|&nbsp;<TD> |10,N,0|&nbsp;<TD> |13,N,0|&nbsp;<TD>|14,N,0|&nbsp;
+</TABLE>
+||SREND
+
+

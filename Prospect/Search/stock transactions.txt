@@ -1,0 +1,12 @@
+filetouse=st_trans
+templatetouse=st_trans
+codeattr=2
+srchlist=a10,a9,tramt,trdate,trdate,gldate,gldate
+srchkey=none
+labellist=Branch,Stock Number,Amount,Date (from),Date (to),G/L Date (from),G/L Date (to)
+sorts=a10,a9,tramt,trdate,gldate
+sortdescs=Branch,Stock Number,Amount,Transaction Date,G/L Date
+title=STOCK TRANSACTIONS
+hds=Stock Code|Description|Branch|Reference|Type|Date|Quantity|Value|GL Date
+tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD NOWRAP>|<TD ALIGN=RIGHT>|<TD ALIGN=RIGHT>|<TD NOWRAP>
+dms=9,0,0|9,0,0,,,TSTOCK;1|10,0,0,,,TBRANCH;1|@!,/prospect/asp/bi.asp?fn=st_trans&tn=@@&item=,3|2,1,1,,,tdict trans.j;2|4,1,1,,,D2|5,nt,0|6,nT,0,,,MD2|7,1,1,,,D2

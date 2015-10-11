@@ -1,0 +1,12 @@
+filetouse=cr.inv
+templatetouse=cr_inv
+srchlist=name,creditor,inv
+srchkey=none
+labellist=Íığ,Çııëävvëıã÷èéí ¹,Íıõıìæëıëèéí ¹
+title=ÇİİËÄYYËİÃ×ÈÉÍ ÍİÕİÌÆËİÕ
+hds=Id|Çııëävvëıã÷|Äàíñ|Òîäîğõîéëîëò
+tds=<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=cr.inv&tn=cr_inv&item=,0|@,/prospect/asp/bi.asp?fn=creditor&tn=creditor&item=,0,1,1,,,G*1~TCLIENT;1|10,1,1|12,1,1
+radiobtns=Credit Notes,Credit Notes in Batch file,Invoices in Batch file,Invoices
+radiocode=|cr.credit|cr_credit|ÇİİËÄİÃ×ÈÉÍ ÊĞÅÄÈÒ ÒİÌÄİÃËİË,|cr.cr.batch|cr_cr_batch|ÁYËİÃ ÔÀÉË ÄÀÕÜ ÇİİËÄYYËİÃ×ÈÉÍ ÊĞÅÄÈÒ ÒİÌÄİÃËİË ,|cr.inv.batch|cr_inv_batch|ÁYËİÃ ÔÀÉË ÄÀÕÜ ÇİİËÄYYËİÃ×ÈÉÍ ÍİÕİÌÆËİÕ,|cr.inv|cr_inv|ÇİİËÄYYËİÃ×ÈÉÍ ÍİÕİÌÆËİÕ
+adhoc=@2291

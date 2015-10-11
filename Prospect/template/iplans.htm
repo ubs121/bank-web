@@ -1,0 +1,274 @@
+@@INPUT@@Building Application
+
+<TABLE  cellspacing="1">
+<TR class=top><TD>
+<TABLE WIDTH="100%" border="1" cellspacing="1" >
+||IF,18,#,
+ <TR class=searchtable><TD COLSPAN = "2"><Font class=white><B>|18|</B></font>
+||IFEND
+
+||IF,24,#,
+ <TR class=searchtable><TD COLSPAN = "2"><Font class=white><B>*** CANCELLED ***</B></font>
+||IFEND
+
+||IF,24,=,
+||IF,20,#,
+ <TR class="searchtable"><TD COLSPAN = "2"><Font class=white><B>*** FEES RAISED ***</B></font>
+||IFEND
+||IFEND
+
+<TR  class=top><TD COLSPAN = "2" CLASS=b ><B><center>General Details</center></B>
+<TR>
+<TD  CLASS=itemname ><B>Assessment</B>
+<TD ><input type="Text" name="1,1,1,Assess,,N" value="|1|" size="45%" maxlength="35" onBlur='GetAssessAddress(document.all("I1,1,1,Assess,,N"),this.value); GetOwnerName(document.all("II1,1,1,Assess,,N"),this.value)'>
+	<INPUT class=bold TYPE="Button" VALUE="Search" onClick='BuildSentence(document.assetform("1,1,1,Assess,,N"),document.all.SearchResults,"RSProperty.txt","")'> 
+
+<TR>
+<TD  CLASS=itemname><B>Assessment Address</B>
+<TD id="I1,1,1,Assess,,N"> &nbsp|1,1,1,,,TCLIENT;2;3;4;5|
+
+<TR>
+<TD CLASS=itemname ><B>Owner</B>
+<TD id="II1,1,1,Assess,,N"> &nbsp|1,1,1,,,TOWNERNAME|
+
+<TR>
+<TD  CLASS=itemname ><B>Applicant</B>
+<TD ><input type="Text" name="2,1,1,Applicant,,N" value="|2|" size="45%" maxlength="35" onBlur='GetAssessAddress(document.all("I2,1,1,Applicant,"),this.value)'>
+    <INPUT class=bold TYPE="Button" VALUE="Search" onClick='BuildSentence(document.assetform("2,1,1,Applicant,,N"),document.all.SearchResults,"RSClients.txt","");'>
+<TR>
+<TD CLASS=itemname ><B>Applicant Address (Builder)</B>
+<TD id="I2,1,1,Applicant,">
+ &nbsp|2,1,1,,,TCLIENT;7,1;1,1;2,1;3,1;4,1;5,1|
+<TR>
+<TD CLASS=itemname ><B>Dual Occupancy Indicator</B>
+<TD><input type="Text" CLASS="smallTxt" name="44,0,0,Dual Occupancy Indicator,,N" value="|44|" align="LEFT" size="90%" maxlength="10"> 
+<TR>
+ <TD CLASS=itemname ><B>Pre-existing Dwellings</B>
+ <TD><input type="Text" CLASS="smallTxt" name="46,0,0,Pre-Existing Dwellings,,N" value="|46|" align="LEFT"  size="90%" maxlength="10"> 
+
+<TR>
+ <TD CLASS=itemname ><B>Future Owner Name</B>
+ <TD><input type="Text" CLASS="smallTxt" name="53,0,0,Future Owner Name,," value="|53|" align="LEFT" size="90%" maxlength="30"> 
+<TR>
+  <TD CLASS=itemname ><B>Future Owner Address1</B>
+  <TD><input type="Text" CLASS="smallTxt" name="54,0,0,Future Owner Name,," value="|54|" align="LEFT" size="90%" maxlength="30"> 
+<TR>
+  <TD CLASS=itemname ><B>Future Owner Address2</B>
+  <TD><input type="Text" CLASS="smallTxt" name="55,0,0,Future Owner Name,," value="|55|" align="LEFT" size="90%" maxlength="30"> 
+<TR>
+<TD CLASS=itemname ><B>Work Type</B>
+<TD>
+<select name="sel4" class="smallSel">
+||OPTIONS|SSELECT|work|121|@@PATH@@\ckashare\build\build.mdb\work|1|
+</select>
+</TABLE>
+<TR  class=top><TD>
+
+<TABLE WIDTH="100%" border="1" cellspacing="1" cellpadding="1">
+<TR> 
+<TD CLASS=itemname ><B>Pre-Paid Amount</B>
+<TD><input type="Text"  CLASS="smallTxt" name="42,1,1,Pre-Paid Amount,," value="|42|" align="LEFT" size="14%" maxlength="12"> 
+<TD CLASS=itemname ><B>Receipt Number</B>
+<TD><input type="Text"  CLASS="smallTxt" name="41,1,1,Receipt Number,," value="|41|" align="LEFT" size="14%" maxlength="12"> 
+<TD CLASS=itemname ><B>No Statistics</B>
+<TD><input type="Text"  CLASS="smallTxt" name="50,1,1,No Statistics,,N" value="|50|" align="LEFT" size="14%" maxlength="1"> 
+</TABLE>
+
+<TR  class=top><TD>
+
+<TABLE WIDTH="100%" border="1" cellspacing="1" cellpadding="1">
+<TR  class=top>
+   <TD COLSPAN = "6" CLASS=b ><B>Builders Details</B>
+<TR>
+<TD CLASS=itemname ><B>Builder's Reg. Number</B>
+<TD><input type="Text" CLASS="smallTxt" name="3,1,1,Builder's Reg. Number,,N" value="|3|" align="LEFT" size="14%" maxlength="30"> 
+<TD CLASS=itemname ><B>Builder's Job Number</B>
+<TD><input type="Text" CLASS="smallTxt" name="27,1,1,Builder's Job Number,,N" value="|27|" align="LEFT" size="14%" maxlength="30"> 
+<TD CLASS=itemname ><B>Estimated Value</B>
+<TD><input type="Text" CLASS="smallTxt" name="16,1,1,Estimated Value,,MD2" value="|16,1,1,,,MD2|" align="LEFT" size="14%" maxlength="30"> 
+</TABLE>
+
+<TR class=top><TD>
+
+<TABLE WIDTH="100%" border="1" cellspacing="1" cellpadding="1">
+<TR>
+<TD CLASS=itemname ><B>Application Lodged</B>
+<TD><input type="Text" CLASS="smallTxt" name="17,1,1,Application Lodged,,D2" value="|17,1,1,,,D2|" align="LEFT"  size="34%" maxlength="30"> 
+<TD CLASS=itemname ><B>Application Completed</B>
+<TD><input type="Text" CLASS="smallTxt" name="19,1,1,Application Completed,,D2" value="|19,1,1,,,D2|" align="LEFT" size="34%"  maxlength="30"> 
+<TR>
+<TD CLASS=itemname ><B>Application Cancelled</B>
+<TD><input type="Text" CLASS="smallTxt" name="30,1,1,Application Cancelled,,D2" value="|30,1,1,,,D2|" align="LEFT"  size="34%" maxlength="30"> 
+
+<TD CLASS=itemname ><B>Fees Raised</B>
+<TD><input type="Text" CLASS="smallTxt" name="20,1,1,Fees Raised,,D2" value="|20,1,1,,,D2|" align="LEFT" size="34%" maxlength="30"> 
+<TR>
+<TD CLASS=itemname ><B>Building Started</B>
+<TD><input type="Text" CLASS="smallTxt" name="31,1,1,Building Started,,D2" value="|31,1,1,,,D2|" align="LEFT" size="34%" maxlength="30"> 
+
+<TD CLASS=itemname ><B>Building Completed</B>
+<TD><input type="Text" CLASS="smallTxt" name="36,1,1,Building Completed,,D2" value="|36,1,1,,,D2|" align="LEFT" size="34%" maxlength="30"> 
+</TABLE>
+
+<TR  class=top><TD>
+
+<TABLE WIDTH="100%" border="1" cellspacing="1" cellpadding="1">
+<TR  class=top><TD COLSPAN = "6" CLASS=b ><B>Building Details</B>
+<TR>
+<TD CLASS=itemname ><B>Building Narrative</B>
+<TD><input type="Text" CLASS="smallTxt" name="8,1,1,Building Narrative,," value="|8|" align="LEFT" size="100%" maxlength="90"> 
+<TR>
+<TD CLASS=itemname ><B>General Narrative</B>
+<TD><input type="Text" CLASS="smallTxt" name="6,1,1,Building Narrative,," value="|6|" align="LEFT" size="100%" maxlength="90"> 
+<TR>
+</TABLE>
+
+<TR class=top><TD>
+<TABLE WIDTH="100%" border="1" cellspacing="1" cellpadding="1">
+<TR>
+<TD CLASS=itemname ><B>Building Type</B>
+<TD>
+<select name="sel5" class="smallSel">
+||OPTIONS|SSELECT|building|121|@@PATH@@\ckashare\build\build.mdb\building|1|
+</select>
+<TD CLASS=itemname ><B>Other Building Type</B>                                                                                                                                                                                                                                                                                               
+<TD>
+<select name="sel7" class="smallSel">
+||OPTIONS|SSELECT|other|121|@@PATH@@\ckashare\build\build.mdb\other|1|
+</select>
+<TR>
+<TD CLASS=itemname ><B>Building Class</B>
+<TD>
+<select name="sel15" class="smallSel">
+||OPTIONS|SSELECT|classification|121|@@PATH@@\ckashare\build\build.mdb\classification|1|
+</select>
+<TD CLASS=itemname ><B>Fee Code</B>
+<TD>
+<select name="sel22" class="smallSel">
+||OPTIONS|SSELECT|fee|121|@@PATH@@\ckashare\build\build.mdb\fee|1|
+</select>
+<TR>
+<TD CLASS=itemname ><B>Wall Material</B>
+<TD>
+<select name="sel10" class="smallSel">
+||OPTIONS|SSELECT|wall|121|@@PATH@@\ckashare\build\build.mdb\wall|1|
+</select>
+<TD CLASS=itemname ><B>Roof Material</B>
+<TD>
+<select name="sel11" class="smallSel">
+||OPTIONS|SSELECT|roof|121|@@PATH@@\ckashare\build\build.mdb\roof|1|
+</select>
+<TR>
+<TD CLASS=itemname ><B>Floor Material</B>
+<TD>
+<select name="sel12" class="smallSel">
+||OPTIONS|SSELECT|floor|121|@@PATH@@\ckashare\build\build.mdb\floor|1|
+</select>
+<TD CLASS=itemname ><B>Frame Type</B>
+<TD>
+<select name="sel45" class="smallSel">
+||OPTIONS|SSELECT|frame|121|@@PATH@@\ckashare\build\build.mdb\frame|1|
+</select>
+<TR>
+<TD CLASS=itemname ><B>BCA Codes</B>
+<TD>
+<select name="sel82" class="smallSel">
+||OPTIONS|SSELECT|bca|121|@@PATH@@\ckashare\build\build.mdb\bca|1|
+</select>
+<TD> &nbsp;
+<TR>
+<TD CLASS=itemname ><B>Area of Building</B>
+<TD><input type="Text"  CLASS="smallTxt" name="13,1,1,Area of Building,," value="|13|"  size="28%" maxlength="10"> sqm
+<TD CLASS=itemname ><B>Number of Storeys</B>
+<TD><input type="Text"  CLASS="smallTxt" name="14,1,1,Number of Storeys,," value="|14|" size="21%" maxlength="10">
+<TR>
+<TD CLASS=itemname ><B>Number of Units</B>
+<TD><input type="Text"  CLASS="smallTxt" name="9,1,1,Number of Units,," value="|9|" size="33%" maxlength="10">
+
+<TD CLASS=itemname ><B>Setback Variation</B>
+<TD><input type="Text"  CLASS="smallTxt" name="78,1,1,Setback Variation,," value="|78|" size="21%" maxlength="10"> 
+<TR>
+<TD CLASS=itemname ><B>Ownership Type</B>
+<TD><input type="Text"  CLASS="smallTxt" name="79,1,1,Ownership Type,," value="|79|" size="33%" maxlength="10">
+<TD CLASS=itemname ><B>Attached/Detached(A/D)</B>
+<TD><input type="Text"  CLASS="smallTxt" name="80,1,1,Attached/Detached,," value="|80|" size="21%" maxlength="5"> 
+<TR>
+<TD CLASS=itemname ><B>Num. of Demolished Dwellings</B>
+<TD><input type="Text"  CLASS="smallTxt" name="81,1,1,Num of Demolished Dwellings,," value="|81|" size="33%" maxlength="5"> 
+</TABLE>
+
+<TR  class=top><TD>
+
+<TABLE WIDTH="100%" border="1" cellspacing="1" cellpadding="1">
+<TR  class=top><TD COLSPAN = "4" CLASS=b ><B>Insurance Details</B>
+<TR>
+<TD CLASS=itemname ><B>Insurer Name</B>
+<TD><input type="Text"  CLASS="smallTxt" name="66,1,1,Insurer Name,," value="|66|" size="31%" maxlength="30"> 
+<TD CLASS=itemname ><B>Certificate Number</B>
+<TD><input type="Text"  CLASS="smallTxt" name="67,1,1,Certificate Number,," value="|67|" size="31%" maxlength="30"> 
+<TR>
+<TD CLASS=itemname ><B>Amount of Insurance Cover</B>
+<TD><input type="Text"  CLASS="smallTxt" name="70,1,1,Amount of Insurance Cover,,MD2" value="|70,1,1,,,MD2|" size="31%" maxlength="30">  
+<TD CLASS=itemname ><B>Effective Date</B>
+<TD><input type="Text"  CLASS="smallTxt" name="68,1,1,Effective Date,,D2" value="|68,1,1,,,D2|" size="31%" maxlength="31%">  
+<TR>
+<TD CLASS=itemname ><B>Issue Date</B>
+<TD><input type="Text"  CLASS="smallTxt" name="71,1,1,Issue Date,,D2" value="|71,1,1,,,D2|" size="31%" maxlength="30"> 
+<TD CLASS=itemname><B>Expiry Date</B>
+<TD><input type="Text"  CLASS="smallTxt" name="69,1,1,Expiry Date,,D2" value="|69,1,1,,,D2|" size="31%" maxlength="30">  
+</TABLE>
+
+<TR  class=top><TD>
+
+<TABLE WIDTH="100%" border="1" cellspacing="1" cellpadding="1">
+<TR  class=top><TD COLSPAN = "4" CLASS=b ><B>Approvals</B>
+<TR>
+<TD CLASS=itemname ><B>Department</B>
+<TD>
+<select name="sel56" class="smallSel">
+||OPTIONS|SSELECT|departments|121|@@PATH@@\ckashare\build\build.mdb\departments|1|
+</select>
+
+<TD CLASS=itemname ><B>Department Officer</B>
+<TD>
+<select name="sel57" class="smallSel">
+||OPTIONS|SSELECT|surveyor|121|@@PATH@@\ckashare\build\build.mdb\surveyor|1|
+</select>
+
+<TR>
+<TD CLASS=itemname ><B>Authorising Officer</B>
+<TD>
+<select name="sel58" class="smallSel">
+||OPTIONS|SSELECT|surveyor|121|@@PATH@@\ckashare\build\build.mdb\surveyor|1|
+</select>
+<TD CLASS=itemname ><B>Approval Days</B>
+<TD><input type="Text"  CLASS="smallTxt" name="40,1,1,Approval Days,,N" value="|40|" size="35%" maxlength="5"> 
+
+<TR>
+<TD CLASS=itemname ><B>Date Approved</B>
+<TD><input type="Text" CLASS="smallTxt" name="59,1,1,Date Approved,,D2" value="|59,1,1,,,D2|" align="LEFT" size="35%" maxlength="30"> 
+<TD CLASS=itemname ><B>Operator</B>
+<TD><input type="Text"  CLASS="smallTxt" name="60,1,1,Operator,," value="|60|" size="35%" maxlength="5"> 
+</TABLE>
+</TABLE>
+
+</form>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;1;2;3;4;5");
+   Address.innerHTML=co.return_value;
+}
+function GetOwnerName(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TOWNERNAME");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+

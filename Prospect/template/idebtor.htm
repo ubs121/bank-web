@@ -1,0 +1,39 @@
+@@INPUT@@Sundry Debtor 
+
+<TABLE align=center border="1" cellspacing="1" cellpadding="1">
+<TR class=item>
+        <TD CLASS="top"><B>GL Relationship</B>
+		<TD class=top>
+<select name="sel23">
+||OPTIONS|SSELECT|glcontrols|23|@@PATH@@\ckashare\debtors\debtors.mdb\glcontrols|1|
+</select>
+        <TD CLASS="top"><B>Status</B>
+		<TD class=top>
+<select name="sel17">
+||OPTIONS|SSELECT|status|17|@@PATH@@\ckashare\debtors\debtors.mdb\status|1|
+</select>
+        <TD CLASS="top"><B>Classification</B>
+		<TD class=top>
+<select name="sel21">
+||OPTIONS|SSELECT|classification|21|@@PATH@@\ckashare\debtors\debtors.mdb\classification|1|
+</select>
+
+<TR class=item>
+        <TD CLASS="top"><B>Consolidate To Debtor</B>
+        <TD class=top><input name="19,0,0,Consolidate To Debtor" value="|19|" size=10>
+
+        <TD CLASS="top"><B>Credit Limit</B>
+        <TD class=top><input name="29,0,0,Credit Limit,MD2" value="|29|" size=10>
+
+        <TD CLASS="top"><B>Statement Type (0=bal fwd, 1=open item)</B>
+        <TD class=top><input name="C57,0,0,Statement Type" value="|57|" size=10>
+
+        <TD CLASS="top"><B>GL Default Income</B>
+        <TD class=top><input name="C77,0,0,GL Default Income" value="|77|" size=10>
+
+</TABLE>
+</FORM>
+
+
+</BODY>
+</HTML>

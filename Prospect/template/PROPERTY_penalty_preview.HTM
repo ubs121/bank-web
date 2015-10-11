@@ -1,0 +1,44 @@
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><INPUT TYPE=hidden NAME="fn" VALUE="property"><INPUT TYPE=hidden NAME="tn" VALUE="property_penalty_preview"><INPUT TYPE="hidden" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+
+||SRCLIENT
+<BR><B><CENTER>Penalty preview for all properties owned by</B></CENTER>
+<BR><CENTER><B><FONT SIZE=+1>|0,0,0,,,TOWNERNAME|</FONT></B></CENTER>
+||SREND|
+
+<P>
+<FORM name=property_penalty_date method=GET action="/prospect/asp/bi.asp">
+<INPUT TYPE=hidden NAME=item VALUE="|0|">
+<INPUT TYPE=hidden NAME=tn VALUE="property_penalty_preview">
+<INPUT TYPE=hidden NAME=fn VALUE="&#8;">
+<P align=center><B>Recalculate to: <input type="text" name="parameter" value=""></B>
+<BR>Enter year as eg 2001 else your date may be misinterpreted as mm/dd/yy instead of dd/mm/yy
+</FORM>
+
+||SRsr1694,
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH COLSPAN=10>Penalty calculated to |15|
+<TH COLSPAN=6>Transactions with penalty
+<TR CLASS="top">
+<TH>Assessment
+<TH>Address
+<TH>Current
+<TH>Arrears
+<TH>Gross
+<TH>Deferred
+<TH>Discount/Rebate
+<TH>Penalty
+<TH>Net Due
+<TH>Daily Accrual
+<TH>Reference
+<TH>Balance
+<TH>Date Due
+<TH>Days
+<TH>%
+<TH>Penalty
+||TABLE000 <TR><TD> |@,/prospect/asp/bi.asp?fn=property&tn=property&item=,2,N,1|<TD>|2,N,0,,,TCLIENT;2;3;4;5|<TD ALIGN="RIGHT">&nbsp;|6,NT,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|10,NT,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|4,NT,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|14,NT,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|12,NT,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|17,NT,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|8,NT,1,,,MD2|<TD ALIGN="RIGHT">&nbsp;|37,NT,1|<TD nowrap>|@,/prospect/asp/bi.asp?fn=rates&tn=rates&item=,38,N,0|<TD ALIGN="RIGHT">&nbsp;|32,N,0,,,MD2|<TD>&nbsp;|33,N,0,,,D2|<TD ALIGN="RIGHT">&nbsp;|34,N,0|<TD ALIGN="RIGHT">&nbsp;|35,N,0|<TD ALIGN="RIGHT">&nbsp;|36,N,0,,,MD2|
+</TABLE>
+
+||SREND
+
+

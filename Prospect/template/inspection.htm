@@ -1,0 +1,79 @@
+||IF,9,=,H
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>HEALTH INSPECTION </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="inspection"><INPUT TYPE=hidden NAME="tn" VALUE="inspection"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+||IFEND
+||IF,9,=,S
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>POOL INSPECTION </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="inspection"><INPUT TYPE=hidden NAME="tn" VALUE="inspection"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+||IFEND
+
+<TABLE WIDTH=95%>
+<TR>
+<TD CLASS="mm">
+||IF,9,=,H
+<B>Premises ID</B><TD> <A HREF="/prospect/asp/bi.asp?fn=eats&tn=eats&item=|1,1,0|"><FONT CLASS=itemlnk>|1,1,0| &nbsp;&nbsp; |1,1,0,,,Teats;5|</FONT></A>
+<TD CLASS="mm">
+<B>Assessment</B><TD COLSPAN=2> <A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|1,1,0,,,Teats;1|"><FONT CLASS=itemlnk>|1,1,0,,,Teats;1| &nbsp;&nbsp; |1,1,0,,,Teats;1~TRES_ADDRESS|</FONT></A>
+||IFEND
+||IF,9,=,S
+<B>Pool ID</B><TD> <A HREF="/prospect/asp/bi.asp?fn=sw.pool&tn=sw_pool&item=|1,1,0|"><FONT CLASS=itemlnk>|1,1,0|</FONT></A>
+<TD CLASS="mm">
+<B>Assessment</B><TD COLSPAN=2> <A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|1,1,0,,,Tsw.pool;1|"><FONT CLASS=itemlnk>|1,1,0,,,Tsw.pool;1| &nbsp;&nbsp; |1,1,0,,,Tsw.pool;1~TRES_ADDRESS|</FONT></A>
+||IFEND
+<TR>
+<TD CLASS="mm">
+<B>Inspection Date</B><TD> |2,1,1,,,D2|
+<TD CLASS="mm">
+<B>Next Inspection</B><TD> |7,1,1,,,D2|
+<TR>
+<TD CLASS="mm">
+||IF,9,=,H
+<B>Surveyor</B><TD COLSPAN=3> |4,1,1,,@S.,TEAT.CODES;1|
+||IFEND
+||IF,9,=,S
+<B>Surveyor</B><TD COLSPAN=3> |4,1,1,,@S.,TSW.POOL.CODES;1|
+||IFEND
+<TR>
+<TD CLASS="mm">
+||IF,9,=,H
+<B>Order</B><TD>|5|
+||IFEND
+||IF,9,=,S
+<B>Order</B><TD><A HREF="/prospect/asp/bi.asp?fn=health.order&tn=order&item=|5,1,0|"><FONT CLASS=itemlnk>|5|</FONT></A>
+<TD CLASS="mm">
+<B>Order Date</B><TD> |5,1,1,,,THEALTH.ORDER;2,1,1~D2|
+||IFEND
+||IF,9,=,H
+<TR>
+<TD CLASS="mm">
+<B>Risk Weighting</B><TD COLSPAN=3> |3,1,1,,,MD2|
+||IFEND
+</TABLE>
+<P>
+
+||IF,9,=,S
+<TABLE WIDTH=95%>
+<TR CLASS="top">
+<TH COLSPAN=2>Inspection item
+<TH>Comply
+||TABLE000 <TR><TD>|11,N,1|<TD>|11,N,1,,,C@I.;G1.1~Tsw.pool.codes;1|<TD ALIGN=CENTER>|12,N,1|
+</TABLE>
+||IFEND
+
+||IF,9,=,H
+<TABLE WIDTH=95%>
+<TR CLASS="top">
+<TH>Inspection item
+<TH>Score
+<TH>Weight
+<TH>Actual
+||TABLE000 <TR><TD>|11,N,1|<TD ALIGN=CENTER>|12,N,1|<TD ALIGN=RIGHT>|3,1,1,,,MD2|<TD ALIGN=RIGHT>|0,1,1,,,A*V|
+</TABLE>
+||IFEND
+
+<!--
+Weight is supposed to be stored in a3 of inspection according to the dict item BUT If a3 = 13 then weight in TA3611 is 1, score is 13
+Documentation OR program 3611 is wrong.
+-->

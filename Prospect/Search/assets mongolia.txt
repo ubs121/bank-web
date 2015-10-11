@@ -1,0 +1,31 @@
+xdatabase=msa
+where=e:\ckashare\assets\assets.mdb\
+title=?????
+
+filetouse=asset
+templatetouse=asset
+srchlist=a0,desc,A4,group,audit.date,audit.date,sale.date,sale.date,apur.price,pur.date
+labellist=??????? ??????,????????????,Location,Group,Audit Date (from),Audit Date (to),Disposal Date (from),Disposal Date (to),Purchase Price,Purchase Date
+itemlist=,,sselect location a0 a1 by a1
+prefix=,[,
+suffix=,],
+hds=?????|????????????|Location|Purchase Date|Group|Audit Date|Disposal Date|Purchase Price|Depreciated Value
+tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD>|<TD>|<TD align=right>|<TD align=right>
+dms=@,/prospect/asp/bi.asp?fn=asset&tn=asset&item=,0|3|4,1,1,,,TLOCATION;1|5,1,1,,,D2|37|21,1,1,,,D2|23,1,1,,,D2|6,1,1,,,MD2|12,1,1,,,MD2
+,1,1,,,MD2
+adhoc=@1491
+
+msa_filetouse=@WHERE@asset
+msa_templatetouse=asset_msa
+msa_srchlist=a0,desc,A4,group,audit.date,audit.date,sale.date,sale.date,apur.price,pur.date
+msa_labellist=??????? ??????,????????????,Location,Group,Audit Date (from),Audit Date (to),Disposal Date (from),Disposal Date (to),Purchase Price,Purchase Date
+msa_itemlist=,,sselect location a0 a1 by a1
+msa_prefix=,[,
+msa_suffix=,],
+msa_hds=?????|????????????|Location|Purchase Date|Group|Audit Date|Disposal Date|Purchase Price|Depreciated Value
+msa_tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD>|<TD>|<TD align=right>|<TD align=right>
+msa_dms=@,/prospect/asp/bi.asp?fn=@WHERE@asset&tn=asset&item=,0|3|4,1,1,,,T@WHERE@LOCATION;1|5,1,1,,,D2|37|21,1,1,,,D2|23,1,1,,,D2|6,1,1,,,MD2|12,1,1,,,MD2
+,1,1,,,MD2
+
+
+

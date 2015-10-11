@@ -1,0 +1,160 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>RATE TRANSACTION </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="rates"><INPUT TYPE=hidden NAME="tn" VALUE="rates"><INPUT TYPE="text" NAME="item" SIZE=13 VALUE="|0|"></FORM>
+</TABLE>
+
+<p><center><b>
+Assessment <A HREF="/prospect/asp/bi.asp?fn=tdebtor&tn=tdebtor&item=|0,0,0,,,G1*1|">|0,0,0,,,G1*1|</A> |0,0,0,,,G1*1~TCLIENT;1;2;3;4;5|
+
+
+<br>
+Reference  |0,0,0,,,G*1|
+</b></center>
+
+||IF,59,#,R
+||IF,59,#,P
+<TABLE WIDTH=95%>
+<TR>
+<TD CLASS="mm">
+<B>Gross Amount</B><TD> |2,1,1,,,MD2|
+<TD CLASS="mm">
+<B>Date Levied</B><TD> |3,1,1,,,D2|
+<TD CLASS="mm">
+<B>GL Date</B><TD> |4,1,1,,,D2|
+
+
+||IF,8,=,
+<TR>
+<TD CLASS="mm">
+<B>Valuation</B><TD> |5,1,1|
+<TD CLASS="mm">
+<B>Rate in $</B><TD> |6,1,1|
+<TD CLASS="mm">
+<B>Minimum</B><TD> |7,1,1,,,MD2|
+||IFEND
+||IF,5,=,
+<TR>
+<TD CLASS="mm">
+<B>Units</B><TD> |5,1,1|
+<TD CLASS="mm">
+<B>Minimum</B><TD COLSPAN=3> |7,1,1|
+||IFEND
+
+<TR>
+<TD class="tdempty">&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Discount %</B><TD> |10,1,1|
+<TD CLASS="mm">
+<B>Cut off Date</B><TD> |11,1,1,,,D2|
+<TD CLASS="mm">
+<B>Discount Amount</B><TD> |12,1,1,,,MD2|
+||IF,13,#,
+<TR>
+<TD CLASS="mm">
+<B>Discount Given</B><TD> |13,1,1,,,MD2|
+||IFEND
+
+<TR>
+<TD class="tdempty">&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Penalty %</B><TD> |15,1,1|
+<TD CLASS="mm">
+<B>Apply from</B><TD> |16,1,1,,,D2|
+||IF,17,#,
+<TD CLASS="mm">
+<B>Penalty Applied</B><TD> |17,1,1,,,MD2|
+||IFEND
+
+<TR>
+<TD class="tdempty">&nbsp;
+||IF,59,#,R
+<TR>
+<TD CLASS="mm">
+<B>Pensioner Rebate %</B><TD> |20,1,1|
+<TD CLASS="mm">
+<B>Rebate Gross Amount</B><TD> |21,1,1,,,MD2|
+<TD CLASS="mm">
+<B>Rebate Discounted Amount</B><TD> |22,1,1,,,MD2|
+||IF,23,#,
+<TR>
+<TD CLASS="mm">
+<B>Rebate Applied</B><TD> |23,1,1,,,MD2|
+||IFEND
+||IFEND
+||IF,25,#,
+<TR>
+<TD CLASS="mm">
+<B>Pensioner Remission %</B><TD> |25,1,1|
+<TD CLASS="mm">
+<B>Remission Gross Amount</B><TD> |26,1,1,,,MD2|
+<TD CLASS="mm">
+<B>Remission Discounted Amount</B><TD> |27,1,1,,,MD2|
+<TR>
+<TD CLASS="mm">
+<B>Remission Applied</B><TD> |28,1,1,,,MD2|
+||IFEND
+</TABLE>
+
+||IF,30,#,
+<TABLE WIDTH=95%>
+<TR>
+<TD CLASS="mm">
+<B>Interim effective date</B><TD> |30,1,1,,,D2|
+<TD CLASS="mm">
+<B>Days</B><TD> |43,1,1|
+<TD CLASS="mm">
+<B>Previous Code</B><TD> |31,1,1|
+<TD CLASS="mm">
+<B>Previous Valuation</B><TD> |32,1,1|
+<TD CLASS="mm">
+<B>Previous Amount</B><TD> |33,1,1,,,MD2|
+</TABLE>
+||IFEND
+
+||IF,34,#,
+<P align=center>
+<B>|34,0,0|</B> 
+||IFEND
+
+||IFEND
+||IFEND
+
+||IF,59,=,R
+<TABLE align=center>
+<TR><TD class="mm">Date of Rebate<TD>|3,,,,,D2|
+<TR><TD class="mm">G/L Date of Rebate<TD>|4,,,,,D2|
+<TR><TD class="mm">Assessment<TD><A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|63|">|63,0,0,,,TCLIENT;2,1;3,1;4,1;5,1|
+<TR><TD class="mm">Pensioner names<TD>|61|
+<TR><TD class="mm">Pensioner numbers<TD>|62|
+<TR><TD class="mm">Reference<TD>|64|
+<TR><TD class="mm">Cash Receipt<TD><A HREF="/prospect/asp/bi.asp?fn=cash&tn=cash&item=|65|">|65|
+<TR><TD class="mm">Rates Transaction<TD><A HREF="/prospect/asp/bi.asp?fn=rates&tn=rates&item=|66|*|63|">|66|
+<TR><TD class="mm">Amount on which rebate was given<TD>|67,,,,,MD2|
+<TR><TD class="mm">Rebate percentage<TD>|68|
+<TR><TD class="mm">General Ledger account creditted<TD><A HREF="/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=|69|">|69| |69,0,0,,,Tgen.l;2|
+<TR><TD class="mm">Amount of Rebate<TD><B>|70,,,,,MD2|</B>
+<TR><TD class="mm">Date Rebate Claimed<TD>|71,,,,,D2|
+<TR><TD class="mm">Date Rebate Cancelled (if cancelled)<TD>|72,,,,,D2|
+</TABLE>
+||IFEND
+
+||IF,59,=,P
+||IF,34,#,
+<P align=center>
+<B>|34,0,0|</B> 
+||IFEND
+
+<TABLE align=center>
+<TR><TD class="mm">Date of Penalty<TD>|3,,,,,D2|
+<TR><TD class="mm">G/L Date of Penalty<TD>|4,,,,,D2|
+<TR><TD class="mm">Assessment<TD><A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|63|">|63,0,0,,,TCLIENT;2,1;3,1;4,1;5,1|
+<TR><TD class="mm">Reference<TD>|64|
+<TR><TD class="mm">Cash Receipt<TD><A HREF="/prospect/asp/bi.asp?fn=cash&tn=cash&item=|65|">|65|
+<TR><TD class="mm">Penalty percentage<TD>|15|
+<TR><TD class="mm">General Ledger account creditted<TD><A HREF="/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=|69|">|69| |69,0,0,,,Tgen.l;2|
+<TR><TD class="mm">Amount of Penalty<TD><B>|70,,,,,MD2|</B>
+</TABLE>
+||IFEND
+
+

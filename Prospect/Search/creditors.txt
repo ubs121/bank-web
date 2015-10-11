@@ -1,0 +1,12 @@
+filetouse=creditor
+templatetouse=creditor
+srchlist=@@crindex|client|name|3|0|0|1@@,key,balance
+srchkey=3
+labellist=Name,Creditor Number,Balance Due
+sorts=alpha,key,balance,post,@rel,class
+sortdescs=Name,Number,Balance,Postcode,Relationship,Classification
+title=CREDITORS
+hds=Id|Name|Phone|Address
+tds=<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=creditor&tn=creditor&item=,0|0,1,1,,,TCLIENT;7;1|0,1,1,,,TCLIENT;9|0,1,1,,,TCLIENT;2;3;4
+adhoc=@2291

@@ -1,0 +1,5 @@
+filetouse=gen_l
+database=c:\ckashare\Gen_L\gen_l.mdb
+templatetouse=SearchJAccount
+srchkey=account,description
+title=Search - General Ledger

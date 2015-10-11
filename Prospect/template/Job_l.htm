@@ -1,0 +1,82 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>JOB LEDGER </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="job.l"><INPUT TYPE=hidden NAME="tn" VALUE="job_l"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE align=center>
+<TR>
+<TD CLASS="mm">
+<B>Description</B><TD> |2,1,0|&nbsp;|2,2,0|&nbsp;|2,3,0|
+<TD CLASS="mm">
+<B>Contract Price</B><TD> |30,1,0,,,MD2|
+<TR>
+<TD CLASS="mm">
+<B>Debtor</B><TD> <A HREF="bi.asp?fn=tdebtor&tn=tdebtor&item=|1,1,0|"><FONT CLASS="itemlnk">|1,1,0| &nbsp;&nbsp; |1,1,0,,,Tclient;6;1|</FONT></A>
+<TD CLASS="mm">
+<B>Job Category</B><TD> |22,1,0| <A HREF="bi.asp?fn=dict job.l&tn=job_cat&item=@class.|22|">|22,0,0,,@CLASS.,Tdict job.l;1|</A>
+
+<TR>
+<TD CLASS="mm">
+<B>Resp Code</B><TD> |29,1,0|
+<TD CLASS="mm">
+&nbsp;<TD> &nbsp;
+<TR>
+<TD COLSPAN=4>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Last Trans</B><TD> |7,1,1,,,D2|
+</TABLE>
+
+<P>
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR class=top>
+<TH>Summary
+<TH colspan=2>Estimated
+<TH colspan=3>Actual
+<TR class=top>
+<TH>
+<TH>Value<TH>Hours
+<TH>Value<TH>Committed<TH>Hours
+<TR>
+<TD><B>Total Expenses</B><TD ALIGN="right">|10,1,0,,,MD2~A*-1|<TD align=right> |25,1,0,,,MD2|<TD ALIGN="right">|5,1,0,,,MD2~A*-1| <TD align=right> |27,1,1,,,MD2~A*-1| <TD align=right> &nbsp; |26,1,0,,,MD2|
+<TR>
+<TD><B>Total Income</B><TD ALIGN="right"> &nbsp; |9,1,0,,,MD2|<TD> &nbsp; <TD ALIGN="right"> &nbsp; |6,1,0,,,MD2|<TD> &nbsp; <TD> &nbsp; 
+<TR>
+<TD><B>Profit/Loss</B><TD ALIGN="right"> &nbsp; <B>|9,+VAL00110,,,,MD2|</B><TD> &nbsp; <TD ALIGN="right"> &nbsp; <B>|6,+VAL0015,,,,MD2|</B><TD> &nbsp; <TD> &nbsp; 
+
+</TABLE>
+
+||IF,56,#,
+<P>
+||SRsr5310a
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS=top>
+<TH>Job Card
+<TH>Job Code
+<TH>Description
+<TH>Complete
+<TH>Last Svc Done
+<TH>Kilometers
+<TH>Next Svc Due
+<TH>Kilos / Date
+<TH>Override
+||TABLE000 <TR><TD align="left">|@,/prospect/asp/bi.asp?fn=job.card&tn=job_card&item=,13,N,1|<TD>|4,N,0|<TD>|5,N,0|<TD>|22,N,0|<TD>|6,N,0,,,D2|<TD>|7,N,0|<TD>|20,N,0,,,D2|<TD>|21,N,0|<TD>|1,N,0|
+||SREND
+</TABLE>
+||IFEND
+
+||IF,57,#,
+<P>
+||SRsr5305a
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS=top>
+<TH>Stock Item
+<TH>Description
+<TH>Supplier No.
+<TH>Supplier Name
+||TABLE000 <TR><TD align="left">|@,/prospect/asp/bi.asp?fn=stock&tn=stock&item=,1,N,1|<TD>|2,N,0|<TD>|@,/prospect/asp/bi.asp?fn=creditor&tn=creditor&item=,3,N,1|<TD>|4,N,0|
+||SREND
+</TABLE>
+||IFEND
+
+<P align=center>
+<A HREF="bi.asp?fn=job.l&tn=job_cs&item=|0|">Click here for Component Summary</A>

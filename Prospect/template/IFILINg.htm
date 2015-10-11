@@ -1,0 +1,129 @@
+@@INPUT@@Filing Document
+<INPUT id=select5 name=select5 value="|5,V|" type="hidden">
+<INPUT id="assessment_address_hide" NAME="assessment_address_hide" type="hidden">
+
+<TABLE WIDTH="100%" border="0" cellspacing="1" cellpadding="1">
+<TR class=item><TD>
+   <TABLE WIDTH="100%" border="1" cellspacing="1" cellpadding="1">
+     <TR>
+       <TD CLASS="itemname" WIDTH="102">Subject
+       <TD colspan="3"><TEXTAREA CLASS="smallTxtArea" NAME="4,0,0" COLS="80" ROWS="2" WRAP="VIRTUAL">|4,0,0|</TEXTAREA>
+   </TABLE>
+
+<TR class=item><TD>
+   <TABLE WIDTH="100%" border="1" cellspacing="1" cellpadding="1">
+    <TR>
+     <TD CLASS="itemname" WIDTH="102">Received
+     <TD><input type="Text" CLASS="smallTxt" name="1,0,0,Date Received,,D2" value="|1,0,0,,,D2|" align="LEFT" size="10" maxlength="10"> 
+     <TD CLASS="itemname" WIDTH="102" >Replied
+     <TD><input type="Text" CLASS="smallTxt" name="7,0,0,Date Replied,,D2" value="|7,0,0,,,D2|" align="LEFT" size="10" maxlength="10">
+     <TD CLASS="itemname" WIDTH="102" >Acknowledged
+     <TD><input type="Text" CLASS="smallTxt" name="11,0,0,Date Acknowledged,,D2" value="|11,0,0,,,D2|" align="LEFT" size="10" maxlength="10">
+     <TR>
+       <TD CLASS="itemname" WIDTH="102">Assessment
+	   <TD ><input type="Text" class="smalltxt" onChange='GetAssessAddress(document.all.assessment_address,this.value)' name="10,0,0,assessment" value="|10,0,0,,,|" align="LEFT" size="10" maxlength="10">
+       <TD colspan="4"><INPUT TYPE="Radio" checked NAME="hideRSSearch" VALUE="Assessment" CHECKED>Assessment
+	       <INPUT TYPE="Radio" NAME="hideRSSearch" VALUE="Owner"D>Owner
+		   <INPUT TYPE="Radio" NAME="hideRSSearch" VALUE="Road">Road
+           <INPUT TYPE="Button" class="smallButt" NAME="Search" VALUE="Search" onClick='BuildSentence(document.assetform("10,0,0,assessment"),document.all.SearchResults,"RSproperty.txt","")'>
+     <TR>
+ 	   <TD CLASS="itemname"> Address
+        <TD colspan="5">&nbsp;<I CLASS="input" id=assessment_address>|10,0,0,,,TCLIENT;2;3;4;5|</I>&nbsp;
+   </TABLE>
+
+<TR class=item><TD>
+  <TABLE WIDTH="100%" border="1" cellspacing="1" cellpadding="1">
+    <TR>
+<TD CLASS="itemname" WIDTH="102">File Number
+<TD>
+<select class="smallSel" name="sel8">
+||OPTIONS|SSELECT|filing.index by a0]"|8|filing.index|1|
+</select>
+      <TD CLASS="itemname" WIDTH="102" >Who From
+      <TD><input type="Text" CLASS="smallTxt" name="3" value="|3,0,0|" align="LEFT" size="50" maxlength="50">
+
+    <TR class=item>
+      <TD CLASS="itemname" WIDTH="102">Document Type
+      <TD>
+<select class="smallSel" name="sel13">
+||OPTIONS|SSELECT|act.codes by a1 with a0 = "@T.]"|13|act.codes|1|@T.
+</select>
+<TD CLASS="itemname" WIDTH="102">Related Item
+<TD colspan="3">
+<select class="smallSel" name="sel14">
+||OPTIONS|SSELECT|filing by a0|14|act.codes|0|
+</select>
+
+<TR class=item>
+<TD CLASS="itemname" WIDTH="102">Amount Enclosed
+<TD><input type="Text" CLASS="smallTxt" name="2,0,0,Amount Enclosed,,MD2" value="|2,0,0,,,MD2|" align="LEFT" size="10" maxlength="10">
+<TD CLASS="itemname" WIDTH="102">Cash/Cheque
+<TD>
+<select class="smallSel" name="sel12">
+||OPTIONS|SSELECT|act.codes by a1 with a0 = "@R.]"|12|act.codes|1|@R.
+</select>
+
+<TR class=item>
+<TD CLASS="itemname" WIDTH="102">Keyword(s)
+<TD>
+ <select class="smallSel" name="sel9">
+||OPTIONS|SSELECT|keywords by a0|9|keywords|0|
+</select>
+<TD CLASS="itemname" WIDTH="102">Action Taken
+<TD>
+<select class="smallSel" name="sel6">
+||OPTIONS|SSELECT|act.codes by a1 with a0 = "@A.]"|6|act.codes|1|@A.
+</select>
+  
+<TR class=item>
+<TD CLASS="itemname" WIDTH="102">Who Given To
+<TD> <I CLASS="input" ID=MSEL5>|5,0,0,,@N.,TACT.CODES;1|</I>
+<TD CLASS="itemname"><B>Select From List</B>
+<TD>
+<select class="smallSel" name="hide5" multiple size=@@SIZE@@>
+||OPTIONS|SSELECT|act.codes by a1 with a0 = "@N.]"|5|act.codes|1|@N.
+</select>
+
+</TABLE>
+</TABLE>
+</form>
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;1;2;3;4;5");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+
+<SCRIPT LANGUAGE="VBScript">
+Function hide5_onchange()
+   lth = assetForm.hide5.length - 1
+   for j=0 to lth
+      if assetForm.hide5.options(j).selected then
+         fld = trim(iassetForm.hide5.options(j).value)
+         if fld="" then MSEL5.innerText ="": document.assetform.select5.value ="": exit function
+         call hide_setup(fld)
+      end if
+   next
+End Function
+
+Sub hide_setup(fld)
+   code=mid(fld,instr(fld,vbtab)+2) 'get description vbtab (code)
+   code=left(code,len(code)-1) ' removing the ( ) around the code also
+   fld=left(fld,instr(fld,vbtab)-1)
+   if msel5.innertext = "" then
+      MSEL5.innerText = fld
+      document.assetform.select5.value = code
+   else
+      if instr(msel5.innertext,fld) = 0 then ' only add if not already there
+         MSEL5.innerText = MSEL5.innerText & vbcrlf & fld
+         document.assetform.select5.value = document.assetform.select5.value & chr(253) & code
+      end if
+   end if
+   exit sub
+End Sub
+</SCRIPT>
+
+

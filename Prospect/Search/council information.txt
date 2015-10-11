@@ -1,0 +1,10 @@
+filetouse=cis.coun
+templatetouse=cis_coun
+srchlist=a0,name,desc,subject
+labellist=Number,Name,Description,Subject
+prefix=,,[,[
+suffix=,,],]
+title=COUNCIL INFORMATION
+hds=Id|Name|Contact|Description|Subject
+tds=<TD>|<TD>|<TD>| |<TD NOWRAP>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=cis.coun&tn=cis_coun&item=,0|2,1,0|4,1,0|4,2,0|3,1,0|1,1,0

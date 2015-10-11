@@ -1,0 +1,93 @@
+<TABLE width=90%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>LOAN </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="loan"><INPUT TYPE=hidden NAME="tn" VALUE="loan"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE width=98% ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR>
+<TD CLASS="mm">
+<B>Purpose</B><TD COLSPAN=3> |11,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Schedule </B><TD> |9,1,1|
+<TD CLASS="mm">
+<B>Loan Type </B><TD> |10,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Lender</B><TD> |8,1,1| &nbsp;&nbsp; |8,1,1,,,Tlender;1|
+<TD CLASS="mm">
+<B>Lender Reference</B><TD> |1,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Principal Amount</B><TD COLSPAN=3> |13,1,1,,,MD2|
+<TR>
+<TD CLASS="mm">
+<B>Interest Rate</B><TD> |7,1,1,,,MD3|
+<TD CLASS="mm">
+<B>New Rate</B><TD> |35,1,1,,,MD3| |36,1,1,,,D2|  <BR>	|35,2,1,,,MD3| |36,2,1,,,D2|
+<TR>
+<TD CLASS="mm">
+<B>Issue Date</B><TD COLSPAN=3> |6,1,1,,,D2|
+<TR>
+<TD CLASS="mm">
+<B>Maturity Date</B><TD> |12,1,1,,,D2|
+<TD CLASS="mm">
+<B>Borrowed For</B><TD> |14,1,1| years
+<TR>
+<TD CLASS="mm">
+<B>Repayment Amount</B><TD> |16,1,1,,,MD2|
+<TD CLASS="mm">
+<B>Interest Only (Y/N)</B><TD> |19|
+<TR>
+<TD CLASS="mm">
+<B>Repayment Frequency</B><TD COLSPAN=3> |15|
+<TR>
+<TD CLASS="mm">
+<B>GL acct(s) pcpl/sink</B><TD> <A HREF="/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=|17,1,1|"><FONT CLASS=itemlnk>|17,1,1|</FONT></A> <BR> <A HREF="/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=|17,2,1|"><FONT CLASS=itemlnk>|17,2,1|</FONT></A>
+<TD CLASS="mm">
+<B>GL acct(s) interest</B><TD> <A HREF="/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=|18,1,1|"><FONT CLASS=itemlnk>|18,1,1|</FONT></A> <BR> <A HREF="/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=|18,2,1|"><FONT CLASS=itemlnk>|18,2,1|</FONT></A>
+<TR>
+<TD CLASS="mm">
+<B>Sinking Fund Amount</B><TD> |2,1,1,,,MD2|
+<TD CLASS="mm">
+<B>Sinking Fund Frequency</B><TD> |3|
+<TR>
+<TD CLASS="mm">
+<B>Fund Borrower Code</B><TD> |4,1,1| &nbsp;&nbsp; |4,1,1,,,Tlender;1|
+<TD CLASS="mm">
+<B>Fund Reference</B><TD> |5,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Fund Maturity Value</B><TD COLSPAN=3> |34,1,1,,,MD2|
+<TR>
+<TD CLASS="mm">
+<B>Interest Paid So Far</B><TD>  |25,SUM,1,,,MD2|
+<TD CLASS="mm">
+<B>Principal Outstanding</B><TD>  |13,-SUM24,1,,,MD2|
+</TABLE>
+<p>
+<b>Repayment Schedule</b>
+<TABLE width=98% ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Pay Date
+<TH>PCPL Amt
+<TH>Int Amt
+<TH>Total Amt
+<TH>Chq No
+<TH>Paid Date
+<TH>PCPL Paid
+<TH>Int Paid
+||TABLE000 <TR><TD>|20,N,1,,,D2|&nbsp;<TD ALIGN=RIGHT>&nbsp;|21,NT,1,,,MD2|<TD ALIGN=RIGHT>&nbsp;|22,NT,1,,,MD2|<TD ALIGN=RIGHT>&nbsp;|0,NT,1,,,A+V|<TD>|@,/prospect/asp/bi.asp?fn=chq.rec&tn=chq_rec&item=,26,N,1|&nbsp;<TD>|23,N,1,,,D2|&nbsp;<TD ALIGN=RIGHT>&nbsp;|24,NT,1,,,MD2|<TD ALIGN=RIGHT>&nbsp;|25,NT,1,,,MD2|
+</TABLE>
+<p>
+<b>Deposit Schedule</B>
+<TABLE width=98% ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Pay Date
+<TH>Total Amount
+<TH>Chq No
+<TH>Paid Date
+<TH>PCPL Paid
+<TH>Int Recd
+||TABLE000 <TR><TD>|27,N,1,,,D2|&nbsp;<TD ALIGN=RIGHT>&nbsp;|28,NT,1,,,MD2|<TD>|@,/prospect/asp/bi.asp?fn=chq.rec&tn=chq_rec&item=,33,N,1|&nbsp;<TD>|30,N,1,,,D2|&nbsp;<TD ALIGN=RIGHT>&nbsp;|31,NT,1,,,MD2|<TD ALIGN=RIGHT>&nbsp;|32,NT,1,,,MD2|
+</TABLE>
+

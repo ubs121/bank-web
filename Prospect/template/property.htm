@@ -1,0 +1,460 @@
+<script LANGUAGE="JAVASCRIPT">
+<!-->
+	function loadSelectionIntoView () {
+    var x=document.Listbox.Links.selectedIndex;
+	var newloc = document.Listbox.Links.options[x].value;
+	if (newloc != "") window.location.href=newloc;
+	}
+	// -->
+</script>
+
+<script LANGUAGE="VBSCRIPT">
+sub pr_rate_OnClick
+   rate_notice_print.submit  
+End sub
+</script>
+
+<TABLE  width=95%>
+<TR>
+
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET">
+<TD class="tdempty"><B><FONT color="#330000" SIZE=+1>RATES PROPERTY </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="property"><INPUT TYPE=hidden NAME="tn" VALUE="property"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|">
+</FORM>
+
+||IF,?,WDC,#
+<FORM name="Listbox">
+<TD VALIGN=top class="tdempty">
+<B>Look up related data:</B>
+<select name="Links" onChange="loadSelectionIntoView();" bgcolor="wheat">
+<option value="" selected></option>
+<option value="/prospect/asp/bi.asp?fn=&#8&tn=property_settlement&item=|0|&parameter=">Settlement statement</option>
+<option value="/prospect/asp/bi.asp?fn=property&tn=property_charging&item=|0|">Charging information</option>
+<option value="/prospect/asp/bi.asp?fn=&tn=property_history&item=|0|">Maintenance history</option>
+<option value="/prospect/asp/bi.asp?fn=&#8&tn=property_penalty_preview&item=|0|&parameter=">Penalty preview</option>
+<option value="/prospect/asp/property_penalty_date.asp?tn=property_install_one&item=|0|">Instalments - This Property</option>
+<option value="/prospect/asp/property_penalty_date.asp?tn=property_instalment&item=|0|">Instalments - All Properties</option>
+</select>
+</FORM>
+
+<TD VALIGN=top class="tdempty" width=10%>
+<FORM ACTION="/prospect/asp/pr_rate.asp" METHOD="POST" NAME="RATE_NOTICE_PRINT">
+<INPUT TYPE="button" name="pr_rate" value="Add to rates notice list">
+<INPUT TYPE=hidden NAME="assess" VALUE="|0|">
+<INPUT TYPE=hidden NAME="file" VALUE="PR.RATE">
+<INPUT TYPE=hidden NAME="rec" VALUE="">
+</FORM>
+||IFEND
+
+||IF,?,WDC,
+<FORM name="Listbox">
+<TD VALIGN=top class="tdempty">
+<B>Look up related data:</B>
+<select name="Links" onChange="loadSelectionIntoView();" bgcolor="wheat">
+<option value="" selected></option>
+<option value="/prospect/asp/bi.asp?fn=property&tn=property_charging&item=|0|">Charging information</option>
+<option value="/prospect/asp/bi.asp?fn=&tn=property_history&item=|0|">Maintenance history</option>
+</select>
+</FORM>
+||IFEND
+
+</TR>
+</TABLE>
+
+|0,0,0,,,Tmemo.stats;-1|
+<P>
+||IF,?,WDC,#
+<TABLE WIDTH="95%">
+<TR>
+||IF,32,#,
+<TR>
+<TD class="mmr"><B>Date Deleted</B></td><TD class="datar">|32,,,,,D2|</TD>
+<TR>
+<TD CLASS="mm"><B>Narrative</B></td><TD>|33|</TD>
+||IFEND
+<TR>
+<TD CLASS="mm">
+<B>Property Name</B>
+<TD>|0,0,0,,,TCLIENT;1|
+<TD CLASS="mm">
+<B>Balance Owing</B>
+||SRTDEBTOR
+||IF,3,=,
+<TD><A HREF="/prospect/asp/bi.asp?fn=tdebtor&tn=tdebtor&item=|0|">$0.00</A>
+||IFEND
+||IF,3,#,
+<TD><A HREF="/prospect/asp/bi.asp?fn=tdebtor&tn=tdebtor&item=|0|">$|0,0,0,,,Ttdebtor;3~MD2|</A>
+||IFEND
+
+||SREND
+<TR>
+<TD><TD>
+<TD CLASS="mm">
+||SRsr1694,1
+<B>Net of Rebates/Penalties as of today</B><TD><A HREF="/prospect/asp/bi.asp?fn=tdebtor&tn=tdebtor&item=|0|">$|8,0,0,,,MD2|</A>
+||SREND
+<TR>
+
+<TD CLASS="mm">
+<B>Property Address</B>
+<TD>|0,0,0,,,TCLIENT;2;3;4;5|
+<TD CLASS="mm">
+<B>Value</B><TD> |15,1,0|
+<tr>
+<TD CLASS="mm">
+<B>Ward</B><TD> |38,1,1,,,Tarea;1|
+||SRTDEBTOR
+||IF,85,#,
+<td class="mm"><B>Instalment Plan</B></td><TD>|85| instalments</td>
+||IFEND
+||SREND
+
+||SRCLIENT
+||IF,17,#,
+<tr>
+<TD CLASS="mm"><A HREF="/prospect/asp/bi.asp?fn=client&tn=pensioner&item=|0|"> <B>Pensioner Details</B></A>
+||IF,44,=,1
+<TD> 100% 
+||IFEND
+||IF,44,=,0.5
+ <TD>50% 
+||IFEND
+||IF,44,=,
+<TD>0% 
+||IFEND
+||IFEND
+||SREND
+</TABLE>
+
+||SRTDEBTOR
+||IF,59,#,
+<P align=center>
+<B>Direct Debit Authority </B>|59,0,0|
+<B> From Date </B>|60,0,0,,,D2|
+<B> To  Date </B>|61,0,0,,,D2|
+||IF,64,#,
+<BR><B>Fixed Amount </B>|64,0,0,,,MD2|
+<B>Frequency </B>|65,0,0,,,MD2|
+<B>Make payment even if nothing owing? </B>|66,0,0,,,MD2|
+||IFEND
+||IFEND
+||SREND
+
+
+||SRCLIENT
+<p>
+<TABLE width="95%">
+<TR CLASS=top>
+<TH>Owner Name
+<TH>Pensioner
+<TH>Senior
+<TH>Health Card
+<TH>Ph: Bus
+<TH>Ph: Prv
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=client&tn=clientOOE&item=,35,N,1,,,TCLIENT;1;7|<TD>|35,N,0,,,TCLIENT;43,1|<TD>|35,N,0,,,TCLIENT;43,2|<TD>|35,N,0,,,TCLIENT;43,3|<TD> |35,N,1,,,TCLIENT;9,1|<TD> |35,N,1,,,TCLIENT;9,2|
+</TABLE>
+
+<p>
+||IF,36,#,
+<TABLE width="95%">
+<TR CLASS=top>
+<TH>Elector Name
+
+<TH>Ph: Bus
+<TH>Ph: Prv
+<TH>Roll
+<TH>Qual
+<TH>Council
+||IF,33,#,
+<TH>Mayoral
+||IFEND
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=client&tn=clientOOE&item=,36,N,1,,,TCLIENT;1;7|<TD> |38,N,1|<TD> |34,N,1|<TD> |32,N,1|<TD> |33,N,1|
+</TABLE>
+||IFEND
+
+<p>
+||IF,37,#,
+<TABLE width="95%">
+<TR CLASS=top>
+<TH>Occupier Name
+<TH>Pensioner
+<TH>Ph: Bus
+<TH>Ph: Prv
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=client&tn=clientOOE&item=,37,N,1,,,TCLIENT;1;7|<TD> |37,N,1,,,TCLIENT;43|<TD> |37,N,1,,,TCLIENT;9,1|<TD> |37,N,1,,,TCLIENT;9,2|
+</TABLE>
+||IFEND
+
+
+
+||SREND
+||IFEND
+<P>
+
+||IF,?,WDC,#
+||IF,1,#,
+<P>
+<TABLE WIDTH=95%>
+<TR CLASS=top>
+<TH>Lot
+<TH>Locn
+<TH>Plan
+<TH>Area
+<TH>Frontage
+<TH>Depth
+||TABLE000 <TR><TD> |1,N,1|<TD> |2,N,1|<TD> |3,N,1|<TD> |7,N,1|<TD> |5,N,1|<TD> |6,N,1|
+</TABLE>
+||IFEND
+<P>
+
+<TABLE ALIGN=CENTER CELLSPACING=4 CELLPADDING=4>
+<TR CLASS=top>
+<TH ALIGN=CENTER>VG Entity Number
+<TH ALIGN=CENTER>Strata Plan
+<TH ALIGN=CENTER>Strata Lot
+<TH ALIGN=CENTER>Strata %
+||TABLE000 <TR><TD ALIGN=CENTER>|25,N,1|<TD ALIGN=CENTER> |22,N,1|<TD ALIGN=CENTER> |23,N,1|<TD ALIGN=CENTER>|18,N,1|
+<TR CLASS=top>
+<TH ALIGN=CENTER>Zoning
+<TH ALIGN=CENTER>Old Zoning
+<TH ALIGN=CENTER>Use
+<TH ALIGN=CENTER>Building Type
+||TABLE000 <TR><TD ALIGN=CENTER> |8,N,1|<TD ALIGN=CENTER> |27,N,1|<TD ALIGN=CENTER>|9,N,1|<TD ALIGN=CENTER> |10,N,1|
+</TABLE>
+||IFEND
+
+||IF,?,WDC,
+||SRCLIENT
+<TABLE WIDTH=95%>
+<TR>
+<TD CLASS="mm">
+<B>Property Address</B>
+<TD> |1| |2| |3| |4| |5|
+<TD CLASS="mm">
+<B>Balance Owing</B>
+<TD><A HREF="/prospect/asp/bi.asp?fn=tdebtor&tn=tdebtor&item=|0|">$|0,0,0,,,Ttdebtor;3~MD2|</A>
+</TABLE>
+
+<TABLE>
+<TR CLASS=top>
+<TH>Occupier Name
+<TH>Occupier residential address
+<TH>Occupier mailing address
+<TH>Ph: Bus
+<TH>Ph: Prv
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=client&tn=client&item=,37,N,1,,,TCLIENT;1;7|<TD> |37,N,1,,,TRES_ADDRESS|<TD> |37,N,1,,,TMAIL_ADDRESS|<TD> |37,N,1,,,TCLIENT;9,1|<TD> |37,N,1,,,TCLIENT;9,2|
+
+<TR CLASS=top>
+<TH>Owner Name
+<TH>Owner residential address
+<TH>Owner mailing address
+<TH>Ph: Bus
+<TH>Ph: Prv
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=client&tn=client&item=,35,N,1,,,TCLIENT;1;7|<TD> |35,N,1,,,TRES_ADDRESS|<TD> |35,N,1,,,TMAIL_ADDRESS|<TD> |35,N,1,,,TCLIENT;9,1|<TD> |35,N,1,,,TCLIENT;9,2|
+
+</TABLE>
+||SREND
+||IFEND
+<P>
+
+||IF,?,WDC,
+<TABLE WIDTH=95%>
+<TR>
+<TD CLASS="mm">
+<B>Legal Description</B><TD COLSPAN=4> |53|
+
+<TR>
+<TD CLASS="mm">
+<B>New Legal Description</B><TD COLSPAN=4> |89|
+
+<TR>
+<TD CLASS="mm">
+<B>Section 179</B><TD> |120|
+
+<TD CLASS="mm">
+<B>Non-rate</B><TD> |65,1,1,,@65.,TPCODES;1|
+
+<TR>
+<TD CLASS="mm">
+<B>Housing Corporation Reference</B><TD> |74|
+
+<TD CLASS="mm">
+<B>Valuation Reference</B><TD> |72|
+
+<TR>
+<TD CLASS="mm">
+<B>Area</B><TD> |7|
+
+<TD CLASS="mm">
+<B>New Area</B><TD> |63|
+
+<TR>
+<TD CLASS="mm">
+<B>Land Value</B><TD> |55|
+
+<TD CLASS="mm">
+<B>New Land Value</B><TD> |59|
+
+<TR>
+<TD CLASS="mm">
+<B>Improvements Value</B><TD> |56|
+
+<TD CLASS="mm">
+<B>New Improvements Value</B><TD> |60|
+
+<TR>
+<TD CLASS="mm">
+<B>Special Land Value</B><TD> |68|
+
+<TD CLASS="mm">
+<B>New Special Land Value</B><TD> |66|
+
+<TR>
+<TD CLASS="mm">
+<B>Special Improvements Value</B><TD> |69|
+
+<TD CLASS="mm">
+<B>New Special Improvements Value</B><TD> |64|
+
+<TR>
+<TD CLASS="mm">
+<B>Ward</B><TD> |38,1,1,,,TAREA;1|
+
+<TD CLASS="mm">
+<B>Old Ward </B><TD> |102|
+
+<TR>
+<TD CLASS="mm">
+<B>Zone</B><TD> |8|
+
+<TD CLASS="mm">
+<B>Old Zone</B><TD> |27|
+
+<TR>
+<TD CLASS="mm">
+<B>Building Type</B><TD> |10|
+
+<TD CLASS="mm">
+<B>Improvements</B><TD> |52|
+
+<TR>
+<TD CLASS="mm">
+<B>Category</B><TD> |51|
+
+<TD CLASS="mm">
+<B>Age</B><TD> |57|
+
+<TR>
+<TD CLASS="mm">
+<B>Construction</B><TD> |61|
+
+<TD CLASS="mm">
+<B>Use</B><TD> |9|
+
+<TR>
+<TD CLASS="mm">
+<B>Floor</B><TD> |62|
+
+<TD CLASS="mm">
+<B>Units</B><TD> |58|
+
+<TR>
+<TD CLASS="mm">
+<B>Granny Flat</B><TD> |101|
+
+<TD CLASS="mm">
+<B>Water Scheme </B><TD> |129|
+
+<TR>
+<TD CLASS="mm">
+<B>Maori Land </B><TD> |118|
+
+<TD CLASS="mm">
+<B>Maori Forest </B><TD> |112|
+
+<TR>
+<TD CLASS="mm">
+<B>Mortgagee</B><TD> |50|
+
+<TD CLASS="mm">
+<B>CT-No</B><TD> |54|
+
+<TR>
+<TD CLASS="mm">
+<B>Extract</B><TD> |71|
+
+<TR>
+<TD CLASS="mm">
+<B>Original Property</B>
+<TD>
+||ALIST <LI> |@,/prospect/asp/bi.asp?fn=property&tn=property&item=,88,N,1|
+
+<TR>
+<TD CLASS="mm">
+<B>Rating Notes</B><TD> |117|
+
+</TABLE>
+||IFEND
+
+
+
+<TABLE align=center>
+<TR CLASS=top>
+<TH colspan=13> Associated Items
+<TR CLASS=top>
+||IF,121,#,
+<TH><A HREF="/prospect/asp/buildsel.asp?fn=wdc.parcel&tn=wdc_parcel&title=wdc_parcel&item=&ref=|121|"><B>Parcels</b></A>
+||IFEND
+||SRCLIENT
+||IF,45,#,
+<TH><A HREF="/prospect/asp/buildsel.asp?fn=animal&tn=animal&title=animals&item=&ref=|45|"><B>Animals</B></A>
+||IFEND
+||IF,58,#,
+<TH><A HREF="/prospect/asp/buildsel.asp?fn=sw.pool&tn=sw_pool&title=pools&item=&ref=|58|"><B>Pools</b></A>
+||IFEND
+||IF,51,#,
+<TH><A HREF="/prospect/asp/buildsel.asp?fn=plans&tn=plans&title=building applications&item=&ref=|51|"><B>Building</b></A>
+||IFEND
+||IF,73,#,
+<TH><A HREF="/prospect/asp/buildsel.asp?fn=asset&tn=asset&title=assets&item=&ref=|73|"><B>Assets</b></A>
+||IFEND
+||IF,66,#,
+<TH><A HREF="/prospect/asp/buildsel.asp?fn=crossovers&tn=crossovers&title=crossovers&item=&ref=|66|"><B>Crossovers</b></A>
+||IFEND
+||IF,52,#,
+<TH><A HREF="/prospect/asp/buildsel.asp?fn=filing&tn=filing&title=filing&item=&ref=|52|"><B>Filing</b></A>
+||IFEND
+||IF,49,#,
+<TH><A HREF="/prospect/asp/buildsel.asp?fn=eats&tn=eats&title=health premises&item=&ref=|49|"><B>Health</b></A>
+||IFEND
+||IF,11,#,
+<TH><A HREF="/prospect/asp/buildsel.asp?fn=ut.install&tn=ut_install&title=ut_install&item=|0|&ref=|0|"><B>Utilities</b></A>
+||IFEND
+||SREND
+||IF,?,WDC,
+||MAYBE,sselect loans with a3 = "|0|",<TH><A HREF="/prospect/asp/buildsel.asp?fn=loans&tn=loans&title=Waste Water Loans&item=a3&ref=|0|"><B>Loans</b></A>
+||IFEND
+
+||SRCLIENT
+||IF,65,#,
+<TH><A HREF="/prospect/asp/buildsel.asp?fn=demolitions&tn=demolitions&title=Demolitions&item=&ref=|65|"><B>Demolitions</b></A>
+||IFEND
+||IF,68,#,
+<TH><A HREF="/prospect/asp/buildsel.asp?fn=rbins&tn=rbins&title=rubbish bins&item=&ref=|68|"><B>Bins</b></A>
+||IFEND
+||IF,64,#,
+<TH><A HREF="/prospect/asp/buildsel.asp?fn=signs&tn=signs&title=Signs&item=&ref=|64|"><B>Signs</b></A>
+||IFEND
+||SREND
+</TABLE>
+
+
+
+<p>
+||IF,?,WDC,#
+||SRsr_extended_database,1
+<TABLE align=center>
+<TR CLASS=top>
+<TH>Extended Database Information
+||TABLE000 <TR><<TD align="left">|@,/prospect/asp/buildsel.asp?fn=@@1&tn=@@2&item=&sn=@@4,2,N,1|
+||SREND
+</TABLE>
+||IFEND

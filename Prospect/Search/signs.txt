@@ -1,0 +1,9 @@
+filetouse=signs
+templatetouse=signs
+srchlist=a0,assess,oname,applicant,lot.street.suburb
+labellist=Sign ID,Assessment,Owner,Applicant,Address
+title=SIGNS
+hds=Sign ID|Applicant|Owner|Address
+tds=<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=signs&tn=signs&item=,0|@,/prospect/asp/bi.asp?fn=client&tn=client&item=,2,1,1,,,TCLIENT;1|1,1,1,,,TCLIENT;35~TCLIENT;7;1|@,/prospect/asp/bi.asp?fn=property&tn=property&item=,1,1,1,,,TCLIENT;2,1;3,1;4,1;5,1
+adhoc=@RECALL.3132

@@ -1,0 +1,8 @@
+filetouse=trees
+templatetouse=trees
+srchlist=a0,a2,a3
+labellist=Id,Genus,Species
+title=TREES
+hds=Tree|Genus|Species
+tds=<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=trees&tn=trees&item=,0|2,1,1|3,1,1,,,

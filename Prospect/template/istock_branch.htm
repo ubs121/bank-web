@@ -1,0 +1,54 @@
+@@INPUT@@Branch
+<TABLE WIDTH=72% align=center border=1 cellspacing=1 cellpadding=1>
+<TR>
+<TD class=top><B>Name</B>
+<TD class=top><INPUT type="Text" size=80 name="C1,,,Name" value="|1|">
+<TR>
+<TD class=top><B>Contact</B>
+<TD class=top><INPUT type="Text" size=80 name="C2,,,Contact" value="|2|">
+<TR>
+<TD class=top><B>Address Line1</B>
+<TD class=top><INPUT type="Text" size=80 name="C3,,,Address Line1" value="|3|">
+<TR>
+<TD class=top><B>Address Line2</B>
+<TD class=top><INPUT type="Text" size=80 name="C18,,,Address Line2" value="|18|">
+<TR>
+<TD class=top><B>Address Line3</B>
+<TD class=top><INPUT type="Text" size=80 name="C19,,,Address Line2" value="|19|">
+<TR>
+<TD class=top><B>Purchasing Officer</B>
+<TD class=top><INPUT type="Text" size=80 name="C16,,,Purchasing Officer" value="|16|">
+<TR>
+<TD class=top><B>Name Abbreviation</B>
+<TD class=top><INPUT type="Text" size=80 name="C17,,,Name Abbreviation" value="|17|">
+</TABLE>
+</FORM>
+
+<FORM>
+<TABLE WIDTH=50% align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Branch
+<TH>Name
+<TH>Contact
+<TH>Address-1
+<TH>Address-2
+<TH>Address-3
+<TH>Purchasing Officer
+<TH>Name Abbreviation
+||TABLESEL <TR><TD>|0|<TD>|1|<TD>|2|<TD>|3|<TD>|18|<TD>|19|<TD>|16|<TD>|17|
+@@PATH@@\ckashare\stock\stock.mdb,@@PATH@@\ckashare\stock\stock.mdb\branch,select * from branch order by branch
+</TABLE>
+</FORM>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"T@@PATH@@!ckashare!investments!investments.mdb!class;1");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+
+
+

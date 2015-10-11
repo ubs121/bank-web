@@ -1,0 +1,115 @@
+||IF,9,=,H
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>HEALTH ORDER </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="health.order"><INPUT TYPE=hidden NAME="tn" VALUE="order"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+||IFEND
+||IF,9,=,S
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>POOL ORDER </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="health.order"><INPUT TYPE=hidden NAME="tn" VALUE="order"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+||IFEND
+
+||IF,9,#,H
+||IF,9,#,S
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>ORDER </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE=""><INPUT TYPE=hidden NAME="tn" VALUE=""><INPUT TYPE="hidden" NAME="item" SIZE=5 VALUE="|0|"><FONT SIZE=+1>|0|</FONT></FORM>
+<FONT SIZE=+1>THIS ITEM CONTAINS INVALID DATA</FONT>
+</TABLE>
+||IFEND
+||IFEND
+
+<TABLE WIDTH="95%">
+<TR>
+<TD CLASS="mm">
+||IF,9,=,H
+<B>Premises</B><TD COLSPAN=5> <A HREF="/prospect/asp/bi.asp?fn=eats&tn=eats&item=|1,1,0|"><FONT CLASS=itemlnk>|1,1,0| &nbsp;&nbsp; |1,1,1,,,Teats;5|</FONT></A>
+||IFEND
+||IF,9,=,S
+<B>Pool ID</B><TD> <A HREF="/prospect/asp/bi.asp?fn=sw.pool&tn=sw_pool&item=|1,1,0|"><FONT CLASS=itemlnk>|1,1,0|</FONT></A>
+<TD CLASS="mm">
+<B>Assessment</B><TD COLSPAN=2> <A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|1,1,0,,,Tsw.pool;1|"><FONT CLASS=itemlnk>|1,1,0,,,Tsw.pool;1| &nbsp;&nbsp; |1,1,0,,,Tsw.pool;1~TRES_ADDRESS|</FONT></A>
+||IFEND
+<TR>
+<TD CLASS="tdempty">
+&nbsp;
+||IF,9,=,S
+<TR>
+<TD CLASS="mm">
+<B>Inspection</B><TD><A HREF="/prospect/asp/bi.asp?fn=inspection&tn=inspection&item=|3,1,0|"><FONT CLASS=itemlnk>|3|</FONT></A>
+<TD CLASS="mm">
+<B>Inspection Date</B><TD> |3,1,1,,,TINSPECTION;2,1,1~D2|
+||IFEND
+
+<TR>
+<TD CLASS="mm">
+<B>Order Date</B><TD> |2,1,1,,,D2|
+<TD CLASS="mm">
+<B>Complete by Date</B><TD> |10,1,1,,,D2|
+<TD CLASS="mm">
+<B>Completed Date</B><TD> |11,1,1,,,D2|
+<TR>
+<TD CLASS="mm">
+<B>Order Source</B><TD> 
+||IF,9,=,S
+|7,1,1,,@Y.,Tsw.pool.codes;1|
+||IFEND
+||IF,9,=,H
+|7,1,1,,@Y.,Teat.codes;1|
+||IFEND
+<TD CLASS="mm">
+<B>Order Type</B><TD>
+||IF,9,=,S
+|8,1,1,,@U.,Tsw.pool.codes;1|
+||IFEND
+||IF,9,=,H
+|8,1,1,,@U.,Teat.codes;1|
+||IFEND
+<TD CLASS="mm">
+||IF,9,=,H
+<B>Issuing Officer</B><TD> |3,1,1,,,Tinspection;4|
+||IFEND
+||IF,9,=,S
+<B>Issuing Officer</B><TD> |3,1,1,,,Tinspection;4|
+||IFEND
+<TR>
+<TD CLASS="mm">
+<B>Followup Visit</B><TD> |16,1,1,,,D2|
+<TD CLASS="mm">
+<B>Legal Action</B><TD> |20|
+<TD CLASS="mm">
+<B>Court Date</B><TD> |21,1,1,,,D2|
+</TABLE>
+
+||IF,4,#,
+<P>
+<TABLE WIDTH="95%">
+<TR CLASS="top">
+<TH>Code
+<TH>Description
+<TH>Complete by Date
+||IF,9,=,S
+||TABLE000 <TR><TD>|4,N,1|<TD>|4,N,1,,@H.,Tsw.pool.codes;1|<TD ALIGN=CENTER>|5,N,1,,,D2|
+||IFEND
+||IF,9,=,H
+||TABLE000 <TR><TD>|4,N,1|<TD>|4,N,1,,@H.,Teat.codes;1|<TD ALIGN=CENTER>|5,N,1,,,D2|
+||IFEND
+</TABLE>
+||IFEND
+
+||IF,6,#,
+<P>
+<TABLE WIDTH="95%">
+<TH align="CENTER">Comments
+<TR>
+<TD> |6|
+</TABLE>
+||IFEND
+
+||IF,17,#,
+<P>
+<TABLE WIDTH="95%">
+<TH align="CENTER">Follow Up Comments
+<TR>
+<TD> |17|
+</TABLE>
+||IFEND

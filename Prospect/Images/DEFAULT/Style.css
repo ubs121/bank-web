@@ -1,0 +1,27 @@
+
+A.explorer:LINK{color:#400000; text-decoration:none;}
+A.explorer:HOVER{color:Sienna; text-decoration:none;}
+A.explorer:ACTIVE{color:#400000; text-decoration:none;}
+A.explorer:VISITED{color:#400000; text-decoration:none;}
+
+A.logoff:HOVER { color: #cc0000; text-decoration:none;}
+A.logoff:LINK{color: #660000; text-decoration:none;}
+
+table { border: 1; }
+
+TH.top {font-weight: BOLD}
+
+TR.top { BACKGROUND-COLOR: scrollbar;}
+TR.totals { font-weight: bold; }
+
+TD.top { BACKGROUND-COLOR: scrollbar;}
+TD.mm { BACKGROUND-COLOR: scrollbar;}
+TD.total { font-weight: bold; }
+TD.totals { font-weight: bold; }
+
+FONT.menu   { font-weight: bold; }
+FONT.deny   { font-weight: normal; font-style: italic;}
+
+input.bold  { font-weight: bold; }
+
+

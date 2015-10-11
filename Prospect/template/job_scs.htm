@@ -1,0 +1,24 @@
+<CENTER><H2>JOB LEDGER</H2></CENTER>
+<TABLE width=100%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>SUB-COMPONENT SUMMARY
+JOB </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="job.l"><INPUT TYPE=hidden NAME="tn" VALUE="job_scs"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+
+<P align=center><B>|-1,,,,,G.1~Tjob.l;2|&nbsp;|2|</B>
+
+||SRsrjob_scs
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS=top>
+<TH>ID
+<TH>Description
+<TH>Budget
+<TH>Balance
+<TH>Committed
+<TH>Budget Hours
+<TH>Hours
+||TABLE000 <TR><TD> |@,/prospect/asp/bi.asp?fn=job.l&tn=job_l_trans&item=,1,N,1|<TD ALIGN=RIGHT>&nbsp;|2,N,1|<TD ALIGN=RIGHT>&nbsp;|3,N,1,,,MD2~A*-1|<TD ALIGN=RIGHT>&nbsp;|4,N,1,,,MD2~A*-1|<TD ALIGN=RIGHT>&nbsp;|5,N,1,,,MD2~A*-1|<TD ALIGN=RIGHT>&nbsp;|6,N,1,,,MD2|<TD ALIGN=RIGHT>&nbsp;|7,N,1,,,MD2|
+</TABLE>
+||SREND
+
+
+

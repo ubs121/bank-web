@@ -1,0 +1,9 @@
+filetouse=pickup
+templatetouse=pickup
+srchlist=a0
+labellist=Pickup No.
+title=ANIMAL PICKUPS
+hds=Id|Огноо|Эрхлэгч|Байрлал
+tds=<TD>|<TD>|<TD>|<TD>
+dms=@!,/prospect/asp/bi.asp?fn=pickup&tn=pickup&item=,0|2,1,1,,,D2|1,1,1,,,TCA.OFFICER;1|4
+adhoc=@RECALL.1751

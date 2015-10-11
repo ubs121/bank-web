@@ -1,0 +1,8 @@
+filetouse=contract
+templatetouse=contract
+srchlist=a0,name
+labellist=Number,Description
+title=Contracts
+hds=Contract Number|Description
+tds=<TD>|<TD>
+dms=@,#,0|1,1,1

@@ -1,0 +1,9 @@
+filetouse=wdc.parcel
+templatetouse=wdc_parcel
+srchlist=key
+labellist=Parcel Number
+sorts=a0
+title=PARCELS
+hds=Parcel Number|Road|House|Legal Description
+tds=<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=wdc.parcel&tn=wdc_parcel&item=,0|2,0,0,,,TROADS;1|3|4

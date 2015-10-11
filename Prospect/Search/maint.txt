@@ -1,0 +1,24 @@
+database=msa
+where=@@PATH@@ckashare\debtors\debtors.mdb\
+title=RECURRING DEBTOR INVOICES
+reports=maint
+
+filetouse=maint
+templatetouse=maint
+srchlist=key,client,billed
+itemlist=,
+labellist=Agreement Number,Debtor,Billed To
+sorts=
+hds=Agreement Number|Debtor|Start Date|Last Date|Billed To
+tds=<TD>|<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=maint&tn=maint&item=,0|0,0,0,,,G*1~TCLIENT;7;1|5,0,0,,,D2|6,0,0,,,D2|7,0,0,,,D2
+
+msa_filetouse=@WHERE@maint
+msa_templatetouse=maint_msa
+msa_srchlist=maint,client,Date Last Billed To
+msa_itemlist=,
+msa_labellist=Agreement Number,Debtor,Billed To
+msa_sorts=
+msa_hds=Agreement Number|Debtor|Start Date|Last Date|Billed To
+msa_tds=<TD>|<TD>|<TD>|<TD>|<TD>
+msa_dms=@,/prospect/asp/bi.asp?fn=@WHERE@maint&tn=maint&item=,21|20|5,0,0,,,D2|6,0,0,,,D2|7,0,0,,,D2

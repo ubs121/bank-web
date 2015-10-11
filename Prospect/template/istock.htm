@@ -1,0 +1,47 @@
+@@INPUT@@Stock
+<INPUT id=select5 name=select5 value="|5,V|" type="hidden">
+<INPUT id="assessment_address_hide" NAME="assessment_address_hide" type="hidden">
+
+<TABLE WIDTH=95% align=center border=1 cellspacing=1 cellpadding=1>
+
+    <TR class=item>
+        <TD class=top WIDTH="102" ><b>Description</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C1,0,0,Description,," value="|1,0,0,,,MD2|" align="LEFT" size="20" maxlength="10">
+        <TD class=top WIDTH="102" ><b>Product Group</b>
+<TD class=top>
+<select name="sel2" > 
+||OPTIONS|SSELECT|prd_grp|2|@@PATH@@\ckashare\stock\stock.mdb\prd_grp|1|
+</select>
+        <TD class=top WIDTH="102" ><b>Conversion Factor</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C6,0,0,Conversion Factor,," value="|6,0,0,,,MD2|" align="LEFT" size="15" maxlength="10">
+<TR class=item>
+ <TD class=top CLASS=top ><b>Sales Unit</b>
+<TD class=top>
+<select name="sel9" > 
+||OPTIONS|SSELECT|sales_units|9|@@PATH@@\ckashare\stock\stock.mdb\sales_units|0|
+</select>
+	<TD class=top CLASS=top ><b>Buy Unit</b>
+      <TD class=top><input type="Text" CLASS="smallTxt" name="C10,0,0,Buy Unit,," value="|10,0,0,,,MD2|" align="LEFT" size="20" maxlength="10">
+	<TD class=top CLASS=top WIDTH="102" ><b>Buy/Sell Conversion</b>        
+       <TD class=top><input type="Text" CLASS="smallTxt" name="C11,0,0,Buy/Sell Conversion,," value="|11,0,0,,,MD2|" align="LEFT" size="15" maxlength="10">
+    <TR class=item>    
+ <TD class=top CLASS=top WIDTH="102" ><b>Weight</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C12,1,0,Weight,,D2" value="|12,1,0,,,D2|" align="LEFT" size="20" maxlength="10">
+        <TD class=top CLASS=top WIDTH="102" ><b>Old Stock Number</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C13,0,0,Old Stock Number" value="|13,0,0|" align="LEFT" size="20" maxlength="20">
+        <TD class=top CLASS=top><b>Manufacturers Number</b>
+	<TD class=top><input type="Text" CLASS="smallTxt" name="C14,0,0,Manufacturers Number" value="|14,0,0|" align="LEFT" size="15" maxlength="10">
+</TABLE>
+
+</form>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;1;2;3;4;5");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+

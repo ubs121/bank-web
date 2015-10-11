@@ -1,0 +1,24 @@
+database=msa
+where=@@PATH@@ckashare\debtors\debtors.mdb\
+title=DEBTOR INVOICES
+reports=debtors
+
+filetouse=invoice
+templatetouse=invoice
+srchlist=key,name,batch
+labellist=Invoice Number,Name,Batch Number
+hds=Id|Value|Debtor|Account|Description|Amount|GST|Batch
+tds=<TD>|<TD ALIGN=RIGHT>|<TD>|<TD>|<TD>|<TD ALIGN=RIGHT>|<TD ALIGN=RIGHT>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=invoice&tn=invoice&item=,0|8,NT,1,,,MD2|@,/prospect/asp/bi.asp?fn=tdebtor&tn=tdebtor&item=,3,1,1,,,TCLIENT;1|10,0,0|12,0,0|15,NT,0,,,MD2|17,NT,0,,,MD2|30,0,0
+radiobtns=Credit Notes,Credit Notes in Batch file,Invoices in Batch file,Invoices
+radiocode=|credit|credit|DEBTOR CREDIT NOTES,|cr.batch|cr_batch|DEBTOR CREDIT NOTES IN BATCH FILE,|inv.batch|inv_batch|DEBTOR INVOICES IN BATCH FILE,|invoice|invoice|DEBTOR INVOICES
+
+msa_filetouse=@WHERE@invoice
+msa_templatetouse=invoice_msa
+msa_srchlist=invoice,batch
+msa_labellist=Invoice Number,Batch Number
+msa_hds=Id|Value|GST|Debtor|Batch
+msa_tds=<TD>|<TD ALIGN=RIGHT>|<TD ALIGN=RIGHT>|<TD>|<TD>
+msa_dms=@,/prospect/asp/binput.asp?fn=invoice&fn1=inv_batch_lines&tn=invoice&err=noerrors&item=,0|8,NT,0,,,dec2|6,NT,0,,,dec2|@,/prospect/asp/bi.asp?fn=tdebtor&tn=tdebtor&item=,3,0,0,,,TCLIENT;1|30
+msa_radiobtns=Credit Notes,Credit Notes in Batch file,Invoices in Batch file,Invoices
+msa_radiocode=|@WHERE@credit|credit_msa|DEBTOR CREDIT NOTES,|@WHERE@cr.batch|cr_batch_msa|DEBTOR CREDIT NOTES IN BATCH FILE,|@WHERE@inv_batch|iinvoice|DEBTOR INVOICES IN BATCH FILE,|@WHERE@invoice|invoice_msa|DEBTOR INVOICES

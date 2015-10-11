@@ -1,0 +1,23 @@
+database=msa
+where=@@PATH@@ckashare\animal\animal.mdb\
+title=ÀÌÜÒÀÍ
+reports=animal
+
+filetouse=animal
+templatetouse=animal
+srchlist=a0,licno,name,a4,a7,assess,@@drindex|client|owner|4|45|45|1@@,paddr2
+labellist=ID,Ëèöåéíç,Àìüòíû íığ,Y¿ëäığ,Ç¿ñ,Assessment,Owner Name,Suburb
+itemlist=,,,sselect animal.codes a0 a1 by a1 with a0 = "@B.]",sselect animal.codes a0 a1 by a1 with a0 = "@C.]",,,
+hds=Id|Owner|Y¿ëäığ|Ç¿ñ|Ëèöåéíç|Õ¿éñ|Õàÿã|Place kept (if not assess)
+tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD>|<TD NOWRAP>|<TD NOWRAP>
+dms=@!,/prospect/asp/bi.asp?fn=animal&tn=animal&item=,0|@!,/prospect/asp/bi.asp?fn=client&tn=client&item=,2,1,1,,,TCLIENT;1;6|4,0,0,,@B.,TANIMAL.CODES;1|7,0,0,,@C.,TANIMAL.CODES;1|1,1,1|6,1,1|10,1,1,,,TCLIENT;2;3;4;5|19
+adhoc=@RECALL.1751
+
+msa_filetouse=@WHERE@animal
+msa_templatetouse=animal_msa
+msa_srchlist=ID,name,color
+msa_labellist=ID,Name,Colour
+msa_itemlist=,,select color!name from color
+msa_hds=Id|Name|Colour
+msa_tds=<TD>|<TD>|<TD>
+msa_dms=@!,/prospect/asp/bi.asp?fn=animal&tn=animal&item=,0|5|7

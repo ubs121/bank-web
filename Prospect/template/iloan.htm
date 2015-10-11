@@ -1,0 +1,65 @@
+@@INPUT@@Loan
+<INPUT id=select5 name=select5 value="|5,V|" type="hidden">
+<INPUT id="assessment_address_hide" NAME="assessment_address_hide" type="hidden">
+
+<TABLE WIDTH=95% align=center border=1 cellspacing=1 cellpadding=1>
+
+    <TR class=item>
+        <TD class=top CLASS="itemname" WIDTH="102" ><b>Purpose</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C11,0,0,Purpose,,MD0" value="|11,0,0|" align="LEFT" size="20" maxlength="10" id="IntRate">
+        <TD class=top CLASS="itemname" WIDTH="102" ><b>Schedule</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C9,0,0,Schedule(Years),,MD0" value="|9,0,0|" align="LEFT" size="20" maxlength="10">
+        <TD class=top CLASS="itemname" ><b> Loan Type</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C10,0,0,Loan Type,,MD0" value="|10,0,0|" align="LEFT" size="20" maxlength="10">
+	 <TR class=item>
+<TD class=top CLASS="itemname" WIDTH="102" ><b>Lender</b>
+        <TD class=top>
+<select name="sel8" > 
+||OPTIONS|SSELECT|lender|8|@@PATH@@\ckashare\loan\loan.mdb\lender|1|
+</select>
+        <TD class=top CLASS="itemname" WIDTH="102" ><b>Lender Reference</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C1,1,0,Lender Reference,,D2" value="|1,1,0,,,D2|" align="LEFT" size="20" maxlength="10">
+    <TD class=top CLASS="itemname" WIDTH="102" ><b>Principal Amount</b>
+        <TD class=top><input type="Text" CLASS="smallTxt" name="C13,0,0,Principal Amount" value="|13,0,0|" align="LEFT" size="20" maxlength="20">
+   	        <TR class=item>
+	<TD class=top CLASS="itemname"><b>Interest Rate</b> 
+	<TD class=top><input type="Text" CLASS="smallTxt" name="C19,0,0,Interest Rate" value="|19,0,0|" align="LEFT" size="20" maxlength="20">
+       <TD class=top CLASS="itemname"><b>Issue Date</b>
+	<TD class=top><input type="Text" CLASS="smallTxt" name="C6,0,0,Issue Date" value="|6,0,0|" align="LEFT" size="20" maxlength="20">
+        <TD class=top CLASS="itemname"><b>Maturity Date </b>
+	<TD class=top><input type="Text" CLASS="smallTxt" name="C12,0,0,Maturity Date" value="|12,0,0|" align="LEFT" size="20" maxlength="20">
+        <TR class=item>
+ 	<TD class=top CLASS="itemname"><b>Repayment Amount </b>
+	<TD class=top><input type="Text" CLASS="smallTxt" name="C16,0,0,Repayment Amount" value="|16,0,0|" align="LEFT" size="20" maxlength="20">
+        <TD class=top CLASS="itemname"><b>Repayment Frequency</b>
+	<TD class=top><input type="Text" CLASS="smallTxt" name="C15,0,0,Repayment Frequency" value="|15,0,0|" align="LEFT" size="20" maxlength="20">
+	<TD class=top CLASS="itemname"><b>GL Principal Debit</b>
+	<TD class=top><input type="Text" CLASS="smallTxt" name="C17,0,0,GL Principal Debit" value="|17,0,0|" align="LEFT" size="20" maxlength="20">
+         <TR class=item>
+	<TD class=top CLASS="itemname"><b>GL Interest Debit</b>
+	<TD class=top><input type="Text" CLASS="smallTxt" name="C18,0,0,GL Interest Debit" value="|18,0,0|" align="LEFT" size="20" maxlength="20">
+   <TD class=top CLASS="itemname"><b>Sinking Fund Amount</b>
+	<TD class=top><input type="Text" CLASS="smallTxt" name="C2,0,0,Sinking Fund Amount" value="|2,0,0|" align="LEFT" size="20" maxlength="20">
+   <TD class=top CLASS="itemname"><b>Sinking Fund Frequency</b>
+	<TD class=top><input type="Text" CLASS="smallTxt" name="C3,0,0,Sinking Fund Frequency" value="|3,0,0|" align="LEFT" size="20" maxlength="20">
+       <TR class=item>
+	<TD class=top CLASS="itemname"><b>Sinking Code</b>
+	<TD class=top><input type="Text" CLASS="smallTxt" name="C4,0,0,Sinking Code" value="|4,0,0|" align="LEFT" size="20" maxlength="20">
+        <TD class=top CLASS="itemname"><b>Sinking Reference</b>
+	<TD class=top><input type="Text" CLASS="smallTxt" name="C5,0,0,Sinking Reference" value="|5,0,0|" align="LEFT" size="20" maxlength="20">
+   <TD class=top colspan=1 CLASS="itemname"><b>Fund Maturity Value</b>
+	<TD class=top><center><input type="Text" CLASS="smallTxt" name="C28,0,0,Fund Maturity Value" value="|28,0,0|" align="LEFT" size="20" maxlength="20">
+</center></TABLE><center>
+
+</form>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;1;2;3;4;5");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+

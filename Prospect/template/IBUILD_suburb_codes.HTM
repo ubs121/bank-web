@@ -1,0 +1,31 @@
+@@INPUT@@Building - Suburb Codes
+<TABLE align=center border="1" cellspacing="3" cellpadding="1">
+<TR>
+
+<TD CLASS=top><b>Surveyor(1)</b>
+<TD>
+<select class="smallSel" name="sel1">
+||OPTIONS|SSELECT|@@PATH@@\ckashare\build\build.mdb\surveyor order by surveyor|1|tr surveyor|1
+</select>
+
+<TD CLASS=top><b>Surveyor(2)</b>)
+<TD>
+<select class="smallSel" name="sel2">
+||OPTIONS|SSELECT|bl_surveyor by a0|2|bl_surveyor|1
+</select>
+
+</TABLE>
+</FORM>
+
+<FORM  NAME="building_codes">
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Code
+<TH>Surveyor(1)
+<TH>Surveyor(2)
+||TABLESEL <TR><TD>|0,0,0,,,|<TD>|1,0,0,,,Tbl_surveyor;1|<TD>|2,0,0,,,Tbl_surveyor;1|
+@@PATH@@\ckashare\build\build.mdb,@@PATH@@\ckashare\build\build.mdb\suburb,select * from suburb order by suburb
+</TABLE>
+</FORM>
+
+

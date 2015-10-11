@@ -1,0 +1,24 @@
+database=msa
+where=@@PATH@@ckashare\creditors\creditors.mdb\
+title=Lease Agreements
+reports=lease
+
+filetouse=lease
+templatetouse=lease
+srchlist=key,client,billed
+itemlist=,
+labellist=Agreement Number,Creditor,Billed To
+sorts=
+hds=Agreement Number|Creditor|Start Date|Last Date|Billed To
+tds=<TD>|<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=lease&tn=lease&item=,0|0,0,0,,,G*1~TCLIENT;7;1|5,0,0,,,D2|6,0,0,,,D2|7,0,0,,,D2
+
+msa_filetouse=@WHERE@lease
+msa_templatetouse=lease_msa
+msa_srchlist=lease,client,Date Last Billed To
+msa_itemlist=,
+msa_labellist=Agreement Number,Creditor,Billed To
+msa_sorts=
+msa_hds=Agreement Number|Creditor|Start Date|Last Date|Billed To
+msa_tds=<TD>|<TD>|<TD>|<TD>|<TD>
+msa_dms=@,/prospect/asp/bi.asp?fn=@WHERE@lease&tn=lease&item=,21|20|5,0,0,,,D2|6,0,0,,,D2|7,0,0,,,D2

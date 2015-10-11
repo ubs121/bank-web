@@ -1,0 +1,22 @@
+@@INPUT@@Statutory
+
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR>
+<TD class=top><B>Description</B>
+<TD class=top><INPUT type="Text" size=40% name="1,,,Description" value="|1|">
+<TR>
+<TD class=top><B>Mongolian Description</B>
+<TD class=top><INPUT type="Text" size=40% name="2,,,Mongolian Description" value="|2,0,0,,,mongol|">
+</TABLE>
+</FORM>
+
+<FORM>
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Statutory
+<TH>Description
+<TH>Mongolian Description
+||TABLESEL <TR><TD>|0|<TD>|1|<TD>|2,0,0,,mongol|
+@@PATH@@\ckashare\gen_l\gen_l.mdb,@@PATH@@\ckashare\gen_l\gen_l.mdb\lev1,select * from lev1 order by lev1
+</TABLE>
+</FORM>

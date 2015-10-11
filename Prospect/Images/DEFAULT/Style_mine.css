@@ -1,0 +1,14 @@
+TR.top { BACKGROUND-COLOR: scrollbar;}
+TR.totals { font-weight: bold; }
+
+TD.top { BACKGROUND-COLOR: scrollbar;}
+TD.mm { BACKGROUND-COLOR: scrollbar;}
+TD.total { font-weight: bold; }
+TD.totals { font-weight: bold; }
+
+FONT.menu   { font-weight: bold; }
+FONT.deny   { font-weight: normal; font-style: italic;}
+
+.mmendu { background-color: tan;}
+
+table { border: 1;}

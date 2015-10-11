@@ -1,0 +1,8 @@
+filetouse=job.card
+templatetouse=job_card
+srchlist=a0,follow.up,follow.up,plant,contact,author
+labellist=Картын дугаар,Follow Up (date from),Follow Up (date to),Тєхєєрємжийн дугаар,Харилцах,Authorised
+title=АЖЛЫН КАРТ
+hds=Картын дугаар|Тєрєл|Тєхєєрємжийн дугаар|Активын нэр|Ажлын тодорхойлолт|Follow Up|Харилцах|Authorised|Тэмдэглэл
+tds=<TD>|<TD>|<TD>|<TD>|<TD nowrap>|<TD>|<TD>|<TD>|<TD nowrap>
+dms=@,/prospect/asp/bi.asp?fn=job.card&tn=job_card&item=,0|1,1,1|@,/prospect/asp/bi.asp?fn=asset&tn=asset&item=,2|2,0,0,,,Tasset;3|2,0,0,,,Tjob.l;2|12,0,0,,,D2|8|9|10

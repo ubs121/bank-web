@@ -1,0 +1,9 @@
+filetouse=job.est
+templatetouse=job_est
+srchlist=a0
+labellist=Yнэлгээ
+sortllist=by a0
+title=Ажлын vнэлгээ
+hds=Yнэлгээ|Тодорхойлолт
+tds=<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=job.est&tn=job_est&item=,0|2,1,1

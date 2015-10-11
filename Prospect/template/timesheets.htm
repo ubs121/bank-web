@@ -1,0 +1,32 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>TIME SHEET </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="time.sheets"><INPUT TYPE=hidden NAME="tn" VALUE="timesheets"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+
+<P>
+<TABLE WIDTH=95% BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Hours
+<TH>Adjust Code
+<TH>Rate
+<TH>Plant
+<TH>Job
+<TH>Rate
+<TH>G/L Debit
+<TH>Debit
+<TH>G/L Credit
+<TH>Credit
+||TABLE000 <TR><TD ALIGN=RIGHT>|2,N,1|<TD>|1,N,1|<TD align=right>|3,N,1|<TD>|4,N,1|<TD>|@,/prospect/asp/bi.asp?fn=job.l&tn=job_l&item=,5,N|<TD>|7,N,1|<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,6,N|<TD align=right>|20,N,0,,,MD2|<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,21,N|<TD align=right>|22,N,0,,,MD2|
+</TABLE>
+
+<TABLE WIDTH=95% BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Job
+<TH>Description
+<TH>Value
+<TH>Hours
+<TH>Xrate
+<TH>Plant
+<TH>Qty
+||TABLE000 <TR><TD>|@,/prospect/asp/bi.asp?fn=job.l&tn=job_l&item=,10,N|<TD>|10,N,1,,,TJOB.L;2|<TD ALIGN=RIGHT>|11,N,1,,,MD2|<TD align=right>|12,N,1|<TD ALIGN=RIGHT>|13,N,1|<TD ALIGN=RIGHT>|14,N,1|<TD ALIGN=RIGHT>|29,N,1|
+</TABLE>
+

@@ -1,0 +1,67 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>ANIMAL </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="animal"><INPUT TYPE=hidden NAME="tn" VALUE="animal"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE WIDTH=95%>
+<TR>
+<TD CLASS="mm">
+<B>Lic #</B><TD> |1,1,1|      
+<TD CLASS="mm">
+<B>Chip</B><TD> |35| 
+<TR>
+<TD CLASS="mm">
+<B>Name of Animal</B><TD> |5,1,1|
+<TD CLASS="mm">
+<B>Type</B><TD> |3,1,1,,@T.,TANIMAL.CODES;1|
+<TR>
+<TD CLASS="mm">
+<B>Colour</B><TD> |7,1,1|&nbsp;|7,1,1,,@C.,TANIMAL.CODES;1|
+<TD CLASS="mm">
+<B>Breed</B><TD> |4,1,1,,@B.,TANIMAL.CODES;1|
+<TR>
+<TD CLASS="mm">
+<B>D.O.B.</B><TD> |14,1,1,,,D2|
+<TD CLASS="mm">
+<B>Sex</B><TD> |6,1,1|
+<TR>
+<TD COLSPAN=4>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Owner</B><TD COLSPAN=3> <A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|2,1,1|"><FONT CLASS=itemlnk>|2,1,1,,,TCLIENT;7,1;1,1|</FONT></A>
+<TR>
+<TD CLASS="mm">
+<B>Address</B><TD> |2,1,1,,,TCLIENT;2,1;3,1;4,1;5,1|
+<TD CLASS="mm">
+<B>Phone</B><TD> |2,1,1,,,TCLIENT;9|
+<TR>
+<TD COLSPAN=4>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Agent</B><TD COLSPAN=3> |9,1,1,,,TCLIENT;7,1;1,1;2,1;3,1;4,1;5,1|
+<TR>
+<TD CLASS="mm">
+<B>Place kept</B><TD COLSPAN=3> |19,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Assessment</B><TD COLSPAN=3> <A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|10,1,1|"><FONT CLASS=itemlnk>|10,1,1|</A></FONT>&nbsp;&nbsp; |10,1,1,,,TCLIENT;2;3;4;5|
+<TR>
+<TD CLASS="mm">
+<B>Narrative</B><TD COLSPAN=3> |8|
+<TR>
+<TD COLSPAN=4>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Lic paid to</B><TD> |15,1,1,,,D2| 
+<TD CLASS="mm">
+<B>Amount paid</B><TD> $|16,1,1,,,MD2|
+<TR>
+<TD CLASS="mm">
+<B>Receipt no</B><TD> <B><A HREF="/prospect/asp/bi.asp?fn=cash&tn=cash&item=|17,1,1|">|17,1,1|</A></B>
+<TD CLASS="mm">
+<B>Date loaded</B><TD> |12,1,1,,,D2| 
+<TR>
+<TD CLASS="mm">
+<B>Concession</B><TD> |18,1,1|
+<TD CLASS="mm">
+<B>Date Amended</B><TD> |13,1,1,,,D2|
+</TABLE>

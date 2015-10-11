@@ -1,0 +1,27 @@
+database=msa
+where=@@PATH@@ckashare\stock\stock.mdb\
+
+filetouse=stock
+templatetouse=stock
+srchlist=a0,desc,name
+labellist=Stock Number,Description,Supplier Code
+prefix=,[,
+suffix=,],
+title=STOCK ITEMS
+hds=Stock Number|Description|Product Group|Suppliers
+tds=<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=stock&tn=stock&item=,0|1,0,0|@,/prospect/asp/bi.asp?fn=prd.grp&tn=prd_grp&item=,2,1,0,,,TPRD.GRP;1|16,0,0,,,TCLIENT;1
+adhoc=@2591
+
+msa_filetouse=@WHERE@stock
+msa_templatetouse=stock_msa
+msa_srchlist=stock,desc,name
+msa_labellist=Stock Number,Description,Supplier Code
+prefix=,[,
+suffix=,],
+title=STOCK ITEMS
+msa_hds=Stock Number|Description|Product Group|Suppliers
+msa_tds=<TD>|<TD>|<TD>|<TD>
+msa_dms=@,/prospect/asp/bi.asp?fn=@WHERE@stock&tn=stock&item=,0|1,0,0|@,/prospect/asp/bi.asp?fn=@WHERE@stock&tn=prd_grp&item=,2,0,0,,,T@WHERE@PRD.GRP;1|16,0,0,,,T@WHERE@CLIENT;1
+
+

@@ -1,0 +1,8 @@
+filetouse=demolitions
+templatetouse=demolitions
+srchlist=assess,aname,oname,lot.street.suburb,lot
+labellist=Assessment,Applicant,Owner,Address,Lot
+title=DEMOLITION APPLICATIONS
+hds=ID|Applicant|Owner|Address
+tds=<TD>|<TD>|<TD>|<TD>
+dms=@!,/prospect/asp/bi.asp?fn=demolitions&tn=demolitions&item=,0|@,/prospect/asp/bi.asp?fn=client&tn=client&item=,2,1,1,,,TCLIENT;1|1,1,1,,,TCLIENT;35~TCLIENT;7;1|@,/prospect/asp/bi.asp?fn=property&tn=property&item=,1,1,1,,,TCLIENT;2,1;3,1;4,1;5,1

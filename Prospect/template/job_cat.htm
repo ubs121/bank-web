@@ -1,0 +1,31 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>JOB CATEGORY</FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="dict job.l"><INPUT TYPE=hidden NAME="tn" VALUE="job_cat"><INPUT TYPE="text" NAME="item" SIZE=25 VALUE="|0|"></FORM>
+</TABLE>
+
+<center><B>|1|</B></center>
+<P>
+<center><B>Overheads of |12,1,0,,,MD2| % posted to account <A HREF="/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=|8,1|">|8,1|</A> &nbsp;&nbsp; |8,1,0,,,TGEN.L;2|</B></center>
+
+<P>
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR class=top><TH colspan=4 align=center>Expense sub-components
+<TR class=top>
+<TH>Sub-component
+<TH>Description
+<TH>General Ledger A/c
+<TH>Description
+||TABLE000 <TR><TD>|2,N,1|&nbsp;<TD>|3,N,1|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,4,N,1|<TD>|4,N,1,,,TGEN.L;2|
+</TABLE>
+
+||IF,5,#,
+<P>
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR class=top><TH colspan=4 align=center>Income sub-components
+<TR class=top>
+<TH>Sub-component
+<TH>Description
+<TH>General Ledger A/c
+<TH>Description
+||TABLE000 <TR><TD>|5,N,1|&nbsp;<TD>|6,N,1|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=,7,N,1||<TD>|4,N,1,,,TGEN.L;2|
+</TABLE>
+||IFEND

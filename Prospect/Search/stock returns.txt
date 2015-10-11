@@ -1,0 +1,11 @@
+filetouse=returns
+templatetouse=returns
+srchlist=key,@1,@4,@2,brh,@6.name
+itemlist=,
+labellist=Returns Number,Account,Product,Date,Branch,Branch Name
+sorts=
+title=STOCK RETURNS
+hds=Returns Number|Account|Product|Date of Return|Branch|Branch Name
+tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=returns&tn=returns&item=,0|1,1,1|4,0,0|2,1,1,,,D2|6,0,0|6,0,0,,,Tbranch;1
+

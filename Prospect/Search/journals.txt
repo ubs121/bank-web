@@ -1,0 +1,9 @@
+filetouse=journal
+templatetouse=journal
+srchlist=key,acct,date,date,originator
+labellist=Journal Reference,Account,From Date,To Date,Originator
+itemlist=,,,,sselect dict opsec a0 by a0 with a0 # "t1]" and with a0 # "@]" and with a0 # "vdu]"
+title=JOURNALS
+hds=Reference|Narrative|Date|Originator
+tds=<TD>|<TD>|<TD NOWRAP>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=journal&tn=journal&item=,0|6,1,1|7,1,1,,,D2|8,2

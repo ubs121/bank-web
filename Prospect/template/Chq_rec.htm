@@ -1,0 +1,35 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>CHEQUE </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="chq.rec"><INPUT TYPE=hidden NAME="tn" VALUE="chq_rec"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE align=center WIDTH=95%>
+<TR>
+<TD CLASS="mm">
+<B>Chq Amount</B><TD> |2,1,1,,,MD2|
+<TD CLASS="mm">
+<B>Bank</B><TD> |32,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Chq Payee</B><TD> |6|
+<TD CLASS="mm">
+<B>Client No.</B><TD> <A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|5|">|5|&nbsp;&nbsp;|5,0,0,,,TCLIENT;1|</A>
+<TR>
+<TD CLASS="mm">
+<B>Chq Date</B><TD> |3,1,1,,,D2|
+<TD CLASS="mm">
+<B>Retired</B><TD> |4,1,1,,,D2|
+<TR>
+<TD CLASS="mm">
+<B>Narrative</B><TD COLSPAN=3> |11|
+</TABLE>
+||IF,1,=,S
+<P align=center><B> ** STOPPED ** </B>
+||IFEND
+<TABLE WIDTH=95% align=center BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS=top>
+<TH COLSPAN=2>Account
+<TH>Debit
+<TH>Credit
+||TABLE000 <TR><TD>|@,/prospect/asp/bi.asp?fn=@@FILE@@&tn=@@TEMPLATE@@&item=,7,N,1|<TD>|7,N,1,,,TACCOUNTDESC|<TD ALIGN=RIGHT>|8,NT,1,,,MD2>0|<TD ALIGN=RIGHT>|8,NT,1,,,MD2<0|
+</TABLE>
+<P>

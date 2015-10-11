@@ -1,0 +1,27 @@
+<script LANGUAGE="JAVASCRIPT">
+<!-->
+	function loadSelectionIntoView () {
+	var x=document.Listbox.Links.selectedIndex;
+	var newloc = document.Listbox.Links.options[x].value;
+	if (newloc != "") window.location.href=newloc;
+	}
+	// -->
+</script>
+
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR class=top><TD align=center><B><FONT SIZE=+1>CHARGING: ASSESSMENT </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="property"><INPUT TYPE=hidden NAME="tn" VALUE="property_charging"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+||SRsr16_val
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS="top">
+<TH>Category
+<TH>Value
+<TH>Effective Date
+<TH>Rate Code
+<TH>Description
+<TH>Dateset
+<TH>Narrative
+||TABLE000 <TR><TD>|1,N,1|&nbsp;<TD>|2,N,1|&nbsp;<TD>|3,N,1,,,D2|&nbsp;<TD>|4,N,1|&nbsp;<TD>|5,N,1|&nbsp;<TD>|6,N,1,,,D2|&nbsp;<TD>|7,N,1|&nbsp;
+</TABLE>
+||SREND

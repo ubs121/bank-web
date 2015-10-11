@@ -1,0 +1,24 @@
+database=msa
+where=@@PATH@@ckashare\debtors\debtors.mdb\
+title=ÇİİËÄİÃ×ÈÉÍ ÍİÕİÌÆËİÕ
+reports=debtors
+
+filetouse=invoice
+templatetouse=invoice
+srchlist=key,name,batch
+labellist=Íıõıìæëıëèéí ¹,Íığ,Ávëãèéí ¹
+hds=Id|Yíı|Çııëäıã÷|Äàíñ|Òàéëáàğ|Äví|GST|Ávëıã
+tds=<TD>|<TD ALIGN=RIGHT>|<TD>|<TD>|<TD>|<TD ALIGN=RIGHT>|<TD ALIGN=RIGHT>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=invoice&tn=invoice&item=,0|8,NT,1,,,MD2|@,/prospect/asp/bi.asp?fn=tdebtor&tn=tdebtor&item=,3,1,1,,,TCLIENT;1|10,0,0|12,0,0|15,NT,0,,,MD2|17,NT,0,,,MD2|30,0,0
+radiobtns=Credit Notes,Credit Notes in Batch file,Invoices in Batch file,Invoices
+radiocode=|credit|credit|ÇİİËÄİÃ×ÈÉÍ ÊĞÅÄÈÒ ÒİÌÄİÃËİË,|cr.batch|cr_batch|ÁYËİÃ ÔÀÉË ÄÀÕÜ ÇİİËÄİÃ×ÈÉÍ ÊĞÅÄÈÒ ÒİÌËİÃËİË|inv.batch|inv_batch|ÁYËİÃ ÔÀÉË ÄÀÕÜ ÇİİËÄİÃ×ÈÉÍ ÍİÕİÌÆËİË,|invoice|invoice|ÇİİËÄİÃ×ÈÉÍ ÍİÕİÌÆËİË
+
+msa_filetouse=@WHERE@invoice
+msa_templatetouse=invoice_msa
+msa_srchlist=Íıõıìæëıõ,Ávëıã
+msa_labellist=Íıõıìæëıëèéí ¹,Ávëãèéí ¹
+msa_hds=Id|Yíı|GST|Çııëäıã÷|Ávëıã
+msa_tds=<TD>|<TD ALIGN=RIGHT>|<TD ALIGN=RIGHT>|<TD>|<TD>
+msa_dms=@,/prospect/asp/binput.asp?fn=invoice&fn1=inv_batch_lines&tn=invoice&err=noerrors&item=,0|8,NT,0,,,dec2|6,NT,0,,,dec2|@,/prospect/asp/bi.asp?fn=tdebtor&tn=tdebtor&item=,3,0,0,,,TCLIENT;1|30
+msa_radiobtns=Credit Notes,Credit Notes in Batch file,Invoices in Batch file,Invoices
+msa_radiocode=|@WHERE@credit|credit_msa|ÇİİËÄİÃ×ÈÉÍ ÊĞÅÄÈÒ ÒİÌÄİÃËİË,|@WHERE@cr.batch|cr_batch_msa|ÁYËİÃ ÔÀÉË ÄÀÕÜ ÇİİËÄİÃ×ÈÉÍ ÊĞÅÄÈÒ ÒİÌËİÃËİË|inv.batch|inv_batch|ÁYËİÃ ÔÀÉË ÄÀÕÜ ÇİİËÄİÃ×ÈÉÍ ÍİÕİÌÆËİËFILE,|@WHERE@inv_batch|iinvoice|DEBTOR INVOICES IN BATCH FILE,|@WHERE@invoice|invoice_msa|ÇİİËÄİÃ×ÈÉÍ ÍİÕİÌÆËİÕ

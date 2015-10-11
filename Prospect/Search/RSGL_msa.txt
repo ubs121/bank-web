@@ -1,0 +1,8 @@
+filetouse=@@PATH@@\ckashare\Gen_L\gen_l.mdb\gen_l
+templatetouse=SearchJAccount
+srchlist=account,description
+title=Product List
+labellist=Account,Description
+hds=Account|Description
+tds=<TD>|<TD>
+dms=@,#,0|2

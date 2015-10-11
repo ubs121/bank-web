@@ -1,0 +1,47 @@
+This demo shows how Windows Script Host can grab server information such as OS, Processor speed, and Network ID to just name a few. 
+<%
+Set WshShell = Server.CreateObject("Wscript.Shell")
+Set WshSysEnv = WshShell.Environment("Process") 
+
+' Retrieve the Number of Processors
+strProcessorNumbers = WshSysEnv("Number_Of_Processors")
+Response.Write ("Number of CPU Processors: " & strProcessorNumbers) 
+
+' Retrieve the Processor ID of the user's workstation
+strProcessorId = WshSysEnv("PROCESSOR_IDENTIFIER")
+Response.Write ("Processor ID: " & strProcessorId) 
+
+' Retrieve the Processor level of the user's workstation
+strProcessorLevel = WshSysEnv("PROCESSOR_LEVEL")
+Response.Write ("Processor Level: " & strProcessorLevel) 
+
+' Retrieve the Operating System
+strOsSystem = WshSysEnv("OS")
+Response.Write ("Operating System: " & strOsSystem) 
+
+' Retrieve the type of processor
+strProcessorType = WshSysEnv("PROCESSOR_ARCHITECTURE")
+Response.Write ("Type of CPU Processor: " & StrProcessorType) 
+
+' Retrieve the network identification
+Set WshNetwork = Server.CreateObject("Wscript.Network")
+strComputerName = WshNetwork.ComputerName
+Response.Write ("Network Identification: " & strComputerName)
+Set WshNetwork = Nothing 
+
+' Retrieve the domain
+Set WshNetwork = Server.CreateObject("Wscript.Network")
+strDomain = WshNetwork.UserDomain
+Response.Write ("Name Of Domain: " & strDomain)
+Set WshNetwork = Nothing 
+
+' Retrieve the UserName
+Set WshNetwork = Server.CreateObject("Wscript.Network")
+strUserName = WshNetwork.UserName
+Response.Write ("UserName: " & strUserName)
+Set WshNetwork = Nothing 
+
+' Close and clean up all connections
+Set WshShell = Nothing
+Set WshSysEnv = Nothing
+%> 

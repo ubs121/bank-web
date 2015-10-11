@@ -1,0 +1,24 @@
+<FORM NAME="assetform">
+<DIV id="Test" STYLE="position: visibility: visible;">
+<TABLE align=center border=1 cellspacing=1>
+<TR class=top>
+<TD><a href="/prospect/asp/menu.asp"><IMG src="/prospect/images/default/explorer/start_up.gif" BORDER="0" WIDTH="29" HEIGHT="19"></a>
+<TD><B>@@FILEHEAD@@</B>
+<TD><input type="Text"  name="id" value="|0|" maxlength="20" onBlur="Query_Click()">
+
+<TD align=center>
+<input class=bold type="button" name="Query" value="Шїї" onclick='Query_Click()'>
+
+
+<input class=bold type="button" name="Add" value="Нэм" onclick='Add_Click()'>
+    
+
+<input class=bold type="button" name="Update" value="Шинэчил" onclick='Update_Click()'> 	
+
+	
+<input class=bold type="button" name="Delete" value="Устага" onclick='Delete_Click()'>
+ 
+
+<input class=bold type="button" name="Clear" value="Цэвэрлэ" onclick='Clear_Click()'>
+  
+</TABLE>

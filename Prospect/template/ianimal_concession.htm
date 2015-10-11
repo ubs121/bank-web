@@ -1,0 +1,28 @@
+@@INPUT2@@Fee Concession Code
+
+
+<TR>
+<TD class=top><B>Description</B>
+<TD class=top><INPUT type="Text" name="C1,,,Description" value="|1|">
+<TR>
+<TD class=top><B>Annual Fee</B>
+<TD class=top><INPUT type="Text" name="C2,,,Annual Fee,MD2" value="|2|">
+<TR>
+<TD class=top><B>Three Yearly Fee</B>
+<TD class=top><INPUT type="Text" name="C3,,,Three Yearly Fee" value="|3|">
+</TABLE>
+</FORM>
+
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Code
+<TH>Description
+<TH>Annual Fee
+<TH>Three Yearly Fee
+||TABLESEL <TR><TD>|0|<TD>|1|<TD align=right>|2,0,0,,,,MD2|<TD align=right>|3,0,0,,,,MD2|
+@@PATH@@\ckashare\animal\animal.mdb,@@PATH@@\ckashare\animal\animal.mdb\concession,select * from concession order by concession
+</TABLE>
+
+
+
+

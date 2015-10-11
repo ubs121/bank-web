@@ -1,0 +1,3 @@
+Help on the general ledger 
+Stored in \prospect\help\gen_l.txt
+where gen_l is stored under msa_helpname= in prospect\search\general ledger.txt

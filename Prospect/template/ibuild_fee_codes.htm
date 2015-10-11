@@ -1,0 +1,74 @@
+@@INPUT@@Building Application Fee Codes
+
+<TABLE align=center border="1" cellspacing="3" cellpadding="1">
+<TR>
+<TD CLASS=top><B>Description</B>
+<TD><INPUT type="Text" name="C1,0,0" value="|1|" size="25%">
+<TD CLASS=top><B>Comments</B>
+<TD><input type="Text" name="2,0,0" value="|2|">
+<TD CLASS=top><B>Account</B>
+<TD><input type="Text" name="3,0,0" value="|3,0,0|">
+
+<TR>
+<TD CLASS=top><B>Commission Amount</B>
+<TD><input type="Text" name="4,0,0,Commission Amount,,MD2" value="|4,0,0,,,MD2|" size=25%>
+<TD CLASS=top><B>Commission Account</B>
+<TD><input type="Text" name="5,0,0" value="|5,0,0|">
+<TD CLASS=top><B>Commission has GST (Y/N)?</B>
+<TD><input type="Text" name="C6,0,0,Commission has GST,,YN" value="|6,0,0|">
+
+<TR>
+<TD CLASS=top><B>Basis of Calculation</B>
+<TD><input type="Text" name="C7,0,0,Basis of Calculation,,@V@A@S" value="|7,0,0|" size=25%>
+<TD CLASS=top><B>% to apply</B>
+<TD><input type="Text" name="8,0,0,% to apply,,MD2" value="|8,0,0,,,MD2|">
+<TD CLASS=top><B>Amount</B>
+<TD><input type="Text" name="9,0,0,Amount,,MD2" value="|9,0,0,,,MD2|">
+
+<TR>
+<TD CLASS=top><B>Minimum</B>
+<TD><input type="Text" name="10,0,0,Minimum Amount,,MD2" value="|10,0,0,,,MD2|" size=25%>
+<TD CLASS=top><B>Factor</B>
+<TD><input type="Text" name="C11,0,0,Factor,,MD4" value="|11,0,0,,,MD4|">
+<TD CLASS=top><B>GST applies (Y/N)?</B>
+<TD><input type="Text" name="C12,0,0,GST applies,,YN" value="|12,0,0,|">
+
+<TR>
+<TD CLASS=top><B>Bill to</B>
+<TD><input type="Text" name="C13,0,0,Bill to,,@A@O@P" value="|13,0,0|" size=25%>
+<TD CLASS=top><B>Show on Licence (Y/N)?</B>
+<TD><input type="Text" name="C14,0,0,Show on Licence,,YN" value="|14,0,0|">
+<TD CLASS=top><B>Department</B>
+<TD><input type="Text" name="15,0,0,Department" value="|15,0,0,|">
+
+</TABLE>
+</FORM>
+
+
+
+<FORM  NAME="build_fee_codes">
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Code
+<TH>Description
+<TH>Comments
+<TH>Account
+<TH>Commission Amount
+<TH>Commission Account
+<TH>Commission GST
+<TH>Basis of calculation (V,A,$)
+<TR CLASS=top><TH>% to apply
+<TH>Amount (if fixed fee)
+<TH>Minimum Fee
+<TH>Factor
+<TH>GST applies
+<TH>Bill to (A,O,P)
+<TH>Show on licence
+<TH>Department
+||TABLESEL <TR><TD>|0,0,0|<TD>|1|<TD>|2|<TD>|3|<TD>|4,0,0,,,MD2|<TD>|5|<TD>|6|<TD>|7|<TD>|8,0,0,,,MD2|<TD>|9,0,0,,,MD2|<TD>|10,0,0,,,MD2|<TD>|11|<TD>|12|<TD>|13|<TD>|14|<TD>|15|
+@@PATH@@\ckashare\build\build.mdb,@@PATH@@\ckashare\build\build.mdb\fee,select * from fee order by fee
+</TABLE>
+</FORM>
+
+
+

@@ -1,0 +1,24 @@
+@@INPUT2@@Invoice Code
+
+<TR>
+<TD class=top><B>Description</B>
+<TD class=top><INPUT type="Text" size=40% name="C1,,,Description" value="|1|">
+<TR>
+<TD class=top><B>Last Invoice Number</B>
+<TD class=top><INPUT type="Text" size=40% name="2,,,Last Invoice Number,,MD0" value="|2|">
+</TABLE>
+</FORM>
+
+<FORM>
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Code (2 alpha)
+<TH>Description
+<TH>Last Invoice Number
+||TABLESEL <TR><TD>|0|<TD>|1|<TD align=right>|2|
+@@PATH@@\ckashare\debtors\debtors.mdb,@@PATH@@\ckashare\debtors\debtors.mdb\inv_codes,select * from inv_codes order by code
+</TABLE>
+</FORM>
+
+
+

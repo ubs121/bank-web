@@ -1,0 +1,44 @@
+<OBJECT
+RUNAT=SERVER
+SCOPE=Session
+ID=rst
+PROGID = "ADODB.Connection">
+</OBJECT>
+
+<OBJECT
+RUNAT=SERVER
+SCOPE=Session
+ID=Pick
+PROGID = "cka_pick.pick">
+</OBJECT>
+
+<OBJECT
+RUNAT=SERVER
+SCOPE=Session
+ID=PickLin
+PROGID = "cka_iis.ckaiis">
+</OBJECT>
+
+<OBJECT
+RUNAT=SERVER
+SCOPE=Session
+ID=d3
+PROGID = "cka_d3.d3">
+</OBJECT>
+
+<SCRIPT LANGUAGE=VBSCRIPT RUNAT=SERVER>
+ Sub Session_OnStart
+  Session("userStyle") = "<link rel=stylesheet href=""/prospect/images/default/style.css"" type=""text/css"">"
+  Session("imagePath") = "/prospect/images/default/"
+  Session("content")="text/html; charset=windows-1252" 'this is English - 1251 is Mongolian
+  'Session.LCID=3081
+  'Session.CodePage=1251
+ End sub
+</SCRIPT>
+
+<SCRIPT LANGUAGE=VBSCRIPT RUNAT=SERVER>
+Sub Session_OnEnd
+   Session("d3needed")=""
+End Sub
+</SCRIPT>
+

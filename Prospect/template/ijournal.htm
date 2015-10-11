@@ -1,0 +1,139 @@
+@@INPUT@@Journal General Ledger Only
+
+<SCRIPT LANGUAGE="JavaScript" SRC="/prospect/jscript/gen_l.js"></SCRIPT>
+<INPUT id=select5 name=select5 value="|5,V|" type="hidden">
+<INPUT id="assessment_address_hide" NAME="assessment_address_hide" type="hidden">
+<INPUT id="prev_value" NAME="prev_value" type="hidden" value="0">
+
+<TABLE align=center WIDTH="95%" border="1" cellspacing="1" cellpadding="1">
+<TR class=top>
+
+||SR@@PATH@@\ckashare\gen_l\gen_l.mdb\currentyear,YEAR
+        <TD><B>Date (must be between |2| and |3|)<B>
+        <TD><input type="Text" name="C1,1,0,Date,,D2X,|2|,|3|" 
+||SREND
+             value="|1,0,0,,,D2X|" align=left>		
+</TABLE>
+<%'this is where the expandable table goes - written to in includeform%>
+<I id=expanding></I>
+</div>
+</FORM>
+
+<%'//!!!!!see 12 below assumes 11 elements above!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!%>
+
+<script LANGUAGE="JavaScript">
+	var n,TotalDb=0,TotalCr=0;
+    var numofrows,numofcols,numinrow=5;
+	var Translist=new Array();
+	AccountDescription="T@@PATH@@!ckashare!gen_l!gen_l.mdb!gen_l;2";
+    var gFieldValues = new Array(numinrow * 10); // this array holds our form values when we need to regenerate the form
+    for (var i=0;i<gFieldValues.length;i++) {gFieldValues[i]=""};
+	getTransValues();
+	IncludeForm(numinrow);
+
+function IncludeForm(numinrow)
+{
+   var htmlStr = '<TABLE width=95% align=center border=1 cellspacing=1 cellpadding=1>';
+   htmlStr += '<TR class=top><TH><input type="button" value="New Account" onClick="AddField(' + numinrow + ')"><TH>Description<TH>Debit<TH>Credit<TH>Narrative<TR class=top><TD>&nbsp;<TD align=center><B>Totals</B><TD align=right><B>&nbsp;<I id="totaldr"></I></B><input type="hidden" name="Btotaldr" value="0.00"><TD align=right><B>&nbsp;<I id="totalcr"></I><input type="hidden" name="Btotalcr" value="0.00"></B><TD>&nbsp;';    
+
+for (var i=0;i<gFieldValues.length;i+=numinrow)
+{
+   htmlStr += '<TR class=top>';
+   htmlStr += '<TD><input type="Text" onBlur="gl_validation(document.all(' + "'I" + (1000 + i) + ",,,Account'),document.all.B" + (1000 + i + 1) + ',this,this.value,' + "'T@@PATH@@!ckashare!gen_l!gen_l.mdb!gen_l;2'" + ',' +  "'SearchAccount.txt'" + ')" name="' + (1000 + i + 0) + ',,,Account" value="' + gFieldValues[i+0] + '">';
+   htmlStr += '<TD class=top id="I' + (1000 + i) + ',,,Account">' + gFieldValues[i+1] + '&nbsp;</td>  <input type="hidden" name="B' + (1000 + i + 1) + '" value="' + gFieldValues[i+1] + '">';
+   htmlStr += '<TD align=center><input type="text" onFocus="getPrevVal(this.value);" onBlur="addamts(document.all.totaldr,document.all.Btotaldr,document.all.prev_value.value,this,this.value)" name="' + (1000 + i + 2) + ',,,Debit,,MD2X,>0" value="' + FormatNum(gFieldValues[i+2],2) + '">';
+   htmlStr += '<TD align=center><input type="text" onFocus="getPrevVal(this.value);" onBlur="addamts(document.all.totalcr,document.all.Btotalcr,document.all.prev_value.value,this,this.value)" name="' + (1000 + i + 3) + ',,,Credit,,MD2X,>0" value="' + FormatNum(gFieldValues[i+3],2) + '">';
+   htmlStr += '<TD align=center><input type="text" name="' + (1000 + i + 4) + '" value="' + gFieldValues[i+4] + '">';
+}
+
+   htmlStr += '</TABLE>';
+   document.all.expanding.innerHTML = htmlStr;
+   document.all.totaldr.innerHTML=document.all.Btotaldr.value=FormatNum(TotalDb,2);
+   document.all.totalcr.innerHTML=document.all.Btotalcr.value=FormatNum(TotalCr,2);
+}
+
+function AddField(numinrow)
+{
+// Save previously entered data here
+	var formObj = document.assetform;
+    n=formObj.elements.length - gFieldValues.length; 
+ 	for (var i=0;i<gFieldValues.length;i++) //element 0 is the ADD BUTTON so saving element 1 onwards only
+	   {gFieldValues[i]= formObj.elements(i+n).value; }
+
+for (var i=0;i<gFieldValues.length;i+=numinrow) //save description
+	   {accfield = formObj.elements(i+n).name; gFieldValues[i+1] = document.all("I" + accfield).innerHTML; }
+
+TotalDb=document.all("BtotalDr").value;
+TotalCr=document.all("BtotalCr").value;
+
+// Create the new fields
+     for (var j=0;j<numinrow;j++)
+        {gFieldValues[gFieldValues.length]=""; }
+     IncludeForm(numinrow);
+}
+
+
+function getPrevVal(pval)
+{
+if (Ltrim(pval) == "") pval = 0;
+else
+	pval=FormatNum(Ltrim(pval),2);
+	if (parseFloat(pval) < 0) pval = 0;
+document.all.prev_value.value=pval;
+}
+
+
+function getTransValues()
+{
+var i,j;
+
+j = 0;
+Temp = document.assetdata.before_trans.value;
+if (Temp == "" || Temp.charAt(0) == '@') return;
+
+initArray(Temp);
+
+if (numofrows > 10)   					//if num. of records > 10 then resize gFieldValues for the additional rows
+     for (var k=0; k<(numinrow * (numofrows - 10)); k++)
+        { gFieldValues[gFieldValues.length]=""; }
+else 								//else resize Translist for max. of 10 rows
+	 for (var k=0; k<(numofcols * (10 - numofrows)); k++)
+        { Translist[Translist.length]=""; }
+		
+for (i = 0; i<Translist.length; i+=numofcols)
+{
+	gFieldValues[j] = Translist[i+4];             // Account number
+	if (Translist[i+5] < 0) Translist[i+5] = Translist[i+5] * -1
+	if	(Translist[i+4] != "")
+	{
+        ASPpage = RSGetASPObject("DllCalls.asp");
+        co = ASPpage.BuildString(Translist[i+4],AccountDescription);
+        gFieldValues[j+1]=co.return_value;
+	}
+	if (Translist[i+3] == "58")
+	{
+			TotalDb=TotalDb + parseFloat(Translist[i+5]);
+alert(parseFloat(Translist[i+5]));
+		gFieldValues[j+2] = Translist[i+5];	              //Debit
+	}	
+	else if (Translist[i+3] == "33")	
+	{
+		TotalCr=TotalCr + parseFloat(Translist[i+5]);
+		gFieldValues[j+3] = Translist[i+5];	              //Credit   
+	}	
+	gFieldValues[j+4] = Translist[i+6];                   //Narrative
+	j = j+numinrow;
+}
+}
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"T@@PATH@@!ckashare!gen_l!gen_l.mdb!gen_l;2");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+

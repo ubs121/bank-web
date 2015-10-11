@@ -1,0 +1,8 @@
+filetouse=property
+templatetouse=property
+srchlist=a0,oname,addr1,addr2,post,lot,loc,a25
+labellist=Assessment,Surname,Address,Suburb,Postcode,Lot,Location,VGN
+prefix=,[,[,[,,,,
+suffix=,],],],,,,
+sorts=assess,stname,stno
+adhoc=@recall.1651

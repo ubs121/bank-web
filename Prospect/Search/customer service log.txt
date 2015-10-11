@@ -1,0 +1,10 @@
+filetouse=cs.log
+templatetouse=cs_log
+srchlist=a0,caller,subjcode,descr
+labellist=Call No.,Caller,Subject,Description
+prefix=,,,[
+suffix=,,,]
+title=CUSTOMER SERVICE REQUESTS
+hds=Call|Date|Who|Caller|Date Respond|Dept|Subject|Service Request
+tds=<TD>|<TD NOWRAP>|<TD>|<TD>| |<TD>|<TD>|<TD>|<TD>
+dms=@!,/prospect/asp/bi.asp?fn=cs.log&tn=cs_log&item=,0|1,1,1,,,D2|6|4,1,0|4,2,0|17,1,1,,,D2|15|10,1,0|13,1,0

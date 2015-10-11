@@ -1,0 +1,12 @@
+xdatabase=msa
+where=e:\ckashare\donor\aidint.mdb\
+title=DONORS
+
+msa_filetouse=@WHERE@aid_data
+msa_templatetouse=aid_data
+msa_srchlist=id,inner!join!aidtype!on!aid_data.aidtype!=!aidtype.field1!where!aidtype.engname,Project,Name,styear,EndYear,Donorname,comm_usd
+msa_labellist=Id,Aid Type,Project,Name,Start Year,End Year,Donor Name,USD Amount
+msa_itemlist=,select * from aidtype engname,,,,,select * from aid_data donorname
+msa_hds=ID|Project|Name|Aid Type|Start Year|End Year|Donor Name|USD Amount
+msa_tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD>|<TD>|<TD align=right>
+msa_dms=@,/prospect/asp/bi.asp?fn=e:\donor\aidint.mdb\aid_data&tn=aid_data&item=,0|1|2|5|3|4|6|9,NT,0

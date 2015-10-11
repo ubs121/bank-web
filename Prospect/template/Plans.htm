@@ -1,0 +1,207 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>BUILDING APPLICATION </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="plans"><INPUT TYPE=hidden NAME="tn" VALUE="plans"><INPUT TYPE="text" NAME="item" SIZE=8 VALUE="|0|"></FORM>
+</TABLE>
+
+||IF,18,#,
+|18|
+||IFEND
+<P>
+||IF,24,#,
+<B>*** CANCELLED ***</B>
+||IFEND
+||IF,24,=,
+||IF,20,#,
+<B>*** FEES RAISED ***</B>
+||IFEND
+||IFEND
+<TABLE WIDTH=95% align=center >
+<TR>
+<TD CLASS="mm" width="25%"><B>Property Address</B>
+<TD width="10%"><A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|1,1,1|"><FONT CLASS=itemlnk>|1|</FONT></A>
+<TD colspan ="3">&nbsp|1,1,1,,,TCLIENT;2,1;3,1;4,1;5,1|
+<TR>
+<TD CLASS="mm"><B>Applicant (Builder)</B>
+<TD><A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|2,1,1|"><FONT CLASS=itemlnk>|2|</FONT></A>
+<TD colspan ="3">&nbsp|2,1,1,,,TCLIENT;7,1;1,1;2,1;3,1;4,1;5,1|
+<TR>
+<TD CLASS="mm"><B>Owner</B>
+<TD><A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|1,1,1,,,TCLIENT;35|"><FONT CLASS=itemlnk>|1,1,1,,,TCLIENT;35|</FONT></A>
+<TD colspan ="3">&nbsp|1,1,1,,,TCLIENT;35~TCLIENT;7,1;1,1;2,1;3,1;4,1;5,1|
+<TR>
+<TD CLASS="mm"><B>Dual Occupancy Indicator</B>
+<TD COLSPAN=4>|44| &nbsp;
+<TR>
+<TD CLASS="mm"><B>Pre-existing Dwellings</B>
+<TD COLSPAN=4>|46| &nbsp;
+<TR>
+<TD CLASS="mm"><B>Future Owner Name & Address</B>
+<TD COLSPAN=4>|53| &nbsp;|54| &nbsp;|55| &nbsp;
+
+
+<TR>
+<TD CLASS="mm" ><B>Builder's Reg. Number</B>
+<TD colspan=2> |3| &nbsp;
+<TD CLASS="mm" width="25%"><B>Builder's Job Number</B>
+<TD width="25%">|27| &nbsp;
+<TR>
+<TD CLASS="mm"><B>Estimated Value</B>
+<TD>|16| &nbsp;
+<TR>
+<TD CLASS="mm"><B>Application Lodged</B>
+<TD  colspan =2>|17,1,1,,,D2|
+<TD CLASS="mm"><B>Application Completed</B>
+<TD>|19,1,1,,,D2|
+<TR>
+<TD CLASS="mm"><B>Application Cancelled</B>
+<TD colspan =2> |30,1,1,,,D2| &nbsp;
+<TD CLASS="mm"><B>Fees Raised</B>
+<TD>|20,1,1,,,D2|
+<TR>
+<TD CLASS="mm"><B>Building Started</B>
+<TD colspan =2>|31,1,1,,,D2| &nbsp;
+<TD CLASS="mm"><B>Building Completed</B>
+<TD> |36,1,1,,,D2| &nbsp;
+<TR>
+<TD CLASS="mm"><B>Building Narrative</B>
+<TD colspan=4>|8| &nbsp;
+<TR>
+<TD CLASS="mm"><B>General Narrative</B>
+<TD colspan=4>|6| &nbsp;
+</TABLE>
+<p>
+<TABLE WIDTH=95% align=center>
+<TR class=top>
+<TH>Department
+<TH>Fee type
+<TH>Fee amount
+<TH>Fee cancel
+<TH>Conditions
+||TABLE000 <TR><TD>|21,N,1,,@D.,TBUILD.CODES;1|<TD>|22,N,1,,@C.,TBUILD.CODES;1,1,1|<TD ALIGN="right">|23,N,1,,,MD2|<TD ALIGN="right">|24,N,1,,,MD2|<TD>|25,N,1|
+</TABLE>
+<p>
+
+<TABLE WIDTH=95% align=center>
+<TR class = top>
+<TH>Type of Work
+<TH>Type of Building
+<TH>Other Type of Building
+<TR>
+
+<TD>
+||ALIST <LI> |4,N,1,,@T.,TBUILD.CODES;1|
+
+<TD>
+||ALIST <LI> |5,N,1,,@B.,TBUILD.CODES;1|
+
+<TD>
+||ALIST <LI> |7,N,1,,@O.,TBUILD.CODES;1|
+
+<TR>
+</TABLE>
+<P>
+
+<TABLE WIDTH=95% align=center>
+<TR class =top>
+<TH>Wall Material
+<TH>Roof Material
+<TH>Floor Material
+<TH>Frams Type
+<TR>
+
+<TD>|10,1,1,,@W.,TBUILD.CODES;1|<BR>|10,2,1,,@W.,TBUILD.CODES;1|<BR>|10,3,1,,@W.,TBUILD.CODES;1| &nbsp;
+
+<TD>|11,1,1,,@R.,TBUILD.CODES;1|<BR>|11,2,1,,@R.,TBUILD.CODES;1|<BR>|11,3,1,,@R.,TBUILD.CODES;1| &nbsp;
+
+<TD>|12,1,1,,@F.,TBUILD.CODES;1|<BR>|12,2,1,,@F.,TBUILD.CODES;1|<BR>|12,3,1,,@F.,TBUILD.CODES;1| &nbsp;
+
+<TD>|45,1,1,,@M.,TBUILD.CODES;1| &nbsp;
+</table>
+<p>
+<TABLE WIDTH=95% align=center>
+<TR>
+<TD CLASS="mm" width ="25%"><B>Area of Building</B>
+<TD width ="25%">|13|&nbsp;sqm
+<TD CLASS="mm" width ="25%"><B>Number of Storeys</B>
+<TD width ="25%">|14| &nbsp;
+<TR>
+<TD CLASS="mm"><B>Building Class</B>
+<TD>|15,1,1,,@L.,TBUILD.CODES;1| &nbsp;
+<TD CLASS="mm"> &nbsp;
+<TD> &nbsp;
+<TR>
+<TD CLASS="mm"><B>Number of Units</B>
+<TD>|9| &nbsp;
+<TD CLASS="mm"><B>Setback Variation</B>
+<TD>|78| &nbsp;
+<TR>
+<TD CLASS="mm"><B>Ownership Type</B>
+<TD>|79| &nbsp;
+<TD CLASS="mm"><B>Attached/Detached(A/D)</B>
+<TD>|80| &nbsp;
+<TR>
+<TD CLASS="mm"><B>No. Demolished Dwellings</B>
+<TD>|81| &nbsp;
+<TD CLASS="mm"><B>BCA Codes</B>
+<TD>|82,1,1,,@BC.,TBUILD.CODES;1| &nbsp;
+</TABLE>
+<p>
+<TABLE WIDTH=95% align=center>
+<TR class=top>
+<TH COLSPAN=6 align=CENTER VALIGN=MIDDLE>Insurance
+<TR class =top>
+<TH>Insurer Name
+<TH>Certificate Number
+<TH>Amount of Insurance Cover
+<TH>Effective Date
+<TH>Issue Date
+<TH>Issue Date
+<TR>
+<TD>|66| &nbsp;
+
+<TD>|67| &nbsp;
+
+<TD> |70,1,1,,,MD2| &nbsp;
+
+<TD>|68,1,1,,,D2| &nbsp;
+
+<TD>|71,1,1,,,D2| &nbsp;
+
+<TD>|69,1,1,,,D2| &nbsp;
+</TABLE>
+<p>
+<TABLE WIDTH=95% align=center>
+<TR class=top>
+<TH COLSPAN=6 align=CENTER VALIGN=MIDDLE>Approvals
+<TR>
+<TD CLASS="mm"><B>Department</B>
+<TD CLASS="mm"><B>Officer</B>
+<TD CLASS="mm"><B>Approved By</B>
+<TD CLASS="mm"><B>Date Approved</B>
+<TD CLASS="mm"><B>Operator</B>
+<TR>
+<TD>|56,,,,@D.,TBUILD.CODES;1| &nbsp;
+<TD>|57,1,1,,@BS.,TBUILD.CODES;1| &nbsp;
+<TD>|58,1,1,,@BS.,TBUILD.CODES;1| &nbsp;
+<TD>|59,1,1,,,D2| &nbsp;
+<TD>|60| &nbsp;
+</TABLE>
+<p>
+<TABLE WIDTH=95% align=center>
+<TR class=top>
+<TH COLSPAN=6 align=CENTER VALIGN=MIDDLE>Pending
+<TR>
+<TD CLASS="mm"><B>Department</B>
+<TD CLASS="mm"><B>Reason</B>
+<TD CLASS="mm"><B>Date Requested</B>
+<TD CLASS="mm"><B>Date Received</B>
+<TD CLASS="mm"><B>File</B>
+<TD CLASS="mm"><B>Operator</B>
+<TR>
+<TD>|56,,,,@D.,TBUILD.CODES;1| &nbsp;
+<TD>|74| &nbsp;
+<TD>|63,1,1,,,D2| &nbsp;
+<TD>|64,1,1,,,D2| &nbsp;
+<TD>|65| &nbsp;
+<TD>|60| &nbsp;
+</TABLE>
+

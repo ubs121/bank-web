@@ -1,0 +1,11 @@
+filetouse=filing
+templatetouse=filing
+srchlist=refno,wabout,wfrom,wgiven,kwords,drcv,assess
+labellist=Reference No.,Subject,Sender,Recipient,Keywords,Date Received,Assess
+prefix=,,,,[,,
+suffix=,,,,],,
+title=FILING
+hds=Ref. No. |File Ref|Subject|Sender|Recipient|Keyword|Date Received
+tds=<TD>|<TD>|<TD NOWRAP>|<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=filing&tn=filing&item=,0|8,0,0|4,1,1|3,1,1|5,1,1,,@N.,TACT.CODES;1|9,1,1|1,0,0,,,D2
+adhoc=@891

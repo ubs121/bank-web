@@ -1,0 +1,10 @@
+filetouse=filing.index
+templatetouse=filing_index
+srchlist=a0,a1
+labellist=Баримтын индекс,Баримтын индексийн нэр
+prefix=,,
+suffix=,,
+title=Баримтын индекс
+hds=Баримтын индекс|Гарчиг|Агуулга|Хадгалалт|Заалт|Review Date
+tds=<TD>|<TD>|<TD NOWRAP>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=filing.index&tn=filing_index&item=,0|1,0,0|3,0,0|4,0,0|5,1,1|6,1,1,,,D2

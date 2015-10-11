@@ -1,0 +1,121 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>DEBTOR </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="tdebtor"><INPUT TYPE=hidden NAME="tn" VALUE="tdebtor"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE align=center>
+<TR>
+<TD CLASS="mm">
+||SRCLIENT
+||IF,28,=,1
+<B>Address</B><TD> |1| |2| |3| |4| |5| 
+||IFEND
+||IF,28,#,1
+<B>Name</B><TD> |8| |7| |1| 
+||IFEND
+||SREND
+   
+<TD CLASS="mm">
+<B>Balance</B><TD> |3,1,1,,,MD2|
+<TR>
+<TD class="screen" colspan=4>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Postal Address</B><TD> |0,,,,,TCLIENT;2,1| <br> |0,,,,,TCLIENT;3,1| <br> |0,,,,,TCLIENT;4,1;5,1|
+<TD CLASS="mm">
+<B>Residential Address</B><TD> |0,,,,,TCLIENT;2,2| <br> |0,,,,,TCLIENT;3,2| <br> |0,,,,,TCLIENT;4,2;5,2|
+<TR>
+<TD class="screen" colspan=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Bus</B><TD> |0,,,,,TCLIENT;9,1|
+<TD CLASS="mm">
+<B>Priv</B><TD> |0,,,,,TCLIENT;9,2|
+<TR>
+<TD CLASS="mm">
+<B>Fax</B><TD> |0,,,,,TCLIENT;9,3|
+<TD CLASS="mm">
+<B>Mobile</B><TD> |0,,,,,TCLIENT;9,5|
+<TR>
+<TD CLASS="mm">
+<B>Email</B><TD COLSPAN=3> |0,,,,,TCLIENT;9,4|
+<TR>
+<TD class="screen" colspan=4>&nbsp;
+<TR>
+||IF,21,#,
+<TD CLASS="mm">
+<B>Class</B><TD> |21,1,1,,,sr_26!dict tdebtor!@CLASS!0!1|
+||IFEND
+||IF,29,#,
+<TD CLASS="mm">
+<B>Credit Limit</B><TD> |29,1,1,,,MD0|
+||IFEND
+<TR>
+<TD CLASS="mm">
+<B>Avg Days to Pay</B><TD> |20,SUMA,0,,,MD0|
+<TD CLASS="mm">
+<B>Unallocated Credit</B><TD> |22,1,1,,,MD2|
+<TR>
+||IF,17,#,
+<TD CLASS="mm">
+<B>Status</B><TD> |17,1,1,,,sr_26!dict tdebtor!@STATUS!0!1|
+||IFEND
+<TD CLASS="mm">
+<B>Relationship</B><TD> |23,1,1,,,sr_26!dict tdebtor!@RELATE!0!1|
+||IF,19,#,
+<TR>
+<TD CLASS="mm">
+<B>Consolidates To</B><TD> |19|
+||IFEND
+
+<TR>
+<TD class="screen" colspan=4>&nbsp;
+
+<TR>
+<TD CLASS="mm">
+<B>Delivery Instructions</B><TD> |0,,,,,TCLIENT;13,1;13,2;13,3|
+<TD CLASS="mm">
+<B>Comments</B><TD> |0,,,,,TCLIENT;12,1;12,2;12,3|
+
+</TABLE>
+
+<P align=center>
+||IF,59,#,
+<B>Direct Debit Authority </B>|59,0,0|
+<B> From Date </B>|60,0,0,,,D2|
+<B> To  Date </B>|61,0,0,,,D2|
+||IF,64,#,
+<BR><B>Fixed Amount </B>|64,0,0,,,MD2|
+<B>Frequency </B>|65,0,0,,,MD2|
+<B>Make payment even if nothing owing? </B>|66,0,0,,,MD2|
+||IFEND
+||IFEND
+
+<P align=center>
+||IF,85,#,
+<B>Instalment Plan </B> &nbsp; |85,0,0|&nbsp; &nbsp; &nbsp; &nbsp; <B>Administration Amount </B>$|88,0,0,,,MD2|
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Due Date
+<TH>Base Amt
+<TH>Interest Amt
+<TH>Instalment Amt
+<TH>Paid Amt
+<TH>Date Last Paid
+<TH>Receipt
+<TH>Amount
+||TABLE000 <TR> <TD> |86,N,1,,,D2|<TD align="right">|87,N,1,,,MD2|<TD align="right">|89,N,1,,,MD2|<TD align="right">|90,N,1,,,MD2|<TD align="right">|92,N,1,,,MD2|<TD>|93,N,1,,,D2|<TD>|94,N,1,|<TD align="right">|96,N,1,,,MD2|
+</TABLE>
+||IFEND
+
+||IF,95,#,
+<B>Operator</B> &nbsp; |95,1,0|&nbsp; &nbsp; &nbsp; &nbsp; <B>Date Manually put on Instalment Plan </B>|95,2,0,,,D2|
+||IFEND
+
+||IF,?,WDC,
+||MAYBE,sselect loans with a1 = "|0|",<A HREF="/prospect/asp/buildsel.asp?fn=loans&tn=loans&title=Waste Water Loans&item=a1&ref=|0|">Click here to see Loans</A>
+||IFEND
+
+<P align=center>
+<A HREF="buildsel.asp?fn=dr_trans&tn=dr_trans&item=a1&ref=|0|&by=by-dsnd">Click here to Display Transactions most recent first</A>
+<P align=center>
+<A HREF="buildsel.asp?fn=dr_trans&tn=dr_trans&item=a1&ref=|0|&by=by">Click here to Display Transactions oldest first</A>

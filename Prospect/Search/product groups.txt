@@ -1,0 +1,9 @@
+filetouse=prd.grp
+templatetouse=prd_grp
+srchlist=a0,a1
+labellist=Group Code,Group Name
+title=PRODUCT GROUPS
+hds=Product Group|Description|Cost of Sales|Stock-on-Hand
+tds=<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=prd.grp&tn=prd_grp&item=,0|1,0,0|3,0,0|7,0,0
+

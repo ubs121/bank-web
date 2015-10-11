@@ -1,0 +1,12 @@
+filetouse=prop.stmt
+templatetouse=prop_stmt
+srchlist=a0,a1,aname
+labellist=Request,Assessment,Applicant
+prefix=,,[
+suffix=,,]
+title=PROPERTY SETTLEMENTS
+hds=Request|Assessment|Address|Applicant|Date Requested
+tds=<TD>|<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=prop.stmt&tn=prop_stmt&item=,0|@,/prospect/asp/bi.asp?fn=property&tn=property&item=,1|1,0,O,,,TCLIENT;2;3;4;5|2,0,O,,,TCLIENT;1|4,0,0,,,D2
+radiobtns=Finalised Settlements,Settlements not printed or settled
+radiocode=|prop.stmt|prop_stmt|FINALISED SETTLEMENTS,|pr.prop.stmt|pr_prop_stmt|SETTLEMENTS NOT PRINTED / SETTLED

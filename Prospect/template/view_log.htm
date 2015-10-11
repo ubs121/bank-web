@@ -1,0 +1,35 @@
+
+<H1 align=center>Customer Support- Incident Report</H1>   
+
+<FORM ACTION="/prospect/support/add_call.asp" METHOD="POST" NAME="addcall">
+<TABLE align=left bgcolor=BurlyWood border="1" cellspacing="3" cellpadding="1">
+<TR><TH bgcolor=#996633   colspan=4>Customer Support Log Dummy
+<TR><TD colspan=4 bgcolor=Tan><STRONG>Caller Details</STRONG>
+<TR><TD bgcolor=#CC9966>Date<TD><input TYPE="TEXT" NAME="num_1" value="|1,1,1,,,D2|">
+    <TD bgcolor=#CC9966>Time<TD><input TYPE="TEXT" NAME="num_2" value="|2,1,1,,,MT|">
+<TR><TD bgcolor=#CC9966>Contact Name<TD><input TYPE="TEXT" NAME="num_5_1_1" value="|5,1,1|">
+    <TD bgcolor=#CC9966>Phone Number<TD><input TYPE="TEXT" NAME="num_5_2_1" value="|5,2,1|">
+<TR><TD> 	  
+<TR><TD>  
+<TR><TD colspan=4 bgcolor=Tan><STRONG>Incident Report Details</STRONG>
+<TR>
+    <TD bgcolor=#CC9966>Module Name 
+    <TD><select  onChange='swop_attrib(this)' NAME="codesbox" size="1" id="sselect slog.codes with a0 = '@M]' a1,slog.codes"><option value="|999|">
+      </select>
+    <TD bgcolor=#CC9966>Program Name<TD><input TYPE="text" NAME="num_11" VALUE="|11|">
+<TR><TD>  
+<TR><TD>  
+<TR><TD>  
+<TR><TD colspan=4 bgcolor=#CC9966>Description Of Problem:  
+<TR><TD colspan=4><TEXTAREA NAME="num_12"  COLS="60" ROWS="6" WRAP="VIRTUAL">|12|
+ </TEXTAREA>
+<TR><TD><INPUT TYPE="button" NAME="send" VALUE="Send" OnClick="verify()">
+    <TD><INPUT TYPE="reset" NAME="reset" VALUE="Reset">
+</TABLE>
+
+<input TYPE="hidden" NAME="num_3" VALUE="Submitted via web site">
+<input type="hidden" NAME="num_4" VALUE=""><!--client number -->
+<input TYPE="hidden" NAME="num_10" VALUE=""><!--code module -->
+</FORM>
+
+

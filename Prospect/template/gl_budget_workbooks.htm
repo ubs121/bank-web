@@ -1,0 +1,21 @@
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><INPUT TYPE=hidden NAME="fn" VALUE="client"><INPUT TYPE=hidden NAME="tn" VALUE="client"><INPUT TYPE="hidden" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+
+
+<FORM>
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR CLASS=top>
+<TH>Workbook
+<TH>Date Created
+<TH>Responsibility
+<TH>Date downloaded
+<TH>Date locked
+||TABLESEL <TR><TD><A>|0|</A><TD>|1|<TD>|2|<TD>|3|<TD>|4|
+@@PATH@@\ckashare\gen_l\gen_l.mdb,@@PATH@@\ckashare\gen_l\gen_l.mdb\Budget_workbooks,select * from Budget_workbooks order by [date created] desc
+</TABLE>
+</FORM>
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+filetouse=cis.govt
+templatetouse=cis_govt
+srchlist=a0,org.name,subject,a6,ages
+labellist=Дугаар,Нэр,Yvрэг,Байрлал,Нас
+prefix=,,[,[,[
+suffix=,,],],]
+title=УЛСЫН БАЙГУУЛЛАГА
+hds=Id|Нэр|Байрлал|Утас|Yvрэг|Нас
+tds=<TD>|<TD>|<TD>| |<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=cis.govt&tn=cis_govt&item=,0|2,1,1|6,1,0|6,2,0|7,0,0|1,0,0|12,0,0

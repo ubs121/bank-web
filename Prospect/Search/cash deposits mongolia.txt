@@ -1,0 +1,12 @@
+filetouse=dict cash
+templatetouse=cash_deposit
+srchlist=a0
+labellist=Õאהדאכאלזûם ¹
+sortlist=and with a0 = ‏d]‏ and with a0 = ‏[d‏
+prefix=D
+suffix=D
+title=ÁÝËÝÍ Ì×ÍÃ×ÍÈÉ ÕÀÄÃÀËÀÌÆ
+hds=Õאהדאכאלז
+tds=<TD>
+dms=@,/prospect/asp/bi.asp?fn=dict cash&tn=cash_deposit&item=,0
+reports=cash

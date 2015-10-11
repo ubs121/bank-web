@@ -1,0 +1,11 @@
+filetouse=goodsin
+templatetouse=goodsin
+srchlist=name,creditor
+srchkey=none
+labellist=Нэр,Зээлдvvлэгчийн дугаар
+title=БАРААНЫ ЭРГЭЛТ
+hds=Id|Зээлдvvлэгч|Дvн|Тодорхойлолт
+tds=<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=goodsin&tn=goodsin&item=,0|@,/prospect/asp/bi.asp?fn=creditor&tn=creditor&item=,0,1,1,,,G*1~TCLIENT;1|10,1,1|12,1,1
+radiobtns=Goods Returns in Batch file,Goods Returns,Goods Inwards in Batch file,Goods Inwards
+radiocode=|gr.batch|gr_batch|GOODS RETURNS IN BATCH FILE,|goodsret|goodsret|GOODS RETURNS,|gi.batch|gi_batch|GOODS INWARDS IN BATCH FILE,|goodsin|goodsin|GOODS INWARDS

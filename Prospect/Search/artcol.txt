@@ -1,0 +1,14 @@
+database=msa
+where=e:\ckashare\artcol\artcol.mdb\
+title=ART COLLECTION
+
+msa_filetouse=@WHERE@art_collection
+msa_templatetouse=artcol
+msa_srchlist=id,artist,title,description,provenance
+msa_labellist=Id,Artist,Title,Description,Provenance
+msa_prefix=,,[
+msa_suffix=,,]
+msa_itemlist=,select code!surname from art_artists order by surname,,,
+msa_hds=ID|Accession|Artist|Category|Title|Year|Image
+msa_tds=<TD> |<TD>|<TD>|<TD>|<TD>|<TD>|<TD>
+msa_dms=@,/prospect/asp/bi.asp?fn=c:\ckashare\artcol\artcol.mdb\art_collection&tn=artcol&item=,0|1|2,1,1,,,Tc:\ckashare\artcol\artcol.mdb\ART_ARTISTS;1|3,1,1,,,Tc:\ckashare\artcol\artcol.mdb\ART_CATEGORY;1|4|5|<IMG HEIGHT=50 WIDTH=50  SRC=C:\CKASHARE\ARTCOL\@@IMAGE@@\@@IMAGE@@.jpg>

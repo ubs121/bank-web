@@ -1,0 +1,80 @@
+-@@INPUT@@Payroll Adjustments File
+
+<INPUT id=select4 name=select4 value="|4,V|" type="hidden">
+
+<TABLE WIDTH="100%" border="1" cellspacing="3" cellpadding="1">
+<TR>
+<TD CLASS="mm"><B>Description</B>
+<TD><INPUT type="Text" name="C1,0,0" value="|1|" size="35">
+
+<TR>
+<TD CLASS="mm" WIDTH="102">Leave type
+<TD>
+<select name="sel2">
+||OPTIONS|SSELECT|pp.Deduct.type by a1|2|pp.Deduct.Type|1|
+</select>
+
+<TR>
+<TD CLASS="mm"><B>Accrue Leave?</B>
+<TD><input type="Text" name="3,0,0,,,MD2" value="|3,0,0,,,MD2|">
+
+
+<TR>
+<TD CLASS="mm"><B>Texable?</B>
+<TD> <I CLASS="input" ID=MSEL4>|4,0,0,,,TPP.ALLOW;1|</I>
+<TD CLASS="itemname"><B>Select From List</B>
+
+<TD>
+<select  name="hide4" multiple size=@@SIZE@@>
+||OPTIONS|SSELECT|pp.allow by a1|4|pp.allow|1|
+</select>
+ 
+<TR>
+<TD CLASS="mm"><B>Group Cert.code</B>
+<TD><input type="Text" name="5,0,0" value="|5,0,0|">
+
+<TR>
+<TD CLASS="mm"><B>$/Unit</B>
+<TD><input type="Text" name="5,0,0" value="|5,0,0|">
+
+<TR>
+<TD CLASS="mm"><B>Apply Oncost?</B>
+<TD><input type="Text" name="5,0,0" value="|5,0,0|">
+
+<TR>
+<TD CLASS="mm"><B>Affect Employer Contributions</B>
+<TD><input type="Text" name="5,0,0" value="|5,0,0|">
+
+<TR>
+<TD CLASS="mm"><B>Affect Salary Sacrifice</B>
+<TD><input type="Text" name="5,0,0" value="|5,0,0|">
+
+<TR>
+<TD CLASS="mm"><B>Affect Employee Deductions</B>
+<TD><input type="Text" name="5,0,0" value="|5,0,0|">
+
+<TR>
+<TD CLASS="mm"><B>GL Allocation</B>
+<TD><input type="Text" name="5,0,0" value="|5,0,0|">
+</TABLE>
+</FORM>
+
+<FORM  NAME="pp_Adjustments">
+<TABLE WIDTH="95%">
+<TR CLASS="top">
+<TH>Description
+<TH>Leave type
+<TH>Accrue Leave?
+<TH>Taxable?
+<TH>Group Cert.code
+<TH>$/Unit
+<TH>Apply Oncost?
+<TH>Affect Employer Contributions
+<TH>Affect Salary Sacrifice
+<TH>Affect Employee Deduction
+<TH>GL Allocation
+||TABLESEL <TR><TD>|0,0,0|<TD>|1|<TD>|2,0,0,,,TPP.AWARD;1|<TD ALIGN="right">|3,0,0,,,MD2|<TD>|4,0,0,,,TPP.ALLOW;1|<TD>|5|
+,pp.pos,sselect pp.Adjustments by a1
+</TABLE>
+</FORM>
+

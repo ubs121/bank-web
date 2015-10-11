@@ -1,0 +1,12 @@
+filetouse=cr.inv
+templatetouse=cr_inv
+srchlist=name,creditor,inv
+srchkey=none
+labellist=Name,Creditor Number,Invoice Number
+title=CREDITOR INVOICES
+hds=Id|Creditor|Account|Description
+tds=<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=cr.inv&tn=cr_inv&item=,0|@,/prospect/asp/bi.asp?fn=creditor&tn=creditor&item=,0,1,1,,,G*1~TCLIENT;1|10,1,1|12,1,1
+radiobtns=Credit Notes,Credit Notes in Batch file,Invoices in Batch file,Invoices
+radiocode=|cr.credit|cr_credit|CREDITOR CREDIT NOTES,|cr.cr.batch|cr_cr_batch|CREDITOR CREDIT NOTES IN BATCH FILE,|cr.inv.batch|cr_inv_batch|CREDITOR INVOICES IN BATCH FILE,|cr.inv|cr_inv|CREDITOR INVOICES
+adhoc=@2291

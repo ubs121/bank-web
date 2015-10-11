@@ -1,0 +1,10 @@
+filetouse=cis.list
+templatetouse=cis_list
+srchlist=a0,name,subject
+labellist=Number/Äóãààğ,Name/Íığ,Subject/Ñıäıâ
+prefix=,,[
+suffix=,,]
+title=ÆÀÃÑÀÀËÒ
+hds=Id|Íığ|Õàÿã|Óòàñ|Ñıäıâ
+tds=<TD>|<TD>|<TD>| | | |<TD>|<TD>| 
+dms=@,/prospect/asp/bi.asp?fn=cis.list&tn=cis_list&item=,0|2,1,1|3,1,0|3,2,0|3,3,0|3,4,0|4,0,0|1,1,0|1,2,0

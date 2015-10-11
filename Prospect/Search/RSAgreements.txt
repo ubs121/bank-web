@@ -1,0 +1,7 @@
+filetouse=@@PATH@@\ckashare\debtors\debtors.mdb\maint
+templatetouse=maint
+srchlist=Client
+title=AGREEMENTS
+hds=Id|Description|Start Date|End Date|Date Last Billed To
+tds=<TD>|<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/binput.asp?search=yes&fn=@@PATH@@\ckashare\debtors\debtors.mdb\maint&fn1=maint_rates&tn=imaint&baditem=empty&blank=no&err=noerrors&found=yes&item=,0|1|5|6|7

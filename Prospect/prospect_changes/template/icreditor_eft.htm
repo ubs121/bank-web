@@ -1,0 +1,132 @@
+@@INPUT3@@Creditor number
+
+<TABLE align=center border="1" cellspacing="1" cellpadding="1">
+    <TR>
+        <TD align=center colspan=2>
+          <INPUT TYPE="Button" NAME="Search" VALUE="Search" onClick='BuildSentence(document.assetform("id"),document.all.SearchResults,"RSclients.txt","creditor")'>
+    <TR>
+        <TD align=center colspan=2>
+            Enter CREDITOR NAME for Creditor Number
+         <BR>then click seach button to find creditor number if not known
+
+    <TR class=top>
+ 	  <TD CLASS="itemname">Creditor name
+        <TD id="Iid">|0,0,0,,,TCLIENT;7;1| &nbsp;</TD>
+    <TR class=top>
+ 	  <TD CLASS="itemname">Address
+        <TD id="IIid">|0,0,0,,,TCLIENT;2;3;4;5| &nbsp;</TD>
+
+    <TR class=top>
+        <TD CLASS=top>Bank Account
+        <TD class=top><input name="C34,0,0,Bank Account" value="|34,0,0|">
+</TABLE>
+
+<SCRIPT LANGUAGE="JavaScript" SRC="/prospect/jscript/gen_l.js"></SCRIPT>
+<INPUT id=select5 name=select5 value="|5,V|" type="hidden">
+<INPUT id="assessment_address_hide" NAME="assessment_address_hide" type="hidden">
+<INPUT id="prev_value" NAME="prev_value" type="hidden" value="0">
+<input type="hidden" id=name="num_in_row" name="num_in_row" value="0">
+
+<%'this is where the expandable table goes - written to in includeform%>
+<I id=expanding></I>
+</div>
+</FORM>
+
+<%'//!!!!!see 12 below assumes 11 elements above!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!%>
+
+<script language="VBScript">
+function convDate(num)
+	convDate=DateAdd("d", num, "31/12/67")
+end function
+</script>
+
+<script LANGUAGE="JavaScript">
+	var numofrows,numofcols,numinrow=3;
+	var Translist=new Array();
+    var gFieldValues = new Array(numinrow * 10); // this array holds our form values when we need to regenerate the form
+    for (var i=0;i<gFieldValues.length;i++) {gFieldValues[i]=""};
+		getTransValues();
+    IncludeForm(numinrow);
+
+function IncludeForm(numinrow)
+{
+   var htmlStr = '<TABLE align=center border=1 cellspacing=1 cellpadding=1>';
+   htmlStr += '<TR class=top><TH colspan=3>EFT authority details<TR class=top><TH>From Date&nbsp;&nbsp;<input type="button" value="Extra" onClick="AddField(' + numinrow + ')"><TH>To Date<TH>Reference';    
+
+for (var i=0;i<gFieldValues.length;i+=numinrow)
+{
+   htmlStr += '<TR class=top>';
+   htmlStr += '<TD><input type="Text"  onChange="changeVal();" name="' + (1000 + i + 0) + ',,,From Date,,D2,0" value="' + gFieldValues[i+0] + '">';
+   htmlStr += '<TD align=center><input type="text" onChange="changeVal();" name="' + (1000 + i + 1) + ',,,To Date,,D2,0" value="' + gFieldValues[i+1] + '">';
+   htmlStr += '<TD align=center><input type="text" onChange="changeVal();" name="' + (1000 + i + 2) + ',,,Reference" value="' + gFieldValues[i+2] + '">';
+}
+   htmlStr += '</TABLE>';
+   document.all.expanding.innerHTML = htmlStr;
+   document.all.num_in_row.value=numinrow;
+}
+
+function AddField(numinrow)
+{
+// Save previously entered data here
+	var formObj = document.assetform;
+    var  n=formObj.elements.length - gFieldValues.length; 
+	for (var i=0;i<gFieldValues.length;i++) //element 0 is the ADD BUTTON so saving element 1 onwards only
+	   { gFieldValues[i]= formObj.elements(i+n).value; }
+// Create the new fields
+     for (var j=0;j<numinrow;j++)
+        { gFieldValues[gFieldValues.length]=""; }
+     IncludeForm(numinrow);
+}
+
+
+function getTransValues()
+{
+var i,j;
+
+j = 0;
+Temp = document.assetdata.before_trans.value;
+if (Temp == "" || Temp.charAt(0) == '@') return;
+
+initArray(Temp);
+
+if (numofrows > 10)   								//if num. of records > 10 then resize gFieldValues for the additional rows
+     for (var k=0; k<(numinrow * (numofrows - 10)); k++)
+        { gFieldValues[gFieldValues.length]=""; }
+else 								                  //else resize Translist for max. of 10 rows
+	 for (var k=0; k<(numofcols * (10 - numofrows)); k++)
+        { Translist[Translist.length]=""; }
+
+for (i = 0; i<Translist.length; i+=numofcols)
+{
+if (Translist[i] == "") Translist[i]="0";
+if (Translist[i+1] == "") Translist[i+1]="0";
+	fDate = new Date(convDate(parseInt(Translist[i])));
+	if (Translist[i] != "0") {gFieldValues[j] = fDate.getDate() + "/" + (fDate.getMonth()*1+1) + "/" + fDate.getYear(); }    // From Date
+	tDate = new Date(convDate(parseInt(Translist[i+1])));
+		if (Translist[i+1] != "0") {gFieldValues[j+1] = tDate.getDate() + "/" + (tDate.getMonth()*1+1) + "/" + tDate.getYear(); }    //To Date
+	gFieldValues[j+2] = Translist[i+2];	              //Reference
+	j=j+numinrow;
+}
+}
+</script>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;1");
+   Address.innerHTML=co.return_value;
+}
+
+function GetOwnerName(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;2;3;4;5");
+   Address.innerHTML=co.return_value;
+}
+
+</SCRIPT>
+

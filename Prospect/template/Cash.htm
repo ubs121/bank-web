@@ -1,0 +1,117 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>CASH RECEIPT </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="cash"><INPUT TYPE=hidden NAME="tn" VALUE="cash"><INPUT TYPE="text" NAME="item" SIZE=12 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE align=center>
+<TR>
+<TD CLASS="mm">
+<B>Source</B><TD> <A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|1,1,1|"><FONT CLASS=itemlnk>|1,1,1,,,TCLIENT;1|</FONT></A>
+<TD CLASS="mm">
+<B>Date</B><TD> |10,0,0,,,D2|
+<TD CLASS="mm" ALIGN="center" COLSPAN=2>
+<B>* Printed *</B>
+<TR>
+<TD CLASS="mm">
+||IF,5,=,
+<B>Amount</B><TD COLSPAN=5> |3,0,0,,,MD2|
+||IFEND
+||IF,5,#,
+<B>Amount</B><TD COLSPAN=3> |3,0,0,,,MD2|
+<TD CLASS="mm" ALIGN="center" COLSPAN=2>
+<B>* Chq Bounced |5,0,0,,,D2|&nbsp;*</B>
+||IFEND
+
+
+||IF,4,#,I
+||IF,29,#,
+<TR>
+<TD CLASS="mm">
+<B>Tendered</B><TD> |29,1,0,,,MD2|
+<TD CLASS="mm">
+<B>Change</B><TD> |29,2,0,,,MD2|
+<TD CLASS="mm">
+<B>Rounding</B><TD NOWRAP> |29,3,0,,,MD2|
+||IFEND
+||IFEND
+
+<TR>
+<TD CLASS="mm">
+<B>Payee</B><TD COLSPAN=5> |2|
+<TR>
+<TD CLASS="mm">
+||IF,4,=,
+<B>BSB</B><TD COLSPAN=5> CASH
+||IFEND
+||IF,4,#,
+<B>BSB</B><TD COLSPAN=5> 
+||ALIST <LI> &nbsp; |4,N,3| &nbsp;&nbsp |4,N,2,,,MD2| &nbsp;&nbsp |4,N,1|
+||IFEND
+
+||IF,24,#,
+<TR>
+<TD CLASS="mm">
+<B>Animal</B><TD><B><A HREF="/prospect/asp/bi.asp?fn=animal&tn=animal&item=|24,1,1|"> |24,1,1,,,TANIMAL;C@B.;4~TANIMAL_CODES;1|</A></B>
+<TD CLASS="mm">
+<B>License Paid to</B><TD COLSPAN=3> |24,1,2,,,D2|
+||IFEND
+
+||IF,26,#,
+<TR>
+<TD CLASS="mm">
+<B>Health Premises</B><TD COLSPAN=5><B><A HREF="/prospect/asp/bi.asp?fn=eats&tn=eats&item=|26,0,0|">|26,0,0,,,TEATS;5|</A></B>
+||IFEND
+</TABLE>
+<TABLE align=center>
+<TR>
+<TD CLASS="tdempty">&nbsp;
+<TR>
+||IF,12,#,
+<TD COLSPAN=3>
+<TABLE align=center BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<Td class=top>Amount
+<Td class=top>Account
+<Td class=top>Description
+<Td class=top>Receipt code
+<Td class=top>Narrative
+||TABLE000 <TR><TD align=right>|12,N,1,,,MD2|<TD>|@,/prospect/asp/bi.asp?fn=@@FILE@@&tn=@@TEMPLATE@@&item=,11,N,0|<TD>|11,N,1,,,TACCOUNTDESC|<TD ALIGN="center">|23,N,1|<TD>|9,N|
+</TABLE>
+||IFEND
+</TABLE>
+
+	<TABLE align=center BORDER=1 CELLSPACING=1 CELLPADDING=1>
+	<Td class=top>Amount
+	<Td class=top>Bank
+	||TABLE000 <TR><TD ALIGN=right>|19,N,0,,,MD2|<TD NOWRAP ALIGN=CENTER>|18,N,0,,,SR_31|
+	</TABLE>
+
+
+||IF,22,#,
+<P>
+<TABLE align=center BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TH>Parking Notice
+<TH>Amount
+||TABLE000 <TR><TD NOWRAP ALIGN="center">|@,/prospect/asp/bi.asp?fn=parking&tn=parking&item=,21,N,1|<TD ALIGN=RIGHT>|22,N,0,,,MD2|
+</TABLE>
+||IFEND
+
+||IF,4,#,I
+||IF,28,#,
+<P>
+<TABLE align=center BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TH>Infringement Paid
+<TH>Amount
+||TABLE000 <TR><TD ALIGN="center"><B><A HREF="/prospect/asp/bi.asp?fn=infringe&tn=infringe&item=|28,N,1|">|28,N,1|</A></B><TD ALIGN="right">|28,N,1,,,Tinfringe;5~MD2|
+</TABLE>
+||IFEND
+||IFEND
+
+||IF,4,=,I
+||IF,29,#,
+<P>
+<TABLE align=center BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TH>Amount
+<TH>INREP
+||TABLE000 <TR><TD ALIGN="RIGHT">|29,N,1,,,MD2|<TD ALIGN="RIGHT">|28,N,1|
+</TABLE>
+||IFEND
+||IFEND

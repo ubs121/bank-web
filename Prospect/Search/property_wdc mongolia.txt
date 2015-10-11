@@ -1,0 +1,12 @@
+filetouse=property
+templatetouse=property
+srchlist=a0,@@drindex|client|oname|4|31|0|1@@,roadno,valnref
+labellist=Assessment,Occupiers Surname,Road,Valuation Ref
+itemlist=,,sselect roads a0 a1 by a1,
+prefix=,,,
+suffix=,],,
+title=ªÌ×
+hds=Assess|Address|Occupier names
+tds=<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=property&tn=property&item=,0|0,1,1,,,TCLIENT;2;3;4;5|0,0,0,,,OWNERS37
+adhoc=@1691

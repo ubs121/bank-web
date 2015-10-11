@@ -1,0 +1,19 @@
+A:hover {color: #993300;}
+A:active  {color: #993300;}
+A:visited {color: #993300;}
+A:link {color: #993300;}
+
+TR.top { BACKGROUND-COLOR: #f5f5f5;}
+TR.totals { font-weight: bold; }
+
+TD.top { BACKGROUND-COLOR: #f5f5f5;}
+TD.mm { BACKGROUND-COLOR: #f5f5f5;}
+TD.total { font-weight: bold; }
+TD.totals { font-weight: bold; }
+
+FONT.menu   { font-weight: bold; }
+FONT.deny   { font-weight: normal; font-style: italic;}
+
+.mmendu { background-color: tan;}
+
+

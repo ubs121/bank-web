@@ -1,0 +1,256 @@
+@@INPUTP@@DEBTOR'S INVOICE
+
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1 width="95%">
+<TR class="top"><TD CLASS="top" colspan=6 align="center"><B>Enter = to automatically generate the next invoice number.</B>
+<TR class="top">
+        <TD CLASS="top"><B>Batch No</B>
+        <TD class=top><input name="C30,1,1,Batch" value="|30,1,1|" size=10>
+        <TD CLASS="top"><B>Prefix</B>
+		<TD class=top>
+<select name="sel34">
+||OPTIONS|SSELECT|inv_codes|34|@@PATH@@\ckashare\debtors\debtors.mdb\inv_codes|1|
+</select>
+		<TD CLASS="top"><B>Branch</B>
+		<TD class=top>
+<select name="sel1">
+||OPTIONS|SSELECT|branch|1|@@PATH@@\ckashare\debtors\debtors.mdb\branch|1|
+</select>
+<TR>
+||SR@@PATH@@\ckashare\gen_l\gen_l.mdb\currentyear,YEAR
+	  <TD colspan=2 nowrap CLASS="top"><B>G/L Date (between |2| and |3|)<B>
+      <TD class=top><input name="C21,1,0,Date,,D2X,|2|,|3|" 
+||SREND
+	value="|21,1,0,,,D2X|">
+||SR@@PATH@@\ckashare\debtors\debtors.mdb\control_debtor,DATES
+   	<TD colspan=2 nowrap CLASS="top"><B>Invoice Date (between |2| and |3|)<B>
+    <TD class=top><input name="C20,1,0,Date,,D2X,|2|,|3|" 
+||SREND		
+	value="|20,1,0,,,D2X|">
+<TR>
+<TD class=top><B>Client No</B>
+<TD class=top><input name="C3,1,1,Client No" value="|3,1,1|" onBlur='GetAssessAddress(document.all("IC3,1,1,Client No"),this.value);'>&nbsp;<input type="button" value="Search" onClick='BuildSentence(document.all("C3,1,1,Client No"),document.all.SearchResults,"RSClients.txt","");'>
+		<TD colspan=4 class=top id="IC3,1,1,Client No"> &nbsp;|3,1,1,,,TCLIENT;1,1| |3,1,1,,,TMAIL_ADDRESS|
+<TR class="top">		
+		<TD CLASS="top"><B>Due Date</B>
+ 		<TD class=top><input name="C36,1,0,Due Date,,D2X" value="|36,1,0,,,D2X|">
+		<TD CLASS="top"><B>Customer Order Number</B>
+		<TD class=top><input name="C4,1,1,Customer Order Number" value="|4,1,1|">
+		<TD CLASS="top"><B>Our Reference</B>
+		<TD class=top><input name="5,1,1,Our Reference" value="|5,1,1|">
+<TR class="top">
+		<TD CLASS="top"><input class="bold" type="button" id="search_gl" name="search_gl" value="Search GL" onClick='SearchAccount("RSGL.txt");'>
+		<TD CLASS="top" wrap><B>Enter Description in Account field and Click on Search Button</B>
+		<TD CLASS="top" colspan=2><input class="bold" type="button" id="search_job" name="search_job" value="Search JOBS" onClick='SearchAccount("RSJob.txt");'>
+		<TD CLASS="top" colspan=2><input class="bold" type="button" id="search_stock" name="search_stock" value="Search STOCK" onClick='SearchAccount("RSStock.txt");'>		
+</TABLE>
+<SCRIPT LANGUAGE="JavaScript" SRC="/prospect/jscript/gen_l.js"></SCRIPT>
+<INPUT id="prev_value" NAME="prev_value" type="hidden" value="0">
+<input type="hidden" id="num_in_row" name="num_in_row" value="0">
+
+<%'this is where the expandable table goes - written to in includeform%>
+<I id=expanding></I>
+</div>
+</FORM>
+
+<%'//!!!!!see 12 below assumes 11 elements above!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!%>
+
+<script LANGUAGE="JavaScript">
+	var numofrows,numofcols,numinrow=10,Total=0,TotalTax=0;
+	var Translist=new Array();
+    var gFieldValues = new Array(numinrow * 5); // this array holds our form values when we need to regenerate the form
+    for (var i=0;i<gFieldValues.length;i++) {gFieldValues[i]=""};
+    getTransValues();
+    IncludeForm(numinrow);
+
+function IncludeForm(numinrow)
+{
+   var htmlStr = '<TABLE align=center border=1 cellspacing=1 cellpadding=1>';
+   htmlStr += '<TR class=top><TH colspan=7>Invoice details<TR class=top><TH>Account &nbsp;&nbsp;<input type="button" value="Extra" onClick="AddField(' + numinrow + ')"><TH>Description<TH>GST %<TH>Quantity<TH>Price<TH>Amount<TH>GST';    
+   htmlStr += '<TR class=top><TD>&nbsp;<TD>&nbsp;<TD>&nbsp;<TD>&nbsp;<TD align=center><B>Total</B><TD align=right><B>&nbsp;<I id="totalamount"></I><input type="hidden" name="Btotalamount" value="0.00"></B><TD align=right><B>&nbsp;<I id="totaltax"></I><input type="hidden" name="Btotaltax" value="0.00"></B>';    	
+
+for (var i=0;i<gFieldValues.length;i+=numinrow)
+{
+   htmlStr += '<TR class=top>';
+   htmlStr += '<TD><input type="Text" size="15" onChange="changeVal();" onBlur="document.all.CurrentSearchField.value=this.name;" name="' + (1000 + i + 0) + ',,,Account" value="' + gFieldValues[i+0] + '">'; 
+   htmlStr += '<TD align=center><textarea rows=3 cols=40 onFocus="Account_Validation(document.all('+ "'I" + (1000 + i) + ",,,Account'),document.all(" + "'" + (1000 + i) + ",,,Account'),'iinvoice');" + '" onChange="changeVal();" onBlur="getFieldValue(document.all(' + "'" + (1000 + i + 2) + ",,,Cost'),document.all(" + "'" + (1000 + i) + ",,,Account')," + "'Tstock;9,1'" + ');" name="I' + (1000 + i + 0) + ',,,Account">' + gFieldValues[i+1] + '</textarea>' + '&nbsp;<input type="hidden" name="' + (1000 + i + 2) + ',,,Cost" value="0">';
+   htmlStr += '<TD align=center><Select name="' + (1000 + i + 3) + '" onBlur = "getFieldValue(document.all(' + "'B" + (1000 + i + 3) + ",,,TaxRate,,Dec2'" + '),this.options[this.selectedIndex],' + "'T@@PATH@@!ckashare!debtors!debtors.mdb!GST;1'" + ');getFieldValue(document.all(' + "'" + (1000 + i + 5) + ",,,GSTAccount'" + '),this.options[this.selectedIndex],' + "'T@@PATH@@!ckashare!debtors!debtors.mdb!GST;2'" + ');"><Option value="10">10<Option value="0">0</select>' + '&nbsp;<input type="hidden" name="B' + (1000 + i + 3) + ',,,TaxRate,,Dec2" value="0.10">' + '&nbsp;<input type="hidden" name="' + (1000 + i + 5) + ',,,GSTAccount" value="' + gFieldValues[i+5] + '">';
+   htmlStr += '<TD align=center><input type="text" size="10" onFocus="getPrevVal(this.value,document.all(' + "'" + (1000 + i + 7) + ",,,Price,,Dec2').value);" + '" onChange="changeVal();" onBlur="Calculate(document.all(' + "'" + (1000 + i + 7) + ",,,Price,,Dec2'),this,document.all(" + "'" + (1000 + i + 8) + ",,,Amount,,Dec2'));dispTotalAmount(document.all(" + "'totalamount'),document.all(" + "'Btotalamount'),document.all(" + "'" + (1000 + i + 8) + ",,,Amount,,Dec2').value,document.all.prev_value.value); document.all(" + "'" + (1000 + i + 7) + ",,,Price,,Dec2').select();" + '" value="' + FormatNum(gFieldValues[i+6],"") + '" name = "' + (1000 + i + 6) + ',,,Qty">';
+   htmlStr += '<TD align=center><input type="text" size="15" onFocus="getPrevVal(document.all(' + "'" + (1000 + i + 6) + ",,,Qty').value,this.value)" + '"; onChange="changeVal();" onBlur="Calculate(this,document.all(' + "'" + (1000 + i + 6) + ",,,Qty'),document.all(" + "'" + (1000 + i + 8) + ",,,Amount,,Dec2'));dispTotalAmount(document.all(" + "'totalamount'),document.all(" + "'Btotalamount'),document.all(" + "'" + (1000 + i + 8) + ",,,Amount,,Dec2').value,document.all.prev_value.value); document.all(" + "'" + (1000 + i + 8) + ",,,Amount,,Dec2').select();" + '" name="' + (1000 + i + 7) + ',,,Price,,Dec2" value="' + FormatNum(gFieldValues[i+7],2) + '">';
+   htmlStr += '<TD align=center><input type="text" size="15" onFocus="getPrevVal(document.all(' + "'" + (1000 + i + 9) + ",,,Tax,,Dec2').value,'1')" + '"; onChange="changeVal();" onBlur="Calculate(this,document.all(' + "'B" + (1000 + i + 3) + ",,,TaxRate,,Dec2'),document.all(" + "'" + (1000 + i + 9) + ",,,Tax,,Dec2'));dispTotalAmount(document.all(" + "'totaltax'),document.all(" + "'Btotaltax'),document.all(" + "'" + (1000 + i + 9) + ",,,Tax,,Dec2').value,document.all.prev_value.value);" + '" name="' + (1000 + i + 8) + ',,,Amount,,Dec2" value="' + FormatNum(gFieldValues[i+8],2) + '">';
+   htmlStr += '<TD align=center><input type="text" size="10" onChange="changeVal();" name="' + (1000 + i + 9) + ',,,Tax,,Dec2" onBlur="this.value=FormatNum(this.value,2);" value="' + FormatNum(gFieldValues[i+9],2) + '">';
+}
+   htmlStr += '</TABLE>';
+   document.all.expanding.innerHTML = htmlStr;
+   document.all.num_in_row.value=numinrow;
+   document.all.totalamount.innerHTML=document.all.Btotalamount.value=FormatNum(Total,2);
+   document.all.totaltax.innerHTML=document.all.Btotaltax.value=FormatNum(TotalTax,2);
+   defaultSelect();	   
+}
+
+function AddField(numinrow)
+{
+// Save previously entered data here
+	var formObj = document.assetform;
+    var  n=formObj.elements.length - gFieldValues.length ;
+	for (var i=0;i<gFieldValues.length;i++) //element 0 is the ADD BUTTON so saving element 1 onwards only
+	    gFieldValues[i]= formObj.elements(n+i).value;
+
+Total=document.all("Btotalamount").value;
+TotalTax=document.all("Btotaltax").value;   
+
+// Create the new fields
+     for (var j=0;j<numinrow;j++)
+        { gFieldValues[gFieldValues.length]=""; }
+     IncludeForm(numinrow);
+}
+
+
+function getTransValues()
+{
+var i,j;
+
+Temp = document.assetdata.before_trans.value;
+if (Temp == "" || Temp.charAt(0) == '@') return;
+initArray(Temp);
+if (numofrows > 5)   					//if num. of records > 10 then resize gFieldValues for the additional rows
+     for (var k=0; k<(numinrow * (numofrows - 5)); k++)
+        { gFieldValues[gFieldValues.length]=""; }
+else 								//else resize Translist for max. of 10 rows
+	 for (var k=0; k<(numofcols * (5 - numofrows)); k++)
+        { Translist[Translist.length]=""; }
+j=0;
+for (i = 0; i<Translist.length; i+=numofcols)
+{
+	gFieldValues[j] = Translist[i+4];             // Account number
+	gFieldValues[j+1] = Translist[i+6];           //Description
+	gFieldValues[j+3] = Translist[i+10];          //Tax Rate
+	gFieldValues[j+5] = Translist[i+12];          //GST Account
+	if (Translist[i+7] == ""){if (gFieldValues[j] != "") gFieldValues[j+6] = 0; else gFieldValues[j+6] = "";}          //Qty
+	else gFieldValues[j+6] = Translist[i+7];
+	if (Translist[i+9] == ""){if (gFieldValues[j] != "") gFieldValues[j+7] = 0; else gFieldValues[j+7] = "";}          //Price
+	else gFieldValues[j+7] = Translist[i+9];
+	if (Translist[i+5] == ""){if (gFieldValues[j] != "") gFieldValues[j+8] = 0; else gFieldValues[j+8] = "";}          //Amount
+	else gFieldValues[j+8] = Translist[i+5];
+	if (gFieldValues[j+8] != "") Total = Total + parseFloat(gFieldValues[j+8]);
+	if (Translist[i+11] == ""){if (gFieldValues[j] != "") gFieldValues[j+9] = 0; else gFieldValues[j+9] = "";}          //Tax
+	else gFieldValues[j+9] = Translist[i+11];
+	if (gFieldValues[j+9] != "") {TotalTax = TotalTax + parseFloat(gFieldValues[j+9]);}
+	j = j+numinrow;
+}
+}
+
+
+function defaultSelect()
+{
+for (var i=0; i<gFieldValues.length; i+=numinrow)
+{
+	element = document.all(""+(1000+i+3)+"");
+	if (element == null) return;
+	max = element.options.length;
+	for (var j=0; j<max; j++)
+	{
+		if (element.options[j].text == gFieldValues[i+3])
+		{
+			element.options[j].selected = true;
+			document.all("B"+(1000+i+3)+",,,TaxRate,,Dec2").value = (element.value)/100;
+		}	
+	}
+}
+}
+</script>
+
+
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+{
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;1;2;3;4;5");
+   Address.innerHTML=co.return_value;
+}
+
+
+function getFieldValue(resfield,field,validation)
+{
+if (field.value=="")
+	 return;  
+while (RSAspProxyApplet.readyState != 4) {}
+		result="";
+		ASPpage = RSGetASPObject("DllCalls.asp");
+        co = ASPpage.BuildString(field.value,validation);
+        result=co.return_value;
+if (result!="")
+{
+if (((resfield.name).indexOf("TaxRate")) != -1) result=result/100;
+if (((resfield.name).indexOf("Cost")) != -1) result=result/10000;
+     resfield.value=result;
+}	 
+	 resfield.select();
+}
+
+
+</SCRIPT>
+
+<script language="VBScript">
+
+function getPrevVal(qty,cost)
+if not IsNumeric(qty) or  qty = "" then qty = 0
+if not IsNumeric(cost) or  cost = "" then cost = 0
+pval = qty * cost
+document.all.prev_value.value=pval
+end function
+
+
+function Calculate(firstfield,secondfield,resfield)
+
+if firstfield.value <> "" then val1 = trim(firstfield.value) else val1=0
+if not IsNumeric(val1) then msgbox "Must be Numeric!" : firstfield.value=0 : exit function
+if fieldFormat(firstfield) = "Dec2" then firstfield.value = FormatNum(val1,2) else firstfield.value = FormatNum(val1,"")
+if secondfield.value <> "" then val2 = trim(secondfield.value) else val2=0
+if not IsNumeric(val2) then msgbox "Must be Numeric!" : secondfield.value=0 : exit function
+if fieldFormat(secondfield) = "Dec2" then secondfield.value = FormatNum(val2,2) else secondfield.value = FormatNum(val2,"")
+val3 = cDbl(val1) * cDbl(val2)
+if fieldFormat(resfield) = "Dec2" then resfield.value = FormatNum(val3,2) else resfield.value = FormatNum(val3,"")
+
+end function
+
+
+
+function dispTotalAmount(itag,inputhidden,amt,prevval)
+
+	 if inputhidden.value="" then inputhidden.value=0
+     total = inputhidden.value
+	 if amt="" then amt=0
+ 	 total = cDbl(total) - cDbl(prevval) + cDbl(amt)
+     inputhidden.value = total
+     itag.innerHTML=FormatNum(inputhidden.value,2)
+	 document.all.prev_value.value="0"
+
+end function
+
+
+Sub window_onload()
+
+Dim i
+dday = day(Date)
+mmonth = monthName(month(Date),1)
+yyear = right(year(Date),2)
+
+max=assetform.Elements.Length-1
+if document.assetform.add.disabled = false then
+for i = 1 to max
+    elmtName = assetForm.Elements(i).name
+	if Instr(elmtName,"C20,1,0,Date,,D2X")>0 then
+		document.all(elmtName).value = dday & " " & mmonth & " " & yyear
+		exit for
+	end if		
+next
+document.all("C30,1,1,Batch").value =  dday & "." & yyear & "." & mmonth
+end if
+
+end Sub
+</script>
+
+
+

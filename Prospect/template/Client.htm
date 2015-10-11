@@ -1,0 +1,236 @@
+||IF,10,=,2
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>CLIENT (OWNER/OCC/ELECTOR) </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="client"><INPUT TYPE=hidden NAME="tn" VALUE="client"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE width="95%" >
+<TR>
+<TD CLASS="mm">
+<B>Name</B><TD> |8,1,1| |7,1,1| |1,1,1|
+<TD CLASS="mm"> 
+<B>Pensioner No.</B><TD> |43,0,0| &nbsp;
+<TR>
+<TD CLASS="screen" colspan=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Residential Address</B><TD> |-1,,,,,RES_ADDRESS|
+<TD CLASS="mm">
+<B>Mailing Address</B><TD> |-1,,,,,MAIL_ADDRESS|
+<TR>
+<TD CLASS="screen" colspan=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Bus</B><TD> |9,1,0| 
+<TD CLASS="mm">
+<B>Priv</B><TD> |9,2,0| 
+<TR>
+<TD CLASS="mm">
+<B>Fax</B><TD> |9,3,0| 
+<TD CLASS="mm">
+<B>Mobile</B><TD> |9,5,0| 
+<TR>
+<TD CLASS="mm">
+<B>Email</B><TD COLSPAN=3> |9,4,0| 
+</TABLE>
+
+||IF,29,#,
+<TABLE width="95%" >
+<TR CLASS="top">
+<TH>Owns Property at address
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=property&tn=property&item=,29,N,1,,,TCLIENT;1;2;3;4;5|
+</TABLE>
+||IFEND
+
+||IF,30,#,
+<TABLE width=95% >
+<TR CLASS="top">
+<TH>Elector for Property at address
+<TH>Roll
+<TH>Qual
+<TH>Council
+||IF,40,#,
+<TH>Mayoral
+||IFEND
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=property&tn=property&item=,29,N,1,,,TCLIENT;1;2;3;4;5|<TD>|42,N,1|<TD>|41,N,1|<TD>|39,N,1|<TD>|40,N,1|
+</TABLE>
+||IFEND
+
+||IF,31,#,
+<TABLE width="95%" >
+<TR CLASS="top">
+<TH>Occupies Property at address
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=property&tn=property&item=,29,N,1,,,TCLIENT;1;2;3;4;5|
+</TABLE>
+||IFEND
+
+||IFEND
+
+
+||IF,10,=,1
+||SRTDEBTOR
+<TABLE width="95" ALIGN=CENTER>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>CLIENT (DEBTOR) </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="client"><INPUT TYPE=hidden NAME="tn" VALUE="client"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE width="95%">
+<TR>
+<TD CLASS="mm">
+<B>Debtor</B><TD > |0,,,,,TCLIENT;8| |0,,,,,TCLIENT;7| |0,,,,,TCLIENT;1|     
+<TD CLASS="mm">
+<B>Balance (Transaction History)</B><TD><A HREF="buildsel.asp?fn=dr_trans&tn=dr_trans&item=a1&ref=|0|&by=by"> $|3,1,1,,,MD2|</A>
+<TR>
+<td colspan=2></td>
+<TD CLASS="mm"><b>Transaction History</b><td><A HREF="buildsel.asp?fn=dr_trans&tn=dr_trans&item=a1&ref=|0|&by=by-dsnd">Most recent first</A>
+
+<TR>
+<TD class="screen" colspan=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Postal Address</B><TD> |0,,,,,TCLIENT;2,1| <br> |0,,,,,TCLIENT;3,1| <br> |0,,,,,TCLIENT;4,1;5,1|
+<TD CLASS="mm">
+<B>Residential Address</B><TD COLSPAN=3> |0,,,,,TCLIENT;2,2| <br> |0,,,,,TCLIENT;3,2| <br> |0,,,,,TCLIENT;4,2;5,2|
+<TR>
+<TD class="screen" colspan=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Bus</B><TD> |0,,,,,TCLIENT;9,1|
+<TD CLASS="mm">
+<B>Priv</B><TD> |0,,,,,TCLIENT;9,2|
+<TR>
+<TD CLASS="mm">
+<B>Fax</B><TD> |0,,,,,TCLIENT;9,3|
+<TD CLASS="mm">
+<B>Mobile</B><TD COLSPAN=3> |0,,,,,TCLIENT;9,5|
+<TR>
+<TD CLASS="mm">
+<B>Email</B><TD colspan=2> |0,,,,,TCLIENT;9,4|
+</tr>
+<TR>
+<TD class="screen" colspan=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Class</B><TD> |21,1,1,,,sr_26!dict tdebtor!@CLASS!0!1|
+<TD CLASS="mm">
+<B>Credit Limit</B><TD COLSPAN=3> |29,1,1,,,MD0|
+<TR>
+<TD CLASS="mm">
+<B>Avg Days to Pay</B><TD> |20,SUMA,0,,,MD0|
+<TD CLASS="mm">
+<B>Unallocated Credit</B><TD COLSPAN=3> |22,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Status</B><TD> |17,1,1,,,sr_26!dict tdebtor!@STATUS!0!1|
+<TD CLASS="mm">
+<B>Area Code</B><TD COLSPAN=3> |1,1,1,,,sr_26!dict tdebtor!@AREA!0!1|
+<TR>
+<TD CLASS="mm">
+<B>Consolidates To</B><TD> |19|
+<TD CLASS="mm">
+<B>Relationship</B><TD COLSPAN=3> |23,1,1,,,sr_26!dict tdebtor!@RELATE!0!1|
+<TR>
+<TD class="screen" colspan=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Delivery Instructions</B><TD> |0,,,,,TCLIENT;13,1;13,2;13,3|
+<TD CLASS="mm">
+<B>Comments</B><TD COLSPAN=3> |0,,,,,TCLIENT;12,1;12,2;12,3|
+</TABLE>
+
+||IF,29,#,
+<TABLE width="95%" >
+<TR CLASS="top">
+<TH>Owns Property at address
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=property&tn=property&item=,29,N,1,,,TCLIENT;1;2;3;4;5|
+</TABLE>
+||IFEND
+
+||IF,30,#,
+<TABLE width="95%">
+<TR CLASS="top">
+<TH>Elector for Property at address
+<TH>Roll
+<TH>Qual
+<TH>Council
+||IF,40,#,
+<TH>Mayoral
+||IFEND
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=property&tn=property&item=,29,N,1,,,TCLIENT;1;2;3;4;5|<TD>|42,N,1|<TD>|41,N,1|<TD>|39,N,1|<TD>|40,N,1|
+</TABLE>
+||IFEND
+
+||IF,31,#,
+<TABLE width="95%" >
+<TR CLASS="top">
+<TH>Occupies Property at address
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=property&tn=property&item=,29,N,1,,,TCLIENT;1;2;3;4;5|
+</TABLE>
+||IFEND
+<!----
+<P>
+<A HREF="buildsel.asp?fn=dr_trans&tn=dr_trans&item=a1&ref=|0|&by=by-dsnd">Click here to Display Transactions most recent first</A>
+<P>
+<A HREF="buildsel.asp?fn=dr_trans&tn=dr_trans&item=a1&ref=|0|&by=by">Click here to Display Transactions oldest first</A>
+------->
+||SREND
+||IFEND
+
+||IF,10,=,
+||SRCREDITOR
+<TABLE ALIGN=CENTER>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>CLIENT (CREDITOR) </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="client"><INPUT TYPE=hidden NAME="tn" VALUE="client"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE width="95%" >
+<TR>
+<TD CLASS="mm">
+<B>Creditor</B><TD > |0,1,1,,,TCLIENT;7;1|
+<TD CLASS="mm"><B> Balance (Transaction History)  </b>
+<TD><A HREF="buildsel.asp?fn=cr_trans&tn=cr_trans&item=a1&ref=|0|&by=by"> $|1,1,1,,,MD2|</A>
+
+<TR>
+<TD colspan=2>
+<TD CLASS="mm"><B> Transaction History</b>
+<TD><A HREF="buildsel.asp?fn=cr_trans&tn=cr_trans&item=a1&ref=|0|&by=by-dsnd">Most recent first</A>
+<TR>
+<TD COLSPAN=4>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Postal Address</B><TD> |0,1,1,,,TCLIENT;2,1;3,1;4,1;5,1|
+<TD CLASS="mm">
+<B>Residential Address</B><TD> |0,1,1,,,TCLIENT;2,2;3,2;4,2;5,2|
+<TR>
+<TD COLSPAN=4>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Bus</B><TD> |0,1,1,,,TCLIENT;9,1,1| 
+<TD CLASS="mm">
+<B>Priv</B><TD> |0,1,1,,,TCLIENT;9,2,1| 
+<TR>
+<TD CLASS="mm">
+<B>Fax</B><TD> |0,1,1,,,TCLIENT;9,3,1| 
+<TD CLASS="mm">
+<B>Mobile</B><TD> |0,1,1,,,TCLIENT;9,5,1| 
+<TR>
+<TD CLASS="mm">
+<B>Email</B><TD COLSPAN="3"> |0,1,1,,,TCLIENT;9,4,1| 
+<TR>
+<TD COLSPAN=4>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Terms of Credit</B><TD> |2| 
+<TD CLASS="mm">
+<B>Transactions last cleared</B><TD> |18,1,1,,,D2|
+<TR>
+<TD CLASS="mm">
+<B>Default Posting Ledger Account</B><TD> <A HREF="/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=|15|">|15|</A> &nbsp;&nbsp; |15,1,1,,,Tgen.l;2|
+<TD CLASS="mm">
+<B>Auto-Issue Code</B><TD> |16|
+</TABLE>
+<!--
+<P align=center>
+<A HREF="buildsel.asp?fn=cr_trans&tn=cr_trans&item=a1&ref=|0|&by=by-dsnd">Click Here To Display Transactions most recent first</A>
+<P align=center>
+<A HREF="buildsel.asp?fn=cr_trans&tn=cr_trans&item=a1&ref=|0|&by=by">Click Here To Display Transactions oldest first</A>
+--->
+||SREND
+||IFEND

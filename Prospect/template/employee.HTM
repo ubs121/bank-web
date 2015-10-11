@@ -1,0 +1,309 @@
+<HTML><HEAD>
+<STYLE type="text/css">
+</STYLE>
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>EMPLOYEE </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="employee"><INPUT TYPE=hidden NAME="tn" VALUE="employee"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR>
+<TD CLASS="mm"><B>Title</B><TD>|8|&nbsp;
+<TD CLASS="mm"><B>Surname</B><TD>|1|&nbsp;
+<TD CLASS="mm"><B>Initials</B><TD>|6|&nbsp;
+<TD CLASS="mm"><B>Given</B><TD>|7|&nbsp;
+<TR>
+<TR>
+<TD CLASS="mm"><B>Address</B><TD COLSPAN="3"> |2|&nbsp; <BR> |3|&nbsp; <BR> |4|&nbsp; <BR> |5|&nbsp;
+<TD CLASS="mm"><B>Comments</B><TD COLSPAN="3">|20|&nbsp;
+<TR>
+<TD CLASS="mm"><B>Business Phone</B><TD>|9,1,0,,,|&nbsp;
+<TD CLASS="mm"><B>Home Phone</B><TD>|9,2,0,,,|&nbsp;
+<TD CLASS="mm"><B>Date of Birth</B><TD>|13,0,0,,,d4|&nbsp;
+<TD CLASS="mm"><B>Commence Date</B><TD>|19,0,0,,,d4|&nbsp;
+<TR>
+<TD CLASS="mm"><B>Sex (M/F)</B><TD>|15|&nbsp;
+<TD CLASS="mm"><B>Marital Status</B><TD>|14|&nbsp;
+||SRDICT TRANS.J,TRANS.INFO
+||IF,133,=,1
+<TD CLASS="mm"><B>Accident Levy Code</B>
+||IFEND
+||IF,133,#,1
+<TD CLASS="mm"><B>Workers Compensation Code</B>
+||IFEND
+||SREND
+<TD>|31|&nbsp;
+<TR>
+<TD CLASS="mm"><B>Position</B><TD>|18,0,0,,,tpp.pos;1|&nbsp;
+<TD CLASS="mm"><B>Known as</B><TD>|12|&nbsp;
+<TD CLASS="mm"><B>Location</B><TD>|17,0,0,,,tpp.loc;1|&nbsp;
+<TD CLASS="mm"><B>Pay Type</B><TD>|11,0,0,,,tpp.type;1|&nbsp;
+<TR>
+<TD CLASS="mm"><B>Class</B><TD>|25|&nbsp;
+<TD CLASS="mm"><B>Permanent Staff Date</B><TD>|10,0,0,,,d4|&nbsp;
+<TD CLASS="mm"><B>Award Code</B><TD>|20|&nbsp;
+<TD CLASS="mm"><B>Cost Centre</B><TD>|21|&nbsp;
+<TR>
+<TD CLASS="mm"><B>Status</B><TD>|23,0,0,,,sr_26!dict pp.control!@STATUS!0!1|&nbsp;
+<TD CLASS="mm"><B>Status Date</B><TD>|24,0,0,,,d4|&nbsp;
+<TD CLASS="mm"><B>Method of Pay</B><TD>|41|&nbsp;
+<TD CLASS="mm"><B>Pay Scale Code</B><TD>|42,0,0,,,tpp.scale;1|&nbsp;
+<TR>
+<TD CLASS="mm"><B>Next of Kin Name</B><TD>|38|&nbsp;
+<TD CLASS="mm"><B>Drivers License No.</B><TD>|39|&nbsp;
+<TD CLASS="mm"><B>Drivers License Expiry Date</B><TD>|40,0,0,,,d4|&nbsp;
+<TD CLASS="mm"><B>Emergency Contact</B><TD>|33,1,0,,,|&nbsp;<BR>|33,2,0,,,|&nbsp;
+<TR>
+<TD CLASS="mm"><B>Effective Dates (Employee Position)</B><TD>|30,1,0,,,d4|&nbsp;
+<TD CLASS="mm"><B>Employee Award</B><TD>|30,2,0,,,d4|&nbsp;
+<TD CLASS="mm"><B>Employee Location</B><TD>|30,3,0,,,d4|&nbsp;
+<TR>
+<TD CLASS="mm"><B>Employee Pay Class</B><TD>|30,4,0,,,d4|&nbsp;
+<TD CLASS="mm"><B>Employee Pay Scale</B><TD>|30,5,0,,,d4|&nbsp;
+</TABLE>
+
+<H2 align=center>Pay Details</H2>
+
+||SRPP.PAY
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Yearly Gross
+<TH>Gross this pay
+<TH>YTD Gross
+<TH>Gross Effective
+<TH>Gross Narrative
+<TR> <TD align=right> &nbsp;|1,0,0,,,MD2|<TD align=right>&nbsp; |2,0,0,,,MD2|<TD align=right>&nbsp; |3,0,0,,,MD2|<TD align=right>&nbsp; |4,0,0,,,MD2|<TD align=right>&nbsp;|5|
+</TABLE>
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Tax Instalment
+<TH>YTD Tax
+<TH>YTD Family Support credit
+<TH>Family Support Credit (This pay)
+<TH>YTD Student loan deduction
+<TH> Lump Sum C tax payable THIS pay
+<TH>Total YTD Lump Sum C tax amount
+<TR> <TD align=right> &nbsp;|6,1,0,,,MD2|<TD align=right>&nbsp; |6,2,0,,,MD2|<TD align=right>&nbsp; |6,3,0,,,MD2|<TD align=right>&nbsp; |6,4,0,,,MD2|<TD align=right>&nbsp;|6,5,0,,,MD2|<TD align=right>&nbsp;|6,6,0,,,MD2|<TD align=right>&nbsp;|6,7,0,,,MD2|
+</TABLE>
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>List of SIP threshold/s 
+<TH>Corrosponding list of progressive hours
+<TH>Corrosponding list of progressive amounts
+<TR> <TD> |7,1,0,,,|&nbsp;<TD> |7,2,0,,,|&nbsp;<TD align=right> &nbsp;|7,3,0,,,MD2|
+</TABLE>
+
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS=top>
+<TH>Allowance code
+<TH>Description
+<TH>Annual amount
+<TH>YTD paid
+<TH>Standard per pay
+<TH>This pay
+<TH>This pay hourly
+<TH>Effective from
+<TH>Effective to
+<TH>Narrative
+||TABLE000 <TR><TD>|8,N,0|<TD>|8,N,0,,,Tpp.allow;1|<TD align=right>|9,N,1,,,MD2|<TD align=right>|9,N,2,,,MD2|<TD align=right>|10,N,0,,,MD2|<TD align=right>|9,N,3,,,MD2|<TD align=right>|11,N,0,,,MD2|<TD>|39,N,1,,,D2|<TD>|39,N,2,,,D2|<TD>|12,N,0|
+</TABLE>
+
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS=top>
+<TH>Overtime Code
+<TH>Hours this pay
+<TH>YTD hours
+<TH>Amount this pay
+<TH>YTD Overtime amount
+<TH>Branch
+<TH>Narrative
+||TABLE000 <TR><TD>|13,N,0|<TD align=right>|14,N,1,,,MD2|<TD align=right>|14,N,2,,,MD2|<TD>|15,N,1,,,D2|<TD>|15,N,2,,,D2|<TD>|16,N,0|<TD>|17,N,0|
+</TABLE>
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Adjustment codes
+<TH>Description
+<TH>Amount this pay
+<TH>YTD Amount
+<TH>Narrative
+||TABLE000 <TR><TD>|18,N,0|<TD>|18,N,0,,,Tpp.adjust;1|<TD align=right>|19,N,1,,,MD2|<TD align=right>|19,N,2,,,MD2|<TD>|20,N,0|
+</TABLE>
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Deduction code
+<TH>Standard deduction per pay
+<TH>YTD deduction amount
+<TH>Deduction reference
+<TH>Effective from
+<TH>Effective to
+||TABLE000 <TR> <TD>|21,N,1,,,|&nbsp;<TD align="right">&nbsp;|22,N,1,,,MD2|<TD align="right">&nbsp;|22,N,2,,,MD2|<TD>|37,N|&nbsp;<TD>|38,N,1,,,D4|&nbsp;<TD>|38,N,2,,,D4|&nbsp;
+</TABLE>
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Interim pays
+<TH>Credited accounts
+<TH>Standard amount to be credited each pay
+<TH>YTD amount credited
+<TH>Amount to credit this pay only
+<TH>Credited description
+<TR> <TD>|24,0,0,,,D4|&nbsp;<TD>|25|&nbsp;<TD align=right>&nbsp;|26,0,0,,,MD2|<TD align=right>&nbsp;|26,1,0,,,MD2|<TD align=right>&nbsp;|26,2,0,,,MD2|<TD align=right>&nbsp;|26,2,0,,,MD2|<TD>|27|&nbsp;
+</TABLE>
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Net pay account
+<TH>Narrative
+<TH>Current amount
+<TH>YTD Before P.I.A
+<TH>YTD after P.I.A adj.
+||TABLE000 <TR> <TD>|28,N,1,,,|&nbsp;<TD>|40,N|<TD align="right">&nbsp;|29,N,1,,,MD2|<TD align="right">&nbsp;|29,N,2,,,MD2|<TD align="right">&nbsp;|29,N,3,,,MD2|
+</TABLE>
+
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS=top>
+<TH>Net pay in advance
+<TH>Date paid in advance
+<TH>Number of whole pays in advance
+<TH>Number of additional pays in advance
+<TH>Narrative
+<TR><TD>|30,1|<TD>|30,2|<TD>|30,3,1|<TD>|30,3,2|<TD>|31|
+</TABLE>
+
+<B>Previous pays</B>
+||ALIST <LI> |@,/prospect/asp/bi.asp?fn=PP.TRANS&tn=PP_TRANS&item=@@32;*,32,N,1,,,D2|
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+||SRDICT TRANS.J,TRANS.INFO
+||IF,133,=,1
+<TH>Added tax
+<TH>Tax code
+<TH>Family support credit
+<TH>IRD Number
+<TH>Spouse IRD number
+<TH>Family support credit number
+<TR>
+<TD>|33|&nbsp;<TD>|34|&nbsp;<TD>|35|&nbsp;<TD>|36,1,0,,,|&nbsp;<TD>|36,2,0,,,|&nbsp;<TD>|36,3,0,,,|&nbsp;
+||IFEND
+||IF,133,#,1
+<TH>Added tax
+<TH>Tax exemption
+<TH>Tax rebate
+<TH>Taxation file number
+<TR>
+<TD>|33|&nbsp;<TD>|34|&nbsp;<TD align="right">&nbsp;|35,0,0,,,MD2|<TD>|36,1,0,,,|&nbsp;
+||IFEND
+||SREND
+</TABLE>
+
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>General narrative
+<TR>
+<TD>|41|&nbsp;
+</TABLE>
+
+||SRDICT TRANS.J,TRANS.INFO
+||IF,133,=,1
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Reserved1 Greg?
+<TH>Reserved2 Greg?
+<TR>
+<TD>|43|&nbsp;<TD>|44|&nbsp;
+</TABLE>
+||IFEND
+||SREND
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Timesheet IDs
+<TH>Paydate for last entered timesheet
+<TH>All cumulative YTD adjustment dates
+<TH>All cumulative YTD adjustment dates since last pay
+<TR>
+<TD>|45|<TD>|47,0,0,,,D4|&nbsp;<TD>|48,1,0,,,D4|&nbsp;<TD>|48,2,0,,,D4|&nbsp;
+</TABLE>
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Total ordinary hours this pay
+<TH>YTD ordinary hours
+<TH>Total ordinary hours at BASE rate
+<TR>
+<TD>|49,1,0,,,MD2|&nbsp;<TD>|49,2,0,,,MD2|&nbsp;<TD>|49,3,0,,,MD2|&nbsp;
+</TABLE>
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Leave type
+<TH>Hours taken
+<TH>Medical certificate
+<TH>Hours accrued
+<TH>Leave class
+<TH>Commence date
+<TH>Cease date
+||TABLE000 <TR> <TD>|50,N,0,,,|&nbsp;<TD>|51,N,1,,,MD2|&nbsp;<TD>|51,N,2,,,|&nbsp;<TD>|52,0,0,,,MD2|&nbsp;<TD>|53|&nbsp;<TD>|54,N,0,,,MD2|&nbsp;<TD>55,N,0,,,MD2|&nbsp;
+</TABLE>
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Hourly rate
+<TH>Base hourly rate (timesheet employees)
+<TH>Charged rate
+<TH>G/L oheads recovery account
+<TR><TD align="right">|57,0,0,,,MD2|<TD align="right">|57,1,0,,,MD2|<TD align="right">|57,2,0,,,MD2|<TD>|58|
+<TR CLASS="top">
+<TH>Standard hours to be worked
+<TH>HECS debt
+<TH>Eligible for leave loading
+<TH>Non-resident (Y/N)
+<TR><TD>|59|<TD>|63|<TD>|64|<TD>|65|
+<TR CLASS="top">
+<TH>No. of pays in addition to normal
+<TH>Dependant spouse (Y/N)
+<TH>Dependant children
+<TH>Prescribed employee
+<TR><TD>|66|<TD>|67|<TD>|68|<TD>|69|
+<TR CLASS="top">
+<TH>Flag if salary less than ready reckoner
+<TH>Overhead margin
+<TH>Ordinary gross this pay
+<TH>Ordinary gross this pay base rate
+<TR><TD>|70|<TD align="right">|73,0,0,,,MD2|<TD align="right">|74,1,0,,,MD2|<TD align="right">|74,2,0,,,MD2|
+<TR CLASS="top">
+<TH>Adjustment General Ledger
+<TH>Expense accounts
+<TH>Overtime IDs
+<TH>Overtime manual disbursement
+||TABLE000 <TR><TD>|75,N,0,,,|&nbsp;<TD>|76,N,0,,,MD2|&nbsp;<TD>|79,N,0,,,|&nbsp;<TD>|81,N,0,,,|&nbsp;
+<TR CLASS="top">
+<TH>Rostered days off hours
+<TH>YTD Adjustment codes
+<TH>YTD Adjustment hours this pay
+<TH>YTD Adjustment hours YTD
+<TR><TD>|82,0,0,,,MD2|<TD>|83|<TD>|84,1,0,,,MD2|<TD>|84,2,0,,,MD2|
+<TR CLASS="top">
+<TH>YTD Adjustment amounts (amount paid this pay)
+<TH>YTD Adjustment amounts (YTD)
+<TH>YTD Adjustment amounts (Progressive value)
+<TH>YTD Adjustment amounts (Progressive hourly allowance)
+<TR><TD align="right">&nbsp;|85,1,0,,,MD2|<TD align="right">&nbsp;|85,2,0,,,MD2|<TD align="right">&nbsp;|85,3,0,,,MD2|<TD align="right">&nbsp;|85,4,0,,,MD2|
+</TABLE>
+
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>YTD Adjustment special rate
+<TH>Ordinary overtime codes
+<TH>Ordinary overtime rates
+<TH>Ordinary overtime hours
+<TH>Ordinary overtime amounts
+<TR><TD align="right">&nbsp;|86,0,0,,,MD2|<TD>|87,0,0,,,MD2|&nbsp;<TD align="right">|88,0,0,,,MD2|&nbsp;<TD align="right">&nbsp;|89,0,0,,,MD2|<TD align="right">&nbsp;|90,0,0,,,MD2|
+</TABLE>
+||SREND
+

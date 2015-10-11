@@ -1,0 +1,10 @@
+filetouse=daily.cash
+templatetouse=daily_cash
+srchlist=date,date
+srchkey=2,5,10
+labellist=Date (from),Date (to)
+title=CASH DEPOSITS BY DATE
+hds=Date|Deposits
+tds=<TD NOWRAP>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=daily.cash&tn=daily_cash&item=@@0,0,0,0,,,D2|@,/prospect/asp/bi.asp?fn=dict cash&tn=cash_deposit&item=@@N,0,0,0,,,TDAILY.CASH;-1
+reports=cash

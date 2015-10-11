@@ -1,0 +1,27 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>INSTALMENTS</FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="property"><INPUT TYPE=hidden NAME="tn" VALUE="property_instalment"><INPUT TYPE="hidden" NAME="item" SIZE=5 VALUE=""></FORM>
+</TABLE>
+
+||SRsr1695_ins
+<TABLE align=center border=1 cellspacing=1 cellpadding=1>
+<TR class=top>
+||SRCLIENT
+<TH COLSPAN=8>All properties owned by
+<TR class=top><TH COLSPAN=8><A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|0,0,0,,,tclient;35,1|"> |0,0,0,,,TOWNERNAME|
+<TR><TD>Residential Address<TD COLSPAN=7 ALIGN=CENTER>|0,0,0,,,TRES_ADDRESS|
+<TR><TD>Mailing Address<TD COLSPAN=7 ALIGN=CENTER>|0,0,0,,,TMAIL_ADDRESS|
+||SREND|
+<TR class=top>
+<TH COLSPAN=8>Calculations of penalty to |10|
+<TR CLASS=top>
+<TH>Assessment
+<TH>Address
+<TH>Option
+<TH>Pay #
+<TH>Date Due
+<TH>Instalment
+<TH>Charges
+<TH>Total Due
+||TABLE000 <TR><TD> |@,/prospect/asp/bi.asp?fn=&#8&tn=property_install_one&parameter=10&item=,1,N,1|<TD>|1,N,1,,,TCLIENT;1;2;3;4;5| <TD ALIGN=center>|2,N,1|<TD>|3,N,1,,,|<TD>|4,N,1,,,D2|<TD ALIGN=RIGHT>&nbsp;|5,N,1,,,MD2|<TD ALIGN=RIGHT>&nbsp;|6,N,1,,,MD2|<TD ALIGN=RIGHT>&nbsp;|7,N,1,,,MD2|
+</TABLE>
+||SREND

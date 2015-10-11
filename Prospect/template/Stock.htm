@@ -1,0 +1,82 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>STOCK ITEM </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="stock"><INPUT TYPE=hidden NAME="tn" VALUE="stock"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+<TABLE  align=center cellpadding=1>
+<TR>
+<TD width="25%" CLASS="mm"><B>Description</B><TD COLSPAN=3> |1,1,0|
+<TR>
+<TD width="25%" CLASS="mm"><B>Product Group</B><TD width="25%"> <A HREF="/prospect/asp/bi.asp?fn=PRD.GRP&tn=prd_grp&item=|2,1,1|"><FONT CLASS=itemlnk>|2,1,1,,,TPRD.GRP;1|</FONT></A>
+<TD width="25%" CLASS="mm"><B>Supplier(s)</B>
+<TD width="25%"><TABLE WIDTH=100%>
+	||TABLE000 <TR><TD>|@,/prospect/asp/bi.asp?fn=client&tn=client&item=,16,N,1|<TD ALIGN=center class=tdempty>|16,N,1,,,TCLIENT;1|
+	</TABLE>
+<TR>
+<TD CLASS="mm"><B>Manuf Part No.</B><TD> |15|
+<TR>
+<TD CLASS="mm"><B>Selling Unit</B><TD> |10|
+<TD CLASS="mm"><B>Buying Unit</B><TD> |11|
+<TR>
+<TD CLASS="mm"><B>Buy-Sell Factor</B><TD> |12|
+<TD CLASS="mm"><B>Quantity Conv. Factor</B><TD> |7|
+<TR>
+<TD CLASS="mm"><B>Weight</B><TD> |13|
+
+<TR>
+<TD CLASS="screen" colspan=4>&nbsp;
+
+</TABLE>
+
+<TABLE align=center>
+<TR>
+<TD><TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+    <TR CLASS="top">
+    <TH>Date
+    <TH>Selling Price(1)
+	||TABLE000 <TR><TD>|4,N,0,,,D2|&nbsp;<TD ALIGN=right>&nbsp;|5,N,0,,,MD4|
+	</TABLE>
+||IF,20,#,
+<TD><TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+    <TR CLASS="top">
+    <TH>Date
+    <TH>Selling Price(2)
+	||TABLE000 <TR><TD>|19,N,0,,,D2|&nbsp;<TD ALIGN=right>&nbsp;|20,N,0,,,MD4|
+	</TABLE>
+||IFEND
+||IF,31,#,
+<TD><TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+    <TR CLASS="top">
+    <TH>Date
+    <TH>Selling Price(3)
+	||TABLE000 <TR><TD>|30,N,0,,,D2|&nbsp;<TD ALIGN=right>&nbsp;|31,N,0,,,MD4|
+	</TABLE>
+||IFEND
+||IF,33,#,
+<TD><TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+    <TR CLASS="top">
+    <TH>Date
+    <TH>Selling Price(4)
+	||TABLE000 <TR><TD>|32,N,0,,,D2|&nbsp;<TD ALIGN=right>&nbsp;|33,N,0,,,MD4|
+	</TABLE>
+||IFEND
+||IF,35,#,
+<TD><TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+    <TR CLASS="top">
+    <TH>Date
+    <TH>Selling Price(5)
+	||TABLE000 <TR><TD>|34,N,0,,,D2|&nbsp;<TD ALIGN=right>&nbsp;|35,N,0,,,MD4|
+	</TABLE>
+||IFEND
+</TABLE>
+<P>
+<TABLE width ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+    <TR CLASS="top">
+    <TH>Date
+    <TH>Cost
+	||TABLE000 <TR><TD>|8,N,0,,,D2|&nbsp;<TD ALIGN=right>&nbsp;|9,N,0,,,MD4|
+	</TABLE>
+
+<P align=center>
+<A HREF="buildsel.asp?fn=st_trans&tn=st_trans&item=a9&ref=|0|&by=by-dsnd">Click here to Display Transactions most recent first</A>
+<P align=center>
+<A HREF="buildsel.asp?fn=st_trans&tn=st_trans&item=a9&ref=|0|&by=by">Click here to Display Transactions oldest first</A>
+

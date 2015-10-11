@@ -1,0 +1,11 @@
+filetouse=@@PATH@@d3_cka\letter\
+templatetouse=letter
+srchlist=a1
+labellist=Keyword
+prefix=[
+suffix=]
+sorts=a0
+title=LOGIS &AMP; PROSPECT DOCUMENTATION
+hds=Program|Description
+tds=<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=@@PATH@@d3_cka\letter\&tn=letter&item=,0|1

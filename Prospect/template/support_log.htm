@@ -1,0 +1,31 @@
+<H2 align=center>Customer Support- Incident Report</H2>   
+<BR>
+<FORM ACTION="/support/add_call.asp" METHOD="POST" NAME="addcall">
+<TABLE align="center" background="../graphics/screen.gif" align=left border="1" cellspacing="3" cellpadding="1">
+<TR><TD class="top" colspan=4 ><FONT SIZE="+1"><STRONG>Caller Details - </STRONG></FONT><FONT SIZE="-1"><I>&nbsp&nbsp Contact Name & Problem Description are Compulsory Fields</I></FONT>
+<TR><TD class="highlight">Contact Name<TD><input TYPE="TEXT" NAME="num_5_1_1" value="|5,1,1|">
+    <TD class="highlight">Phone Number<TD><input TYPE="TEXT" NAME="num_5_2_1" value="|5,2,1|">
+<TR><TD class="highlight"> 	  
+<TR><TD class="highlight">  
+<TR><TD class="top"colspan=4 ><FONT SIZE="+1"><STRONG>Incident Report Details</STRONG></FONT>
+<TR>
+    <TD class="highlight" >Module Name 
+    <TD class="highlight"><select  onChange='swop_attrib(this)' NAME="codesbox" size="1" id="sselect slog.codes with a0 = '@M]' a1,slog.codes"><option value="|999|">
+      </select>
+    <TD class="highlight">Program Name<TD><input TYPE="text" NAME="num_11" VALUE="|11|">
+<TR><TD class="highlight">  
+<TR><TD class="highlight">  
+<TR><TD class="highlight">  
+<TR><TD class="highlight" colspan=4 >Description Of Problem:  
+<TR><TD colspan=4><TEXTAREA NAME="num_12"  COLS="60" ROWS="6" WRAP="VIRTUAL">|12|
+ </TEXTAREA>
+<TR><TD><INPUT TYPE="button" NAME="send" VALUE="Send" OnClick="verify()">
+    <TD><INPUT TYPE="reset" NAME="reset" VALUE="Reset">
+</TABLE>
+
+<input TYPE="hidden" NAME="num_3" VALUE="Submitted via web site">
+<input type="hidden" NAME="num_4" VALUE=""><!--client number -->
+<input TYPE="hidden" NAME="num_10" VALUE=""><!--code module -->
+</FORM>
+
+

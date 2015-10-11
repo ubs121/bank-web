@@ -1,0 +1,46 @@
+<P>
+<BR>
+||SRDICT RR.LOG,4
+||IF,2,=,Shire of Swan
+||SREND
+<TABLE WIDTH=95% cellspacing=0 border=0>
+<TR>
+<TD VALIGN=top ALIGN=CENTER WIDTH=15%>
+<BR>
+<IMG SRC="/prospect/images/swanshire.bmp">
+<TD ALIGN=CENTER>
+<B>
+<FONT SIZE=+3 COLOR="firebrick">Shire of Swan</FONT>
+<BR>
+PO Box 196	MIDLAND  6056
+</B>
+<TD ALIGN=right VALIGN=bottom>
+Phone: +61 (08) 9267 9000<BR>
+Fax: +61 (08) 9267 9444
+</TABLE>
+||IFEND
+<HR WIDTH=95% ALIGN=LEFT>
+<BR>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>Transfer Advice Form for EFT Payment </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="chq.rec"><INPUT TYPE=hidden NAME="tn" VALUE="chq_remit"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+<P>
+<BR>
+<A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|5,1,1|"><FONT CLASS=itemlnk><FONT SIZE=+1>|5,1,1,,,Tclient;1|</FONT></FONT></A> <BR>
+|9,1,1| <BR> 
+|9,2,1| <BR> 
+|9,3,1|
+<P>
+$|2,1,1,,,MD2| was deposited into account: |5,1,1,,,TCREDITOR;34| on |3,1,1,,,D4|
+<P>
+<HR WIDTH=95% ALIGN=LEFT>
+||IF,16,#,
+<TABLE WIDTH=95%>
+<TR CLASS="top">
+<TH>Reference
+<TH>Type
+<TH>Date
+<TH>Amount
+<TH>Discount
+<TH>PPS
+||TABLE000 <TR><TD>|16,1,N,|<TD>|17,1,N,,,tdict trans.j;2|<TD>|18,1,N,,,D4|<TD ALIGN=RIGHT>|19,1,N,,,MD2|<TD ALIGN=RIGHT>|26,1,N,,,MD2|<TD ALIGN=RIGHT>|30,1,N,,,MD2|
+</TABLE>
+||IFEND

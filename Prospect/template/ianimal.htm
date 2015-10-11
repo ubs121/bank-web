@@ -1,0 +1,91 @@
+@@INPUT@@Animal
+<INPUT id=select1 name=select1 value="|1,V|" type="hidden">
+<INPUT id="assessment_address_hide" NAME="assessment_address_hide" type="hidden">
+
+<TABLE align=center WIDTH="95%" border="1" cellspacing="1" cellpadding="1">
+
+    <TR class=top>
+       <TD CLASS="itemname" WIDTH="102"><B>Licence Number</B>
+	   <TD><input type="Text" class="smalltxt"  name="1,0,0,Licence" value="|1,0,0|" align="LEFT" size=20 maxlength="10">
+
+
+        <TD CLASS="itemname" WIDTH="102"><B>Owner</B>
+	   <TD><input type="Text" class="smalltxt" onBlur='GetAssessAddress(document.all("I2,0,0,Owner"),this.value)'  name="2,0,0,Owner" value="|2,0,0|" align="LEFT" size=15 maxlength="20">
+       <TD colspan=2><center><INPUT TYPE="Button" class="smallButt" NAME="Search" VALUE="Search" onClick='BuildSentence(document.assetform("2,0,0,owner"),document.all.SearchResults,"RSClients.txt","")'>
+	<b>&nbsp;&nbsp;Search by Owner name</b></center>
+    <TR class=top>
+ 	   <TD colspan=2 CLASS="itemname"><B>Owner Name & Address</B>
+       <TD colspan=4 id="I2,0,0,Owner">|2,0,0,,,TCLIENT;1;7;2;3;4;5|
+    <TR class=top>
+       <TD CLASS="itemname" WIDTH="102"><B>Type of Animal</B>
+       <TD colspan=1>
+<select name="sel3" > 
+||OPTIONS|SSELECT|type|3|@@PATH@@\ckashare\animal\animal.mdb\type|1|
+</select>
+       <TD CLASS="itemname" ><B>Breed of Animal</B>
+       <TD>
+<select name="sel4" > 
+||OPTIONS|SSELECT|breed|4|@@PATH@@\ckashare\animal\animal.mdb\breed|1|
+</select>
+        <TD CLASS="itemname" WIDTH="102" ><B>Animal's Colour</B>
+        <TD>
+<select name="sel7" > 
+||OPTIONS|SSELECT|color|7|@@PATH@@\ckashare\animal\animal.mdb\color|1|
+</select>
+
+	<TR class=top>
+ 	    <TD CLASS="itemname"><B>Animal Name</B>
+	    <TD colspan=3><input type="Text" class="smalltxt"  name="5,0,0,name" value="|5,0,0|" align="LEFT" size=55 maxlength="50">
+        <TD CLASS="itemname" WIDTH="102" ><B>Animal's Sex</B>
+        <TD colspan=1><input type="Text" CLASS="smallTxt" name="6,0,0,Sex,," value="|6,0,0,,,@M@m@F@f@N@n@S@s@NF@nf@NM@nm@NF@nf|" align="right" size=17 maxlength="20">
+ 	<TR class=top>
+         <TD CLASS="itemname" WIDTH="102" ><B>Narrative</B>
+        <TD colspan=7><input type="text" CLASS="smallTxt" name="8,0,0,Narrative" value="|8,0,0|" align="LEFT" size=97 maxlength="100">
+    <TR class=top>
+        <TD CLASS="itemname" WIDTH="102" ><B>Agent</B>
+	   <TD colspan=2><input type="Text" clas`s="smalltxt" onBlur='GetAssessAddress(document.all.owner,this.value)' onChange='GetAssessAddress(document.all.owner,this.value)' name="9,0,0,Agent" value="|9,0,0|" align="LEFT" size=35 maxlength="20">
+       <TD CLASS="itemname" WIDTH="102" ><B>Assessment No.</B>
+        <TD colspan=2><input type="Text" CLASS="smallTxt" name="10,0,0,assess,," value="|10,0,0|" align="Right" size=35 maxlength="10">
+	<TR class=top>
+		 <TD CLASS="itemname" WIDTH="102" ><B>Place Kept</B>
+         <TD colspan=7><input type="Text" CLASS="smallTxt" name="19,0,0,kept,," value="|19,0,0|" align="Right" size=97 maxlength="100">
+	 <TR class=top>
+  		<TD CLASS="itemname" WIDTH="102" ><B>D.O.B.</B>
+		<TD colspan=1><input type="Text" CLASS="smallTxt" name="14,0,0,DOB,,d2x" value="|14,0,0,,,d2x|" align="Right"  maxlength="10">
+		<TD><B>Date Licenced to
+		<TD colspan=3><input type="Text" CLASS="smallTxt" name="15,0,0,datepaid,,d2x" value="|15,0,0,,,d2x|" align="Right" size=55 maxlength="10">
+	<TR class=top>
+	 	<TD width="102"><B>Amount Paid</B>   
+ 		<TD colspan=2><input type="Text" CLASS="smallTxt" name="16,0,0,amtpaid,,MD2x" value="|16,0,0,,,MD2x|" align="Right" size=35 maxlength="10">
+		<TD CLASS="itemname" WIDTH="102" ><B>Receipt No</B>
+		<TD colspan=2><input type="Text" CLASS="smallTxt" name="17,0,0,receipt,," value="|17,0,0,,,|" align="Right" size=35 maxlength="10">
+	<TR class=top>
+		<TD CLASS="itemname" WIDTH="102" ><B>Conc. Code</B>
+    <TD>
+<select name="sel36" > 
+||OPTIONS|SSELECT|concession|36|@@PATH@@\ckashare\animal\animal.mdb\concession|1|
+</select>
+		<TD CLASS="itemname" WIDTH="102" ><B>Concession</B>
+		<TD colspan=3><input type="Text" CLASS="smallTxt" name="28,0,0,concession,," value="|28,0,0,,, |" align="Right" size=55 maxlength="10">
+	
+		
+	 <TR class=top>
+		<TD CLASS="itemname" WIDTH="102" ><B>Date Loaded</B> 
+		<TD colspan=2><input type="Text" CLASS="smallTxt" name="12,0,0,loaded,,D2x" value="|12,0,0,,,D2x|" align="Right" size=35 maxlength="10">
+		<TD CLASS="itemname" WIDTH="102" ><B>Date Amended</B>
+		<TD colspan=2><input type="Text" CLASS="smallTxt" name="13,0,0,amended,,D2" value="|13,0,0,,,D2|" align="Right" size=35 maxlength="10">
+		
+
+</TABLE>
+</form>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;1;2;3;4;5");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+

@@ -1,0 +1,255 @@
+@@INPUT@@Stock Issue
+
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1 width = 95%>
+<TR class="top">
+        <TD CLASS="top"><B>Client No</B>
+        <TD class=top><input name="C3,0,0,Client No" value="|3,0,0|">&nbsp;<input type="button" value="Search" onClick='BuildSentence(document.assetform("C3,0,0,id"),document.all.SearchResults,"RSclients.txt","")'>
+		<TD CLASS="top"><B>Client Name</B>
+		<TD id="IC3,0,0,sname"> &nbsp;|3,0,0,,,Tsname;1|
+		<TD CLASS="top"><B>Client Address</B>
+		<TD id="IIC3,0,0,gname"> &nbsp;|3,0,0,,,TRES_ADDRESS|
+<TR class="top">
+		<TD CLASS="top"><B>Date</B>
+		<TD class=top><input name="C21,0,0,Order Date,,D2" value="|21,0,0,,,D2|">
+		<TD CLASS="top"><B>Branch</B>
+		<TD class=top>
+<select name="sel1">
+||OPTIONS|SSELECT|Branch|2|@@PATH@@\ckashare\stock\stock.mdb\Branch|1|
+
+</select>
+		<TD CLASS="top"><B>Authorising Officer</B>
+		<TD class=top>
+<select name="sel44" onChange=getSelectedVal(this);>
+||OPTIONS|SSELECT|Branch|2|@@PATH@@\ckashare\stock\stock.mdb\Branch|1|
+
+</select> 
+<input type="hidden" id="po_authofficer" name="po_authofficer" value="|44,0,0|">
+<input type="hidden" id="po_code" name="po_code" value="|44,0,0,,,Tpoauthorise;1|">
+<input type="hidden" id="po_auth_amount" name="po_auth_amount" value="|44,0,0,,,Tpoauthorise;2|">
+<input type="hidden" id="po_auth_accounts" name="po_auth_accounts" value="|44,0,0,,,Tpoauthorise;3,0|">
+<input type="hidden" id="po_auth_jobaccounts" name="po_auth_jobaccounts" value="|44,0,0,,,Tpoauthorise;4,0|">
+
+		<TR class="top">
+		<TD CLASS="top"><B>Del Date</B>
+		<TD class=top><input name="C20,0,0,Del Date,,D2" value="|20,0,0,,,D2|">
+		<TD CLASS="top"><B>Del To</B>
+		<TD class=top colspan=3><input size="40" name="24,0,0,Del To" value="|24,0,0|">
+<TR class="top">
+		<TD CLASS="top"><B>Contract Number</B>
+		<TD class=top><input name="46,0,0,Contract No" value="|46,0,0|">&nbsp;<input type="button" value="Search" onClick='BuildSentence(document.assetform("46,0,0,Contract No"),document.all.SearchResults,"RSContract.txt","")'>
+		<TD CLASS="top"><B>Contract</B>
+		<TD id="I46,0,0,Contract No" colspan=3> &nbsp;|0,0,0,,,Tcontract;1|
+<TR class="top">
+		<TD CLASS="top" colspan=2><input class="bold" type="button" id="search_gl" name="search_gl" value="Search GL" onClick='SearchAccount("gl");'>
+		<TD CLASS="top" colspan=2><input class="bold" type="button" id="search_job" name="search_job" value="Search JOBS" onClick='SearchAccount("job");'>
+		<TD CLASS="top" colspan=2><input class="bold" type="button" id="search_stock" name="search_stock" value="Search STOCK" onClick='SearchAccount("stock");'>		
+</TABLE>
+<SCRIPT LANGUAGE="JavaScript" SRC="/prospect/jscript/gen_l.js"></SCRIPT>
+<INPUT id="no_update_delete" NAME="no_update_delete" type="hidden" value="0">
+<INPUT id="prev_value" NAME="prev_value" type="hidden" value="0">
+<input type="hidden" id="num_in_row" name="num_in_row" value="0">
+
+<%'this is where the expandable table goes - written to in includeform%>
+<I id=expanding></I>
+</div>
+</FORM>
+
+<%'//!!!!!see 12 below assumes 11 elements above!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!%>
+
+<script LANGUAGE="JavaScript">
+	var numofrows,numofcols,numinrow=7,Total=0;
+	var Translist=new Array();
+    var gFieldValues = new Array(numinrow * 10); // this array holds our form values when we need to regenerate the form
+    for (var i=0;i<gFieldValues.length;i++) {gFieldValues[i]=""};
+    getTransValues();
+    IncludeForm(numinrow);
+
+function IncludeForm(numinrow)
+{
+   var htmlStr = '<TABLE align=center border=1 cellspacing=1 cellpadding=1 width=95%>';
+   htmlStr += '<TR class=top><TH colspan=6>Purchase Order details<TR class=top><TH>Account &nbsp;&nbsp;<input type="button" value="Extra" onClick="AddField(' + numinrow + ')"><TH>Description<TH>Qty<TH>InQty<TH>Cost<TH>Amount';    
+   htmlStr += '<TR class=top><TD>&nbsp;<TD>&nbsp;<TD>&nbsp;<TD>&nbsp;<TD align=center><B>Total</B><TD align=right><B>&nbsp;<I id="totalamount"></I><input type="hidden" name="Btotalamount" value="0.00"></B>';    	
+
+for (var i=0;i<gFieldValues.length;i+=numinrow)
+{
+   htmlStr += '<TR class=top>';
+   htmlStr += '<TD><input type="Text" onChange="changeVal();" onBlur="document.all.CurrentSearchField.value=this.name;" name="' + (100 + i + 0) + ',,,Account" value="' + gFieldValues[i+0] + '">';
+   htmlStr += '<TD align=center><input type="text" onFocus="POAccount_Validation(document.all('+ "'I" + (100 + i) + ",,,Account'),document.all(" + "'" + (100 + i) + ",,,Account'));" + '" onChange="changeVal();" name="I' + (100 + i + 0) + ',,,Account" value="' + gFieldValues[i+1] + '">' + '&nbsp;<input type="hidden" name="B' + (100 + i + 1) + '" value="1">';
+   htmlStr += '<TD align=center><input type="text" onFocus="getPrevVal(this.value,document.all(' + "'" + (100 + i + 4) + ",,,Cost,,F').value);" + '" onChange="changeVal();" onBlur="getFieldValue(document.all(' + "'B" + (100 + i + 1) + "'" + '),document.all(' + "'" + (100 + i) + ",,,Account')," + "'Tstock;7'" + ');Calculate(this,document.all(' + "'B" + (100 + i + 1) + "'" + '),document.all(' + "'" + (100 + i + 3) + ",,,InQty'));" + '" name="' + (100 + i + 2) + ',,,Qty" value="' + RightJustify(gFieldValues[i+3],39) + '">';
+   htmlStr += '<TD align=center><input type="text" onChange="changeVal();" onFocus="Calculate(document.all(' + "'" + (100 + i + 4) + ",,,Cost,,F'),document.all(" + "'" + (100 + i + 2) + ",,,Qty'),document.all(" + "'" + (100 + i + 5) + ",,,Amount,,F'));dispTotalAmount(document.all(" + "'totalamount'),document.all(" + "'Btotalamount'),document.all(" + "'" + (100 + i + 5) + ",,,Amount,,F').value,document.all.prev_value.value); document.all(" + "'" + (100 + i + 4) + ",,,Cost,,F').focus();" + '" name="' + (100 + i + 3) + ',,,InQty" value="' + RightJustify(gFieldValues[i+4],39) + '">';
+   htmlStr += '<TD align=center><input type="text" onFocus="getPrevVal(document.all(' + "'" + (100 + i + 2) + ",,,Qty').value,this.value); getFieldValue(document.all(" + "'" + (100 + i + 4) + ",,,Cost,,F'),document.all(" + "'" + (100 + i) + ",,,Account')," + "'Tstock;9'" + ');" onChange="changeVal();" onBlur="Calculate(this,document.all(' + "'" + (100 + i + 2) + ",,,Qty'),document.all(" + "'" + (100 + i + 5) + ",,,Amount,,F'));dispTotalAmount(document.all(" + "'totalamount'),document.all(" + "'Btotalamount'),document.all(" + "'" + (100 + i + 5) + ",,,Amount,,F').value,document.all.prev_value.value);" + '" name="' + (100 + i + 4) + ',,,Cost,,F" value="' + RightJustify(FormatNum(gFieldValues[i+5]),39) + '">';
+   htmlStr += '<TD align=center><input type="text" onChange="changeVal();" name="' + (100 + i + 5) + ',,,Amount,,F" value="' + RightJustify(FormatNum(gFieldValues[i+6]),39) + '">';
+}
+   htmlStr += '</TABLE>';
+   document.all.expanding.innerHTML = htmlStr;
+   document.all.num_in_row.value=numinrow;
+   document.all.totalamount.innerHTML=document.all.Btotalamount.value=FormatNum(Total);
+}
+
+function AddField(numinrow)
+{
+// Save previously entered data here
+	var formObj = document.assetform;
+    var  n=formObj.elements.length - gFieldValues.length ;
+	for (var i=0;i<gFieldValues.length;i++) //element 0 is the ADD BUTTON so saving element 1 onwards only
+	    gFieldValues[i]= formObj.elements(n+i).value;
+
+Total=document.all("Btotalamount").value;
+   
+// Create the new fields
+     for (var j=0;j<numinrow;j++)
+        { gFieldValues[gFieldValues.length]=""; }
+     IncludeForm(numinrow);
+}
+
+
+function getTransValues()
+{
+var i,j;
+
+Temp = document.assetdata.before.value;
+if (Temp == "" || Temp.charAt(0) == '@') return;
+
+pos=Index(Temp,String.fromCharCode(8),9);
+if (pos==0) return;
+pos1=Index(Temp,String.fromCharCode(8),14);
+
+Temp=Temp.substring(pos,pos1-1);
+Temp = ConvertToVBString(Temp).substring(1,Temp.length+1);
+if (Temp == "") return;
+
+Translist = Temp.split(String.fromCharCode(8));
+
+if (numofrows > 10)   								//if num. of records > 10 then resize gFieldValues for the additional rows
+     for (var k=0; k<(numinrow * (numofrows - 10)); k++)
+        { gFieldValues[gFieldValues.length]=""; }
+else 								                  //else resize Translist for max. of 10 rows
+	 for (var k=0; k<(numofcols * (10 - numofrows)); k++)
+        { Translist[Translist.length]=""; }
+
+j=0;
+	
+for (i = 0; i<Translist.length; i+=numofcols)
+{
+	gFieldValues[j] = Translist[i];             // Product
+	gFieldValues[j+1] = Translist[i+2];             // Product Description
+	gFieldValues[j+3] = Translist[i+3];             // Qty
+	if (Translist[i+1] = "") Translist[i+1]=1;
+if (Translist[i+3]!="") 
+	gFieldValues[j+4] = Translist[i+1] * Translist[i+3];             // In Qty
+	gFieldValues[j+5] = Translist[i+4];             // Cost
+	if (Translist[i+3]!="") 
+	{
+	gFieldValues[j+6] = Translist[i+3] * Translist[i+4];             // Amount
+	Total=Total + parseFloat(gFieldValues[j+6]);
+	}
+	j = j+numinrow;
+}
+}
+</script>
+
+
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+{
+   while (RSAspProxyApplet.readyState != 4) {}
+   validation = GetValidationString(Address.id);
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,validation);
+   Address.innerHTML=co.return_value;
+}
+
+function GetOwnerName(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;0;1;2;3");
+   Address.innerHTML=co.return_value;
+}
+
+
+function GetValidationString(element)
+{
+switch(element)
+{
+case "IC3,0,0,Client No" :
+	validation = "T@@PATH@@!ckashare!purchase!purchase.mdb!client;2" ;
+	break;
+case "IC1,0,0,Branch No" :
+	validation = "Tbranch;1" ;
+	break;
+}	
+return validation;
+}
+
+
+
+function getFieldValue(resfield,field,validation)
+{
+if (field.value=="")
+	 return;  
+while (RSAspProxyApplet.readyState != 4) {}
+  result="";
+		ASPpage = RSGetASPObject("DllCalls.asp");
+        co = ASPpage.BuildString(field.value,validation);
+        result=co.return_value;
+if (result!="")
+{
+if (((resfield.name).indexOf("Cost")) != -1) result=result/10000;
+     resfield.value=result;
+}	 
+	 resfield.select();
+}
+
+
+function getPrevVal(qty,cost)
+{
+if (Ltrim(qty) == "") qty = 0;
+if (Ltrim(cost) == "") cost = 0;
+pval = qty * cost;
+document.all.prev_value.value=pval;
+}
+
+
+function getSelectedVal(dropdown)
+{
+selItem = dropdown.options[dropdown.selectedIndex].text;
+document.all.po_authofficer.value=selItem ;
+document.all.po_code.value=BuildString(selItem,"Tpoauthorise;1");
+document.all.po_auth_amount.value=BuildString(selItem,"Tpoauthorise;2");
+document.all.po_auth_accounts.value=BuildString(selItem,"Tpoauthorise;3,0");
+document.all.po_auth_jobaccounts.value=BuildString(selItem,"Tpoauthorise;4,0");
+}
+
+
+function Calculate(firstfield,secondfield,resfield)
+{
+if (Ltrim(firstfield.value) != "") val1 = firstfield.value; else val1=0;
+if (fieldFormat(firstfield) == "F") firstfield.value = RightJustify(FormatNum(val1),39); else firstfield.value = RightJustify(parseInt(val1),39);
+if (Ltrim(secondfield.value) != "") val2 = secondfield.value; else val2=0;
+if (fieldFormat(secondfield) == "F") secondfield.value = RightJustify(FormatNum(val2),39); else secondfield.value = RightJustify(parseInt(val2),39);
+val3 = val1 * val2;
+if (fieldFormat(resfield) == "F") resfield.value = RightJustify(FormatNum(val3),39); else resfield.value = RightJustify(parseInt(val3),39);
+}
+
+
+function dispTotalAmount(itag,inputhidden,amt,prevval)
+ {
+    var total;
+	 if (inputhidden.value=="") inputhidden.value=0;
+     total = inputhidden.value;
+ 	 total = parseFloat(total) - parseFloat(prevval) + parseFloat(amt);
+     inputhidden.value = total;
+     itag.innerHTML=FormatNum(inputhidden.value);
+	 document.all.prev_value.value="0"
+	 if (document.all.po_code.value != "M")
+	 {
+	 	authorise_amount=document.all.po_auth_amount.value ;
+		if (authorise_amount == "") authorise_amount = 0;
+		if (total > authorise_amount) alert("Order Exceeds Authorising Officer's Limit, require Manager to authorise");
+	 }	
+}
+
+</SCRIPT>
+

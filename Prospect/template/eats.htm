@@ -1,0 +1,86 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>HEALTH PREMISES </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="eats"><INPUT TYPE=hidden NAME="tn" VALUE="eats"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+||IF,8,#,
+<p align=center> |8|
+||IFEND
+
+||IF,19,#,
+<TABLE width ALIGN=CENTER BORDER=0 CELLSPACING=1 CELLPADDING=1>
+<TR class=top>
+<th align="CENTER" VALIGN="MIDDLE">Permitted trading days/hours</th>
+<TR>
+<TD> |19|
+</TABLE>
+<P>
+||IFEND
+
+<TABLE WIDTH=95% align=center BORDER=0 CELLSPACING=1 CELLPADDING=1>
+<TR class=top>
+<th align="CENTER" VALIGN="MIDDLE">Trading Name
+<th align="CENTER" VALIGN="MIDDLE">Premises Category
+<th align="CENTER" VALIGN="MIDDLE">Number of Seats/Beds
+<TR>
+<TD ALIGN="center"> |5|
+<TD ALIGN="center"> |3| (|3,1,1,,@T.,TEAT.CODES;1|)
+<TD ALIGN="center"> |6|
+</TABLE>
+<P>
+<TABLE WIDTH=95% align=center BORDER=0 CELLSPACING=1 CELLPADDING=1>
+<TR class=top>
+<th align="CENTER" VALIGN="MIDDLE">Licensee
+<th align="CENTER" VALIGN="MIDDLE">Registration
+<th align="CENTER" VALIGN="MIDDLE">Property
+<TR>
+<TD> <A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|2,1,1|"><FONT CLASS=itemlnk>|2,1,1,,,TCLIENT;7;1|</FONT></A> <BR>&nbsp;<BR>&nbsp;
+<TD> <A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|9,1,1|"><FONT CLASS=itemlnk>|9,1,1,,,TCLIENT;7;1|</FONT></A> <BR>&nbsp;<BR>&nbsp;
+<TD> <A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|1,1,1|"><FONT CLASS=itemlnk>|1,1,1,,,TCLIENT;1|</FONT></A> <br> <A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|1,1,1|">|1,1,1,,,TCLIENT;2,1|</A> <br> <A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|1,1,1|">|1,1,1,,,TCLIENT;3,1;4,1;5,1|</A>
+</TABLE>
+<P>
+||IF,10,#,
+<P>
+<TABLE align=center WIDTH=95% BORDER=0 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS="top">
+<TH>Applied
+<TH>Fee Type
+<TH>Amount
+<TH>Paid Amt
+<TH>Receipt No
+<TH>Expiry Date
+||TABLE000 <TR><TD>|10,N,1,,,D2|<TD>|11,N,1,,@F.,Teat.codes;1|<TD ALIGN=RIGHT>|12,N,1,,,MD2|<TD ALIGN=RIGHT>|14,N,1,,,MD2|<TD>|15,N,1|<TD>|13,N,1,,,D2|
+</TABLE>
+||IFEND
+
+||SRDICT RR.LOG,4
+||IF,2,#,Shire of Swan
+||SREND
+<P>
+<TABLE WIDTH=95% align=center BORDER=0 CELLSPACING=1 CELLPADDING=1>
+<TR class=top>
+<th align="CENTER" VALIGN="MIDDLE">Inspections
+<th align="CENTER" VALIGN="MIDDLE">Orders
+<TR>
+<TD>
+||ALIST <LI> &nbsp;  |@,/prospect/asp/bi.asp?fn=inspection&tn=inspection&item=,16,N,1|	&nbsp;	|16,N,1,,,TINSPECTION;2~D2|
+<TD>
+||ALIST <LI>&nbsp;|@,/prospect/asp/bi.asp?fn=health.order&tn=order&item=,18,N,1|&nbsp;|18,N,1,,,TINSPECTION;2~D2|&nbsp;  
+</TABLE>
+||IFEND
+
+||SRDICT RR.LOG,4
+||IF,2,=,Shire of Swan
+||SREND
+<TABLE WIDTH="95%">
+<TR CLASS="top">
+<TH>Risk Assessment
+<TH>Date
+<TH>Risk Summary
+<TH>Officer
+<TH>Next Date
+||TABLESEL <TR><TD>|@,/prospect/asp/bi.asp?fn=@@PATH@@ckashare\health\health.mdb\helm_checks&tn=helm_checks&item=,0|<TD>|2,1,1,,,D2|<TD>|3,1,1,,|<TD> |4,1,1,,@S.,T@@PATH@@ckashare\health\health.mdb\eat_codes;1|<TD>|7,0,0,,,D2|
+@@PATH@@ckashare\health\health.mdb,@@PATH@@ckashare\health\health.mdb\helm_checks,select * from helm_checks where premise = "|0|"
+</TABLE>
+||IFEND
+
+

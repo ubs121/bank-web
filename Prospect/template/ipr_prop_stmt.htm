@@ -1,0 +1,84 @@
+@@INPUT@@Proposed Property Settlement
+<INPUT id=select5 name=select5 value="|5,V|" type="hidden">
+<INPUT id="assessment_address_hide" NAME="assessment_address_hide" type="hidden">
+
+<script LANGUAGE="JAVASCRIPT">
+<!-->
+	function loadSelectionIntoView () {
+    var x=document.Listbox.Links.selectedIndex;
+	var newloc = document.Listbox.Links.options[x].value;
+	if (newloc != "") window.location.href=newloc;
+	}
+	// -->
+</script>
+
+<TABLE align=center border=1 cellspacing=3 cellpadding=1>
+    <TR class=top>
+        <TD CLASS="itemname" WIDTH="102">Assessment
+	  <TD><input type="Text" class="smalltxt" onBlur='GetAssessAddress(document.all.assessment_address,this.value)' name="1,0,0,assessment" value="|1|" align="LEFT" size="10" maxlength="10">
+        <TD colspan=6>
+          <INPUT TYPE="Button" class="smallButt" NAME="Search" VALUE="Search" onClick='BuildSentence(document.assetform("1,0,0,assessment"),document.all.SearchResults,"RSproperty.txt","")'>Search by owner name or road name (use ,roadname)
+    <TR class=top>
+ 	  <TD CLASS="itemname">Address
+        <TD colspan=7>&nbsp;<I CLASS="input" id=assessment_address>|1,0,0,,,TCLIENT;1;2;3;4;5|</I>
+
+    <TR class=top>
+        <TD CLASS="itemname" WIDTH="102">Applicant
+	  <TD><input type="Text" class="smalltxt" onBlur='GetAssessAddress(document.all.owner,this.value)' onChange='GetAssessAddress(document.all.owner,this.value)' name="2,0,0,Applicant" value="|2|" align="LEFT" size="10" maxlength="10">
+        <TD colspan=6>
+          <INPUT TYPE="Button" class="smallButt" NAME="Search" VALUE="Search" onClick='BuildSentence(document.assetform("2,0,0,applicant"),document.all.SearchResults,"RSClients.txt","")'>Search by debtor name
+    <TR class=top>
+ 	  <TD CLASS="itemname">Owner Name & Address
+        <TD colspan=7>&nbsp;<I CLASS="input" id=owner>|1,0,0,,,TCLIENT;1;7;2;3;4;5|</I>
+
+<TR>
+<TD CLASS="mm"><B>Other Applicants</B>
+<TD><input type="Text" name="3,1,1" value="|3,1,1|" size="35" maxlength="35">
+
+<TR>
+<TD CLASS="mm"><B>Date of Request</B>
+<TD><input type="Text" name="4,1,1,Date of Request,,D2" value="|4,1,1,,,D2|" align="LEFT" size="10" maxlength="10"> 
+
+<TR>
+<TD CLASS="mm"><B>Fee to Charge</B>
+<TD><input type="Text" name="5,1,1,Fee to Charge,,MD2" value="|5,1,1,,,MD2|" align="LEFT" size="10" maxlength="10"> 
+
+<TR>
+<TD CLASS="mm"><B>Date Printed / Charged</B>
+<TD><input type="Text" name="6,1,1,Date Printed,,D2" value="|6,1,1,,,D2|" align="LEFT" size="10" maxlength="10"> 
+
+<TR>
+<TD CLASS="mm"><B>Date of Settlement</B>
+<TD><input type="Text" name="7,1,1,Date of Settlement,,D2" value="|7,1,1,,,D2|" align="LEFT" size="10" maxlength="10"> 
+
+<TR>
+<TD CLASS="mm"><B>New Owners</B>
+<TD><input type="Text" name="8,1,1,New Owners,,N" value="|8,1,1,,,|" align="LEFT" size="10" maxlength="10"> 
+    <INPUT TYPE="Button" class="smallMapleButt" VALUE="Search" onClick='BuildSentence(document.assetform("8,1,1,New Owners,,N"),document.all.SearchResults,"RSClients.txt","");'> 
+</TABLE>
+</form>
+
+<FORM name="Listbox">
+<TD VALIGN="TOP" class="tdempty">
+<B>Look up related data:</B>
+<select name="Links" onChange="loadSelectionIntoView();" bgcolor="wheat">
+<option value="" selected></option>
+<option value="/prospect/asp/property_penalty_date.asp?tn=property_settlement&item=|1|">Settlement statement</option>
+<option value="/prospect/asp/bi.asp?fn=property&tn=property_charging&item=|0|">Charging information</option>
+<option value="/prospect/asp/bi.asp?fn=&tn=property_history&item=|0|">Maintenance history</option>
+<option value="/prospect/asp/bi.asp?fn=&#8&tn=property_penalty_preview&item=|0|&parameter=">Penalty preview</option>
+<option value="/prospect/asp/property_penalty_date.asp?tn=property_install_one&item=|0|">Instalments - This Property</option>
+<option value="/prospect/asp/property_penalty_date.asp?tn=property_instalment&item=|0|">Instalments - All Properties</option>
+</select>
+</FORM>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;1;2;3;4;5");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+

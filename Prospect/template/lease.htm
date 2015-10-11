@@ -1,0 +1,53 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>LEASE AGREEMENT </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="lease"><INPUT TYPE=hidden NAME="tn" VALUE="lease"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+<TABLE  width= "95%" ALIGN=CENTER BORDER=0 CELLSPACING=1 CELLPADDING=1>
+<TR >    
+<TD CLASS="mm">
+<B>Description</B><TD class="data" colspan="3" > |1,N,1|
+<TR>
+<TD CLASS="mm"><B>Creditor</B>
+<TD class="data"><A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|0,0,0,,,G*1|"> |0,0,0,,,G*1|</A> |0,0,0,,,G*1~TCLIENT;7;1|
+<TR>   
+<TD CLASS="mm">
+<B>Location</B><TD class="data"> |2| 
+<TR>
+<TD CLASS="mm">
+<B>Contract Date</B><TD class="data"> |3,1,1,,,D2|
+<TD CLASS="mm">
+<B>Contract Type</B><TD class="data"> |4|
+<TR>
+<TD CLASS="mm">
+<B>Start Payments Date</B><TD class="data"> |5,1,1,,,D2|
+<TD CLASS="mm">
+<B>End Payments Date</B><TD class="data"> |6,1,1,,,D2|
+<TR>
+<TD CLASS="mm">
+<B>Billed to Date</B><TD class="data"> |7,1,1,,,D2|
+<TD CLASS="mm">
+<B>Frequency of Billing</B>
+||IF,8,=,M
+<TD class="data">Monthly
+||IFEND
+||IF,8,=,A
+<TD class="data">Annually
+||IFEND
+<TR>
+<TD CLASS="mm"><B>Total Payment Amount</B>
+||IF,9,=,
+<TD class="data" colspan="3">$0.00
+||IFEND
+||IF,9,#,
+<TD class="data" colspan="3"> $|9,1,1,,,MD2|
+||IFEND
+<TR>
+<TD CLASS="mm"><B>Narrative</B><TD class="data" colspan="3"> |10,1,1|
+</TABLE>
+
+<P>
+<TABLE  width= "95%" ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR CLASS=top>
+<TH>General Ledger Account number
+<TH>Amount
+||TABLE000 <TR> <TD>|11,N,1|<TD >$|12,N,1,,,MD2|
+</TABLE>

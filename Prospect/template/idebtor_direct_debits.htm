@@ -1,0 +1,111 @@
+@@INPUT3@@Assessment number
+
+<INPUT id="assessment_address_hide" NAME="assessment_address_hide" type="hidden">
+
+<TABLE align=center border="1" cellspacing="1" cellpadding="1">
+    <TR>
+        <TD align=center colspan=2>
+          <INPUT TYPE="Button" NAME="Search" VALUE="Search" onClick='BuildSentence(document.assetform("id"),document.all.SearchResults,"RSproperty.txt","")'>
+    <TR>
+        <TD align=center colspan=2>
+            Enter OWNER NAME or ROAD NAME (use ,roadname) for Assessment Number
+         <BR>then click seach button to find assessment number if not known
+
+    <TR class=top>
+        <TD align=center colspan=2><B>Direct Debit Authority</B>
+
+    <TR class=top>
+ 	  <TD CLASS="itemname">Address
+        <TD id="Iid">|0,0,0,,,TCLIENT;1;2;3;4;5|
+    <TR class=top>
+ 	  <TD CLASS="itemname">Owner name
+        <TD id="IIid">|0,0,0,,,TOWNERNAME|
+
+    <TR class=top>
+        <TD CLASS=top>Bank Account
+        <TD class=top><input name="C58,0,0,Bank Account" value="|58,0,0|">
+    <TR class=top>
+        <TD CLASS=top>From Date
+        <TD class=top><input name="C59,0,0,From Date (first payment date),,D2" value="|59,0,0,,,D2|">
+    <TR class=top>
+        <TD CLASS=top>To Date
+        <TD class=top><input name="60,0,0,To Date,,D2" value="|60,0,0,,,D2|">
+    <TR>
+        <TD align=center colspan=2>Direct debits can be of two forms<BR><B>Make full payment of all amounts due when they are due</B><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in this case, do not enter anything into the fields below<BR><B>Make a regular payment for a fixed amount</B><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in this case, enter the details below
+    <TR class=top>
+        <TD CLASS=top>Amount to Pay
+        <TD class=top><input name="64,0,0,Amount to Pay,,MD2" value="|64,0,0,,,MD2|">
+    <TR class=top>
+        <TD CLASS=top>Frequency of payment
+        <TD class=top>
+        <select name="sel65">
+        <option value="|65|" selected>|65,0,0,,,OPTION|</option>
+        <option value="F">Fortnightly</option>
+        <option value="W">Weekly</option>
+        <option value="M">Monthly</option>
+        <option value="Q">Quarterly</option>
+        <option value="Y">Annually</option>
+        <option value="D">Daily</option>
+        <option value="2D">Every 2 days</option>
+        <option value="3D">Every 3 days</option>
+        <option value="4D">Every 4 days</option>
+        <option value="5D">Every 5 days</option>
+        <option value="6D">Every 6 days</option>
+        <option value="7D">Every 7 days</option>
+        <option value="8D">Every 8 days</option>
+        <option value="9D">Every 9 days</option>
+        <option value="10D">Every 10 days</option>
+        <option value="11D">Every 11 days</option>
+        <option value="12D">Every 12 days</option>
+        <option value="13D">Every 13 days</option>
+        <option value="14D">Every 14 days</option>
+        <option value="15D">Every 15 days</option>
+        <option value="16D">Every 16 days</option>
+        <option value="17D">Every 17 days</option>
+        <option value="18D">Every 18 days</option>
+        <option value="19D">Every 19 days</option>
+        <option value="20D">Every 20 days</option>
+        <option value="21D">Every 21 days</option>
+        <option value="22D">Every 22 days</option>
+        <option value="23D">Every 23 days</option>
+        <option value="24D">Every 24 days</option>
+        <option value="25D">Every 25 days</option>
+        <option value="26D">Every 26 days</option>
+        <option value="27D">Every 27 days</option>
+        <option value="28D">Every 28 days</option>
+        <option value="28D">Every 29 days</option>
+        <option value="30D">Every 30 days</option>
+        <option value="31D">Every 31 days</option>
+        </select>
+    <TR class=top>
+        <TD CLASS=top>Make payment even if nothing owing
+        <TD class=top>
+        <select name="sel66">
+        <option value="|66|" selected>|66,0,0,,,OPTION|</option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
+        </select>
+    <TR class=top>
+        <TD CLASS=top>Date last payment made
+        <TD class=top>|67,0,0,,,D2|
+</TABLE>
+
+</form>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TCLIENT;1;2;3;4;5");
+   Address.innerHTML=co.return_value;
+}
+function GetOwnerName(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"TOWNERNAME");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+

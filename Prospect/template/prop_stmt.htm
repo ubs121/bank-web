@@ -1,0 +1,75 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>PRINTED PROPERTY SETTLEMENT </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="prop.stmt"><INPUT TYPE=hidden NAME="tn" VALUE="prop_stmt"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE WIDTH=75%>
+<TR>
+<TD CLASS="mm"><B>Assessment</B><TD> <A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|1|"><FONT CLASS=itemlnk>|1|</FONT></A>
+<TD CLASS="mm"><B>Charge/Fee</B><TD> |5,1,1,,,MD2|
+    
+<TR>
+	<TD VALIGN=top CLASS="mm">
+	<B>Property  Name</B><TD> |1,1,1,,,TCLIENT;1| 
+	<TD CLASS="mm"><B>Date Printed/Charged</B><TD> |6,1,1,,,D2|
+	<TR>
+	<TD VALIGN=top CLASS="mm">
+	<B>Property  Address</B><TD> |1,1,1,,,TCLIENT;2;3;5| 
+	<TD CLASS="mm"><B>Proposed Settlement</B><TD> |7,1,1,,,D2|
+
+
+<TR>
+<TD CLASS="mm"><B>Applicant</B><TD><A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|2|"> <FONT CLASS=itemlnk> |2,1,1,,,TCLIENT;8;7;1|</FONT></A>
+<TD CLASS="mm"><B>Actual Settlement</B><TD> |15,1,1,,,D2|
+<TR>
+<TD CLASS="mm"><B>Other Applicants</B><TD> 
+||ALIST <LI> &nbsp;  |@,/prospect/asp/bi.asp?fn=client&tn=client&item=,3,N,1|  &nbsp;  |3,N,1,,,TCLIENT;8;7;1|
+
+<TD CLASS="mm"><B>Settlement Cancelled</B><TD> |16,1,1|
+<TR>
+<TD CLASS="mm"><B>Request Date</B><TD> |4,1,1,,,D2|
+<TD CLASS="mm"><B>Date updated</B><TD> |17,1,1,,,D2|
+<TR>
+
+</TABLE>
+
+<TABLE>
+<TR CLASS="top">
+<TH>Owner Name
+<TH>Pensioner
+<TH>Owner residential address
+<TH>Owner mailing address
+<TH>Ph: Bus
+<TH>Ph: Prv
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=client&tn=client&item=,8,N,1,,,TCLIENT;1;7|<TD> |8,N,1,,,TCLIENT;43|<TD> |8,N,1,,,TRES_ADDRESS|<TD> |8,N,1,,,TMAIL_ADDRESS|<TD> |8,N,1,,,TCLIENT;9,1|<TD> |8,N,1,,,TCLIENT;9,2|
+</TABLE>
+
+||IF,9,#,
+<TABLE>
+<TR CLASS="top">
+<TH>Elector Name
+<TH>Elector residential address
+<TH>Elector mailing address
+<TH>Ph: Bus
+<TH>Ph: Prv
+<TH>Roll
+<TH>Qual
+<TH>Council
+||IF,13,#,
+<TH>Mayoral
+||IFEND
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=client&tn=client&item=,9,N,1,,,TCLIENT;1;7|<TD> |9,N,1,,,TRES_ADDRESS|<TD> |9,N,1,,,TMAIL_ADDRESS|<TD> |9,N,1,,,TCLIENT;9,1|<TD> |9,N,1,,,TCLIENT;9,2|<TD> |10,N,1|<TD> |11,N,1|<TD> |12,N,1|<TD> |13,N,1|
+</TABLE>
+||IFEND
+
+||IF,14,#,
+<TABLE>
+<TR CLASS="top">
+<TH>Occupier Name
+<TH>Pensioner
+<TH>Occupier residential address
+<TH>Occupier mailing address
+<TH>Ph: Bus
+<TH>Ph: Prv
+||TABLE000 <TR> <TD> |@,/prospect/asp/bi.asp?fn=client&tn=client&item=,14,N,1,,,TCLIENT;1;7|<TD> |14,N,1,,,TCLIENT;43|<TD> |14,N,1,,,TRES_ADDRESS|<TD> |14,N,1,,,TMAIL_ADDRESS|<TD> |14,N,1,,,TCLIENT;9,1|<TD> |14,N,1,,,TCLIENT;9,2|
+</TABLE>
+||IFEND

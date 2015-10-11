@@ -1,0 +1,130 @@
+<%'this is where the expandable table goes - written to in includeform%>
+<I id=expanding></I>
+</div>
+</FORM>
+
+<%'//!!!!!see 12 below assumes 11 elements above!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!%>
+
+<script LANGUAGE="JavaScript">
+	var numinrow=4,count = 0;
+	var transinfo=new Array();
+	Accounts = new Array();
+	Acc_Description = new Array();
+    var gFieldValues = new Array(numinrow * 10); // this array holds our form values when we need to regenerate the form
+    for (var i=0;i<gFieldValues.length;i++) {gFieldValues[i]=""};
+	getTransValues();
+    IncludeForm(numinrow);
+
+function IncludeForm(numinrow)
+{
+   var htmlStr = '<TABLE align=center border=1 cellspacing=1 cellpadding=1 width=95%>';
+   htmlStr += '<TR class=top><TH colspan=4>DEBTORS CONTROL ACCOUNTS<TR class=top><TH>Rel.Code &nbsp;&nbsp;<input type="button" value="Extra" onClick="AddField(' + numinrow + ')"><TH>Accounts<TH>G/L Description<TH>Description';    
+
+for (var i=0;i<gFieldValues.length;i+=numinrow)
+{
+   htmlStr += '<TR class=top>';
+   htmlStr += '<TD align=center><input type="text" readonly  name="' + (100 + i + 0) + ',,,Rel.Code" value="' + gFieldValues[i] + '">';
+   htmlStr += '<TD align=center><input type="text" onFocus = "disp(document.all(' + "'" + (100+i) + ",,,Rel.Code'));" + '" onBlur="updateAccount(document.all(' + "'" + (100+i) + ",,,Rel.Code'),document.all('" + (100 + i + 1) + ",,,Account'),document.all('" + (100 + i + 2) + ",,,Desc'),document.all('I" + (100 + i + 1) + ",,,Account')," + "'acc'" + ");" + '" name="' + (100 + i + 1) + ',,,Account" value="' + gFieldValues[i+1] + '">';
+   htmlStr += '<TD class=top id="I' + (100 + i + 1) + ',,,Account">' + gFieldValues[i+2] + '&nbsp;</td>';
+   htmlStr += '<TD align=center><input type="text" onBlur="updateAccount(document.all(' + "'" + (100+i) + ",,,Rel.Code'),document.all('" + (100 + i + 1) + ",,,Account'),document.all('" + (100 + i + 2) + ",,,Desc'),document.all('I" + (100 + i + 1) + ",,,Account')," + "'desc'" + ");" + '" name="' + (100 + i + 2) + ',,,Desc" value="' + gFieldValues[i+3] + '">';
+}
+   htmlStr += '</TABLE>';
+   document.all.expanding.innerHTML = htmlStr;
+}
+
+
+function AddField(numinrow)
+{
+// Save previously entered data here
+	var formObj = document.assetform;
+    var n=formObj.elements.length - gFieldValues.length; 
+	
+	for (var i=0;i<gFieldValues.length;i++) //element 0 is the ADD BUTTON so saving element 1 onwards only
+	   { gFieldValues[i]= formObj.elements(i+n).value; }
+
+// Create the new fields
+     for (var j=0;j<numinrow;j++)
+        { gFieldValues[gFieldValues.length]=""; }
+     IncludeForm(numinrow);
+}
+
+
+function getTransValues()
+{
+var i,j;
+
+Temp1 = document.assetdata.desc.value;
+Temp = document.assetdata.item.value;
+if (Temp != "") 
+{
+transinfo = Temp.split(String.fromCharCode(254));
+if (transinfo[13] != ""){Accounts=transinfo[13].split(String.fromCharCode(253)); max = Accounts.length;} else max = 0; }
+Acc_Description=Temp1.split(String.fromCharCode(254));
+count = max;
+if (max > 10)   								//if num. of records > 10 then resize gFieldValues for the additional rows
+   for (var k=0; k<(numinrow * (max - 10)); k++)
+       { gFieldValues[gFieldValues.length]=""; }
+
+j=0;
+for (i=0; i<(max*numinrow); i+=numinrow)
+{
+    gFieldValues[i] = j;
+	gFieldValues[i+1] = Accounts[j] ;
+	if (Accounts[j] != "")	gFieldValues[i+2] = BuildString(gFieldValues[i+1],"Tgen.l;2");
+	gFieldValues[i+3] = Acc_Description[j] ;
+	j = j + 1 ;	 
+}
+}
+
+
+ 
+function disp(relfield)
+{
+count = Accounts.length;
+if (relfield.value == "")
+	relfield.value = count ; 
+}
+
+
+ 
+function updateAccount(relfield,accfield,descfield,glDesc,updatefield)
+{
+relcode = relfield.value;
+accnum = accfield.value;
+desc = descfield.value;
+
+if (accnum == "")
+	desc="";
+else if (updatefield == "acc")
+{
+	BuildSentence(accfield,document.all.SearchResults,"RSGL.txt","");
+}
+Accounts[relcode] = accnum;
+Acc_Description[relcode] = desc;
+}
+
+
+
+function SubmitForm()
+{
+	temp = Accounts.join(String.fromCharCode(253));		
+	temp = Rtrim(temp,String.fromCharCode(253));
+	transinfo[13] = temp ;		
+	document.assetdata.item.value = transinfo.join(String.fromCharCode(254));
+	temp1 = Acc_Description.join(String.fromCharCode(254));
+	document.assetdata.desc.value = Rtrim(temp1,String.fromCharCode(254));
+	document.assetdata.validated.value = "1";
+	document.assetdata.submit();						
+}
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+function GetAssessAddress(Address,AssessNum)
+ {
+   while (RSAspProxyApplet.readyState != 4) {}
+   ASPpage = RSGetASPObject("DllCalls.asp");
+   co = ASPpage.BuildString(AssessNum,"Tgen.l;2");
+   Address.innerHTML=co.return_value;
+}
+</SCRIPT>
+

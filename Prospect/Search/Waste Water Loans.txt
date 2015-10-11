@@ -1,0 +1,11 @@
+filetouse=loans
+templatetouse=loans
+srchlist=key,name
+labellist=Loan Number,Debtor Name
+prefix=,
+suffix=,]
+sorts=a0
+title=LOANS
+hds=Loan|Debtor|Property|Date|Amount|Years|FreeYears
+tds=<TD>|<TD>|<TD>|<TD NOWRAP>|<TD align=right>|<TD align=right>|<TD align=right>
+dms=@,/prospect/asp/bi.asp?fn=loans&tn=loans&item=,0|@!,/prospect/asp/bi.asp?fn=client&tn=client&item=,1,0,0,,,TCLIENT;1;6|@!,/prospect/asp/bi.asp?fn=property&tn=property&item=,3,0,0,,,TCLIENT;2;3;4;5|9,1,1,,,D2|10,0,0,,,MD2|6|8

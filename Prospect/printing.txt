@@ -1,0 +1,15 @@
+You can use javascript to do it -- use an onload function:
+
+<script language=javascript>
+  function printRedirect(){
+    window.print();
+    setTimeout('location="prevPage.asp"',5000);
+  }
+</script>
+
+<body onLoad="printRedirect();">
+
+So that the page will spool to the printer, and then redirect itself after five seconds. 
+ Only drawback is that they will get the confirmation print dialog box --
+ but there isn't any way around that -- there isn't a way to get a webpage to spit off on the printer without any user intervention at all...   they either have to push the button themselves, or they have to ok your .print() action.
+

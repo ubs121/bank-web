@@ -1,0 +1,54 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>LOANS</FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="loans"><INPUT TYPE=hidden NAME="tn" VALUE="loans"><INPUT TYPE="text" NAME="item" SIZE=5 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE WIDTH="95%" border="1" cellspacing="1" cellpadding="1">
+
+<TR class=item>
+		<TD CLASS="itemname"><B>Owner</B>
+		<TD COLSPAN=7><A HREF="/prospect/asp/bi.asp?fn=client&tn=client&item=|1|"><FONT CLASS=itemlnk>|1,0,0,,,TCLIENT;1;7;2;3;4;5|</FONT></A>
+<TR class=item>
+		<TD CLASS="itemname"><B>Assessment</B>
+		<TD COLSPAN=7> <A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|3|"><FONT CLASS=itemlnk>|3|</A></FONT>&nbsp;&nbsp; |3,0,0,,,TCLIENT;2;3;4;5|
+	<TR class=item>
+		<TD CLASS="itemname">Narrative<TD colspan=7>|5,0,0|
+	<TR class=item>
+		<TD CLASS="itemname">Loan amount
+		<TD align=center>|10,0,0,,,MD2|
+		<TD CLASS="itemname">Payments per year
+		<TD align=center>|2,0,0|
+		<TD CLASS="itemname">Loan Term (Years)
+		<TD align=center>|6,0,0|
+		<TD CLASS="itemname" >Interest Free (Years)
+		<TD align=center>|8,0,0|
+	<TR class=item>
+		<TD CLASS="itemname">Interest Rate
+		<TD align=center>|9,0,0,,,MD2|
+		<TD CLASS="itemname">First paydate
+		<TD align=center>|12,1,0,,,D2|
+		<TD CLASS="itemname">Loan paid off date
+		<TD align=center>|4,1,0,,,D2|
+		<TD CLASS="itemname">Amount of final payment
+		<TD align=center>|7,1,0,,,MD2|
+	<TR class=item>
+		<TD CLASS="itemname">Last Statement Date
+		<TD align=center>|17,0,0,,,D2|
+		<TD CLASS="itemname">Amount to settle
+		<TD align=center>|18,0,0,,,MD2|      
+		<TD CLASS="itemname">Debtor Balance
+      <TD align=center><A HREF="/prospect/asp/bi.asp?fn=tdebtor&tn=tdebtor&item=|1|">|1,0,0,,,Ttdebtor;3~MD2|</A>
+		<TD CLASS="itemname">Outstanding Balance
+		<TD align=center>|-1,0,0,,,LOANBAL~MD2|      
+</TABLE>
+<TABLE WIDTH="95%" border="1" cellspacing="1" cellpadding="1">
+<TR CLASS="top">
+<TH>Pay due
+<TH>Principal
+<TH>Interest
+<TH>Total Amount
+<TH>Invoice
+<TH>Inv date
+||TABLEA99 <TR><TD>|12,N,1,,,D2|<TD align=right>|13,NT,1,,,MD2|<TD align=right>|14,NT,1,,,MD2|<TD align=right>|15,NT,1,,,MD2|<TD>|@,/prospect/asp/bi.asp?fn=invoice&tn=invoice&item=,16,N,1|<TD>|16,N,1,,,TINVOICE;20~D2|
+</TABLE>
+
+

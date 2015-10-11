@@ -1,0 +1,12 @@
+filetouse=job.l
+templatetouse=job_l
+srchlist=job,a22,a29,@@jlindex|job.l|a2|3|1|0|1@@,@complete,@complete,@comp,@comp
+labellist=Job Number,Category,Responsibility,Description,Accounting Complete (from),Accounting Complete (to),Physically Complete (from),Physically Complete (to)
+itemlist=,sselect dict job.l a0 a1 by a1 with a0 = "@class]",sselect rcode a0 a1 by a1,
+sortlist=and with no class,and with no class,and with no class,,,and with no class,and with no class,and with no class,and with no class
+sorts=a2
+title=JOB LEDGER
+hds=Job|Description|LstDate|Expense|Income|Category|Accounting Complete|Physically Complete
+tds=<TD>|<TD>|<TD>|<TD ALIGN=RIGHT nowrap>|<TD ALIGN=RIGHT nowrap>|<TD NOWRAP>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=job.l&tn=job_l&item=,0|2|7,1,1,,,D2|5,1,1,,,MD2|6,1,1,,,MD2|22,1,1,,@CLASS.,Tdict job.l;1|23,1,1,,,D2|53,1,1,,,D2
+adhoc=@1571

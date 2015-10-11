@@ -1,0 +1,11 @@
+filetouse=issue
+templatetouse=issue
+srchlist=key,account,product,@2,brh,@6.name
+itemlist=,
+labellist=Issue Number,Account,Product,Date,Branch,Branch Name
+sorts=
+title=STOCK ISSUES
+hds=Issue Number|Account|Product|Date of Issue|Branch|Branch Name
+tds=<TD>|<TD>|<TD>|<TD>|<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=issue&tn=issue&item=,0|1,1,1|4,0,0|2,1,1,,,D2|6,0,0|6,0,0,,,Tbranch;1
+

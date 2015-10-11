@@ -1,0 +1,77 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>FILING REFERENCE </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="filing"><INPUT TYPE=hidden NAME="tn" VALUE="filing"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE width = "95%" align=center border=0 cellspacing=1 cellpadding=1>
+<TR>
+<TD width="20%" CLASS="mm">
+<B>Document Type</B><TD> |13,1,1,,@T.,Tact.codes;1|
+<TD  width="20%" CLASS="mm">
+<B>Subject</B><TD COLSPAN=3> |4,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Sender</B><TD> |3,1,1|
+<TD CLASS="mm">
+<B>Keywords</B><TD COLSPAN=3> |9|
+<TR>
+<TD CLASS="mm">
+<B>Date Received</B><TD> |1,1,1,,,D2|
+<TD CLASS="mm">
+<B>Date Acknowledged</B><TD> |11,1,1,,,D2|
+<TR>
+<TD CLASS="mm">
+<B>Amount Enclosed</B><TD> |2,1,1,,,MD2|
+<TD CLASS="mm">
+<B>Cash/Cheque</B><TD> |12,1,1|
+<TR>
+<TD CLASS="mm">
+<B>Date Replied</B><TD> |7,1,1,,,D2|
+<TD CLASS="mm">
+<B>Action Taken</B><TD> |6,1,1,,@A.,Tact.codes;1|
+<TR>
+<TD CLASS="mm">
+<B>Actioned By</B><TD> |23,1,1,,@N.,Tact.codes;1|
+<TD CLASS="mm">
+<B>Pathname</B><TD> |24,1,1|
+</TABLE>
+
+||IF,5,#,
+<P>
+<TABLE width="95%" align=center border=0 cellspacing=1 cellpadding=1>
+<TR CLASS="top">
+<TH COLSPAN=2>Recipient
+<TH>Date
+||TABLE000 <TR><TD WIDTH=10%>|5,N,1|<TD WIDTH=40%>|5,N,1,,@N.,Tact.codes;1|&nbsp;<TD ALIGN=center>&nbsp;|17,N,1,,,D2|
+</TABLE>
+||IFEND
+
+||IF,8,#,
+<P>
+<TABLE width=95%" align=center border=0 cellspacing=1 cellpadding=1>
+<TR CLASS="top">
+<TH>File Index Reference
+<TH>Description
+||TABLE000 <TR><TD WIDTH=50%>|@!,/prospect/asp/bi.asp?fn=filing.index&tn=filing_index&item=,8,N,1|<TD>|8,N,1,,,Tfiling.index;1|
+</TABLE>
+||IFEND
+
+||IF,10,#,
+<P>
+<TABLE width="95%" align=center border=0 cellspacing=1 cellpadding=1>
+<TR CLASS="top">
+<TH>Assessments
+<TH>Property Addresses
+||TABLE000 <TR> <TD WIDTH=50%> |@!,/prospect/asp/bi.asp?fn=property&tn=property&item=,10,N,1| <TD> |10,N,1,,,Tclient;2;3|
+</TABLE>
+||IFEND
+
+||IF,14,#,
+<P>
+<TABLE width="95%" align=center border=0 cellspacing=1 cellpadding=1>
+<TR CLASS="top">
+<TH>Related Items
+<TH>Sender
+<TH>Subject
+||TABLE000 <TR> <TD WIDTH=30%> |@!,/prospect/asp/bi.asp?fn=filing&tn=filing&item=,14,N,1| <TD WIDTH=40%> |14,N,1,,,Tfiling;3| <TD WIDTH=30%> |14,N,1,,,Tfiling;4|
+</TABLE>
+||IFEND

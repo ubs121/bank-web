@@ -1,0 +1,8 @@
+filetouse=service.spec
+templatetouse=service_spec
+srchlist=a0
+labellist=Number
+title=SERVICE SPECIFICATIONS
+hds=Specification Number|First Description
+tds=<TD>|<TD>
+dms=@,/prospect/asp/bi.asp?fn=service.spec&tn=service_spec&item=,0|1,1,1

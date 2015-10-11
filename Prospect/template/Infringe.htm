@@ -1,0 +1,88 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>GENERAL INFRINGEMENT </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="infringe"><INPUT TYPE=hidden NAME="tn" VALUE="infringe"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+||SRDICT INFRINGE,@type
+||IF,2,=,A
+||SREND
+Animal
+||IFEND
+
+<TABLE WIDTH=95%>
+<TR>
+<TD CLASS="mm" width=25%>
+<B>Pick-Up Report No.</B><TD width=25%> <A HREF="/prospect/asp/buildsel.asp?fn=pickup&tn=pickup&title=animal pickups&item=&ref=|6|"><FONT CLASS=itemlnk>|6|</FONT></A> 
+<TD CLASS="mm" width=25%>
+<B>Officer</B><TD> |6,1,1,,,TPICKUP;1~TCA.OFFICER;1|
+<TR>
+<TD CLASS="mm">
+<B>Owner Notified On</B><TD> |6,1,1,,,TPICKUP;17~D2|
+<TD CLASS="mm">
+<B>At</B><TD> |6,1,1,,,TPICKUP;18~MT|
+<TR>
+<TD CLASS="mm">
+<B>Owner</B><TD COLSPAN=3> |1,1,1,,,TCLIENT;1;2;3;4|
+<TR>
+<TD class="screen" colspan=4>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Offence Date</B><TD> |3,1,1,,,D2| 
+<TD CLASS="mm">
+<B>Offence Time</B><TD> |2,1,1,,,MT| 
+<TR>
+<TD CLASS="mm">
+<B>Offence</B><TD COLSPAN=3> |4| &nbsp;&nbsp; <font color=red><B>|-1,,,,,G.1;C.;4~TSCHED;1;C ;2|</B></font>
+<TR>
+<TD CLASS="mm">
+<B>Penalty</B><TD colspan=3> |5,1,1,,,MD2|
+</TABLE>
+
+<P>
+
+<TABLE WIDTH=95%>
+<TR>
+<TD CLASS="mm" width=25%>
+<B>Complaint Date</B><TD width=25%> |14,1,1,,,D2|
+<TD CLASS="mm" width=25%>
+<B>Final Notice Date</B><TD> |13,1,1,,,D2|
+<TR>
+<TD CLASS="mm">
+<B>Complaint Remarks</B><TD COLSPAN=3> |15|
+<TR>
+<TD CLASS="mm">
+<B>Summons Date</B><TD> |16,1,1,,,D2| 
+<TD CLASS="mm">
+<B>Service Date</B><TD> |17,1,1,,,D2| 
+<TR>
+<TD CLASS="mm">
+<B>Court Date</B><TD> |18,1,1,,,D2|
+<TD CLASS="mm">
+<B>Court Charge No</B><TD> |19|
+<TR>
+<TD CLASS="mm">
+<B>Adjourned Court Date</B><TD> |24,1,1,,,D2|
+<TD CLASS="mm">
+<B>Court Costs</B><TD> |20,1,1,,,MD2|
+<TR>
+<TD CLASS="mm">
+<B>Court Order</B><TD COLSPAN=3> |32|
+<TR>
+<TD CLASS="mm">
+<B>Warrant Date</B><TD> |25,1,1,,,D2| 
+<TD CLASS="mm">
+<B>2nd Warrant Date</B><TD> |25,2,1,,,D2|
+<TR>
+<TD CLASS="mm">
+<B>Warrant Fee</B><TD> |26,1,1,,,MD2| 
+<TD CLASS="mm">
+<B>2nd Warrant Fee</B><TD> |26,1,2,,,MD2|
+<TR>
+<TD CLASS="mm">
+<B>Jail Date</B><TD> |30,1,1,,,D2|
+<TD CLASS="mm">
+<B>Sentence Length</B><TD> |31|
+<TR>
+<TD CLASS="mm">
+<B>Remarks</B><TD> |33|
+<TD CLASS="mm">
+<B>Date</B><TD> |34,1,1,,,D2|
+</TABLE>

@@ -1,0 +1,43 @@
+Collaboration Data Objects for NTS Component
+The Microsoft® CDO for NTS Library (Collaboration Data Objects for Windows NT® Server) version 1.2 exposes messaging objects for use by Microsoft® Visual Basic®, C/C++, Microsoft® Visual C++®, and Visual Basic Scripting Edition (VBScript) applications. The library lets you quickly and easily add to your application the ability to send and receive messages. You can create programmable messaging objects, then use their properties and methods to meet the needs of your application. 
+
+The CDO for NTS Library is intended to run on a Microsoft® Windows NT® Server, for example from Active Server Pages (ASP) script on a Microsoft® Internet Information Server (IIS). It is not intended to run on a client process. No user dialog is invoked or supported by CDO for NTS. 
+
+The CDO for NTS objects are described in the remainder of this section. The following table lists these objects in alphabetic order and gives the purpose of each one. 
+
+Object  Purpose  
+AddressEntry  Specify addressing information for an individual messaging user.  
+  
+Attachment  Associate an additional object with a message.  
+Attachments collection  Access all attachments on a message; create new attachments.  
+Folder  Open the default Inbox or Outbox folder in a message store.  
+Message  Compose, populate, send, and receive an e-mail document.  
+Messages collection  Access all messages in a folder; create new messages.  
+NewMail  Send a message without having to log on to a session.  
+Recipient  Specify information for a messaging user intended to receive a message.  
+Recipients collection  Access all recipients of a message; create new recipients.  
+Session  Establish a connection between an application and a messaging system.  
+  
+
+
+All these objects can be declared using Object for their data type, but it is preferable to take advantage of early binding, to enforce type checking and generate more efficient code: 
+
+Dim objMsg As Message ' in preference to Dim As Object 
+  Dim colAtts As Attachments 
+ 
+You can also use an object's full type name in order to distinguish it from identically named objects available to a Visual Basic program through other object libraries such as the CDO Library: 
+
+Dim objSess As CDONTS.Session ' distinguished from MAPI.Session 
+  Dim colRecips As CDONTS.Recipients 
+ 
+The CDO for NTS Library interfaces with the SMTP server component of Microsoft® Internet Information Server (IIS) version 4.0 and later. The Session object uses the LogonSMTP method to differentiate the access from the Logon method of the the CDO Library, which interfaces with Microsoft® Exchange Server. 
+
+The SMTP server component of IIS has its own message store mechanism. The Inbox and Outbox are mapped to directories in the file system, and no other folders exist. Message transfer takes place in such a way that spooling appears instantaneous, so the Inbox has no incoming queue and the Outbox is always empty. 
+
+When CDO for NTS is running with IIS, the Inbox is a single common folder shared by all SMTP recipients and applications. It contains all messages received by IIS and destined for the local domains the SMTP server is configured for. However, the incoming messages are segregated by the CDO for NTS Library according to their recipients. An application can only access messages destined for the address it used when it logged on. 
+
+When CDO for NTS is running with the Microsoft Exchange Server, the Inbox is the regular Inbox of the messaging user's mailbox. When CDO for NTS is running with Microsoft Exchange Express, the Inbox is the messaging user's Post Office Protocol version 3 (POP3) server Inbox. 
+
+Applications developed to run with CDO for NTS can also run with CDO for Exchange provided they do not use the NewMail object. Also, the Session object's LogonSMTP method should be changed to the CDO for Exchange session's Logon method. 
+
+ 

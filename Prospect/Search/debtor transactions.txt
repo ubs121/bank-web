@@ -1,0 +1,14 @@
+filetouse=td.oflow
+templatetouse=dr_trans
+codeattr=2
+srchlist=@@drindex|client|name|4|0|0|1|client@@,client,amt,date,date,gldate,gldate
+srchkey=none
+labellist=Name,Debtor Number,Amount,Date (from),Date (to),G/L Date (from),G/L Date (to)
+sortlist=by-exp a2,by-exp a2,by-exp,by-exp,by-exp,by-exp,by-exp
+sorts=name,a1,amt,date,gldate
+sortdescs=Debtor name,Debtor number,Amount,Transaction Date,G/L Date
+title=DEBTOR TRANSACTIONS
+reports=debtors
+hds=Debtor|Name|Reference|Type|Date|Stm|Amount|Narrative|Post|Post
+tds=<TD>|<TD>|<TD>|<TD NOWRAP>|<TD NOWRAP>|<TD NOWRAP>|<TD NOWRAP ALIGN=RIGHT>|<TD>|<TD ALIGN=RIGHT>|<TD NOWRAP>|<TD NOWRAP>
+dms=0,0,0,,,G1*1|0,0,0,,,G1*1~TCLIENT;1|@!,/prospect/asp/bi.asp?fn=td.oflow&tn=@@&item=,3|2,1,1,,,tdict trans.j;2|5,1,1,,,D2|13,1,1,,,D2|4,1,1,,,MD2|7,1,0|10,1,0,,,MD2|9,1,0,, to 

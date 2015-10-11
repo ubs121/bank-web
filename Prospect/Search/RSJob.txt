@@ -1,0 +1,9 @@
+filetouse=job.l
+templatetouse=job.l
+srchlist=a0,a2
+title=Jobs
+labellist=Job Number,Description
+hds=Account|Description
+tds=<TD>JOB|<TD>
+dms=@,#,0|2,1,1
+

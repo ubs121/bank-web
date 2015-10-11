@@ -1,0 +1,24 @@
+database=msa
+where=@@PATH@@ckashare\loan\loan.mdb\
+title=ÇİİË
+reports=loan
+
+filetouse=loan
+templatetouse=loan
+srchlist=key,a8
+itemlist=,sselect lender a0 a1 by a1
+labellist=Çııëèéí ¹,Çııëävvëıã÷
+sorts=a8
+hds=Ëàâëàõ|Çııëävvëıã÷|Yğ äví|Çııëävvëıã÷èéí ëàâëàõ|Æàãñààëò|Yíäñıí õºğºíãº
+tds=<TD>|<TD>|<TD>|<TD NOWRAP>|<TD>| <TD align=right>
+dms=@,/prospect/asp/bi.asp?fn=loan&tn=loan&item=,0|8,NB,0,,,TLENDER;1|11,1,1|1,1,1|9,0,0|13,NT,0,,,MD2
+
+msa_filetouse=@WHERE@loan
+msa_templatetouse=loan_msa
+msa_srchlist=Çııë,Çııëävvëıã÷
+msa_itemlist=,select lender!name from lender
+msa_labellist=Çııëèéí ¹,Çııëävvëıã÷
+msa_sorts=Çııëävvëıã÷
+msa_hds=Ëàâëàõ|Çııëävvëıã÷
+msa_tds=<TD>|<TD>
+msa_dms=@,/prospect/asp/bi.asp?fn=@WHERE@loan&tn=loan&item=,0|7

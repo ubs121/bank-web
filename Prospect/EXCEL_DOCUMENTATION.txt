@@ -1,0 +1,244 @@
+HOWTO: Use ASP to Build Spreadsheet XML for Client-Side Display 
+
+--------------------------------------------------------------------------------
+The information in this article applies to:
+
+Microsoft Office XP Web Components 
+Microsoft Excel 2002 
+Microsoft Active Server Pages
+
+--------------------------------------------------------------------------------
+
+
+SUMMARY
+This article illustrates Active Server Pages (ASP) script that builds a spreadsheet in the XML Spreadsheet (XMLSS) format by using the Office Spreadsheet XP component. The XMLSS can be displayed client-side in one of several ways: 
+
+in the Spreadsheet component on a Web page.
+
+
+in Microsoft Excel shown in-place in the browser.
+
+
+opened directly in Microsoft Excel.
+
+
+
+
+
+MORE INFORMATION
+Using the Spreadsheet component in server-side code to build spreadsheets provides more scalability and better performance when compared to using server-side Automation of Microsoft Excel. Automation of Office applications, including Excel, on the server is not recommend by Microsoft and should be avoided when other alternatives for achieving the same results are available to you. XMLSS can persist many of the features common to both the Spreadsheet component and Microsoft Excel; multi-sheet workbooks, cell formatting, Autofilter, cell formulas, and re-calculation represent a handful of those features. The Spreadsheet component has an object model that closely matches the object model for Microsoft Excel. Therefore, if you are familiar with the Excel object model, you can easily apply some of your existing Excel code, with modification, for use with the Spreadsheet component.
+
+The following sample demonstrates how to generate a multi-sheet workbook in XMLSS using the Spreadsheet component with ASP. The sample also discusses how you can display the resulting XMLSS client-side on a Web page or in Microsoft Excel. 
+
+ASP Script to Build XMLSS Using the Spreadsheet Component
+Save the following ASP as XMLSS.asp in the virtual root directory of your Web server (the default root directory is c:\inetpub\wwwroot): 
+<% Language=VBScript %>
+
+<%
+    Response.Buffer = True
+    Response.ContentType = "text/xml"
+
+    Dim NumOrders, NumProds, r
+    NumOrders = 300
+    NumProds = 10
+        
+    Dim oSS
+    Dim oOrdersSheet
+    Dim oTotalsSheet
+    Dim oRange
+    Dim c
+    
+    Set oSS = CreateObject("OWC10.Spreadsheet")
+    Set c = oSS.Constants
+
+    'Rename Sheet1 to "Orders", rename Sheet2 to "Totals" and remove Sheet3
+    Set oOrdersSheet = oSS.Worksheets(1)
+    oOrdersSheet.Name = "Orders"
+    Set oTotalsSheet = oSS.Worksheets(2)
+    oTotalsSheet.Name = "Totals"
+    oSS.Worksheets(3).Delete
+    
+    '=== Build the First Worksheet (Orders) ==============================================
+        
+    'Add headings to A1:F1 of the Orders worksheet and apply formatting
+    Set oRange = oOrdersSheet.Range("A1:F1")
+    oRange.Value = Array("Order Number", "Product ID", "Quantity", "Price", "Discount", "Total")
+    oRange.Font.Bold = True
+    oRange.Interior.Color = "Silver"
+    oRange.Borders(c.xlEdgeBottom).Weight = c.xlThick
+    oRange.HorizontalAlignment = c.xlHAlignCenter
+   
+    'Apply formatting to the columns
+    oOrdersSheet.Range("A:A").ColumnWidth = 20
+    oOrdersSheet.Range("B:E").ColumnWidth = 15
+    oOrdersSheet.Range("F:F").ColumnWidth = 20
+    oOrdersSheet.Range("A2:E" & NumOrders + 1 _
+        ).HorizontalAlignment = c.xlHAlignCenter
+    oOrdersSheet.Range("D2:D" & NumOrders + 1).NumberFormat = "0.00"
+    oOrdersSheet.Range("E2:E" & NumOrders + 1).NumberFormat = "0 % "
+    oOrdersSheet.Range("F2:F" & NumOrders + 1).NumberFormat = "$ 0.00" '"_($* #,##0.00_)"
+        
+    'Obtain the order information for the first five columns in the Orders worksheet
+    'and populate the worksheet with that data starting at row 2
+    Dim aOrderData
+    aOrderData = GetOrderInfo
+    oOrdersSheet.Range("A2:E" & NumOrders + 1).Value = aOrderData
+    
+    'Add a formula to calculate the order total for each row and format the column
+    oOrdersSheet.Range("F2:F" & NumOrders + 1).Formula = "=C2*D2*(1-E2)"
+        oOrdersSheet.Range("F2:F" & NumOrders + 1).NumberFormat = "_(  $* #,##0.00   _)"
+
+    'Apply a border to the used rows
+    oOrdersSheet.UsedRange.Borders(c.xlInsideHorizontal).Weight = c.xlThin
+    oOrdersSheet.UsedRange.BorderAround , c.xlThin, 15
+    
+    'Turn on AutoFilter and display an initial criteria where
+    'the Product ID (column 2) is equal to 5
+    oOrdersSheet.UsedRange.AutoFilter
+    oOrdersSheet.AutoFilter.Filters(2).Criteria.FilterFunction = c.ssFilterFunctionInclude
+    oOrdersSheet.AutoFilter.Filters(2).Criteria.Add "5"
+    oOrdersSheet.AutoFilter.Apply
+    
+    'Add a Subtotal at the end of the usedrange
+    oOrdersSheet.Range("F" & NumOrders + 3).Formula = "=SUBTOTAL(9, F2:F" & NumOrders + 1 & ")"
+    
+    'Apply window settings for the Orders worksheet
+    oOrdersSheet.Activate   'Makes the Orders sheet active
+    oSS.Windows(1).ViewableRange = oOrdersSheet.UsedRange.Address
+    oSS.Windows(1).DisplayRowHeadings = False
+    oSS.Windows(1).DisplayColumnHeadings = False
+    oSS.Windows(1).FreezePanes = True
+    oSS.Windows(1).DisplayGridlines = False
+    
+    '=== Build the Second Worksheet (Totals) ===========================================
+    
+    'Change the Column headings and hide row headings
+    oTotalsSheet.Activate
+    oSS.Windows(1).ColumnHeadings(1).Caption = "Product ID"
+    oSS.Windows(1).ColumnHeadings(2).Caption = "Total"
+    oSS.Windows(1).DisplayRowHeadings = False
+    
+    'Add the product IDs to column 1
+    Dim aProductIDs
+    aProductIDs = GetProductIDs
+    oTotalsSheet.Range("A1:A" & NumProds).Value = aProductIDs
+    oTotalsSheet.Range("A1:A" & NumProds).HorizontalAlignment = c.xlHAlignCenter
+
+    'Add a formula to column 2 that computes totals per product from the Orders Sheet
+    oTotalsSheet.Range("B1:B" & NumProds).Formula = _
+        "=SUMIF(Orders!B$2:B$" & NumOrders + 1 & ",A1,Orders!F$2:F$" & NumOrders + 1 & ")"
+    oTotalsSheet.Range("B1:B" & NumProds).NumberFormat = "_(  $* #,##0.00   _)"
+
+    'Apply window settings for the Totals worksheet
+    oSS.Windows(1).ViewableRange = oTotalsSheet.UsedRange.Address
+    
+    '=== Setup for final presentation ==================================================
+    
+    oSS.DisplayToolbar = False
+    oSS.AutoFit = True
+    oOrdersSheet.Activate
+
+    Response.Write oSS.XMLData
+    Response.End
+
+
+Function GetOrderInfo()
+    ReDim aOrderInfo(NumOrders,5)
+    Dim aPrice, aDisc
+    aPrice = Array(10.25, 9.5, 2.34, 6.57, 9.87, 4.55, 6, 13.05, 3.3, 5.5)
+    aDisc = Array(0, 0.1, 0.15, 0.2)
+    For r = 0 To NumOrders-1
+        aOrderInfo(r, 0) = "'" & String(7-Len(CStr(r+1)), "0") & r+1 'Col 1 is Order Number
+        aOrderInfo(r, 1) = Int(Rnd() * NumProds) + 1                 'Col 2 is Product ID
+        aOrderInfo(r, 2) = Int(Rnd() * 20) + 1                       'Col 3 is Quantity
+        aOrderInfo(r, 3) = aPrice(aOrderInfo(r, 1)-1)                'Col 4 is Price
+        aOrderInfo(r, 4) = aDisc(Int(Rnd() * 4))                     'Col 5 is Discount
+    Next
+    GetOrderInfo = aOrderInfo
+End Function
+
+Function GetProductIDs()
+    ReDim aPIDs(NumProds, 1)
+    For r = 0 To NumProds-1
+        aPIDs(r, 0) = r+1
+    Next
+    GetProductIDs = aPIDs
+End Function
+
+%> 
+Display the XMLSS on a Web Page
+To display the sample XMLSS on a Web page, you need only set the XMLURL property for a Spreadsheet Component to the URL for the ASP, as follows: 
+<html>
+
+<body>
+
+<object classid="clsid:0002E551-0000-0000-C000-000000000046" id="Spreadsheet1">
+  <param name="XMLURL" value="http://YourWebServer/xmlss.asp">
+</object>
+
+</body>
+
+</html> 
+In the preceding HTML, the XMLURL property is set by using a <param> tag. You could also set the XMLURL property at run-time if desired: 
+   Spreadsheet1.XMLURL = "http://YourWebServer/xmlss.asp" 
+Display the XMLSS in Microsoft Excel
+The XMLSS that is created with the Spreadsheet component can be opened in Microsoft Excel. The formatting and features you implement in the Spreadsheet component can be shared with Microsoft Excel. There are some features that the Spreadsheet component supports that Excel does not (and vice-versa); any XML tags or attributes that Excel does not implement are ignored when the XMLSS is opened.
+
+To view the results of the sample ASP script in Microsoft Excel, do the following: 
+Start Microsoft Excel.
+
+
+On the File menu, click Open.
+
+
+In the File Name box, type http://YourWebServer/xmlss.asp, and then click Open.
+
+
+Examine the workbook, and note that the data and formats that were applied at run time are all present in the workbook when it is opened in Excel. There is one exception: the heading captions that are created in the Spreadsheet component do not carry over to Excel because this is a feature of the Spreadsheet component that Microsoft Excel does not share. If you create XMLSS with the Spreadsheet component for the purpose of displaying the file in Excel, be aware of the different features that each supports.
+
+Another way to open the ASP-created XMLSS in Microsoft Excel is to supply the Excel Multipurpose Internet Mail Extensions (MIME) type as the ContentType in your ASP. When you use the Excel MIME type and browse to your ASP, the XMLSS can be rendered in Microsoft Excel in-place in the browser, as follows: 
+Open XMLSS.asp in a text editor.
+
+
+Change the following line in the script:
+
+
+Response.ContentType = "text/xml" 
+to: 
+Response.ContentType = "application/vnd.ms-excel" 
+Save your changes to XMLSS.asp and start Internet Explorer (IE).
+
+
+Browse to http://YourWebServer/XMLSS.asp. The XML Spreadsheet is rendered in Microsoft Excel hosted in-place in the browser.
+
+
+(c) Microsoft Corporation 2001, All Rights Reserved. Contributions by Lori B. Turner, Microsoft Corporation.
+
+
+
+
+
+REFERENCES
+For more information, see the Office Web Components topic on the following Microsoft Web site at: 
+
+http://support.microsoft.com/support/officedev/webcomp.asp
+For additional information, click the article numbers below to view the articles in the Microsoft Knowledge Base: 
+Q285891 HOWTO: Use VB or ASP to Create an XML Spreadsheet For Excel 2002 
+Q278976 HOWTO: Use XSL to Transform Excel Spreadsheet XML for Server-Side Use 
+Q257757 INFO: Automation of Office for Unattended Execution is Not Recommended or Supported 
+
+Additional query words: 
+
+Keywords : kbASP kbExcel kbGrpDSO kbDSupport kbOfficeWebSpread 
+Issue type : kbhowto 
+Technology : kbExcelSearch kbAudDeveloper kbASPsearch kbExcel2002 kbExcel2002Search kbOfficeXPSearch kbWebCompSearch kbOfficeXPWebComp 
+ 
+
+
+Last Reviewed: July 18, 2001
+© 2001 Microsoft Corporation. All rights reserved. Terms of Use.  Disability/accessibility  Privacy Policy
+
+
+
+ 
+

@@ -1,0 +1,8 @@
+filetouse=stock
+templatetouse=stock
+srchlist=a0,desc
+title=Stock
+labellist=Stock Number,Description
+hds=Account|Description
+tds=<TD>|<TD>
+dms=@,#,0|2

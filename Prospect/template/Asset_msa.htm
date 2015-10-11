@@ -1,0 +1,114 @@
+<TABLE width=95%>
+<FORM ACTION="/prospect/asp/bi.asp" NAME="itemid" METHOD="GET"><TR><TD class="tdempty" align="center"><B><FONT SIZE=+1>ASSET </FONT></B>&nbsp;<INPUT TYPE=hidden NAME="fn" VALUE="asset"><INPUT TYPE=hidden NAME="tn" VALUE="asset"><INPUT TYPE="text" NAME="item" SIZE=10 VALUE="|0|"></FORM>
+</TABLE>
+
+<TABLE width=95% ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR class=top ><TH COLSPAN="6" ALIGN="CENTER" VALIGN="MIDDLE">Asset Details
+<TR>
+<TD CLASS="mm" rowspan=2>
+<B>Description</B><TD rowspan=2> |3,1,1| <br> |3,2,1| <br> |3,3,1|
+<TD CLASS="mm">
+<B>Location</B><TD COLSPAN=3> |4| &nbsp; |4,1,1,,,TLOCATION;1|
+<TR>
+<TD CLASS="mm">
+<B>Assessment</B><TD COLSPAN=3> <A HREF="/prospect/asp/bi.asp?fn=property&tn=property&item=|95,1,1|"><FONT CLASS=itemlnk>|95,1,1|</FONT></A> &nbsp; |95,1,1,,,TCLIENT;2|
+<TR>
+<TD CLASS="mm">
+<B>Purchased</B><TD> |5,1,1,,,D2|
+<TD CLASS="mm">
+<B>Cost Price</B><TD> |6,1,1,,,MD2|
+<TD CLASS="mm">
+<B>Reference</B><TD> |26|
+<TR>
+<TD CLASS="mm">
+<B>Current Value</B><TD> |12,1,1,,,MD2| &nbsp;
+<TD CLASS="mm">
+<B>Insurance Value</B><TD> |96,1,1,,,MD2| &nbsp;
+<TD CLASS="mm">
+<B>Residual Value</B><TD> |42,1,1,,,MD2| &nbsp;
+<TR>
+<TD COLSPAN=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Disposal Date</B><TD> |23,1,1,,,D2| &nbsp;
+<TD CLASS="mm">
+<B>Disposal Price</B><TD> |24,1,1,,,MD2| &nbsp;
+<TD CLASS="mm">
+<B>Reference</B><TD> |25| &nbsp;
+<TR>
+<TD COLSPAN=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Make</B><TD> |98| &nbsp;
+<TD CLASS="mm">
+<B>Model No.</B><TD> |93| &nbsp;
+<TD CLASS="mm">
+<B>Registration No.</B><TD> |41| &nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Serial No.</B><TD> |94| &nbsp;
+<TD CLASS="mm">
+<B>Engine No.</B><TD> |39| &nbsp;
+<TD CLASS="mm">
+<B>Chassis No.</B><TD> |40| &nbsp;
+<TR>
+<TD COLSPAN=6>&nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Schedule</B><TD> |52| &nbsp;
+<TD CLASS="mm">
+<B>Provision for Depn</B><TD COLSPAN=3> <A HREF="/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=|1|"><FONT CLASS=itemlnk>|1|</FONT></A> &nbsp;&nbsp; |1,1,1,,,TGEN.L;2|
+<TR>
+<TD CLASS="mm">
+<B>Group</B><TD> |37|
+<TD CLASS="mm">
+<B>Depreciation Expense</B><TD COLSPAN=3> <A HREF="/prospect/asp/bi.asp?fn=gen.l&tn=gen_l&item=|2|"><FONT CLASS=itemlnk>|2|</FONT></A> &nbsp;&nbsp; |2,1,1,,,TGEN.L;2|
+<TR>
+<TD CLASS="mm">
+<B>Yr Open Balance</B><TD> |13,1,1,,,MD2|
+<TD CLASS="mm">
+<B>Last Depreciated</B><TD> |10,2,1,,,D2|
+<TD CLASS="mm">
+<B>YTD Depn</B><TD> |13,-VAL00112,,,,MD2|
+<TR>
+<TD COLSPAN=6> &nbsp;
+<TR>
+<TD CLASS="mm">
+<B>Rate</B><TD> |8,1,1,,,MD2|
+<TD CLASS="mm">
+<B>Type</B><TD> |7| 
+<TD CLASS="mm">
+<B>Frequency</B><TD> |9|
+</TABLE>
+
+<P>
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR class=top>
+<TH COLSPAN="2" ALIGN="CENTER" VALIGN="MIDDLE">Depreciation History
+<TR>
+<TD CLASS="mm" ALIGN="center"><B>Depreciation Date</B>
+<TD CLASS="mm" ALIGN="center"><B>Balance</B>
+||TABLE000 <TR><TD>|11,N,1,,,D2|&nbsp;<TD ALIGN="RIGHT">&nbsp;|12,N,1,,,MD2|
+</TABLE>
+<P>
+<TABLE ALIGN=CENTER BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR class=top>
+<TH COLSPAN="9" ALIGN="CENTER" VALIGN="MIDDLE" >Transaction History</TH>
+<TR>
+<TD CLASS="mm" ALIGN="center"><B>Type</B>
+<TD CLASS="mm" ALIGN="center"><B>Client</B>
+<TD CLASS="mm" ALIGN="center"><B>Name</B>
+<TD CLASS="mm" ALIGN="center"><B>Reference</B>
+<TD CLASS="mm" ALIGN="center"><B>Date</B>
+<TD CLASS="mm" ALIGN="center"><B>Amount</B>
+<TD CLASS="mm" ALIGN="center"><B>Tot Value</B>
+<TD CLASS="mm" ALIGN="center"><B>GL Date</B>
+<TD CLASS="mm" ALIGN="center"><B>Narrative</B>
+||TABLE000 <TR><TD>|32,N,1|&nbsp;<TD>|@,/prospect/asp/bi.asp?fn=client&tn=client&item=,30,N,1|&nbsp;<TD>|30,N,1,,,TCLIENT;1|&nbsp;<TD>|33,N,1|&nbsp;<TD NOWRAP>|31,N,1,,,D2|&nbsp;<TD ALIGN=RIGHT>&nbsp;|34,N,1,,,MD2|<TD ALIGN=RIGHT>&nbsp;|34,NV,1,,,MD2|<TD NOWRAP>|36,N,1,,,D2|&nbsp;<TD>|35,N,1|&nbsp;
+</TABLE>
+||IF,32,=,
+<P>
+There are no transactions details to show for this asset.
+||IFEND
+
+
